@@ -31,7 +31,7 @@ CREATE TABLE User (
 
 -- Book table
 CREATE TABLE Book (
-    id INTEGER PRIMARY KEY,
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
     name TEXT NOT NULL,
     author TEXT NOT NULL
 );
@@ -43,25 +43,25 @@ CREATE TABLE Genre (
 
 -- BookGenre table
 CREATE TABLE BookGenre (
-    genre TEXT REFERENCES Genre,
-    book INTEGER REFERENCES Book,
+    genre TEXT REFERENCES Genre ON DELETE CASCADE ON UPDATE CASCADE,
+    book INTEGER REFERENCES Book ON DELETE CASCADE ON UPDATE CASCADE,
     PRIMARY KEY (genre, book)
 );
 
 -- BookCopy table
 CREATE TABLE BookCopy (
-    id INTEGER PRIMARY KEY,
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
     condition TEXT CHECK (condition IN ('excellent', 'good', 'worn')),
     availability TEXT CHECK (availability IN ('available', 'borrowed')),
     copy_type TEXT CHECK (copy_type IN ('hardcover', 'softcover', 'handbook')),
-    owner INTEGER REFERENCES User,
-    book INTEGER REFERENCES Book
+    owner INTEGER REFERENCES User ON DELETE CASCADE ON UPDATE CASCADE,
+    book INTEGER REFERENCES Book ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 -- InterestedIn table
 CREATE TABLE InterestedIn (
-    user INTEGER REFERENCES User,
-    book INTEGER REFERENCES Book,
+    user INTEGER REFERENCES User ON DELETE CASCADE ON UPDATE CASCADE,
+    book INTEGER REFERENCES Book ON DELETE CASCADE ON UPDATE CASCADE,
     interest_level INTEGER CHECK (interest_level IN (1, 2, 3)),
     PRIMARY KEY (user, book)
 );
@@ -69,18 +69,18 @@ CREATE TABLE InterestedIn (
 -- Proposal table
 CREATE TABLE Proposal (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
-    bookcopy INTEGER REFERENCES Book,
+    bookcopy INTEGER REFERENCES Book ON DELETE CASCADE ON UPDATE CASCADE,
     status TEXT CHECK (status IN ('showing', 'hidden'))
 );
 
 -- Borrowing table
 CREATE TABLE Borrowing (
     status TEXT CHECK (status IN ('pending', 'delivered', 'picked-up', 'expired', 'returned')),
-    proposal INTEGER NOT NULL REFERENCES Proposal,
-    user INTEGER NOT NULL REFERENCES User,
+    proposal INTEGER NOT NULL REFERENCES Proposal ON DELETE SET NULL ON UPDATE CASCADE,
+    user INTEGER NOT NULL REFERENCES User ON DELETE SET NULL ON UPDATE CASCADE,
     start_date TEXT NOT NULL,
     duration INTEGER NOT NULL,
-    campus TEXT NOT NULL REFERENCES Campus,
+    campus TEXT NOT NULL REFERENCES Campus ON DELETE SET NULL ON UPDATE CASCADE,
     expiration_date TEXT CHECK (expiration_date = DATETIME(start_date, '+' || duration || ' day')),
     PRIMARY KEY (user, proposal)
 );
@@ -94,8 +94,8 @@ CREATE TABLE Campus (
 
 -- UserCampus table
 CREATE TABLE UserCampus (
-    user INTEGER REFERENCES User(up_number),
-    campus TEXT REFERENCES Campus(name),
+    user INTEGER REFERENCES User(up_number) ON DELETE CASCADE ON UPDATE CASCADE,
+    campus TEXT REFERENCES Campus(name) ON DELETE CASCADE ON UPDATE CASCADE,
     PRIMARY KEY (user, campus)
 );
 
@@ -108,7 +108,7 @@ CREATE TABLE Badges (
 
 -- UserBadge table
 CREATE TABLE UserBadge (
-    user INTEGER REFERENCES User(up_number),
-    badge TEXT REFERENCES Badges(name),
+    user INTEGER REFERENCES User(up_number) ON DELETE CASCADE ON UPDATE CASCADE,
+    badge TEXT REFERENCES Badges(name) ON DELETE CASCADE ON UPDATE CASCADE,
     PRIMARY KEY (user, badge)
 );
