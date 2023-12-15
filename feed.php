@@ -33,7 +33,7 @@ $query = $db->query("SELECT b.id, b.name AS book_name, b.author, u.name AS owner
     </head>
     <body>
         <header>
-            <?php include "navbar.php";?>
+            <?php include "templates/navbar.php";?>
             <h1>Feed</h1>
         </header>
         <section>

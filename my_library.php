@@ -8,7 +8,7 @@
     </head>
     <body>
         <header>
-            <?php include "navbar.php";?>
+            <?php include "templates/navbar.php";?>
         </header>
         <main>
         </main>
