@@ -4,7 +4,7 @@
     <head>
         <title>My Library</title>
         <meta charset="UTF-8">
-        <link rel="stylesheet" href="my_library_style.css">
+        <link rel="stylesheet" href="css/my_library_style.css">
     </head>
     <body>
         <header>

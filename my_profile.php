@@ -4,7 +4,7 @@
     <head>
         <title>My Profile</title>
         <meta charset="UTF-8">
-        <link rel="stylesheet" href="my_profile_style.css">
+        <link rel="stylesheet" href="css/my_profile_style.css">
     </head>
 </head>
 <body>

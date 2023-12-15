@@ -4,7 +4,7 @@
     <head>
         <title>Want To Read</title>
         <meta charset="UTF-8">
-        <link rel="stylesheet" href="want_to_read_style.css">
+        <link rel="stylesheet" href="css/want_to_read_style.css">
     </head>
     <body>
         <header>

@@ -1,0 +1,38 @@
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+}
+
+section {
+    display: flex;
+    flex-direction: column; /* Display articles in a column */
+    align-items: center; /* Center articles horizontally */
+    padding: 20px;
+}
+
+article {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    margin: 10px;
+    padding: 15px;
+    width: 80%; /* Adjust the width as needed */
+    max-width: 400px; /* Set a maximum width if desired */
+}
+
+h2 {
+    color: #333;
+}
+
+p {
+    color: #555;
+}

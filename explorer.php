@@ -2,7 +2,7 @@
 <html>
     <head>
         <title>Library</title>
-        <link rel="stylesheet" href="explorer.css">
+        <link rel="stylesheet" href="css/explorer.css">
     </head>
     <body>
         <header>
