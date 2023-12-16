@@ -9,8 +9,9 @@
 
         if ($action === 'add_to_library') {
             // Handle adding the book to the library
-            $bookID = isset($_POST['book_id']) ? $_POST['book_id'] : '';
-            addToWantToRead($userID, $bookID);
+            //$bookID = isset($_POST['book_id']) ? $_POST['book_id'] : '';
+            //addToWantToRead($userID, $bookID);
+            $showInterestLevel = true;
         } elseif ($action === 'remove_from_library') {
             // Handle removing the book from the library
             $bookID = isset($_POST['book_id']) ? $_POST['book_id'] : '';

@@ -17,10 +17,10 @@
     }
 
     // Functions to add and remove books from the library
-    function addToWantToRead($userID, $bookID) {
+    function addToWantToRead($userID, $bookID, $interest_level) {
         global $dbh;
         $stmt = $dbh->prepare("INSERT INTO InterestedIn (user, book, interest_level) VALUES (?, ?, ?)");
-        $stmt->execute(array($userID, $bookID, 3));
+        $stmt->execute(array($userID, $bookID, $interest_level));
     }
 
     function removeFromWantToRead($userID, $bookID) {
@@ -38,6 +38,29 @@
                                 WHERE InterestedIn.user = ?;");
         $stmt->execute(array($userID));
         return $stmt->fetchAll();
+    }
+
+    function isCopyAdded($userID, $bookID){
+        global $dbh;
+        $stmt = $dbh->prepare("SELECT * FROM BookCopy WHERE owner = ? AND book = ?");
+        $stmt->execute(array($userID, $bookID));
+        
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        return ($result !== false);
+    }
+
+    function addCopy($condition, $availability, $copy_type, $userID, $bookID) {
+        global $dbh;
+        $stmt = $dbh->prepare("INSERT INTO BookCopy (condition, availability, copy_type, owner, book) VALUES (?, ?, ?, ?, ?)");
+        $stmt->execute(array($condition, $availability, $copy_type, $userID, $bookID));
+    }
+
+    function removeCopy($userID, $bookID) {
+        global $dbh;
+        $stmt = $dbh->prepare("DELETE FROM BookCopy 
+                                WHERE owner = ? AND book = ?");
+        $stmt->execute(array($userID, $bookID));
     }
 
 ?>
