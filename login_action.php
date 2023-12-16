@@ -1,8 +1,8 @@
 <?php
   session_start();
 
-  require_once('sql/db_init.php');
-  require_once('sql/db_users.php');
+  require_once('database/init.php');
+  require_once('database/db_users.php');
 
   // get up_number and password from HTTP parameters
   $up_number = $_POST['up_number'];

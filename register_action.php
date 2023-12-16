@@ -1,7 +1,7 @@
 <?php 
 session_start();
-require_once('sql/db_init.php');
-require_once('sql/db_users.php');
+require_once('database/init.php');
+require_once('database/db_users.php');
 
 $up_number = $_POST['up_number'];
 $password = $_POST['password'];

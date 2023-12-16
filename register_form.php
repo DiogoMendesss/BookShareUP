@@ -12,7 +12,7 @@
         <input type="submit" value="Login">
 </form>
 <p id=register_error> 
-    <?php if ($_SESSION['msg'] === 'Error: SQLSTATE[23000]: Integrity constraint violation: 19 UNIQUE constraint failed: Users.up_number'){
-        echo "Account already exists! Please try again.";
+    <?php if (isset($_SESSION['msg'])){
+        echo $_SESSION['msg'];
         $_SESSION['msg']=null;} ?>
 </p>

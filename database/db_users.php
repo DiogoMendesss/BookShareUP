@@ -25,7 +25,7 @@
   function insertUser($up_number, $password, $full_name, $faculty_campus) {
     global $dbh;
     $stmt = $dbh->prepare('INSERT INTO User (up_number, password, name) VALUES (?, ?, ?)');
-    $stmt->execute(array($up_number, password_hash($password, PASSWORD_DEFAULT), $full_name));
+    $stmt->execute(array($up_number, hash('sha256', $password), $full_name));
 
     $stmt = $dbh->prepare('INSERT INTO UserCampus (user, campus) VALUES (?, ?)');
     $stmt->execute(array($up_number, $faculty_campus));
