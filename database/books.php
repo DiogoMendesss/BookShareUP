@@ -63,4 +63,18 @@
         $stmt->execute(array($userID, $bookID));
     }
 
+    function getBooksByPage($page_num) {
+        global $dbh;
+        $stmt = $dbh->prepare('SELECT * FROM Book LIMIT ? OFFSET ?');
+        $stmt->execute(array(6, ($page_num-1)*6));
+        return $stmt->fetchAll();
+      }
+    
+      function getNumberOfBooks() {
+        global $dbh;
+        $stmt = $dbh->prepare('SELECT COUNT(*) AS count FROM Book');
+        $stmt->execute();
+        return $stmt->fetch()['count'];
+      }
+
 ?>
