@@ -32,6 +32,10 @@
                     <input type="hidden" name="page_num" value="<?php echo $page_num ?>">
 
                     <?php if ($addBook) { ?>
+                        <form action="bookexplorer.php" method="post">
+                        <input type="hidden" name="action" value="confirm_add_book">
+                        <input type="hidden" name="book_id" value="<?php echo $row['id']; ?>">
+                        <input type="hidden" name="page_num" value="<?php echo $page_num ?>">
                         <label>Interest Level:</label>
                         <input type="hidden" name="action" value="confirm_add_book">
                         <input type="hidden" name="book_id" value="<?php echo $row['id']; ?>">
@@ -39,6 +43,7 @@
                         <input type="radio" name="interest_level" value="2">2
                         <input type="radio" name="interest_level" value="3">3
                         <button type="submit">Confirm</button>
+                        </form>
                     <?php } else { ?>
                         <button type="submit"><?php echo ($isBookAdded ? 'Remove From Want To Read' : 'Want To Read'); ?></button>
                     <?php } ?>
@@ -50,6 +55,11 @@
                     <input type="hidden" name="page_num" value="<?php echo $page_num ?>">
 
                     <?php if ($addCopy) { ?>
+                        <form action="bookexplorer.php" method="post">
+                        <input type="hidden" name="action" value="confirm_add_copy">
+                        <input type="hidden" name="book_id" value="<?php echo $row['id']; ?>">
+                        <input type="hidden" name="page_num" value="<?php echo $page_num ?>">
+
                         <label>Condition: </label>
                         <select name="condition">
                             <option value="" selected disabled></option>
@@ -70,10 +80,11 @@
                             <option value="" selected disabled></option>
                             <option value="hardcover">Hardcover</option>
                             <option value="softcover">Softcover</option>
-                            <option value="handcover">Handcover</option>
+                            <option value="handbook">Handbook</option>
                         </select> <br>
 
                         <button type="submit">Confirm</button>
+                        </form>
                     <?php } else { ?>
                         <button type="submit"><?php echo ($isCopyAdded ? 'Remove My Copy' : 'Add Copy'); ?></button>
                     <?php } ?>
