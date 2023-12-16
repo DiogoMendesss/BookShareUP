@@ -4,8 +4,10 @@
     
     $userID = 202005393;
 
+    $wantToReadBooks = getWantToReadBooks($userID);
+    //var_dump($wantToReadBooks);
 
-    
+
     echo ("This is the Want to read Library");
 
     include_once('templates/header.php');
