@@ -44,3 +44,97 @@
     display: table;
     clear: both;
 }
+
+.mainPage-body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.mainPage-container {
+    display: flex;
+    width: 100%;
+}
+
+.scrollable-content {
+    width: 60%;
+    background-color: #6b502d;
+    box-sizing: border-box;
+    overflow-y: auto;
+}
+
+.scrollable-content::-webkit-scrollbar {
+    display: none;
+}
+
+.scrollable-content .title-container {
+    height: 5vh;
+    text-align: left;
+}
+.centered-content {
+    flex: 1;
+    max-width: 400px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: auto;
+}
+
+#main-info {
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+#about-info{
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+#universities-info{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.fixed-content {
+    flex: 1;
+    background-color: #c59c67; /* Set a background color for the fixed section */
+    padding: 20px;
+    box-sizing: border-box;
+    height: 100vh;
+}
+
+.login-form {
+    height: 60vh;
+    max-width: 300px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+#login_error {
+    color: red;
+    text-align: center;
+}
+
+#register_request {
+    text-align: center;
+    margin-top: 20px;
+}
