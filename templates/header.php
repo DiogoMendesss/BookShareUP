@@ -12,6 +12,6 @@
             <a href="want_to_read.php"> <img src="icon.png" alt="Want To Read"></a>
             <a href="feed.php"> <img src="icon.png" alt="Feed"></a>
             <a href="my_library.php"> <img src="icon.png" alt="My Library"></a>
-            <a href="my_profile.php"> <img src="icon.png" alt="My Profile"></a>
+            <a href="profile_page.php"> <img src="icon.png" alt="My Profile"></a>
         </nav>
     </header>

@@ -25,6 +25,7 @@ DROP TABLE IF EXISTS User;
 -- User table
 CREATE TABLE User (
     up_number INTEGER PRIMARY KEY,
+    password TEXT NOT NULL,
     name TEXT NOT NULL,
     status TEXT NOT NULL CHECK (status IN ('active', 'inactive'))
 );
