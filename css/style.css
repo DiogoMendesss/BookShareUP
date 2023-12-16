@@ -140,3 +140,21 @@
     margin-top: 20px;
 }
 
+#pagination {
+    clear: both; /* Add this to clear the float */
+    display: flex;
+    justify-content: center;
+    column-gap: 1em;
+    font-size: 1.2em;
+    border-top: 2px solid #C62828;
+    padding: 1em;
+}
+
+#search {
+    display: flex;
+    justify-content: center;
+    column-gap: 1em;
+    border-bottom: 2px solid #C62828;
+    padding: 1em;
+  }
+
