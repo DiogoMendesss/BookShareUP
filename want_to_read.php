@@ -1,8 +1,8 @@
 <?php
     require_once('database/init.php');
     require_once('database/books.php');
-    
-    $userID = 202005393;
+    session_start();
+    $userID = $_SESSION['up_number'];
 
     $wantToReadBooks = getWantToReadBooks($userID);
     //var_dump($wantToReadBooks);
