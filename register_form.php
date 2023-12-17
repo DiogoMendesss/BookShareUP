@@ -13,7 +13,8 @@
 </form>
 <p id=register_error> 
     <?php if (isset($_SESSION['msg'])){
-        echo ("That user already exists. Try again.");
+        echo ($_SESSION['msg']);
+        //echo ("That user already exists. Try again.");
         $_SESSION['msg']=null;} ?>
 </p>
 
