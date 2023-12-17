@@ -1,8 +1,10 @@
+<!DOCTYPE html>
+
 <?php
     session_start();
 
     require_once('database/init.php');
-    require_once('database/books.php');
+    require_once('database/db_books.php');
     
     $userID = $_SESSION['up_number'];
     $genres = getGenres();
@@ -68,8 +70,7 @@
             exit();
         }
     }
-    
-    
+
     try {
         if (isset($search_title) || isset($search_author) || isset($search_genre)) {
             $books = getBooksBySearch($search_title, $search_author, $search_genre);
@@ -79,8 +80,18 @@
       } catch (PDOException $e) {
         $error_msg = $e->getMessage();
       }
-    
 
-    include_once('templates/header.php');
-    include_once('templates/book_explorer_tpl.php');
 ?>
+
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/header.css">
+        <title>Explorer</title>
+    </head>
+    <body>
+        <?php include('template/header.php'); ?>
+        <?php include('template/book_explorer_tpl.php'); ?>
+    </body>
+</html>

@@ -1,3 +1,50 @@
+/* general style */
+
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap');
+
+:root {
+    font-size: 16px;
+    font-family: 'Roboto', sans-serif;
+    --dark-primary: #5c2821;
+    --dark-secondary: #5c2821;
+    --bright-primary: #ffdda9;
+    --bright-secondary: #ffd29e;
+    --accent-color1: #f04b35;
+}
+
+.body { /* setting defaults */
+    color: black;
+    background-color: white;
+    margin: 0;
+    padding: 0;
+}
+/* customize scrollbar using a sudo class*/
+body::-webkit-scrollbar {
+    width: 0.25 rem;
+}
+body::-webkit-scrollbar-track {
+    background: black;
+}
+body::-webkit-scrollbar-thumb {
+    background: var(--accent-color1);
+}
+.main {
+    margin-top: 5rem;   /* unit relative to font size: 16 px is the default */
+    padding: 1rem;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* Add some styling to the book items */
 .book-item {
     box-sizing: border-box; /* Include padding and border in the element's total width and height */
@@ -50,189 +97,3 @@
     clear: both;
 }
 
-.mainPage-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    display: flex;
-    height: 100vh;
-    overflow: hidden;
-}
-
-.mainPage-container {
-    display: flex;
-    width: 100%;
-}
-
-.scrollable-content {
-    width: 60%;
-    background-color: #6b502d;
-    box-sizing: border-box;
-    overflow-y: auto;
-}
-
-.scrollable-content::-webkit-scrollbar {
-    display: none;
-}
-
-.scrollable-content .title-container {
-    height: 5vh;
-    text-align: left;
-}
-.centered-content {
-    flex: 1;
-    max-width: 400px;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    margin: auto;
-}
-
-#main-info {
-    height: 80vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-}
-
-#about-info{
-    height: 80vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-}
-
-#universities-info{
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-}
-
-.fixed-content {
-    flex: 1;
-    background-color: #c59c67; /* Set a background color for the fixed section */
-    padding: 20px;
-    box-sizing: border-box;
-    height: 100vh;
-}
-
-.login-form {
-    height: 60vh;
-    max-width: 300px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-}
-
-#login_error {
-    color: red;
-    text-align: center;
-}
-
-#register_request {
-    text-align: center;
-    margin-top: 20px;
-}
-
-#pagination {
-    clear: both; /* Add this to clear the float */
-    display: flex;
-    justify-content: center;
-    column-gap: 1em;
-    font-size: 1.2em;
-    border-top: 2px solid #C62828;
-    padding: 1em;
-}
-
-#search {
-    display: flex;
-    justify-content: center;
-    column-gap: 1em;
-    border-bottom: 2px solid #C62828;
-    padding: 1em;
-  }
-
-
-/* Add this to your existing CSS file or create a new one for styling */
-
-#profile-main {
-    display: flex;
-    max-width: 600px;
-    margin: auto;
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-#profile-pic {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-right: 20px;
-}
-
-.profile-pic img {
-    border-radius: 50%;
-    max-width: 100px;
-    max-height: 100px;
-    margin-bottom: 10px;
-}
-
-#user-info {
-    display: flex;
-    flex-direction: column;
-    text-align: left;
-}
-
-#profile_name {
-    font-size: 24px;
-    margin-bottom: 10px;
-}
-
-.profile-info {
-    margin-bottom: 20px;
-}
-
-#profile_upNumber,
-#profile_campus {
-    font-size: 18px;
-    margin: 5px 0;
-}
-
-.owned-books {
-    flex: 1;
-    display: flex;
-    flex-direction: column; /* Changed to column for books to appear below info */
-}
-
-.owned-books h2 {
-    font-size: 20px;
-    margin-bottom: 10px;
-}
-
-.owned-books ul {
-    list-style: none;
-    padding: 0;
-}
-
-.owned-books li {
-    margin-bottom: 20px;
-}
-
-.owned-books img {
-    max-width: 80px;
-    height: auto;
-    border-radius: 5px;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-}

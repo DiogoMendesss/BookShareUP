@@ -1,0 +1,139 @@
+/* 
+
+
+<style>
+.my-element {
+    display: none;
+}
+</style>
+
+<div class="my-element">
+<h1>Booksharing UP</h1>
+</div>
+<section class=centered-content>
+<div id="main-info">
+    <h2>The first book sharing platform in the UP community.</h2>
+    <p>Welcome to Booksharing UP, a platform where book lovers can connect and share their favorite reads. Join our community to discover new books and share your thoughts with fellow readers.</p>
+</div>
+<a href="#about-info" class="button_scrolldown">About <br> | <br> v</a>
+<section id="about-info">
+    <h3>About</h3>
+    <p>Booksharing UP is a platform where book lovers can connect and share their favorite reads. Join our community to discover new books and share your thoughts with fellow readers.
+    <br> <br> Hope you like it! </p>
+</section>
+<a href="#universities-info" class="button_scrolldown">Universities <br> | <br> v</a>
+<section id="universities-info">
+    <h3>Universities in the Program</h3>
+    <ul>
+        <li>University 1</li>
+        <li>University 2</li>
+        <li>University 3</li>
+        <!-- Add more universities as needed -->
+    </ul>
+</section>
+</section> */
+
+.mainPage-container {
+    display: flex;
+    width: 100%;
+}
+
+.scrollable-content {
+    width: 60%;
+    background-color: #6b502d;
+    box-sizing: border-box;
+    overflow-y: auto;
+}
+
+.scrollable-content::-webkit-scrollbar {
+    display: none;
+}
+
+.scrollable-content .title-container {
+    height: 5vh;
+    text-align: left;
+}
+.centered-content {
+    flex: 1;
+    max-width: 400px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: auto;
+}
+
+#main-info {
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+#about-info{
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+#universities-info{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.fixed-content {
+    flex: 1;
+    background-color: #c59c67; /* Set a background color for the fixed section */
+    padding: 20px;
+    box-sizing: border-box;
+    height: 100vh;
+}
+
+.login-form {
+    height: 60vh;
+    max-width: 300px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+#login_error {
+    color: red;
+    text-align: center;
+}
+
+#register_request {
+    text-align: center;
+    margin-top: 20px;
+}
+
+#pagination {
+    clear: both; /* Add this to clear the float */
+    display: flex;
+    justify-content: center;
+    column-gap: 1em;
+    font-size: 1.2em;
+    border-top: 2px solid #C62828;
+    padding: 1em;
+}
+
+#search {
+    display: flex;
+    justify-content: center;
+    column-gap: 1em;
+    border-bottom: 2px solid #C62828;
+    padding: 1em;
+  }
+ 

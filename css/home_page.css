@@ -1,0 +1,133 @@
+/* @import url('https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap'); */
+
+main {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* font-family: "Roboto", sans-serif; */
+    background: linear-gradient(90deg, var(--bright-primary) 50%, var(--dark-secondary) 50%);
+}
+input[type="checkbox"] {
+    display: none;
+}
+img {
+    width: 100%;    /*fully fit the book page*/
+    height: 100%;
+}
+.home-book {
+    display: flex;
+}
+#home-cover {
+    width: 250px;
+    height: 400px;
+    padding: 5%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly; /* distribute items evenly */
+    align-items: center;
+    align-content: center;
+    flex-grow: 1;
+    box-sizing: border-box;
+    border: 10px double #5c2821;
+    background-color: #ffd29e;
+}
+#login_error {
+    color: red;
+}
+/* #register_request {
+} */
+
+.home-flip-book {
+    width: 250px;
+    height: 400px;
+    position: relative; /*placed relative to normal position (others don't adjust to fill the gap)*/
+    perspective: 1500px;
+}
+.home-flip {
+    width: 100%;
+    height: 100%;
+    position: absolute; /*positioned relative to its parent home-flip-book (not the viewport)*/
+    top: 0;
+    left: 0;
+    transform-origin: left;
+    transform-style: preserve-3d;
+    transform: rotateY(0deg); /* rotation along y axis*/
+    transition: .5s;
+    color: #000000;
+}
+p {
+    font-size: 14px;
+    line-height:24px;
+}
+.home-front {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #ffffff;
+    box-sizing: border-box; /* include border and padding in the dimensions */
+    padding: 0 13px;
+    box-shadow: inset 20px 0 50px rgba(0,0,0,0.5) 0 2px 5px rgba(0,0,0,0.5)
+    /* inner/outer shadow effect (horizontal, vertical, blur radius, color) */
+}
+.home-back {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 99;    /* position in the z axis (bring to front) */
+    transform: rotateY(180deg);
+    backface-visibility: hidden; /* back face of element transparent when rotating */
+    background-color: #000000;
+}
+.home-next-btn {
+    position: absolute;
+    bottom: 13px;
+    right: 13px;
+    cursor: pointer;    /* display pointer when hovering */
+    
+    color: #000000;
+}
+.home-next-btn:hover {
+    color: #ffdda9
+}
+.home-back-btn {
+    position: absolute;
+    bottom: 13px;
+    right: 13px;
+    cursor: pointer;    /* display pointer when hovering */
+    color: #ffffff;
+}
+.home-back-btn:hover {
+    color: #ffdda9
+}
+
+/* organise page stacking */
+#home-sheet1 {
+    z-index: 3;
+}
+#home-sheet2 {
+    z-index: 2;
+}
+#home-sheet3 {
+    z-index: 1;
+}
+/* if checked all descendents of class and id provided are transformed */
+#home-checkbox1:checked ~ .home-flip-book #home-sheet1 {
+    transform: rotateY(-180deg);
+    z-index: 1;
+}
+#home-checkbox2:checked ~ .home-flip-book #home-sheet2 {
+    transform: rotateY(-180deg);
+    z-index: 2;
+}
+#home-checkbox3:checked ~ .home-flip-book #home-sheet3 {
+    transform: rotateY(-180deg);
+    z-index: 3;
+}

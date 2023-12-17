@@ -1,6 +1,8 @@
+<!DOCTYPE html>
+
 <?php
     require_once('database/init.php');
-    require_once('database/books.php');
+    require_once('database/db_books.php');
     
     session_start();
     $userID = $_SESSION['up_number'];
@@ -24,8 +26,18 @@
             header("Location: my_library.php");
             exit();
         }
-    }
-    
-    include_once('templates/header.php');
-    include_once('templates/my_library_tpl.php');
+    }    
 ?>
+
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/header.css">
+        <title>My Library</title>
+    </head>
+    <body>
+        <?php include_once('template/header.php'); ?>
+        <?php include_once('template/my_library_tpl.php'); ?>
+    </body>
+</html>
