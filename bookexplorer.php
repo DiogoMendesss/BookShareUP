@@ -58,7 +58,7 @@
             $copy_type = $_POST['copy_type'];
             $bookID = $_POST['book_id'];
             addCopy($condition, $availability, $copy_type, $userID, $bookID);
-            header("Location: bookexplorer.php?page_num=$page_num");
+            header("Location: bookexplorer.php");
             exit();
         }
     }
