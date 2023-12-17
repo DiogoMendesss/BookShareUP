@@ -15,12 +15,12 @@
 .body { /* setting defaults */
     color: black;
     background-color: white;
-    margin: 0;
+    margin: 100px;
     padding: 0;
 }
-/* customize scrollbar using a sudo class*/
+/* customize scrollbar using a pseudo class*/
 body::-webkit-scrollbar {
-    width: 0.25 rem;
+    width: 0.25rem;
 }
 body::-webkit-scrollbar-track {
     background: black;

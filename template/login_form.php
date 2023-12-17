@@ -1,7 +1,7 @@
 <form class="login-form" action="action_login.php" method="post">
-    <input type="text" name="up_number" id="up_number" placeholder="UP Number" required>
-    <input type="password" name="password" id="password" placeholder="Password">
-    <input type="submit" value=Login>
+    <input type="text" name="up_number" id="up_number" placeholder="UP Number" required autofocus> <!-- Change name and placeholder to 'up_number' -->
+    <input type="password" name="password" id="password" placeholder="Password"> <!-- Change name and placeholder to 'password' -->
+    <input type="submit" value=Login accesskey="enter" >
 </form>
 <p id=login_error>
     <?php if ($_SESSION['msg'] === 'Invalid up_number or password!'){

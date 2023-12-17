@@ -1,7 +1,7 @@
 <main>
     <h1>Explorer</h1>
 
-    <form id="search" action="bookexplorer.php">
+    <form id="search" action="book_explorer.php">
         <input type="text" name="search_name" placeholder="Book Title" value="<?php echo $search_title ?>">
         <input type="text" name="search_author" placeholder="Book Author" value="<?php echo $search_author ?>">
         <select name="search_genre">
@@ -13,7 +13,7 @@
 
         </select>
         <button>Search</button>
-        <a href="bookexplorer.php">Clear</a>
+        <a href="book_explorer.php">Clear</a>
     </form>
 
     <section class="shelf">
@@ -38,13 +38,13 @@
                     <!-- <p class="bookgenre"><?php echo $genre['genre'] ?></p> -->
                 <?php } ?>
 
-                <form action="bookexplorer.php" method="post">
+                <form action="book_explorer.php" method="post">
                     <input type="hidden" name="action" value="<?php echo $book_action; ?>">
                     <input type="hidden" name="book_id" value="<?php echo $row['id']; ?>">
                     <input type="hidden" name="page_num" value="<?php echo $page_num ?>">
 
                     <?php if ($addBook) { ?>
-                        <form action="bookexplorer.php" method="post">
+                        <form action="book_explorer.php" method="post">
                         <input type="hidden" name="action" value="confirm_add_book">
                         <input type="hidden" name="book_id" value="<?php echo $row['id']; ?>">
                         <input type="hidden" name="page_num" value="<?php echo $page_num ?>">
@@ -59,13 +59,13 @@
                     <?php } ?>
                 </form>
 
-                <form action="bookexplorer.php" method="post">
+                <form action="book_explorer.php" method="post">
                     <input type="hidden" name="action" value="<?php echo $copy_action; ?>">
                     <input type="hidden" name="book_id" value="<?php echo $row['id']; ?>">
                     <input type="hidden" name="page_num" value="<?php echo $page_num ?>">
 
                     <?php if ($addCopy) { ?>
-                        <form action="bookexplorer.php" method="post">
+                        <form action="book_explorer.php" method="post">
                         <input type="hidden" name="action" value="confirm_add_copy">
                         <input type="hidden" name="book_id" value="<?php echo $row['id']; ?>">
                         <input type="hidden" name="page_num" value="<?php echo $page_num ?>">
@@ -107,9 +107,9 @@
 
     <?php if (!isset($search_title) && !isset($search_author) && !isset($search_genre)) { ?>
     <div id="pagination">
-        <a href="bookexplorer.php?page_num=<?php echo $page_num-1 ?>">&lt;</a>
+        <a href="book_explorer.php?page_num=<?php echo $page_num-1 ?>">&lt;</a>
         <?php echo $page_num ?>
-        <a href="bookexplorer.php?page_num=<?php echo $page_num+1 ?>">&gt;</a>
+        <a href="book_explorer.php?page_num=<?php echo $page_num+1 ?>">&gt;</a>
     </div>
     <?php } ?>
 </main>
