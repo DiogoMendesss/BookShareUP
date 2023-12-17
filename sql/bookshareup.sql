@@ -105,10 +105,11 @@ CREATE TABLE UserCampus (
 
 -- Badges table
 CREATE TABLE Badges (
-    name TEXT PRIMARY KEY CHECK (name IN ('BookGuru', 'Frankenstein')),
-    category TEXT CHECK (category IN ('campus', 'genre', 'activity')),
-    rank TEXT CHECK (rank IN ('bronze', 'silver', 'gold', 'platinum'))
+    name TEXT PRIMARY KEY CHECK (name IN ('Good Reader', 'Awesome Reader', 'Legendary Reader', 'Good Borrower', 'Awesome Borrower', 'Legendary Borrower')),
+    category TEXT CHECK (category IN ('Reader', 'Borrower')),
+    rank TEXT CHECK (rank IN ('Bronze', 'Silver', 'Gold', 'Platinum'))
 );
+
 
 -- UserBadge table
 CREATE TABLE UserBadge (
@@ -349,6 +350,21 @@ INSERT INTO BookGenre (book, genre) VALUES
     (55, 'Biography'),
     (56, 'Non-fiction'),
     (56, 'Business');
+
+    INSERT INTO Campus VALUES
+    ('FEUP', 'AEFEUP', 'Paranhos'),
+    ('FEP', 'AEFEP', 'Ao lado da FEUP'),
+    ('FMUP', 'CIM', 'Do outro lado do S. João') 
+    ;
+
+    INSERT INTO Badges VALUES
+    ('Good Reader','Reader','Bronze'),
+    ('Awesome Reader','Reader','Silver'),
+    ('Legendary Reader','Reader','Gold'),
+    ('Good Borrower','Borrower','Bronze'),
+    ('Awesome Borrower','Borrower','Silver'),
+    ('Legendary Borrower','Borrower','Gold')
+    ;
 
 
 

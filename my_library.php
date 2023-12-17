@@ -1,19 +1,29 @@
-<!DOCTYPE html>
+<?php
+    require_once('database/init.php');
+    require_once('database/books.php');
+    
+    $userID = 202005393;
 
-<html>
-    <head>
-        <title>My Library</title>
-        <meta charset="UTF-8">
-        <link rel="stylesheet" href="css/my_library_style.css">
-    </head>
-    <body>
-        <header>
-            <?php include "templates/navbar.php";?>
-        </header>
-        <main>
-        </main>
-        <footer>
-            <p class=basic-text>BookShare UP</p>
-        </footer>
-    </body>
-</html>
+    $userCopies = getUserCopies($userID);
+    //var_dump($wantToReadBooks);
+
+
+    //echo ("This is the My Library");
+
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $action = isset($_POST['action']) ? $_POST['action'] : '';
+        $page_num = $_POST['page_num'];
+        //var_dump($page_num);
+        
+
+        if ($action === 'delete_copy') {
+            $bookID = isset($_POST['book_id']) ? $_POST['book_id'] : '';
+            removeCopy($userID, $bookID);
+            header("Location: my_library.php");
+            exit();
+        }
+    }
+
+    include_once('templates/header.php');
+    include_once('templates/my_library_tpl.php');
+?>

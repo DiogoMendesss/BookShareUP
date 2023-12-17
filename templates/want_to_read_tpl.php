@@ -11,6 +11,12 @@
                     <h2><?php echo $row['name'] ?></h2>
                     <h3 class="author"><?php echo $row['author'] ?></h3>
                     <p class="interest ´_level"><?php echo "Interest level: " . $row['interest_level'] ?></p>
+                    <form action="want_to_read.php" method="post">
+                        <input type="hidden" name="action" value="remove_book">
+                        <input type="hidden" name="book_id" value="<?php echo $row['id']; ?>">
+                        <input type="hidden" name="page_num" value="<?php echo $page_num ?>">
+                        <button type="submit">Remove</button>
+                    </form>
                 </div>
                 
             </article>
