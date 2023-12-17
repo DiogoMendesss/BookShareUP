@@ -1,5 +1,4 @@
 
-<body>
     <header>
         <nav class="navbar">
             <a href="bookexplorer.php"> <img src="icon.png" alt="Explorer"></a>

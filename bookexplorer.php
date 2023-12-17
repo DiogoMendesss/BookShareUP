@@ -70,8 +70,8 @@
             exit();
         }
     }
-?>
-    /*
+
+/*
     try {
         if (isset($search_name) && isset($search_min) && isset($search_max)) {
           $products = getProductsBySearch($cat_id, $search_name, $search_min, $search_max);
@@ -82,7 +82,8 @@
       } catch (PDOException $e) {
         $error_msg = $e->getMessage();
       }
-    */
+*/
+?>
 
 <html lang="en" dir="ltr">
     <head>
