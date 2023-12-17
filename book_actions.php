@@ -1,8 +1,9 @@
 <?php
+    session_start();
     require_once('database/init.php');
     require_once('database/books.php');
 
-    $userID = 202005393;
+    $userID = $_SESSION['up_number'];
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $action = isset($_POST['action']) ? $_POST['action'] : '';
