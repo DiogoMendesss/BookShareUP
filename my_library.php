@@ -1,19 +1,8 @@
-<!DOCTYPE html>
-
-<html>
-    <head>
-        <title>My Library</title>
-        <meta charset="UTF-8">
-        <link rel="stylesheet" href="css/my_library_style.css">
-    </head>
-    <body>
-        <header>
-            <?php include "templates/navbar.php";?>
-        </header>
-        <main>
-        </main>
-        <footer>
-            <p class=basic-text>BookShare UP</p>
-        </footer>
-    </body>
-</html>
+<?php
+    session_start();
+    $up_number = $_SESSION['up_number'];
+    $msg = $_SESSION['msg'];
+    
+    include_once('templates/header.php');
+    include_once('templates/my_library_tpl.php');
+?>

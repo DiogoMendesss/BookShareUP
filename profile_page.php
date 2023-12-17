@@ -1,13 +1,8 @@
 <?php
-    require_once('database/init.php');
-    require_once('database/books.php');
+    session_start();
+    $up_number = $_SESSION['up_number'];
+    $msg = $_SESSION['msg'];
     
-    $userID = 202005393;
-
-    $books = getBooks();
-    
-    echo ("This is the book explorer");
-
     include_once('templates/header.php');
-    include_once('templates/my_profile_tpl.php');
+    include_once('templates/profile_page_tpl.php');
 ?>

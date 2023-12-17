@@ -158,3 +158,77 @@
     padding: 1em;
   }
 
+
+/* Add this to your existing CSS file or create a new one for styling */
+
+#profile-main {
+    display: flex;
+    max-width: 600px;
+    margin: auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#profile-pic {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 20px;
+}
+
+.profile-pic img {
+    border-radius: 50%;
+    max-width: 100px;
+    max-height: 100px;
+    margin-bottom: 10px;
+}
+
+#user-info {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+#profile_name {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.profile-info {
+    margin-bottom: 20px;
+}
+
+#profile_upNumber,
+#profile_campus {
+    font-size: 18px;
+    margin: 5px 0;
+}
+
+.owned-books {
+    flex: 1;
+    display: flex;
+    flex-direction: column; /* Changed to column for books to appear below info */
+}
+
+.owned-books h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.owned-books ul {
+    list-style: none;
+    padding: 0;
+}
+
+.owned-books li {
+    margin-bottom: 20px;
+}
+
+.owned-books img {
+    max-width: 80px;
+    height: auto;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}

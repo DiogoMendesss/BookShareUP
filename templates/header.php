@@ -3,7 +3,8 @@
 <head>
     <title>BookShareUP</title>
     <!-- Link to your navbar.css -->
-    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="bootstrap">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <header>
@@ -14,4 +15,7 @@
             <a href="my_library.php"> <img src="icon.png" alt="My Library"></a>
             <a href="profile_page.php"> <img src="icon.png" alt="My Profile"></a>
         </nav>
+        <form id = "logout-form" action="logout_action.php">
+            <button>Logout</button>
+        </form>
     </header>
