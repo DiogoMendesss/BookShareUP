@@ -108,36 +108,64 @@
         return $stmt->fetchAll();
       }
 
-      function getProductsBySearch($cat_id, $search_name, $search_min, $search_max) {
+      function getBooksBySearch($search_title, $search_author, $search_genre) {
         global $dbh;
-    
-        $query = 'SELECT * FROM product WHERE cat_id = ?';
-        $params = array($cat_id);
-    
-        if ($search_name != '') {
-          $query = $query . ' AND name LIKE ?';
-          $params[] = "%$search_name%";
+
+        $params = array();
+
+        if ($search_genre != '') {
+          $query = 'SELECT * FROM Book JOIN BookGenre ON Book.id = BookGenre.book WHERE genre=?';
+          $params[] = $search_genre;
+        }
+        else {
+          $query = 'SELECT * FROM Book';
         }
       
-        if ($search_min != '') {
-          $query = $query . ' AND price >= ?';
-          $params[] = $search_min;
+        
+    
+        
+
+        //var_dump($search_genre);
+    
+        if ($search_title != '') {
+            if ($search_genre != '') {
+                $query .= ' AND name LIKE ?';
+            } else {
+                $query .= ' WHERE name LIKE ?';
+            }
+            $params[] = "%$search_title%";
         }
-      
-        if ($search_max != '') {
-          $query = $query . ' AND price <= ?';
-          $params[] = $search_max;
-        }
+
+        if ($search_author != '') {
+          if ($search_genre != '' || $search_title != '') {
+              $query .= ' AND author LIKE ?';
+              
+          } else {
+              $query .= ' WHERE author LIKE ?';
+          }
+          $params[] = "%$search_author%";
+      }
+
+      //var_dump($params);
     
         $stmt = $dbh->prepare($query);
         $stmt->execute($params);
         return $stmt->fetchAll();
-      }
+    }
+    
 
       function getGenres(){
         global $dbh;
         $stmt = $dbh->prepare("SELECT * FROM Genre;");
         $stmt->execute();
+        return $stmt->fetchAll();
+      }
+
+      function getBookGenres($book_ID){
+        global $dbh;
+        $stmt = $dbh->prepare("SELECT * FROM BookGenre
+                                WHERE book = ?;");
+        $stmt->execute(array($book_ID));
         return $stmt->fetchAll();
       }
     
