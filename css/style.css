@@ -51,7 +51,7 @@ body::-webkit-scrollbar-thumb {
 .book-item {
     box-sizing: border-box; /* Include padding and border in the element's total width and height */
     width: calc(33% - 20px); /* Set the width for each book item (adjust as needed) */
-    max-height: 220px;
+    max-height: 250px;
     margin: 0 10px 20px 0; /* Add margin between and around book items */
     float: left; /* Float the book items to display them side by side */
     border: 1px solid #ddd; /* Add a border */
@@ -75,6 +75,10 @@ body::-webkit-scrollbar-thumb {
     display: flex; /* Use flexbox for layout */
     flex-direction: column; /* Stack the title and author vertically */
     flex-grow: 1; /* Allow the details container to grow to fill the available space */
+}
+
+.book-item .book-details p {
+    margin: 5px 0; /* Adjust the margin to your preference */
 }
 
 /* Style the book title */
