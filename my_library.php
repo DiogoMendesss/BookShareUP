@@ -3,7 +3,7 @@
     require_once('database/books.php');
     
     session_start();
-    $up_number = $_SESSION['up_number'];
+    $userID = $_SESSION['up_number'];
     $msg = $_SESSION['msg'];
 
     $userCopies = getUserCopies($userID);

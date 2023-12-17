@@ -6,7 +6,7 @@
     require_once('database/init.php');
     require_once('database/books.php');
     
-    $userID = 202005393;
+    $userID = $_SESSION['up_number'];
     $genres = getGenres();
 
     $cat_id = $_GET['cat'];
