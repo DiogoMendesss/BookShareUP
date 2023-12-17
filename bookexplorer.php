@@ -5,6 +5,12 @@
     require_once('database/books.php');
     
     $userID = 202005393;
+    $genres = getGenres();
+
+    $cat_id = $_GET['cat'];
+    $search_name = $_GET['search_name'];
+    $search_min = $_GET['search_min'];
+    $search_max = $_GET['search_max'];
 
     $n_books = getNumberOfBooks();
     $n_pages = ceil($n_books / 6);
@@ -63,7 +69,18 @@
         }
     }
     
-    echo ("This is the book explorer");
+    /*
+    try {
+        if (isset($search_name) && isset($search_min) && isset($search_max)) {
+          $products = getProductsBySearch($cat_id, $search_name, $search_min, $search_max);
+        } else {
+          $products = getProductsByCategoryId($cat_id, $page_num);
+        }
+        $category = getCategoryById($cat_id);
+      } catch (PDOException $e) {
+        $error_msg = $e->getMessage();
+      }
+      */
 
     include_once('templates/header.php');
     include_once('templates/book_explorer_tpl.php');

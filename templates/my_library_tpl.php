@@ -1,30 +1,29 @@
-<?php
-    require_once('database/init.php');
-    require_once('database/db_users.php');
-    require_once('database/db_campus.php');
-?>
 
-<section class="owned-books">
-        <h2>Owned Books</h2>
-        <?php
-        $ownedBooks = getOwnedBooks($up_number);
-        if (!empty($ownedBooks)) {
-            echo '<ul>';
-            foreach ($ownedBooks as $book) {
-                echo '<li>';
-                echo '<strong>' . $book['name'] . '</strong> by ' . $book['author'];
-                echo '<br>Condition: ' . $book['condition'];
-                echo '<br>Availability: ' . $book['availability'];
-                echo '<br>Copy Type: ' . $book['copy_type'];
-                echo '</li>';
-                echo '<img src="images/bookCovers/' . $book['id'] . '.jpg" alt="Book Cover">';
-            }
-            echo '</ul>';
-        } else {
-            echo '<p>No books owned yet.</p>';
-        }
+<main>
+    <h1>My Library</h1>
+    <section class="shelf">
+        <?php foreach ($userCopies as $row) { 
+            
         ?>
-</section>
-<form id = "addBook-request" action="bookexplorer.php">
-    <button>Add Book to My Library</button>
-</form>
+            <article class="book-item">
+                <img src="images/bookcovers/<?php echo $row['book'] ?>.jpg" alt="">
+
+                <div class="book-details">
+                    <h2><?php echo $row['name'] ?></h2>
+                    <h3 class="author"><?php echo $row['author'] ?></h3>
+                    <p class="condition"><?php echo "Condition: " . $row['condition'] ?></p>
+                    <p class="availability"><?php echo "Availability: " . $row['availability'] ?></p>
+                    <form action="my_library.php" method="post">
+                        <input type="hidden" name="action" value="delete_copy">
+                        <input type="hidden" name="book_id" value=<?php echo $row['book'] ?>>
+                        <button type="submit">Delete copy</button>
+                    </form>
+
+                </div>
+                
+            </article>
+
+        <?php } ?>
+    </section>
+</main>
+

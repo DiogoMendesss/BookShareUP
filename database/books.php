@@ -77,4 +77,69 @@
         return $stmt->fetch()['count'];
       }
 
+      function getUserCopies($userID){
+        global $dbh;
+        $stmt = $dbh->prepare("SELECT * FROM BookCopy 
+                                JOIN Book ON BookCopy.book = Book.id 
+                                WHERE owner = ?;");
+        $stmt->execute(array($userID));
+        return $stmt->fetchAll();
+      }
+
+      function getUserProposals($userID){
+        global $dbh;
+        $stmt = $dbh->prepare("SELECT BookCopy.*, Book.*, InterestedIn.*, User.name AS owner_name, User.up_number AS owner_id FROM BookCopy 
+                                JOIN Book ON BookCopy.book = Book.id 
+                                JOIN InterestedIn ON Book.id = InterestedIn.book 
+                                JOIN User ON BookCopy.owner=User.up_number
+                                WHERE InterestedIn.user=?
+                                AND owner != ?
+                                AND availability = 'available';");
+        $stmt->execute(array($userID, $userID));
+        return $stmt->fetchAll();
+      }
+
+      function getUserCampus($userID){
+        global $dbh;
+        $stmt = $dbh->prepare("SELECT * FROM UserCampus 
+                                JOIN Campus ON UserCampus.campus = Campus.name
+                                WHERE user = ?;");
+        $stmt->execute(array($userID));
+        return $stmt->fetchAll();
+      }
+
+      function getProductsBySearch($cat_id, $search_name, $search_min, $search_max) {
+        global $dbh;
+    
+        $query = 'SELECT * FROM product WHERE cat_id = ?';
+        $params = array($cat_id);
+    
+        if ($search_name != '') {
+          $query = $query . ' AND name LIKE ?';
+          $params[] = "%$search_name%";
+        }
+      
+        if ($search_min != '') {
+          $query = $query . ' AND price >= ?';
+          $params[] = $search_min;
+        }
+      
+        if ($search_max != '') {
+          $query = $query . ' AND price <= ?';
+          $params[] = $search_max;
+        }
+    
+        $stmt = $dbh->prepare($query);
+        $stmt->execute($params);
+        return $stmt->fetchAll();
+      }
+
+      function getGenres(){
+        global $dbh;
+        $stmt = $dbh->prepare("SELECT * FROM Genre;");
+        $stmt->execute();
+        return $stmt->fetchAll();
+      }
+    
+
 ?>

@@ -2,8 +2,7 @@
     <h1>Explorer</h1>
 
     <form id="search" action="bookexplorer.php">
-        <input type="hidden" name="cat" value="<?php echo $cat_id ?>">
-        <input type="text" name="search_name" placeholder="product name" value="<?php echo $search_name ?>">
+        <input type="text" name="search_name" placeholder="Book Title" value="<?php echo $search_title ?>">
         <input type="number" name="search_min" placeholder="min price" value="<?php echo $search_min ?>">
         <input type="number" name="search_max" placeholder="max price" value="<?php echo $search_max ?>">
         <button>Search</button>
@@ -37,8 +36,6 @@
                         <input type="hidden" name="book_id" value="<?php echo $row['id']; ?>">
                         <input type="hidden" name="page_num" value="<?php echo $page_num ?>">
                         <label>Interest Level:</label>
-                        <input type="hidden" name="action" value="confirm_add_book">
-                        <input type="hidden" name="book_id" value="<?php echo $row['id']; ?>">
                         <input type="radio" name="interest_level" value="1">1
                         <input type="radio" name="interest_level" value="2">2
                         <input type="radio" name="interest_level" value="3">3
