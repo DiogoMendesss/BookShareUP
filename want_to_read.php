@@ -1,6 +1,8 @@
+<!DOCTYPE html>
+
 <?php
     require_once('database/init.php');
-    require_once('database/books.php');
+    require_once('database/db_books.php');
     session_start();
     $userID = $_SESSION['up_number'];
 
@@ -21,10 +23,16 @@
             exit();
         }
     }
-
-
-    //echo ("This is the Want to read Library");
-
-    include_once('templates/header.php');
-    include_once('templates/want_to_read_tpl.php');
 ?>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/header.css">
+        <title>Want To Read</title>
+    </head>
+    <body>
+        <?php include_once('templates/header.php'); ?>
+        <?php include_once('templates/want_to_read_tpl.php'); ?>
+    </body>
+</html>

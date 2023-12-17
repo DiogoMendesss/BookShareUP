@@ -18,9 +18,7 @@
                         <button type="submit">Remove</button>
                     </form>
                 </div>
-                
             </article>
-
         <?php } ?>
     </section>
 </main>

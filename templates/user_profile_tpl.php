@@ -6,7 +6,7 @@
 
 <main class = "profile-main">
     <section class = "profile-pic">
-        <img src = "images/profilePics/hasbulla.jpg" alt = "Profile Picture">
+        <img src = "images/avatar/hasbulla.jpg" alt = "Profile Picture">
     </section>
     <h1 id=profile_name> <?php echo getUserFullName($up_number) ?> </h1>
     <section class = "profile-info">
@@ -33,7 +33,7 @@
         }
         ?>
     </section>
-<!-- <section class="owned-books">
+    <section class="owned-books">
         <h2>Owned Books</h2>
         <?php
         $ownedBooks = getOwnedBooks($up_number);
@@ -53,9 +53,10 @@
             echo '<p>No books owned yet.</p>';
         }
         ?>
-</section> -->
+    </section>
+    <form id = "logout-form" action="action_logout.php">
+        <button>Logout</button>
+    </form>
 
-<form id = "logout-form" action="logout_action.php">
-    <button>Logout</button>
-</form>
 </main>
+

@@ -4,7 +4,7 @@
     session_start();
 
     require_once('database/init.php');
-    require_once('database/books.php');
+    require_once('database/db_books.php');
     
     $userID = $_SESSION['up_number'];
     $genres = getGenres();

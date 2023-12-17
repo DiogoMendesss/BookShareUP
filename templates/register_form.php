@@ -7,7 +7,7 @@
     <input type="submit" value=Register>
 </form>
 <p> Already have an account? </p>
-<form id="login-request" action="main_page.php" method="get">
+<form id="login-request" action="home_page.php" method="get">
         <input type="hidden" name="action" value="login">
         <input type="submit" value="Login">
 </form>

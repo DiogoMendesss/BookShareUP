@@ -28,8 +28,6 @@ body::-webkit-scrollbar-track {
 body::-webkit-scrollbar-thumb {
     background: var(--accent-color1);
 }
-
-
 .main {
     margin-top: 5rem;   /* unit relative to font size: 16 px is the default */
     padding: 1rem;
