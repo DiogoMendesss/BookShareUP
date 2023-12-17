@@ -18,3 +18,4 @@ catch (PDOException $e) {
     $_SESSION['msg'] = 'Error: ' . $e->getMessage();
     header('Location: main_page.php?action=register');
 }
+?>

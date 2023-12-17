@@ -1,3 +1,5 @@
+<!DOCTYPE html>
+
 <?php
     session_start();
 
@@ -62,9 +64,17 @@
             exit();
         }
     }
-    
-    echo ("This is the book explorer");
-
-    include_once('templates/header.php');
-    include_once('templates/book_explorer_tpl.php');
 ?>
+
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/header.css">
+        <title>Explorer</title>
+    </head>
+    <body>
+        <?php include('templates/header.php'); ?>
+        <?php include('templates/book_explorer_tpl.php'); ?>
+    </body>
+</html>

@@ -1,4 +1,4 @@
-<form class="login-form" action="login_action.php" method="post">
+<form class="login-form" action="action_login.php" method="post">
     <input type="text" name="up_number" id="up_number" placeholder="UP Number" required>
     <input type="password" name="password" id="password" placeholder="Password">
     <input type="submit" value=Login>
