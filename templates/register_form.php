@@ -1,6 +1,6 @@
-<form class="register-form" action="register_action.php" method="post">
-    <input type="text" name="up_number" id="up_number" placeholder="UP Number" required> <!-- Change name and placeholder to 'up_number' -->
-    <input type="password" name="password" id="password" placeholder="Password"> <!-- Change name and placeholder to 'password' -->
+<form class="register-form" action="action_register.php" method="post">
+    <input type="text" name="up_number" id="up_number" placeholder="UP Number" required>
+    <input type="password" name="password" id="password" placeholder="Password">
     <input type="text" name="first_name" id="first_name" placeholder="First Name" required>
     <input type="text" name="last_name" id="last_name" placeholder="Last Name" required>
     <input type="text" name="faculty_campus" id="faculty_campus" placeholder="Attending Campus" required>

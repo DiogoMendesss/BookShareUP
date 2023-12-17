@@ -9,23 +9,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/main_page.css">
     <title>Booksharing UP | Homepage</title>
 </head>
 <body class=mainPage-body>
-    <div class="mainPage-container">
-        <?php include_once('scrollableSection.php'); ?>
-        <section class="fixed-content">
-            <!-- Content for the right side (fixed) goes here -->
-             <?php
-                if ($register_request=='register') {
-                    include_once('register_form.php');
-                }
-                else {
-                    include_once('login_form.php');
-                }
-            ?>
-        </section>
-    </div>
+    <?php include_once('templates/main_page_tpl.php'); ?>
+    <section class="fixed-content">
+        <!-- <?php
+            if ($register_request=='register') {
+                // include_once('templates/register_form.php');
+            }
+            else {
+                 // include_once('templates/login_form.php');
+            }
+        ?>  -->
+    </section>
 </body>
 </html>
