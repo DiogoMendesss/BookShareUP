@@ -1,6 +1,7 @@
 <?php
     session_start();
     include_once('database/db_users.php');
+    include_once('database/db_campus.php');
     $register_request = $_GET['action'];
 ?>
 

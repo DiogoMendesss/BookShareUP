@@ -2,7 +2,9 @@
     require_once('database/init.php');
     require_once('database/books.php');
     
-    $userID = 202005393;
+    session_start();
+    $up_number = $_SESSION['up_number'];
+    $msg = $_SESSION['msg'];
 
     $userCopies = getUserCopies($userID);
     //var_dump($wantToReadBooks);
@@ -23,7 +25,7 @@
             exit();
         }
     }
-
+    
     include_once('templates/header.php');
     include_once('templates/my_library_tpl.php');
 ?>
