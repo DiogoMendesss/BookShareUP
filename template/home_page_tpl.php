@@ -9,10 +9,10 @@
         <div id="home-cover">
         <?php
             if ($register_request=='register') {
-                include_once('templates/register_form.php');
+                include_once('template/register_form.php');
             }
             else {
-                include_once('templates/login_form.php');
+                include_once('template/login_form.php');
             }
         ?> 
         </div>
@@ -21,7 +21,7 @@
             <!-- 2nd/1st pages -->
             <div class="home-flip" id="home-sheet1">
                 <div class="home-back">
-                    <img src="images/bookcovers/2.jpg">
+                    <img src="image/bookcovers/2.jpg">
                     <label class="home-back-btn" for="home-checkbox1">Back</label>
                 </div>
                 <div class="home-front">
@@ -33,7 +33,7 @@
             <!-- 4th/3th pages  -->
             <div class="home-flip" id="home-sheet2">
                 <div class="home-back">
-                    <img src="images/bookcovers/3.jpg">
+                    <img src="image/bookcovers/3.jpg">
                     <label class="home-back-btn" for="home-checkbox2">Back</label>
                 </div>
                 <div class="home-front">
@@ -46,7 +46,7 @@
             <!-- 6th/5th pages -->
             <div class="home-flip" id="home-sheet3">
                 <div class="home-back">
-                    <img src="images/bookcovers/4.jpg">
+                    <img src="image/bookcover/4.jpg">
                     <label class="home-back-btn" for="home-checkbox3">Back</label>
                 </div>
                 <div class="home-front">

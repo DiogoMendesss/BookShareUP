@@ -5,7 +5,7 @@
             
         ?>
             <article class="book-item">
-                <img src="images/bookcovers/<?php echo $row['book'] ?>.jpg" alt="">
+                <img src="image/bookcover/<?php echo $row['book'] ?>.jpg" alt="">
 
                 <div class="book-details">
                     <h2><?php echo $row['name'] ?></h2>

@@ -25,27 +25,15 @@ img {
     height: 400px;
     padding: 5%;
     position: relative;
-    /* display: flex;
-    flex-direction: column; */
-    /* justify-content: space-evenly; /* distribute items evenly */
-    /* align-items: center;
-    align-content: center; */
-    /* flex-grow: 1; */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly; /* distribute items evenly */
+    align-items: center;
+    align-content: center;
+    flex-grow: 1;
     box-sizing: border-box;
     border: 10px double #5c2821;
     background-color: #ffd29e;
-}
-#home-cover * {
-    width: 100%;
-    height: 100%;
-    position: absolute; /* remove from the normal flow of the document */
-    /* display: block; */
-    /* flex-direction: column; */
-    /* justify-content: space-evenly; distribute items evenly */
-    /* align-items: center; */
-    /* align-content: center; */
-    /* gap: 1%; add spacing between items */
-    /* flex-grow: 1; */
 }
 #login_error {
     color: red;

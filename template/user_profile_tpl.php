@@ -6,7 +6,7 @@
 
 <main class = "profile-main">
     <section class = "profile-pic">
-        <img src = "images/avatar/hasbulla.jpg" alt = "Profile Picture">
+        <img src = "image/avatar/hasbulla.jpg" alt = "Profile Picture">
     </section>
     <h1 id=profile_name> <?php echo getUserFullName($up_number) ?> </h1>
     <section class = "profile-info">
@@ -46,7 +46,7 @@
                 echo '<br>Availability: ' . $book['availability'];
                 echo '<br>Copy Type: ' . $book['copy_type'];
                 echo '</li>';
-                echo '<img src="images/bookCovers/' . $book['id'] . '.jpg" alt="Book Cover">';
+                echo '<img src="image/bookCover/' . $book['id'] . '.jpg" alt="Book Cover">';
             }
             echo '</ul>';
         } else {

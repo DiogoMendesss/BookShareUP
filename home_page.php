@@ -1,5 +1,6 @@
 <?php
     session_start();
+
     include_once('database/db_users.php');
     include_once('database/db_campus.php');
     $register_request = $_GET['action'];
@@ -15,6 +16,6 @@
         <title>Home page</title>
     </head>
     <body>
-        <?php include_once('templates/home_page_tpl.php'); ?>
+        <?php include_once('template/home_page_tpl.php'); ?>
     </body>
 </html>

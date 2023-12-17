@@ -71,7 +71,6 @@
         }
     }
 
-
     try {
         if (isset($search_title) || isset($search_author) || isset($search_genre)) {
             $books = getBooksBySearch($search_title, $search_author, $search_genre);
@@ -92,7 +91,7 @@
         <title>Explorer</title>
     </head>
     <body>
-        <?php include('templates/header.php'); ?>
-        <?php include('templates/book_explorer_tpl.php'); ?>
+        <?php include('template/header.php'); ?>
+        <?php include('template/book_explorer_tpl.php'); ?>
     </body>
 </html>

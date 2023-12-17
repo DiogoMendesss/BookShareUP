@@ -10,7 +10,7 @@
 </p>
 <div id=register_request>
     <p>Don't have an account yet?</p>
-    <form class="register-request" action="main_page.php" method="get">
+    <form class="register-request" action="home_page.php" method="get">
         <input type="hidden" name="action" value="register">
         <input type="submit" value="Register">
     </form>

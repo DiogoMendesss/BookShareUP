@@ -18,7 +18,7 @@
         <title>Feed</title>
     </head>
     <body>
-        <?php include_once('templates/header.php'); ?>
-        <?php include_once('templates/feed_tpl.php');; ?>
+        <?php include_once('template/header.php'); ?>
+        <?php include_once('template/feed_tpl.php');; ?>
     </body>
 </html>

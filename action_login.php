@@ -19,12 +19,12 @@
     if (loginSuccess($up_number, $password)) {
       $_SESSION['up_number'] = $up_number;
       $_SESSION['full_name'] = getUserFullName($up_number);
-      header('Location: profile_page.php');
+      header('Location: user_profile.php');
     } else {
         $_SESSION['up_number'] = null;
         $_SESSION['full_name'] = null;
         $_SESSION['msg'] = 'Invalid up_number or password!';
-        header('Location: main_page.php');
+        header('Location: home_page.php');
     }
   } catch (PDOException $e) {
     $_SESSION['msg'] = 'Error: ' . $e->getMessage();

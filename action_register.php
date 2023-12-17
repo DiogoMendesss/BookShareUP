@@ -12,7 +12,7 @@
         insertUser($up_number, $password, $full_name, $faculty_campus);
         $_SESSION['up_number'] = $up_number;
         $_SESSION['full_name'] = $full_name;
-        header('Location: greeting.php');
+        header('Location: user_profile.php');
     }
     catch (PDOException $e) {
         $_SESSION['msg'] = 'Error: ' . $e->getMessage();

@@ -12,11 +12,10 @@
            <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
         <link rel="stylesheet" href="css/style.css">
         <link rel="stylesheet" href="css/header.css">
-        <link rel="stylesheet" href="css/my_profile_style.css">
         <title>User Profile</title>
     </head>
     <body>
-        <?php include_once('templates/header.php'); ?>
-        <?php include_once('templates/user_profile_tpl.php'); ?>
+        <?php include_once('template/header.php'); ?>
+        <?php include_once('template/user_profile_tpl.php'); ?>
     </body>
 </html>

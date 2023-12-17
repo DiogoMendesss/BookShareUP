@@ -32,7 +32,7 @@
         <title>Want To Read</title>
     </head>
     <body>
-        <?php include_once('templates/header.php'); ?>
-        <?php include_once('templates/want_to_read_tpl.php'); ?>
+        <?php include_once('template/header.php'); ?>
+        <?php include_once('template/want_to_read_tpl.php'); ?>
     </body>
 </html>
