@@ -3,20 +3,30 @@
 
     <form id="search" action="bookexplorer.php">
         <input type="text" name="search_name" placeholder="Book Title" value="<?php echo $search_title ?>">
-        <input type="number" name="search_min" placeholder="min price" value="<?php echo $search_min ?>">
-        <input type="number" name="search_max" placeholder="max price" value="<?php echo $search_max ?>">
+        <input type="text" name="search_author" placeholder="Book Author" value="<?php echo $search_author ?>">
+        <select name="search_genre">
+            <option value="" selected disabled>Genre</option>
+            <?php foreach ($genres as $genre) { //var_dump($genre); ?> 
+                      
+                <option value="<?php echo $genre['genre'] ?>"><?php echo $genre['genre'] ?></option>
+            <?php } ?>
+
+        </select>
         <button>Search</button>
-        <a href="list_products.php?cat=<?php echo $cat_id ?>">Clear</a>
+        <a href="bookexplorer.php">Clear</a>
     </form>
 
     <section class="shelf">
-        <?php foreach ($books as $row) { 
+        <?php //var_dump($books); ?>
+        <?php foreach ($books as $row) {
             $isBookAdded = isBookAdded($userID, intval($row['id']));
             $book_action = $isBookAdded ? 'remove_from_library' : 'add_to_library';
             $addBook = isset($_GET['addBook']) && $_GET['addBook'] == $row['id'];
             $isCopyAdded = isCopyAdded($userID, intval($row['id']));
             $copy_action = $isCopyAdded ? 'remove_from_mylibrary' : 'add_to_mylibrary';
             $addCopy = isset($_GET['addCopy']) && $_GET['addCopy'] == $row['id'];
+            $bookGenres = getBookGenres($row['id']);
+            
         ?>
 
         <article class="book-item">
@@ -24,6 +34,9 @@
             <div class="book-details">
                 <h2><?php echo $row['name'] ?></h2>
                 <h3 class="author"><?php echo $row['author'] ?></h3>
+                <?php foreach ($bookGenres as $genre) { ?>
+                    <!-- <p class="bookgenre"><?php echo $genre['genre'] ?></p> -->
+                <?php } ?>
 
                 <form action="bookexplorer.php" method="post">
                     <input type="hidden" name="action" value="<?php echo $book_action; ?>">
@@ -92,11 +105,11 @@
         <?php } ?>
     </section>
 
-    <?php //if (!isset($search_name) && !isset($search_min) && !isset($search_max)) { ?>
+    <?php if (!isset($search_title) && !isset($search_author) && !isset($search_genre)) { ?>
     <div id="pagination">
         <a href="bookexplorer.php?page_num=<?php echo $page_num-1 ?>">&lt;</a>
         <?php echo $page_num ?>
         <a href="bookexplorer.php?page_num=<?php echo $page_num+1 ?>">&gt;</a>
     </div>
-    <?php //} ?>
+    <?php } ?>
 </main>

@@ -9,10 +9,10 @@
     $userID = $_SESSION['up_number'];
     $genres = getGenres();
 
-    $cat_id = $_GET['cat'];
-    $search_name = $_GET['search_name'];
-    $search_min = $_GET['search_min'];
-    $search_max = $_GET['search_max'];
+    $search_title = $_GET['search_name'];
+    $search_author = $_GET['search_author'];
+    $search_genre = $_GET['search_genre'];
+    
 
     $n_books = getNumberOfBooks();
     $n_pages = ceil($n_books / 6);
@@ -26,7 +26,7 @@
         $page_num = 1;
     }
 
-    $books = getBooksByPage($page_num);
+    
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $action = isset($_POST['action']) ? $_POST['action'] : '';
@@ -71,18 +71,17 @@
         }
     }
 
-/*
+
     try {
-        if (isset($search_name) && isset($search_min) && isset($search_max)) {
-          $products = getProductsBySearch($cat_id, $search_name, $search_min, $search_max);
+        if (isset($search_title) || isset($search_author) || isset($search_genre)) {
+            $books = getBooksBySearch($search_title, $search_author, $search_genre);
         } else {
-          $products = getProductsByCategoryId($cat_id, $page_num);
+            $books = getBooksByPage($page_num);
         }
-        $category = getCategoryById($cat_id);
       } catch (PDOException $e) {
         $error_msg = $e->getMessage();
       }
-*/
+
 ?>
 
 <html lang="en" dir="ltr">
