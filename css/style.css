@@ -5,21 +5,22 @@
     font-size: 16px;
     font-family: 'Roboto', sans-serif;
     --dark-primary: #5c2821;
-    --dark-secondary: #5c2821;
+    --dark-secondary: #461e18;
     --bright-primary: #ffdda9;
     --bright-secondary: #ffd29e;
     --accent-color1: #f04b35;
 }
 
-.body { /* setting defaults */
+/* WARNING: no . before!!! warning */
+body { /* setting defaults */
     color: black;
     background-color: white;
-    margin: 100px;
+    margin: 0;
     padding: 0;
 }
 /* customize scrollbar using a pseudo class*/
 body::-webkit-scrollbar {
-    width: 0.25rem;
+    width: 0.5rem;
 }
 body::-webkit-scrollbar-track {
     background: black;
@@ -27,11 +28,10 @@ body::-webkit-scrollbar-track {
 body::-webkit-scrollbar-thumb {
     background: var(--accent-color1);
 }
-.main {
-    margin-top: 5rem;   /* unit relative to font size: 16 px is the default */
+main {
+    margin-left: 5rem;   /* unit relative to font size: 16 px is the default */
     padding: 1rem;
 }
-
 
 
 
@@ -95,4 +95,5 @@ body::-webkit-scrollbar-thumb {
     display: table;
     clear: both;
 }
+
 

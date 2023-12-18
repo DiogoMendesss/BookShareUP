@@ -1,5 +1,3 @@
-/* @import url('https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap'); */
-
 main {
     margin: 0;
     padding: 0;
@@ -32,7 +30,7 @@ img {
     align-content: center;
     flex-grow: 1;
     box-sizing: border-box;
-    border: 10px double #5c2821;
+    border: 10px double var(--dark-primary);
     background-color: #ffd29e;
 }
 #login_error {
@@ -72,7 +70,7 @@ p {
     background-color: #ffffff;
     box-sizing: border-box; /* include border and padding in the dimensions */
     padding: 0 13px;
-    box-shadow: inset 20px 0 50px rgba(0,0,0,0.5) 0 2px 5px rgba(0,0,0,0.5)
+    box-shadow: inset 20px 0 50px rgba(0,0,0,0.5) 0 2px 5px rgba(0,0,0,0.5);
     /* inner/outer shadow effect (horizontal, vertical, blur radius, color) */
 }
 .home-back {
@@ -95,7 +93,7 @@ p {
     color: #000000;
 }
 .home-next-btn:hover {
-    color: #ffdda9
+    color: #ffdda9;
 }
 .home-back-btn {
     position: absolute;
@@ -105,7 +103,7 @@ p {
     color: #ffffff;
 }
 .home-back-btn:hover {
-    color: #ffdda9
+    color: #ffdda9;
 }
 
 /* organise page stacking */
