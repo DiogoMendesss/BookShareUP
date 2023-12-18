@@ -88,7 +88,8 @@
 
       function getUserProposals($userID){
         global $dbh;
-        $stmt = $dbh->prepare("SELECT BookCopy.*, Book.*, InterestedIn.*, User.name AS owner_name, User.up_number AS owner_id FROM BookCopy 
+        $stmt = $dbh->prepare("SELECT BookCopy.id AS bookCopyID, BookCopy.condition, BookCopy.availability, BookCopy.copy_type, BookCopy.owner,
+                                BookCopy.book, Book.*, InterestedIn.*, User.name AS owner_name, User.up_number AS owner_id FROM BookCopy 
                                 JOIN Book ON BookCopy.book = Book.id 
                                 JOIN InterestedIn ON Book.id = InterestedIn.book 
                                 JOIN User ON BookCopy.owner=User.up_number
@@ -102,12 +103,12 @@
       function getCurrentlyReadingBook($readerID) {
         global $dbh; // Assuming $dbh is your SQLite database connection
     
-        $stmt = $dbh->prepare("SELECT Book.name AS bookName, Book.author AS bookAuthor, User.name AS ownerName, Book.id AS bookID, 
+        $stmt = $dbh->prepare("SELECT Book.name AS bookName, Book.author AS bookAuthor, User.name AS ownerName, Book.id AS bookID, BookCopy.id AS bookCopyID, 
         BookCopy.condition AS bookCopyCondition, BookCopy.copy_type AS bookCopyType, BookCopy.owner AS ownerID, UserCampus.campus AS ownerCampus,
         Borrowing.status AS borrowStatus, Borrowing.start_date AS borrowStartDate, Borrowing.expiration_date AS borrowExpirationDate, Borrowing.user AS borrowerID
         FROM Borrowing
-        JOIN Book ON Borrowing.copyID = Book.id
-        JOIN BookCopy ON Book.id = BookCopy.book
+        JOIN BookCopy ON Borrowing.copyID = BookCopy.id
+        JOIN Book ON BookCopy.book = Book.id
         JOIN User ON BookCopy.owner = User.up_number
         LEFT JOIN UserCampus ON BookCopy.owner = UserCampus.user
         WHERE Borrowing.user = ?");
@@ -116,16 +117,6 @@
     
         return $stmt->fetch(PDO::FETCH_ASSOC);;
     }
-    
-
-      function getUserCampus($userID){
-        global $dbh;
-        $stmt = $dbh->prepare("SELECT * FROM UserCampus 
-                                JOIN Campus ON UserCampus.campus = Campus.name
-                                WHERE user = ?;");
-        $stmt->execute(array($userID));
-        return $stmt->fetchAll();
-      }
 
       function getBooksBySearch($search_title, $search_author, $search_genre) {
         global $dbh;
@@ -185,15 +176,21 @@
       }
     
 
-      function insertBorrowing($status, $bookID ,$user, $startDate, $duration, $campus, $expirationDate) {
+      function insertBorrowing($status, $bookCopyID ,$user, $startDate, $duration, $campus, $expirationDate) {
         global $dbh;
-        $stmt = $dbh->prepare('INSERT INTO Borrowing (status, bookID ,user, start_date, duration, campus, expiration_date) VALUES (?, ?, ?, ?, ?, ?, ?)');
-        $stmt->execute([$status, $bookID,$user, $startDate, $duration, $campus, $expirationDate]);
+        $stmt = $dbh->prepare('INSERT INTO Borrowing (status, copyID ,user, start_date, duration, campus, expiration_date) VALUES (?, ?, ?, ?, ?, ?, ?)');
+        $stmt->execute([$status, $bookCopyID,$user, $startDate, $duration, $campus, $expirationDate]);
     }    
 
       function updateBorrowStatus($bookID, $borrowerID, $newStatus) {
         global $dbh;
-        $stmt = $dbh->prepare('UPDATE Borrowing SET status = ? WHERE bookID = ? AND user = ?');
+        $stmt = $dbh->prepare('UPDATE Borrowing SET status = ? WHERE copyID = ? AND user = ?');
         $stmt->execute([$newStatus, $bookID, $borrowerID]);
     }  
+
+    function updateBookCopyAvailability($bookCopyID, $newAvailability) {
+        global $dbh;
+        $stmt = $dbh->prepare('UPDATE BookCopy SET availability = ? WHERE id = ?');
+        $stmt->execute([$newAvailability, $bookCopyID]);
+    }
 ?>

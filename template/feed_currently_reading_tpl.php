@@ -12,13 +12,13 @@
                 <div class="book-details">
                     <h2><?php echo $currentlyReadingBook['bookName'] ?></h2>
                     <h3 class="author"><?php echo $currentlyReadingBook['bookAuthor'] ?></h3>
-                    <p class="condition"><?php echo "Condition: " . $currentlyReadingBook['bookCondition'] ?></p>
+                    <p class="condition"><?php echo "Condition: " . $currentlyReadingBook['bookCopyCondition'] ?></p>
                     <p class="copy_type"><?php echo "Type: " . $currentlyReadingBook['bookCopyType'] ?></p>
                     <p class="owner"><?php echo "Owner: " . $currentlyReadingBook['ownerName'] ?></p>
-                    <?php $ownerCampus = getUserCampus($currentlyReadingBook['ownerID']);
+                    <?php $ownerCampus = getUserFacultyCampus($currentlyReadingBook['ownerID']);
                         foreach ($ownerCampus as $campus) {     
                     ?>
-                    <p class="campus">Owner campus: <?php echo "" . $campus['ownerCampus'] ?></p>
+                    <p class="campus">Owner campus: <?php echo "" . $campus['campus'] ?></p>
                     <?php } ?>  
                 </div>
             </article>

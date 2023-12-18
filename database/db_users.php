@@ -25,7 +25,7 @@ function getUserFacultyCampus($up_number) {
   global $dbh;
   $stmt = $dbh->prepare('SELECT campus FROM UserCampus WHERE user = ?');
   $stmt->execute(array($up_number));
-  return $stmt->fetchColumn();
+  return $stmt->fetchAll();
 }
 
 
@@ -57,9 +57,9 @@ function getNumOwnedBooks($up_number) {
 
 function getOngoingUserBorrows($up_number) {
   global $dbh;
-  $stmt = $dbh->prepare('SELECT Borrowing.status, Borrowing.bookID, Borrowing.user AS borrower_up, Borrowing.expiration_date, User.name AS borrower_name
+  $stmt = $dbh->prepare('SELECT Borrowing.status, Borrowing.copyID, Borrowing.user AS borrower_up, Borrowing.expiration_date, User.name AS borrower_name
                          FROM Borrowing
-                         JOIN BookCopy ON Borrowing.bookID = BookCopy.book
+                         JOIN BookCopy ON Borrowing.copyID = BookCopy.book
                          JOIN User ON Borrowing.user = User.up_number
                          WHERE BookCopy.owner = ? AND Borrowing.status IN ("pending", "accepted", "delivered", "picked-up", "returned")');
   $stmt->execute(array($up_number));

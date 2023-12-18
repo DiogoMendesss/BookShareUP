@@ -12,7 +12,8 @@
     <h1 id=profile_name> <?php echo getUserFullName($up_number) ?> </h1>
     <section class = "profile-info">
         <h2 id=profile_upNumber> UP Number: <?php echo $up_number ?> </h2>
-        <h2 id=profile_campus> Attending Campus: <?php echo getUserFacultyCampus($up_number) ?> </h2>
+        <h2 id=profile_campus> Attending Campus: <?php $user_campuses = getUserFacultyCampus($up_number);
+        foreach ($user_campuses as $campus) echo $campus['campus'];?> </h2>
 
         <form action="save.php" method="get">
             <button>Show Campus</button>
@@ -28,7 +29,7 @@
             <ul id="borrowed-books">
             <?php foreach ($borrowedBooks as $borrow) { ?>
                 <li>
-                Status: $borrow['status']
+                Status: <? echo $borrow['status']; ?>
                 <br>Borrower: <?php echo $borrow['borrower_name']; ?>
                 <br>Expiration Date: <?php echo $borrow['expiration_date']; ?>
                 </li>
@@ -37,28 +38,6 @@
         <?php } else { ?>
             <p>No ongoing borrowed books.</p>
         <?php } ?>
-    </section>
-
-    <section class="owned-books">
-        <h2>Owned Books</h2>
-        <?php
-        $ownedBooks = getOwnedBooks($up_number);
-        if (!empty($ownedBooks)) { ?>
-            <ul>
-            <?php foreach ($ownedBooks as $book) { ?>
-                <li>
-                <strong> <?php echo $book['name'] ?> </strong> <p> by <?php echo $book['author']; ?><br>
-                Condition: <?php echo $book['condition']; ?><br>
-                Availability: <?php echo $book['availability']; ?><br>
-                Copy Type: <?php echo $book['copy_type'];?><br>
-                </li>
-                <img src="image/bookCover/<?php echo $book['id']?>.jpg" alt="Book Cover">
-            <?php } ?>
-            </ul>
-        <?php } else { ?>
-            <p>No books owned yet.</p>
-        <?php } ?>
-
         <?php
         // Assuming $borrow is the array containing the borrow information
         if ($borrow['status'] === 'pending' || $borrow['status'] === 'accepted' || $borrow['status'] === 'returned') {

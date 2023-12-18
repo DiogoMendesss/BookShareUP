@@ -1,12 +1,12 @@
 <?php
 session_start();
 require_once('database/init.php');
-require_once('database/books.php'); 
+require_once('database/db_books.php'); 
 require_once('database/db_users.php'); 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['action']) && $_POST['action'] == 'ask_borrow') {
     // Get the form data
-    $bookCopyID = $_POST['book_id'];
+    $bookCopyID = $_POST['bookCopyID'];
     $borrowerID = $_SESSION['up_number'];
     $startDate = date("Y-m-d");
     $duration = 30; // 30 days, adjust as needed
