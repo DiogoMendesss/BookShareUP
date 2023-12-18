@@ -11,7 +11,6 @@ $profile_pic = $_FILES['profile_picture']; // Use $_FILES to get the file inform
 
 try {
     $_SESSION['up_number'] = $up_number;
-    $_SESSION['full_name'] = $full_name;
 
     if (isset($profile_pic) && $profile_pic['error'] === UPLOAD_ERR_OK) {
         // Specify the directory where you want to save the uploaded profile pictures

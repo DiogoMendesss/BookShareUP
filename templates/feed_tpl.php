@@ -20,7 +20,7 @@
                     ?>
                     <p class="campus"><?php echo "" . $campus['campus'] ?></p>
                     <?php } ?>  
-                    <form action="borrow_form.php" method="post">
+                    <form action="action_borrow.php" method="post">
                         <input type="hidden" name="action" value="ask_borrow">
                         <input type="hidden" name="book_id" value="<?php echo $row['book']; ?>">
                         <input type="hidden" name="page_num" value="<?php echo $page_num ?>">

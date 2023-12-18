@@ -2,6 +2,7 @@
     require_once('database/init.php');
     require_once('database/db_users.php');
     require_once('database/db_campus.php');
+    require_once('next_borrow_state.php');
 ?>
 
 <main class = "profile-main">
@@ -32,30 +33,24 @@
             echo '<p>No ongoing borrowed books.</p>';
         }
         ?>
-    </section>
-<!-- <section class="owned-books">
-        <h2>Owned Books</h2>
         <?php
-        $ownedBooks = getOwnedBooks($up_number);
-        if (!empty($ownedBooks)) {
-            echo '<ul>';
-            foreach ($ownedBooks as $book) {
-                echo '<li>';
-                echo '<strong>' . $book['name'] . '</strong> by ' . $book['author'];
-                echo '<br>Condition: ' . $book['condition'];
-                echo '<br>Availability: ' . $book['availability'];
-                echo '<br>Copy Type: ' . $book['copy_type'];
-                echo '</li>';
-                echo '<img src="images/bookCovers/' . $book['id'] . '.jpg" alt="Book Cover">';
-            }
-            echo '</ul>';
-        } else {
-            echo '<p>No books owned yet.</p>';
+        // Assuming $borrow is the array containing the borrow information
+        if ($borrow['status'] === 'pending' || $borrow['status'] === 'accepted' || $borrow['status'] === 'returned') {
+            ?>
+            <form action="action_update_borrow_status.php" method="post">
+                <input type="hidden" name="bookID" value="<?php echo $borrow['bookID']; ?>">
+                <input type="hidden" name="borrowerID" value="<?php echo $borrow['borrower_up']; ?>">
+                <input type="hidden" name="borrowStatus" value="<?php echo getNextBorrowState($borrow['status']); ?>">
+                <input type="submit" value="Update to <?php echo getNextBorrowState($borrow['status']); ?>">
+            </form>
+            <?php
         }
         ?>
-</section> -->
+    </section>
+    <!-- <section class="borrow-archive">
+        <?php
+        $archivedBorrows = getArchivedUserBorrows($up_number);
 
-<form id = "logout-form" action="logout_action.php">
-    <button>Logout</button>
-</form>
+        ?>
+    </section> -->
 </main>

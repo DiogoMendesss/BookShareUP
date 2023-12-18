@@ -57,13 +57,26 @@ function getNumOwnedBooks($up_number) {
 
 function getOngoingUserBorrows($up_number) {
   global $dbh;
-  $stmt = $dbh->prepare('SELECT Borrowing.status, Borrowing.expiration_date, User.name AS borrower_name
+  $stmt = $dbh->prepare('SELECT Borrowing.status, Borrowing.bookID, Borrowing.user AS borrower_up, Borrowing.expiration_date, User.name AS borrower_name
                          FROM Borrowing
-                         JOIN Proposal ON Borrowing.proposal = Proposal.id
-                         JOIN BookCopy ON Proposal.bookcopy = BookCopy.id
+                         JOIN BookCopy ON Borrowing.bookID = BookCopy.book
                          JOIN User ON Borrowing.user = User.up_number
-                         WHERE BookCopy.owner = ? AND Borrowing.status IN ("pending", "delivered", "picked-up")');
+                         WHERE BookCopy.owner = ? AND Borrowing.status IN ("pending", "accepted", "delivered", "picked-up", "returned")');
   $stmt->execute(array($up_number));
   return $stmt->fetchAll();
 }
+
+function updateUserStatus($userID, $newStatus) {
+  global $dbh;
+  $stmt = $dbh->prepare('UPDATE User SET status = ? WHERE up_number = ?');
+  $stmt->execute([$newStatus, $userID]);
+}
+
+function getUserStatus($userID) {
+  global $dbh;
+  $stmt = $dbh->prepare('SELECT status FROM User WHERE up_number = ?');
+  $stmt->execute([$userID]);
+  return $stmt->fetchColumn();
+}
+
 ?>

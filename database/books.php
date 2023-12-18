@@ -99,6 +99,25 @@
         return $stmt->fetchAll();
       }
 
+      function getCurrentlyReadingBook($readerID) {
+        global $dbh; // Assuming $dbh is your SQLite database connection
+    
+        $stmt = $dbh->prepare("SELECT Book.name AS bookName, Book.author AS bookAuthor, User.name AS ownerName, Book.id AS bookID, 
+        BookCopy.condition AS bookCopyCondition, BookCopy.copy_type AS bookCopyType, BookCopy.owner AS ownerID, UserCampus.campus AS ownerCampus,
+        Borrowing.status AS borrowStatus, Borrowing.start_date AS borrowStartDate, Borrowing.expiration_date AS borrowExpirationDate, Borrowing.user AS borrowerID
+        FROM Borrowing
+        JOIN Book ON Borrowing.bookID = Book.id
+        JOIN BookCopy ON Book.id = BookCopy.book
+        JOIN User ON BookCopy.owner = User.up_number
+        LEFT JOIN UserCampus ON BookCopy.owner = UserCampus.user
+        WHERE Borrowing.user = ?");
+    
+        $stmt->execute(array($readerID));
+    
+        return $stmt->fetch(PDO::FETCH_ASSOC);;
+    }
+    
+
       function getUserCampus($userID){
         global $dbh;
         $stmt = $dbh->prepare("SELECT * FROM UserCampus 
@@ -142,4 +161,15 @@
       }
     
 
+      function insertBorrowing($status, $bookID ,$user, $startDate, $duration, $campus, $expirationDate) {
+        global $dbh;
+        $stmt = $dbh->prepare('INSERT INTO Borrowing (status, bookID ,user, start_date, duration, campus, expiration_date) VALUES (?, ?, ?, ?, ?, ?, ?)');
+        $stmt->execute([$status, $bookID,$user, $startDate, $duration, $campus, $expirationDate]);
+    }    
+
+      function updateBorrowStatus($bookID, $borrowerID, $newStatus) {
+        global $dbh;
+        $stmt = $dbh->prepare('UPDATE Borrowing SET status = ? WHERE bookID = ? AND user = ?');
+        $stmt->execute([$newStatus, $bookID, $borrowerID]);
+    }  
 ?>

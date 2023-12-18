@@ -11,15 +11,14 @@ PRAGMA foreign_keys=ON;
 DROP TABLE IF EXISTS UserBadge;
 DROP TABLE IF EXISTS Badges;
 DROP TABLE IF EXISTS UserCampus;
-DROP TABLE IF EXISTS Campus;
 DROP TABLE IF EXISTS Borrowing;
-DROP TABLE IF EXISTS Proposal;
 DROP TABLE IF EXISTS InterestedIn;
 DROP TABLE IF EXISTS BookCopy;
 DROP TABLE IF EXISTS BookGenre;
 DROP TABLE IF EXISTS Genre;
 DROP TABLE IF EXISTS Book;
 DROP TABLE IF EXISTS User;
+DROP TABLE IF EXISTS Campus;
 
 
 -- User table
@@ -27,7 +26,7 @@ CREATE TABLE User (
     up_number INTEGER PRIMARY KEY,
     password TEXT NOT NULL,
     name TEXT NOT NULL,
-    status TEXT NOT NULL DEFAULT ('active') CHECK (status IN ('active', 'inactive'))
+    status TEXT NOT NULL DEFAULT ('active') CHECK (status IN ('active', 'inactive','reading'))
 );
 
 -- Book table
@@ -70,23 +69,16 @@ CREATE TABLE InterestedIn (
     PRIMARY KEY (user, book)
 );
 
--- Proposal table
-CREATE TABLE Proposal (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    bookcopy INTEGER REFERENCES Book ON DELETE CASCADE ON UPDATE CASCADE,
-    status TEXT CHECK (status IN ('showing', 'hidden'))
-);
-
 -- Borrowing table
 CREATE TABLE Borrowing (
-    status TEXT CHECK (status IN ('pending', 'delivered', 'picked-up', 'expired', 'returned')),
-    proposal INTEGER NOT NULL REFERENCES Proposal ON DELETE SET NULL ON UPDATE CASCADE,
+    status TEXT CHECK (status IN ('pending', 'accepted', 'delivered', 'picked-up', 'returned', 'archived', 'expired')),
+    bookID INTEGER NOT NULL REFERENCES BookCopy ON DELETE CASCADE ON UPDATE CASCADE,
     user INTEGER NOT NULL REFERENCES User ON DELETE SET NULL ON UPDATE CASCADE,
     start_date TEXT NOT NULL,
     duration INTEGER NOT NULL,
     campus TEXT NOT NULL REFERENCES Campus ON DELETE SET NULL ON UPDATE CASCADE,
     expiration_date TEXT CHECK (expiration_date = DATETIME(start_date, '+' || duration || ' day')),
-    PRIMARY KEY (user, proposal)
+    PRIMARY KEY (user, bookID)
 );
 
 -- Campus table
