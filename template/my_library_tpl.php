@@ -24,6 +24,8 @@
             </article>
 
         <?php } ?>
+
+        <a href="book_explorer.php">Add copy</a>
     </section>
 </main>
 

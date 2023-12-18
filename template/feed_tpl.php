@@ -11,7 +11,6 @@
                     <h2><?php echo $row['name'] ?></h2>
                     <h3 class="author"><?php echo $row['author'] ?></h3>
                     <p class="condition"><?php echo "Condition: " . $row['condition'] ?></p>
-                    <p class="availability"><?php echo "Availability: " . $row['availability'] ?></p>
                     <p class="copy_type"><?php echo "Type: " . $row['copy_type'] ?></p>
                     <h3 class="owner"><?php echo $row['owner_name'] ?></h3>
                     <h5>Owner campus:</h3>
