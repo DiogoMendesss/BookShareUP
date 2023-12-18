@@ -15,12 +15,13 @@
     <?php if (isset($_SESSION['msg'])){
         echo ($_SESSION['msg']);
         //echo ("That user already exists. Try again.");
-        $_SESSION['msg']=null;} ?>
+        $_SESSION['msg']=null;}
+    ?>
 </p>
 
 <select name="faculty_campus" id="faculty_campus" required>
-        <option value="SelectCampus" disabled selected>Select your campus</option>
-        <?php $campuses = getCampusesInfo();
-            foreach ($campuses as $campus) { ?>
-        <option value="<?php echo $campus['name']; ?>"><?php echo $campus['name']; } ?></option>
-    </select>
+    <option value="SelectCampus" disabled selected>Select your campus</option>
+    <?php $campuses = getCampusesInfo();
+        foreach ($campuses as $campus) { ?>
+    <option value="<?php echo $campus['name']; ?>"><?php echo $campus['name']; } ?></option>
+</select>

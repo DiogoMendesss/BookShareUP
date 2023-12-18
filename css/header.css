@@ -1,42 +1,110 @@
-/* css/navbar.css */
 .navbar {
     position: fixed;
-    background-color: #333;
-    overflow: hidden;
+    background-color: var(--dark-primary);
+    transition: 200ms ease; /* smooth the width extension */
+}
+.navbar-nav { /* corresponds to the ul */
+    list-style: none; /* remove default list style */
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
     display: flex;
-    justify-content: center; /* Center items horizontally */
-    align-items: center; /* Center items vertically */
+    flex-direction: column;
+    align-items: center;
+}
+.nav-item {
+    width: 100%;
+}
+.nav-item:last-child {
+    margin-top: auto; /* adjust (make as big as possible) the Logout button to the bottom */
+    display: flex;
+    align-items: center;
+}
+.nav-item img {
+    width: 32px;
+    height: 32px;
+    min-width: 2rem;
+    margin: 0 1.5rem;
+}
+.nav-link { /* icons and links*/
+    height: 5rem;
+    display: flex;
+    align-items: center;
+    color: var(--accent-color1);
+    text-decoration: none;  /* remove defaults like underline */
+    filter: grayscale(100%) opacity(0.7); /* hue-rotate(20); /* icon default: B&W */
+    transition: var(--transition-speed) /* ~600ms */
+}
+.link-text {
+    display: none; /* hidden by default when not hovered on */
+    margin-left: 1rem;
 }
 
-.navbar a {
-    display: block;
-    color: #fff;
+.nav-link:hover {
+    filter: grayscale(0%) opacity(1);
+    background: var(--dark-secondary);
+}
+.logo {
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
     text-align: center;
-    padding: 14px; /* Adjusted padding for better spacing */
-    margin: 0 10px; /* Added margin to create space between items */
-    text-decoration: none;
+    color: var(--accent-color1);
+    background: var(--dark-primary);
+    font-size: 1.5rem;
+    letter-spacing: 0.3ch;
+    width: 100%;
+}
+.logo img {
+    width: 32px;
+    height: 45px;
+    min-width: 2rem;
+    margin: 0 1.5rem;
+    transform: rotate(0deg);
+    transition: transform 800ms;
+}
+.navbar:hover .logo img {
+    transform: rotate(-180deg);
 }
 
-.navbar img {
-    max-width: 30px;
-    height: auto;
-    margin-right: 5px;
-}
 
-.navbar a:hover {
-    background-color: #555;
-}
 
-/*  only applies to devices with screen <= 600px wide */
-@media screen and (max-width: 600px) {
+
+@media only screen and (min-width: 600px) {
     .navbar {
-        flex-direction: column;
-        align-items: flex-start;
+        top: 0;
+        width: 5rem;
+        height: 100vh;
     }
+    .navbar:hover {
+        width: 16rem;
+    }
+    .navbar:hover { /* extend the navigation bar on hover */
+        width: 16rem;
+    }
+    .navbar:hover .link-text {   /* show nav-item labels on hover */
+        display: inline;
+        transition: opacity var(--transition-speed);
+    }
+}
 
-    .navbar a {
-        width: 100%;
-        box-sizing: border-box;
-        margin: 5px 0; /* Adjusted margin for better spacing in mobile view */
+@media only screen and (max-width: 600px) { /* mobile mainly */
+    .navbar {   /* change orientation of the navbar */
+        bottom: 0;
+        width: 100vw;
+        height: 5rem;
+    }
+    .logo {
+        display: none;  /* takes too much space in mobile */
+    }
+    .navbar-nav {
+        flex-direction: row;
+    }
+    .nav-link {
+        justify-content: center; 
+    }
+    main {
+        margin: 0;
     }
 }
