@@ -365,7 +365,3 @@ INSERT INTO BookGenre (book, genre) VALUES
     ('Awesome Borrower','Borrower','Silver'),
     ('Legendary Borrower','Borrower','Gold')
     ;
-
-
-
-
