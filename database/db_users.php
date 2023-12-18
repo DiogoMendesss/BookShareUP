@@ -79,4 +79,16 @@ function getUserStatus($userID) {
   return $stmt->fetchColumn();
 }
 
+function addUserCampus($userID, $campus){
+  global $dbh;
+  $stmt = $dbh->prepare('INSERT INTO UserCampus (user, campus) VALUES (?, ?)');
+  $stmt->execute(array($up_number, $campus));
+}
+
+function removeUserCampus($userID, $campus){
+  global $dbh;
+  $stmt = $dbh->prepare('DELETE from UserCampus WHERE user=? and campus=?');
+  $stmt->execute(array($up_number, $campus));
+}
+
 ?>

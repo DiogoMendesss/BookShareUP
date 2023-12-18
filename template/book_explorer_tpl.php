@@ -38,7 +38,7 @@
                     <!-- <p class="bookgenre"><?php echo $genre['genre'] ?></p> -->
                 <?php } ?>
 
-                <form action="book_explorer.php" method="post">
+                <form action="action_book_wanttoread.php" method="post">
                     <input type="hidden" name="action" value="<?php echo $book_action; ?>">
                     <input type="hidden" name="book_id" value="<?php echo $row['id']; ?>">
                     <input type="hidden" name="page_num" value="<?php echo $page_num ?>">
@@ -47,7 +47,7 @@
                     <input type="hidden" name="search_genre" value="<?php echo $search_genre ?>">
 
                     <?php if ($addBook) { ?>
-                        <form action="book_explorer.php" method="post">
+                        <form action="action_book_wanttoread.php" method="post">
                         <input type="hidden" name="action" value="confirm_add_book">
                         <input type="hidden" name="book_id" value="<?php echo $row['id']; ?>">
                         <input type="hidden" name="page_num" value="<?php echo $page_num ?>">
@@ -62,7 +62,7 @@
                     <?php } ?>
                 </form>
 
-                <form action="book_explorer.php" method="post">
+                <form action="action_copy.php" method="post">
                     <input type="hidden" name="action" value="<?php echo $copy_action; ?>">
                     <input type="hidden" name="book_id" value="<?php echo $row['id']; ?>">
                     <input type="hidden" name="page_num" value="<?php echo $page_num ?>">
@@ -71,7 +71,7 @@
                     <input type="hidden" name="search_genre" value="<?php echo $search_genre ?>">
 
                     <?php if ($addCopy) { ?>
-                        <form action="book_explorer.php" method="post">
+                        <form action="action_copy.php" method="post">
                         <input type="hidden" name="action" value="confirm_add_copy">
                         <input type="hidden" name="book_id" value="<?php echo $row['id']; ?>">
                         <input type="hidden" name="page_num" value="<?php echo $page_num ?>">

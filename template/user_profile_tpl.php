@@ -13,47 +13,51 @@
     <section class = "profile-info">
         <h2 id=profile_upNumber> UP Number: <?php echo $up_number ?> </h2>
         <h2 id=profile_campus> Attending Campus: <?php echo getUserFacultyCampus($up_number) ?> </h2>
+
+        <form action="save.php" method="get">
+            <button>Show Campus</button>
+        </form>
+
         <h2 id=profile_numOwnedBooks> Number of Owned Books: <?php echo getNumOwnedBooks($up_number) ?> </h2>
     </section>
     <section class="ongoing-userBorrows">
         <h2>Borrowed Books</h2>
         <?php
         $borrowedBooks = getOngoingUserBorrows($up_number);
-        if (!empty($borrowedBooks)) {
-            echo '<ul id="borrowed-books">';
-            foreach ($borrowedBooks as $borrow) {
-                echo '<li>';
-                echo 'Status: ' . $borrow['status'];
-                echo '<br>Borrower: ' . $borrow['borrower_name'];
-                echo '<br>Expiration Date: ' . $borrow['expiration_date'];
-                echo '</li>';
-            }
-            echo '</ul>';
-        } else {
-            echo '<p>No ongoing borrowed books.</p>';
-        }
-        ?>
+        if (!empty($borrowedBooks)) { ?>
+            <ul id="borrowed-books">
+            <?php foreach ($borrowedBooks as $borrow) { ?>
+                <li>
+                Status: $borrow['status']
+                <br>Borrower: <?php echo $borrow['borrower_name']; ?>
+                <br>Expiration Date: <?php echo $borrow['expiration_date']; ?>
+                </li>
+            <?php } ?>
+            </ul>
+        <?php } else { ?>
+            <p>No ongoing borrowed books.</p>
+        <?php } ?>
     </section>
+
     <section class="owned-books">
         <h2>Owned Books</h2>
         <?php
         $ownedBooks = getOwnedBooks($up_number);
-        if (!empty($ownedBooks)) {
-            echo '<ul>';
-            foreach ($ownedBooks as $book) {
-                echo '<li>';
-                echo '<strong>' . $book['name'] . '</strong> by ' . $book['author'];
-                echo '<br>Condition: ' . $book['condition'];
-                echo '<br>Availability: ' . $book['availability'];
-                echo '<br>Copy Type: ' . $book['copy_type'];
-                echo '</li>';
-                echo '<img src="image/bookCover/' . $book['id'] . '.jpg" alt="Book Cover">';
-            }
-            echo '</ul>';
-        } else {
-            echo '<p>No books owned yet.</p>';
-        }
-        ?>
+        if (!empty($ownedBooks)) { ?>
+            <ul>
+            <?php foreach ($ownedBooks as $book) { ?>
+                <li>
+                <strong> <?php echo $book['name'] ?> </strong> <p> by <?php echo $book['author']; ?><br>
+                Condition: <?php echo $book['condition']; ?><br>
+                Availability: <?php echo $book['availability']; ?><br>
+                Copy Type: <?php echo $book['copy_type'];?><br>
+                </li>
+                <img src="image/bookCover/<?php echo $book['id']?>.jpg" alt="Book Cover">
+            <?php } ?>
+            </ul>
+        <?php } else { ?>
+            <p>No books owned yet.</p>
+        <?php } ?>
 
         <?php
         // Assuming $borrow is the array containing the borrow information
