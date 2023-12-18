@@ -1,0 +1,99 @@
+/* general style */
+
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap');
+
+:root {
+    font-size: 16px;
+    font-family: 'Roboto', sans-serif;
+    --dark-primary: #5c2821;
+    --dark-secondary: #5c2821;
+    --bright-primary: #ffdda9;
+    --bright-secondary: #ffd29e;
+    --accent-color1: #f04b35;
+}
+
+.body { /* setting defaults */
+    color: black;
+    background-color: white;
+    margin: 100px;
+    padding: 0;
+}
+/* customize scrollbar using a pseudo class*/
+body::-webkit-scrollbar {
+    width: 0.25rem;
+}
+body::-webkit-scrollbar-track {
+    background: black;
+}
+body::-webkit-scrollbar-thumb {
+    background: var(--accent-color1);
+}
+.main {
+    margin-top: 5rem;   /* unit relative to font size: 16 px is the default */
+    padding: 1rem;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Add some styling to the book items */
+.book-item {
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+    width: calc(33% - 20px); /* Set the width for each book item (adjust as needed) */
+    max-height: 250px;
+    margin: 0 10px 20px 0; /* Add margin between and around book items */
+    float: left; /* Float the book items to display them side by side */
+    border: 1px solid #ddd; /* Add a border */
+    border-radius: 8px; /* Rounded corners */
+    padding: 15px; /* Add padding */
+    background-color: #fff; /* White background */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+    display: flex; /* Use flexbox for layout */
+}
+
+/* Style the book cover image */
+.book-item img {
+    max-width: 100%; /* Make sure the image doesn't exceed its container */
+    height: 200px; /* Maintain aspect ratio */
+    border-radius: 8px; /* Rounded corners */
+    margin-right: 10px; /* Add space to the right of the image */
+}
+
+/* Style the book details container */
+.book-item .book-details {
+    display: flex; /* Use flexbox for layout */
+    flex-direction: column; /* Stack the title and author vertically */
+    flex-grow: 1; /* Allow the details container to grow to fill the available space */
+}
+
+.book-item .book-details p {
+    margin: 5px 0; /* Adjust the margin to your preference */
+}
+
+/* Style the book title */
+.book-item h2 {
+    margin: 0; /* Remove default margin */
+    color: #333; /* Set text color */
+}
+
+/* Style the author span */
+.book-item .author {
+    color: #777; /* Set a slightly muted color for the author */
+}
+
+/* Clear the float to prevent layout issues */
+.book-item:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
