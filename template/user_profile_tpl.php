@@ -43,7 +43,7 @@
         if ($borrow['status'] === 'pending' || $borrow['status'] === 'accepted' || $borrow['status'] === 'returned') {
             ?>
             <form action="action_update_borrow_status.php" method="post">
-                <input type="hidden" name="bookID" value="<?php echo $borrow['bookID']; ?>">
+                <input type="hidden" name="bookID" value="<?php echo $borrow['copyID']; ?>">
                 <input type="hidden" name="borrowerID" value="<?php echo $borrow['borrower_up']; ?>">
                 <input type="hidden" name="borrowStatus" value="<?php echo getNextBorrowState($borrow['status']); ?>">
                 <input type="submit" value="Update to <?php echo getNextBorrowState($borrow['status']); ?>">
