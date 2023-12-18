@@ -30,3 +30,9 @@
     include_once('template/my_library_tpl.php');
     include_once('template/footer.php');
 ?>
+    } 
+    
+    include_once('template/header.php');
+    include_once('template/my_library_tpl.php');
+    include_once('template/footer.php');
+?>
