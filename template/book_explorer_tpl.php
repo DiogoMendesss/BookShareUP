@@ -21,10 +21,8 @@
         <?php foreach ($books as $row) {
             $isBookAdded = isBookAdded($userID, intval($row['id']));
             $book_action = $isBookAdded ? 'remove_from_wanttoread' : 'add_to_wanttoread';
-            $addBook = isset($_GET['addBook']) && $_GET['addBook'] == $row['id'];
             $isCopyAdded = isCopyAdded($userID, intval($row['id']));
             $copy_action = $isCopyAdded ? 'remove_from_mylibrary' : 'add_to_mylibrary';
-            $addCopy = isset($_GET['addCopy']) && $_GET['addCopy'] == $row['id'];
             $bookGenres = getBookGenres($row['id']);
             
         ?>
@@ -38,15 +36,7 @@
                     <!-- <p class="bookgenre"><?php echo $genre['genre'] ?></p> -->
                 <?php } ?>
 
-                <form action="action_book_wanttoread.php" method="post">
-                    <input type="hidden" name="action" value="<?php echo $book_action; ?>">
-                    <input type="hidden" name="book_id" value="<?php echo $row['id']; ?>">
-                    <input type="hidden" name="page_num" value="<?php echo $page_num ?>">
-                    <input type="hidden" name="search_title" value="<?php echo $search_title ?>">
-                    <input type="hidden" name="search_author" value="<?php echo $search_author ?>">
-                    <input type="hidden" name="search_genre" value="<?php echo $search_genre ?>">
-
-                    <?php if ($addBook) { ?>
+                    <?php if (isset($_GET['addBook']) && $_GET['addBook'] == $row['id']) { ?>
                         <form action="action_book_wanttoread.php" method="post">
                         <input type="hidden" name="action" value="confirm_add_book">
                         <input type="hidden" name="book_id" value="<?php echo $row['id']; ?>">
@@ -58,19 +48,19 @@
                         <button type="submit">Confirm</button>
                         </form>
                     <?php } else { ?>
+                        <form action="action_book_wanttoread.php" method="post">
+                        <input type="hidden" name="action" value="<?php echo $book_action; ?>">
+                        <input type="hidden" name="book_id" value="<?php echo $row['id']; ?>">
+                        <input type="hidden" name="page_num" value="<?php echo $page_num ?>">
+                        <input type="hidden" name="search_title" value="<?php echo $search_title ?>">
+                        <input type="hidden" name="search_author" value="<?php echo $search_author ?>">
+                        <input type="hidden" name="search_genre" value="<?php echo $search_genre ?>">
                         <button type="submit"><?php echo ($isBookAdded ? 'Remove From Want To Read' : 'Want To Read'); ?></button>
                     <?php } ?>
+                    
                 </form>
 
-                <form action="action_copy.php" method="post">
-                    <input type="hidden" name="action" value="<?php echo $copy_action; ?>">
-                    <input type="hidden" name="book_id" value="<?php echo $row['id']; ?>">
-                    <input type="hidden" name="page_num" value="<?php echo $page_num ?>">
-                    <input type="hidden" name="search_title" value="<?php echo $search_title ?>">
-                    <input type="hidden" name="search_author" value="<?php echo $search_author ?>">
-                    <input type="hidden" name="search_genre" value="<?php echo $search_genre ?>">
-
-                    <?php if ($addCopy) { ?>
+                    <?php if (isset($_GET['addCopy']) && $_GET['addCopy'] == $row['id']) { ?>
                         <form action="action_copy.php" method="post">
                         <input type="hidden" name="action" value="confirm_add_copy">
                         <input type="hidden" name="book_id" value="<?php echo $row['id']; ?>">
@@ -85,13 +75,6 @@
                             <option value="worn">Worn</option>
                         </select> <br>
 
-                        <label>Availability: </label>
-                        <select name="availability">
-                            <option value="" selected disabled></option>
-                            <option value="available">Available</option>
-                            <option value="borrowed">Borrowed</option>
-                        </select> <br>
-
                         <label>Type: </label>
                         <select name="copy_type">
                             <option value="" selected disabled></option>
@@ -102,9 +85,18 @@
 
                         <button type="submit">Confirm</button>
                         </form>
+
                     <?php } else { ?>
+                        <form action="action_copy.php" method="post">
+                        <input type="hidden" name="action" value="<?php echo $copy_action; ?>">
+                        <input type="hidden" name="book_id" value="<?php echo $row['id']; ?>">
+                        <input type="hidden" name="page_num" value="<?php echo $page_num ?>">
+                        <input type="hidden" name="search_title" value="<?php echo $search_title ?>">
+                        <input type="hidden" name="search_author" value="<?php echo $search_author ?>">
+                         <input type="hidden" name="search_genre" value="<?php echo $search_genre ?>">
                         <button type="submit"><?php echo ($isCopyAdded ? 'Remove My Copy' : 'Add Copy'); ?></button>
                     <?php } ?>
+
                 </form>
             </div>
         </article>

@@ -50,10 +50,10 @@
         return ($result !== false);
     }
 
-    function addCopy($condition, $availability, $copy_type, $userID, $bookID) {
+    function addCopy($condition, $copy_type, $userID, $bookID) {
         global $dbh;
-        $stmt = $dbh->prepare("INSERT INTO BookCopy (condition, availability, copy_type, owner, book) VALUES (?, ?, ?, ?, ?)");
-        $stmt->execute(array($condition, $availability, $copy_type, $userID, $bookID));
+        $stmt = $dbh->prepare("INSERT INTO BookCopy (condition, availability, copy_type, owner, book) VALUES (?, 'available' , ?, ?, ?)");
+        $stmt->execute(array($condition, $copy_type, $userID, $bookID));
     }
 
     function removeCopy($userID, $bookID) {

@@ -30,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $bookID = isset($_POST['book_id']) ? $_POST['book_id'] : '';
         removeFromWantToRead($userID, $bookID);
         if (!empty($search_title) || !empty($search_author) || !empty($search_genre)) {
-            header("Location: book_explorer.php?search_title=$search_title&search_author=$search_author&search_genre=$search_genre&addBook=$bookID");
+            header("Location: book_explorer.php?search_title=$search_title&search_author=$search_author&search_genre=$search_genre");
         } else {
             header("Location: book_explorer.php?page_num=$page_num");
         }
@@ -39,7 +39,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $interest_level = $_POST['interest_level'];
         $bookID = $_POST['book_id'];
         addToWantToRead($userID, $bookID, $interest_level);
-        header("Location: want_to_read.php");
+        if (!empty($search_title) || !empty($search_author) || !empty($search_genre)) {
+            header("Location: book_explorer.php?search_title=$search_title&search_author=$search_author&search_genre=$search_genre");
+        } else {
+            header("Location: book_explorer.php?page_num=$page_num");
+        }
         exit();
     }
 }
