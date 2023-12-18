@@ -1,7 +1,8 @@
 <?php
     session_start();
+    
     require_once('database/init.php');
-    require_once('database/books.php');
+    require_once('database/db_books.php');
     require_once('database/db_users.php');
     require_once('next_borrow_state.php');
     
@@ -17,4 +18,5 @@
     else {
         include_once('templates/feed_tpl.php');
     }
+    include_once('template/footer.php');
 ?>

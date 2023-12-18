@@ -72,13 +72,13 @@ CREATE TABLE InterestedIn (
 -- Borrowing table
 CREATE TABLE Borrowing (
     status TEXT CHECK (status IN ('pending', 'accepted', 'delivered', 'picked-up', 'returned', 'archived', 'expired')),
-    bookID INTEGER NOT NULL REFERENCES BookCopy ON DELETE CASCADE ON UPDATE CASCADE,
+    copyID INTEGER NOT NULL REFERENCES BookCopy ON DELETE CASCADE ON UPDATE CASCADE,
     user INTEGER NOT NULL REFERENCES User ON DELETE SET NULL ON UPDATE CASCADE,
     start_date TEXT NOT NULL,
     duration INTEGER NOT NULL,
     campus TEXT NOT NULL REFERENCES Campus ON DELETE SET NULL ON UPDATE CASCADE,
     expiration_date TEXT CHECK (expiration_date = DATETIME(start_date, '+' || duration || ' day')),
-    PRIMARY KEY (user, bookID)
+    PRIMARY KEY (user, copyID)
 );
 
 -- Campus table
@@ -357,7 +357,3 @@ INSERT INTO BookGenre (book, genre) VALUES
     ('Awesome Borrower','Borrower','Silver'),
     ('Legendary Borrower','Borrower','Gold')
     ;
-
-
-
-

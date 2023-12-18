@@ -5,7 +5,7 @@
             
         ?>
             <article class="book-item">
-                <img src="images/bookcovers/<?php echo $row['id'] ?>.jpg" alt="">
+                <img src="image/bookcover/<?php echo $row['id'] ?>.jpg" alt="">
 
                 <div class="book-details">
                     <h2><?php echo $row['name'] ?></h2>
@@ -18,9 +18,7 @@
                         <button type="submit">Remove</button>
                     </form>
                 </div>
-                
             </article>
-
         <?php } ?>
     </section>
 </main>

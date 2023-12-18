@@ -1,5 +1,6 @@
 <?php 
 session_start();
+
 require_once('database/init.php');
 require_once('database/db_users.php');
 
@@ -14,7 +15,7 @@ try {
 
     if (isset($profile_pic) && $profile_pic['error'] === UPLOAD_ERR_OK) {
         // Specify the directory where you want to save the uploaded profile pictures
-        $uploadDir = 'images/profilePics/';
+        $uploadDir = 'image/avatar/';
 
         // Generate the filename based on the username and file extension
         $uploadFile = $up_number . '.jpg'; // Use $up_number instead of $username
@@ -26,15 +27,15 @@ try {
         } else {
             // No file uploaded or an error occurred
             $_SESSION['msg'] = 'Error uploading profile picture';
-            header('Location: main_page.php?action=register');
+            header('Location: home_page.php?action=register');
         }
     }
 
     insertUser($up_number, $password, $full_name, $faculty_campus);
-    header('Location: profile_page.php');
+    header('Location: user_profile.php');
 }
 catch (PDOException $e) {
     $_SESSION['msg'] = 'Error: ' . $e->getMessage();
-    header('Location: main_page.php?action=register');
+    header('Location: home_page.php?action=register');
 }
 ?>

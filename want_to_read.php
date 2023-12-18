@@ -1,7 +1,10 @@
 <?php
-    require_once('database/init.php');
-    require_once('database/books.php');
     session_start();
+
+    require_once('database/init.php');
+    require_once('database/db_books.php');
+    
+    
     $userID = $_SESSION['up_number'];
 
     $wantToReadBooks = getWantToReadBooks($userID);
@@ -22,9 +25,7 @@
         }
     }
 
-
-    //echo ("This is the Want to read Library");
-
-    include_once('templates/header.php');
-    include_once('templates/want_to_read_tpl.php');
+    include_once('template/header.php');
+    include_once('template/want_to_read_tpl.php');
+    include_once('template/footer.php');
 ?>

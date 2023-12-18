@@ -1,3 +1,49 @@
+/* general style */
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap');
+
+:root {
+    font-size: 16px;
+    font-family: 'Roboto', sans-serif;
+    --dark-primary: #5c2821;
+    --dark-secondary: #461e18;
+    --bright-primary: #ffdda9;
+    --bright-secondary: #ffd29e;
+    --accent-color1: #f04b35;
+}
+
+/* WARNING: no . before!!! warning */
+body { /* setting defaults */
+    color: black;
+    background-color: white;
+    margin: 0;
+    padding: 0;
+}
+/* customize scrollbar using a pseudo class*/
+body::-webkit-scrollbar {
+    width: 0.5rem;
+}
+body::-webkit-scrollbar-track {
+    background: black;
+}
+body::-webkit-scrollbar-thumb {
+    background: var(--accent-color1);
+}
+main {
+    margin-left: 5rem;   /* unit relative to font size: 16 px is the default */
+    padding: 1rem;
+}
+
+
+
+
+
+
+
+
+
+
+
+
 /* Add some styling to the book items */
 .book-item {
     box-sizing: border-box; /* Include padding and border in the element's total width and height */
@@ -144,6 +190,7 @@
     margin-top: 20px;
 }
 
+
 #pagination {
     clear: both; /* Add this to clear the float */
     display: flex;
@@ -162,8 +209,7 @@
     padding: 1em;
   }
 
-
-/* Add this to your existing CSS file or create a new one for styling */
+  /* Add this to your existing CSS file or create a new one for styling */
 
 #profile-main {
     display: flex;
@@ -236,3 +282,91 @@
     border-radius: 5px;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 }
+
+/* Add this CSS to your styles */
+
+.profile {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.card {
+    border: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar {
+    background-color: #ffffff;
+}
+
+.content {
+    background-color: #ffffff;
+    margin-bottom: 20px;
+}
+
+.card-body {
+    padding: 20px;
+}
+
+.profile img {
+    border: 4px solid #ffffff;
+}
+
+h1, h3, h5 {
+    margin: 0;
+}
+
+.mt-1 {
+    margin-top: 10px;
+}
+
+.m-3 {
+    margin: 20px;
+}
+
+.pt-3 {
+    padding-top: 20px;
+}
+
+.badge-list {
+    list-style: none;
+    padding: 0;
+}
+
+#primary-badge {
+    background-color: #007bff;
+    color: #ffffff;
+}
+
+#secondary-badge {
+    background-color: #28a745;
+    color: #ffffff;
+}
+
+#ternary-badge {
+    background-color: #ffc107;
+    color: #ffffff;
+}
+
+.text-secondary {
+    color: #6c757d;
+}
+
+.row {
+    margin: 10px 0;
+}
+
+hr {
+    border: 0.5px solid #d1d1d1;
+}
+
+/* Media Query for responsiveness */
+@media (max-width: 767px) {
+    .col-md4,
+    .col-md-8 {
+        width: 100%;
+    }
+}
+
+

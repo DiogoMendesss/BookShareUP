@@ -7,7 +7,7 @@
 
 <main class = "profile-main">
     <section class = "profile-pic">
-        <img src = "images/profilePics/hasbulla.jpg" alt = "Profile Picture">
+        <img src = "image/avatar/hasbulla.jpg" alt = "Profile Picture">
     </section>
     <h1 id=profile_name> <?php echo getUserFullName($up_number) ?> </h1>
     <section class = "profile-info">
@@ -33,6 +33,28 @@
             echo '<p>No ongoing borrowed books.</p>';
         }
         ?>
+    </section>
+    <section class="owned-books">
+        <h2>Owned Books</h2>
+        <?php
+        $ownedBooks = getOwnedBooks($up_number);
+        if (!empty($ownedBooks)) {
+            echo '<ul>';
+            foreach ($ownedBooks as $book) {
+                echo '<li>';
+                echo '<strong>' . $book['name'] . '</strong> by ' . $book['author'];
+                echo '<br>Condition: ' . $book['condition'];
+                echo '<br>Availability: ' . $book['availability'];
+                echo '<br>Copy Type: ' . $book['copy_type'];
+                echo '</li>';
+                echo '<img src="image/bookCover/' . $book['id'] . '.jpg" alt="Book Cover">';
+            }
+            echo '</ul>';
+        } else {
+            echo '<p>No books owned yet.</p>';
+        }
+        ?>
+
         <?php
         // Assuming $borrow is the array containing the borrow information
         if ($borrow['status'] === 'pending' || $borrow['status'] === 'accepted' || $borrow['status'] === 'returned') {
@@ -47,10 +69,6 @@
         }
         ?>
     </section>
-    <!-- <section class="borrow-archive">
-        <?php
-        $archivedBorrows = getArchivedUserBorrows($up_number);
 
-        ?>
-    </section> -->
 </main>
+

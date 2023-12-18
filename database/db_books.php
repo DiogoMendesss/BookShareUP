@@ -106,7 +106,7 @@
         BookCopy.condition AS bookCopyCondition, BookCopy.copy_type AS bookCopyType, BookCopy.owner AS ownerID, UserCampus.campus AS ownerCampus,
         Borrowing.status AS borrowStatus, Borrowing.start_date AS borrowStartDate, Borrowing.expiration_date AS borrowExpirationDate, Borrowing.user AS borrowerID
         FROM Borrowing
-        JOIN Book ON Borrowing.bookID = Book.id
+        JOIN Book ON Borrowing.copyID = Book.id
         JOIN BookCopy ON Book.id = BookCopy.book
         JOIN User ON BookCopy.owner = User.up_number
         LEFT JOIN UserCampus ON BookCopy.owner = UserCampus.user
