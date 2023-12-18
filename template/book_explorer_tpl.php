@@ -85,12 +85,14 @@
                             <option value="worn">Worn</option>
                         </select> <br>
 
+                        <!--
                         <label>Availability: </label>
                         <select name="availability">
                             <option value="" selected disabled></option>
                             <option value="available">Available</option>
                             <option value="borrowed">Borrowed</option>
                         </select> <br>
+                        -->
 
                         <label>Type: </label>
                         <select name="copy_type">

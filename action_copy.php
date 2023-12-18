@@ -35,10 +35,9 @@
             exit();
         } elseif ($action === 'confirm_add_copy') {
             $condition = $_POST['condition'];
-            $availability = $_POST['availability'];
             $copy_type = $_POST['copy_type'];
             $bookID = $_POST['book_id'];
-            addCopy($condition, $availability, $copy_type, $userID, $bookID);
+            addCopy($condition, $copy_type, $userID, $bookID);
             header("Location: my_library.php");
             exit();
         }
