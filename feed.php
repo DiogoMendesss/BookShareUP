@@ -11,12 +11,12 @@
     $userProposals = getUserProposals($userID);
 
 
-    include_once('templates/header.php');
+    include_once('template/header.php');
     if (getUserStatus($userID) === 'reading'){
-        include_once('templates/feed_currently_reading_tpl.php');
+        include_once('template/feed_currently_reading_tpl.php');
     }
     else {
-        include_once('templates/feed_tpl.php');
+        include_once('template/feed_tpl.php');
     }
     include_once('template/footer.php');
 ?>

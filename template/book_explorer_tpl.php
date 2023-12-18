@@ -2,7 +2,7 @@
     <h1>Explorer</h1>
 
     <form id="search" action="book_explorer.php">
-        <input type="text" name="search_name" placeholder="Book Title" value="<?php echo $search_title ?>">
+        <input type="text" name="search_title" placeholder="Book Title" value="<?php echo $search_title ?>">
         <input type="text" name="search_author" placeholder="Book Author" value="<?php echo $search_author ?>">
         <select name="search_genre">
             <option value="" selected disabled>Genre</option>
@@ -20,7 +20,7 @@
         <?php //var_dump($books); ?>
         <?php foreach ($books as $row) {
             $isBookAdded = isBookAdded($userID, intval($row['id']));
-            $book_action = $isBookAdded ? 'remove_from_library' : 'add_to_library';
+            $book_action = $isBookAdded ? 'remove_from_wanttoread' : 'add_to_wanttoread';
             $addBook = isset($_GET['addBook']) && $_GET['addBook'] == $row['id'];
             $isCopyAdded = isCopyAdded($userID, intval($row['id']));
             $copy_action = $isCopyAdded ? 'remove_from_mylibrary' : 'add_to_mylibrary';
@@ -42,6 +42,9 @@
                     <input type="hidden" name="action" value="<?php echo $book_action; ?>">
                     <input type="hidden" name="book_id" value="<?php echo $row['id']; ?>">
                     <input type="hidden" name="page_num" value="<?php echo $page_num ?>">
+                    <input type="hidden" name="search_title" value="<?php echo $search_title ?>">
+                    <input type="hidden" name="search_author" value="<?php echo $search_author ?>">
+                    <input type="hidden" name="search_genre" value="<?php echo $search_genre ?>">
 
                     <?php if ($addBook) { ?>
                         <form action="book_explorer.php" method="post">
@@ -63,12 +66,16 @@
                     <input type="hidden" name="action" value="<?php echo $copy_action; ?>">
                     <input type="hidden" name="book_id" value="<?php echo $row['id']; ?>">
                     <input type="hidden" name="page_num" value="<?php echo $page_num ?>">
+                    <input type="hidden" name="search_title" value="<?php echo $search_title ?>">
+                    <input type="hidden" name="search_author" value="<?php echo $search_author ?>">
+                    <input type="hidden" name="search_genre" value="<?php echo $search_genre ?>">
 
                     <?php if ($addCopy) { ?>
                         <form action="book_explorer.php" method="post">
                         <input type="hidden" name="action" value="confirm_add_copy">
                         <input type="hidden" name="book_id" value="<?php echo $row['id']; ?>">
                         <input type="hidden" name="page_num" value="<?php echo $page_num ?>">
+
 
                         <label>Condition: </label>
                         <select name="condition">
