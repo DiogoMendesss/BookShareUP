@@ -28,7 +28,7 @@
             $bookID = $_POST['book_id'];
             removeCopy($userID, $bookID);
             if (!empty($search_title) || !empty($search_author) || !empty($search_genre)) {
-                header("Location: book_explorer.php?search_title=$search_title&search_author=$search_author&search_genre=$search_genre&addCopy=$bookID");
+                header("Location: book_explorer.php?search_title=$search_title&search_author=$search_author&search_genre=$search_genre");
             } else {
                 header("Location: book_explorer.php?page_num=$page_num");
             }
@@ -38,7 +38,11 @@
             $copy_type = $_POST['copy_type'];
             $bookID = $_POST['book_id'];
             addCopy($condition, $copy_type, $userID, $bookID);
-            header("Location: my_library.php");
+            if (!empty($search_title) || !empty($search_author) || !empty($search_genre)) {
+                header("Location: book_explorer.php?search_title=$search_title&search_author=$search_author&search_genre=$search_genre");
+            } else {
+                header("Location: book_explorer.php?page_num=$page_num");
+            }
             exit();
         }
     }

@@ -57,8 +57,7 @@
     width: 100%;
 }
 .logo img {
-    width: 32px;
-    height: 45px;
+    max-width: 100px;
     min-width: 2rem;
     margin: 0 1.5rem;
     transform: rotate(0deg);
