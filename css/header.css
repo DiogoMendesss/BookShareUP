@@ -2,6 +2,7 @@
     position: fixed;
     background-color: var(--dark-primary);
     transition: 200ms ease; /* smooth the width extension */
+    z-index: 99;
 }
 .navbar-nav { /* corresponds to the ul */
     list-style: none; /* remove default list style */
@@ -22,18 +23,18 @@
     align-items: center;
 }
 .nav-item img {
-    width: 32px;
-    height: 32px;
+    width: 30px;
+    height: 30px;
     min-width: 2rem;
-    margin: 0 1.5rem;
+    margin: 0 1rem;
 }
 .nav-link { /* icons and links*/
-    height: 5rem;
+    height: 4rem;   /* vertical spacing of the icons */
     display: flex;
     align-items: center;
     color: var(--accent-color1);
     text-decoration: none;  /* remove defaults like underline */
-    filter: grayscale(100%) opacity(0.7); /* hue-rotate(20); /* icon default: B&W */
+    filter: grayscale(100%); /* opacity(0.7);  /* hue-rotate(20); /* icon default: B&W */
     transition: var(--transition-speed) /* ~600ms */
 }
 .link-text {
@@ -42,7 +43,7 @@
 }
 
 .nav-link:hover {
-    filter: grayscale(0%) opacity(1);
+    filter: grayscale(0%); /* opacity(1); */
     background: var(--dark-secondary);
 }
 .logo {
@@ -57,10 +58,10 @@
     width: 100%;
 }
 .logo img {
-    width: 32px;
+    width: 30px;
     height: 45px;
     min-width: 2rem;
-    margin: 0 1.5rem;
+    margin: 0 1rem;
     transform: rotate(0deg);
     transition: transform 800ms;
 }
@@ -69,19 +70,14 @@
 }
 
 
-
-
 @media only screen and (min-width: 600px) {
     .navbar {
         top: 0;
-        width: 5rem;
+        width: 4rem;
         height: 100vh;
     }
     .navbar:hover {
-        width: 16rem;
-    }
-    .navbar:hover { /* extend the navigation bar on hover */
-        width: 16rem;
+        width: 10rem;
     }
     .navbar:hover .link-text {   /* show nav-item labels on hover */
         display: inline;
@@ -93,7 +89,7 @@
     .navbar {   /* change orientation of the navbar */
         bottom: 0;
         width: 100vw;
-        height: 5rem;
+        height: 2rem;
     }
     .logo {
         display: none;  /* takes too much space in mobile */

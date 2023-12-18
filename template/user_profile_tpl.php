@@ -5,17 +5,15 @@
     require_once('next_borrow_state.php');
 ?>
 
-<main class = "profile-main">
-    <section class = "profile-pic">
+<main id="userProfile-main">
+    <section id="userProfile-pic">
         <img src = "image/avatar/hasbulla.jpg" alt = "Profile Picture">
     </section>
-    <h1 id=profile_name> <?php echo getUserFullName($up_number) ?> </h1>
-    <section class = "profile-info">
-        <h2 id=profile_upNumber> UP Number: <?php echo $up_number ?> </h2>
-        <h2 id=profile_campus> Attending Campus: <?php echo getUserFacultyCampus($up_number) ?> </h2>
-        <h2 id=profile_numOwnedBooks> Number of Owned Books: <?php echo getNumOwnedBooks($up_number) ?> </h2>
-    </section>
-    <section class="ongoing-userBorrows">
+    <h2 id=userProfile-upNumber> UP Number: <?php echo $up_number ?> </h2>
+    <h2 id=userProfile-campus> Attending Campus: <?php echo getUserFacultyCampus($up_number) ?> </h2>
+    <h2 id=userProfile-numOwnedBooks> Number of Owned Books: <?php echo getNumOwnedBooks($up_number) ?> </h2>
+    <h1 id=userProfile-name> <?php echo getUserFullName($up_number) ?> </h1>       
+    <section class="ongoingBorrowings">
         <h2>Borrowed Books</h2>
         <?php
         $borrowedBooks = getOngoingUserBorrows($up_number);
@@ -34,7 +32,7 @@
         }
         ?>
     </section>
-    <section class="owned-books">
+    <section class="ownedBooks">
         <h2>Owned Books</h2>
         <?php
         $ownedBooks = getOwnedBooks($up_number);

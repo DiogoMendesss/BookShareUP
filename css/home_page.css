@@ -21,18 +21,28 @@ img {
 #home-cover {
     width: 250px;
     height: 400px;
-    padding: 5%;
     position: relative;
+    padding: 2%;
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly; /* distribute items evenly */
-    align-items: center;
+    justify-content: center;
     align-content: center;
-    flex-grow: 1;
+    
     box-sizing: border-box;
     border: 10px double var(--dark-primary);
     background-color: #ffd29e;
 }
+#home-cover > form {
+    display: flex;
+    flex-direction: column;
+
+    justify-items: center;
+    align-items: center;  
+}
+#home-cover > form > * {
+    width: 80%;
+}
+
 #login_error {
     color: red;
 }
