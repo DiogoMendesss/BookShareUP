@@ -12,7 +12,7 @@
                 <ul class="navbar-nav">
                     <li class="logo">
                         <a href="#" class="nav-link"> 
-                            <img src="image/book.jpg" alt="Logo">
+                            <img src="image/logo.png" alt="Logo">
                             <span class="link-text">BSUP</span>
                         </a>
                     </li>

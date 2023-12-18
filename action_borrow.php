@@ -1,7 +1,7 @@
 <?php
 session_start();
 require_once('database/init.php');
-require_once('database/books.php'); 
+require_once('database/db_books.php'); 
 require_once('database/db_users.php'); 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['action']) && $_POST['action'] == 'ask_borrow') {
