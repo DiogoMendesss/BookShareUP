@@ -193,4 +193,37 @@
         $stmt = $dbh->prepare('UPDATE BookCopy SET availability = ? WHERE id = ?');
         $stmt->execute([$newAvailability, $bookCopyID]);
     }
+
+    function getBorrowings() {
+        global $dbh;
+        $stmt = $dbh->prepare('SELECT * FROM Borrowing WHERE status != "pending" AND status != "rejected" ');
+        $stmt->execute();
+        return $stmt->fetchAll();
+    }
+
+    function getBorrowingsBySearch($userID, $campus) {
+      global $dbh;
+
+      $params = array();
+
+      $query = 'SELECT * FROM Borrowing ';
+
+      if ($userID != '') {
+        $query .= 'WHERE user = ?';
+        $params[] = $userID;
+      }
+  
+      if ($campus != '') {
+          if ($userID != '') {
+              $query .= ' AND campus = ?';
+          } else {
+              $query .= ' WHERE campus = ?';
+          }
+          $params[] = $campus;
+      }
+
+      $stmt = $dbh->prepare($query);
+      $stmt->execute($params);
+      return $stmt->fetchAll();
+  }
 ?>
