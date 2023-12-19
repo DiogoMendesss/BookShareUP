@@ -82,7 +82,7 @@
         
             <?php if ($borrow['status'] === 'pending' ||  $borrow['status'] === 'returned') {?>
                 <form action="action_update_borrow_status.php" method="post">
-                    <input type="hidden" name="bookID" value="<?php echo $borrow['copyID']; ?>">
+                    <input type="hidden" name="bookID" value="<?php echo $borrow['copy']; ?>">
                     <input type="hidden" name="borrowerID" value="<?php echo $borrow['borrower_up']; ?>">
                     <input type="hidden" name="newStatus" value="<?php echo getNextBorrowState($borrow['status']); ?>">
                     <input type="submit" value="Update to <?php echo getNextBorrowState($borrow['status']); ?>">
@@ -90,7 +90,7 @@
             <?php
             } if ($borrow['status'] === 'pending'){ ?>
                 <form action="action_update_borrow_status.php" method="post">
-                    <input type="hidden" name="bookID" value="<?php echo $borrow['copyID']; ?>">
+                    <input type="hidden" name="bookID" value="<?php echo $borrow['copy']; ?>">
                     <input type="hidden" name="borrowerID" value="<?php echo $borrow['borrower_up']; ?>">
                     <input type="hidden" name="newStatus" value="rejected">
                     <input type="submit" value="Reject Request">

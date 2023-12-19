@@ -11,7 +11,7 @@
                 <img class="bookCover" src="image/bookcover/<?php echo $row['id'] ?>.jpg" alt="">
 
                 <div class="book-details">
-                    <h2><?php echo $row['name'] ?></h2>
+                    <h2><?php echo $row['title'] ?></h2>
                     <h3 class="author"><?php echo $row['author'] ?></h3>
                     <p class="interest ´_level"><?php echo "Interest level: " . $row['interest_level'] ?></p>
                     <form action="want_to_read.php" method="post">

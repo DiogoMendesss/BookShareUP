@@ -38,7 +38,7 @@ function getUserFacultyCampus($up_number) {
 
   function getOwnedBooks($up_number) {
     global $dbh;
-    $stmt = $dbh->prepare('SELECT BookCopy.id, Book.name, Book.author, BookCopy.condition, BookCopy.availability, BookCopy.copy_type, Book.id
+    $stmt = $dbh->prepare('SELECT BookCopy.id, Book.title, Book.author, BookCopy.condition, BookCopy.availability, BookCopy.copy_type, Book.id
                           FROM BookCopy
                           JOIN Book ON BookCopy.book = Book.id
                           WHERE BookCopy.owner = ?');

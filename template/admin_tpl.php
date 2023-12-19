@@ -32,7 +32,7 @@
         <?php if (isset($_GET['bID']) && $_GET['bID'] == $borrowing['id']) { ?>
             <form action="admin.php" method="post">
                 <input type="hidden" name="action" value="confirm_update_status">
-                <input type="hidden" name="copy_id" value="<?php echo $borrowing['copyID']; ?>">
+                <input type="hidden" name="copy_id" value="<?php echo $borrowing['copy']; ?>">
                 <input type="hidden" name="ownerID" value="<?php echo $borrowing['owner'] ?>">
                 <input type="hidden" name="borrowerID" value="<?php echo $borrowing['user'] ?>">
                 <label>Status:</label>

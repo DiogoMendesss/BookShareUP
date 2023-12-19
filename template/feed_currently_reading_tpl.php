@@ -14,7 +14,7 @@
                 <img src="image/bookcover/<?php echo $currentlyReadingBook['book'] ?>.jpg" alt="">
 
                 <div class="book-details">
-                    <h2><?php echo $currentlyReadingBook['name'] ?></h2>
+                    <h2><?php echo $currentlyReadingBook['title'] ?></h2>
                     <h3 class="author"><?php echo $currentlyReadingBook['author'] ?></h3>
                     <p class="condition"><?php echo "Condition: " . $currentlyReadingBook['condition'] ?></p>
                     <p class="copy_type"><?php echo "Type: " . $currentlyReadingBook['copy_type'] ?></p>
@@ -46,7 +46,7 @@
         if ($currentlyReadingBook['borrowStatus']==='rejected'){ ?>
             <p class = 'reject-notification'>Your request has been rejected.</p>
             <form action = "action_delete_borrow.php" method = "post">
-                <input type = "hidden" name = "copyID" value = "<?php echo $currentlyReadingBook['copyID']; ?>">
+                <input type = "hidden" name = "copyID" value = "<?php echo $currentlyReadingBook['copy']; ?>">
                 <input type = "hidden" name = "borrowerID" value = "<?php echo $userID; ?>">
                 <input type = "submit" value = "Go Back to Feed">
             </form>

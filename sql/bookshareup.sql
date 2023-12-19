@@ -32,7 +32,7 @@ CREATE TABLE User (
 -- Book table
 CREATE TABLE Book (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
-    name TEXT NOT NULL,
+    title TEXT NOT NULL,
     author TEXT NOT NULL
 );
 
@@ -73,8 +73,8 @@ CREATE TABLE InterestedIn (
 CREATE TABLE Borrowing (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     status TEXT CHECK (status IN ('pending', 'accepted', 'delivered', 'picked-up', 'returned', 'archived', 'expired', 'rejected')),
-    copyID INTEGER NOT NULL REFERENCES BookCopy ON DELETE CASCADE ON UPDATE CASCADE,
-    user INTEGER NOT NULL REFERENCES User ON DELETE SET NULL ON UPDATE CASCADE,
+    copy INTEGER NOT NULL REFERENCES BookCopy ON DELETE CASCADE ON UPDATE CASCADE,
+    borrower INTEGER NOT NULL REFERENCES User ON DELETE SET NULL ON UPDATE CASCADE,
     start_date TEXT,
     duration INTEGER,
     campus TEXT NOT NULL REFERENCES Campus ON DELETE SET NULL ON UPDATE CASCADE,
@@ -112,7 +112,7 @@ CREATE TABLE UserBadge (
 
 INSERT INTO User VALUES (1, 'adminpass', 'ADMIN', 'active');
 
-INSERT INTO Book(name, author) VALUES
+INSERT INTO Book(title, author) VALUES
     ('To Kill a Mockingbird', 'Harper Lee'),
     ('1984', 'George Orwell'),
     ('The Great Gatsby', 'F. Scott Fitzgerald'),

@@ -1,9 +1,7 @@
-
 <?php
     function getUserProposals($userID){
         global $dbh;
-        $stmt = $dbh->prepare("SELECT BookCopy.id AS bookCopyID, BookCopy.condition, BookCopy.availability, BookCopy.copy_type, BookCopy.owner,
-                                BookCopy.book, Book.*, InterestedIn.*, User.name AS owner_name, User.up_number AS owner_id FROM BookCopy 
+        $stmt = $dbh->prepare("SELECT BookCopy.*, Book.*, InterestedIn.*, User.name FROM BookCopy 
                                 JOIN Book ON BookCopy.book = Book.id 
                                 JOIN InterestedIn ON Book.id = InterestedIn.book 
                                 JOIN User ON BookCopy.owner=User.up_number
@@ -11,14 +9,14 @@
                                 AND owner != ?
                                 AND User.status != 'inactive'
                                 AND availability = 'available'
-                                ORDER BY Book.name, InterestedIn.interest_level DESC;");
+                                ORDER BY Book.title, InterestedIn.interest_level DESC;");
         $stmt->execute(array($userID, $userID));
         return $stmt->fetchAll();
       }
 
       function insertBorrowing($status, $bookCopyID ,$user, $campus) {
         global $dbh;
-        $stmt = $dbh->prepare('INSERT INTO Borrowing (status, copyID ,user, campus) VALUES (?, ?, ?, ?)');
+        $stmt = $dbh->prepare('INSERT INTO Borrowing (status, copy ,user, campus) VALUES (?, ?, ?, ?)');
         $stmt->execute([$status, $bookCopyID,$user, $campus]);
     }    
     function initializeDates($copyID, $borrowerID){
@@ -32,13 +30,13 @@
   
         function updateBorrowStatus($bookID, $borrowerID, $newStatus) {
           global $dbh;
-          $stmt = $dbh->prepare('UPDATE Borrowing SET status = ? WHERE copyID = ? AND user = ?');
+          $stmt = $dbh->prepare('UPDATE Borrowing SET status = ? WHERE copy = ? AND user = ?');
           $stmt->execute([$newStatus, $bookID, $borrowerID]);
       }  
 
       function getBorrowings() {
         global $dbh;
-        $stmt = $dbh->prepare('SELECT * FROM Borrowing JOIN BookCopy ON Borrowing.copyID = BookCopy.id WHERE status != "pending" AND status != "rejected" ');
+        $stmt = $dbh->prepare('SELECT * FROM Borrowing JOIN BookCopy ON Borrowing.copy = BookCopy.id WHERE status != "pending" AND status != "rejected" ');
         $stmt->execute();
         return $stmt->fetchAll();
     }
@@ -49,7 +47,7 @@
 
       $params = array();
 
-      $query = 'SELECT * FROM Borrowing JOIN BookCopy ON Borrowing.copyID = BookCopy.id ';
+      $query = 'SELECT * FROM Borrowing JOIN BookCopy ON Borrowing.copy = BookCopy.id ';
 
       if ($ownerID != '') {
         $query .= 'WHERE owner = ?';
@@ -82,15 +80,15 @@
 
     function deleteBorrow($copyID, $borrowerID) {
         global $dbh;
-        $stmt = $dbh->prepare('DELETE FROM Borrowing WHERE copyID = ? AND user = ?');
+        $stmt = $dbh->prepare('DELETE FROM Borrowing WHERE copy = ? AND user = ?');
         $stmt->execute([$copyID, $borrowerID]);
     }
 
     function getOngoingUserBorrows($up_number) {
         global $dbh;
         $stmt = $dbh->prepare('SELECT * FROM Borrowing
-                               JOIN BookCopy ON Borrowing.copyID = BookCopy.id
-                               JOIN User ON Borrowing.user = User.up_number
+                               JOIN BookCopy ON Borrowing.copy = BookCopy.id
+                               JOIN User ON Borrowing.borrower = User.up_number
                                WHERE BookCopy.owner = ? AND Borrowing.status IN ("pending", "accepted", "delivered", "picked-up", "returned")');
         $stmt->execute(array($up_number));
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
