@@ -79,7 +79,7 @@
     <section class="ongoing-userBorrows">
         <h2>Borrowed Books</h2>
         <?php
-        $borrowedBooks = getOngoingUserBorrows($up_number);
+        $borrowedBooks = getOngoingUserBorrows($user_profile);
         if (!empty($borrowedBooks)) { ?>
             <ul id="borrowed-books">
             <?php foreach ($borrowedBooks as $borrow) { ?>

@@ -1,3 +1,10 @@
+<?php
+    session_start();
+
+    $up_number = $_SESSION['up_number'];
+
+?>
+
 <html lang="en" dir="ltr">
     <head>
         <meta charset="UTF-8">
@@ -18,7 +25,7 @@
                         </a>
                     </li>
                     <il class="nav-item">
-                        <a href="book_explorer.php" class="nav-link"> 
+                        <a href="book_explorer.php?page_num=1" class="nav-link"> 
                             <img src="image/avatar/avatar_1.jpg" alt="Explorer">
                             <span class="link-text">Explorer</span>
                         </a>
@@ -42,7 +49,7 @@
                         </a>
                     </il>
                     <il class="nav-item">
-                        <a href="user_profile.php" class="nav-link">
+                        <a href="user_profile.php?user=<?php echo $up_number; ?>" class="nav-link">
                             <img src="image/avatar/hasbulla.jpg" alt="User Profile">
                             <span class="link-text">User Profile</span>
                         </a>
@@ -53,4 +60,4 @@
                         </form>
                     </il>
             </nav>
-        </header>
+<!-- header only closes in the templates to include the title and search bar in the header -->

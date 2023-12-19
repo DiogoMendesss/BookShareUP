@@ -3,171 +3,244 @@
 
 :root {
     font-size: 16px;
-    font-family: 'Roboto', sans-serif;
-    --dark-primary: #5c2821;
-    --dark-secondary: #461e18;
-    --bright-primary: #ffdda9;
-    --bright-secondary: #ffd29e;
+    font-family: Roboto, sans-serif;
+    --dark-primary: #530000;
+    --dark-secondary: #3e3736;
+    --bright-primary: #686868;
+    --bright-secondary: #ff8900;
     --accent-color1: #f04b35;
+    --accent-color2: #f0a435;
+    --min-width-size: 600px;
+}
+* {
+    box-sizing: border-box;
 }
 
 /* WARNING: no . before!!! warning */
 body { /* setting defaults */
-    color: black;
-    background-color: white;
-    margin: 0;
+    width: 100%;
+    margin: 0 0 0 0;
+    padding-left: 4rem;
     padding: 0;
+    color: black;
+    background-color: var(--dark-secondary);
+
+    /* border: 3px solid limegreen; */
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    flex: 1 0 auto;
 }
 /* customize scrollbar using a pseudo class*/
 body::-webkit-scrollbar {
     width: 0.5rem;
 }
 body::-webkit-scrollbar-track {
-    background: black;
+    background: rgb(0, 0, 0);
 }
 body::-webkit-scrollbar-thumb {
     background: var(--accent-color1);
 }
-main {
-    margin-left: 5rem;   /* unit relative to font size: 16 px is the default */
-    padding: 1rem;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-/* Add some styling to the book items */
-.book-item {
-    box-sizing: border-box; /* Include padding and border in the element's total width and height */
-    width: calc(33% - 20px); /* Set the width for each book item (adjust as needed) */
-    max-height: 250px;
-    margin: 0 10px 20px 0; /* Add margin between and around book items */
-    float: left; /* Float the book items to display them side by side */
-    border: 1px solid #ddd; /* Add a border */
-    border-radius: 8px; /* Rounded corners */
-    padding: 15px; /* Add padding */
-    background-color: #fff; /* White background */
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
-    display: flex; /* Use flexbox for layout */
-}
-
-/* Style the book cover image */
-.book-item img {
-    max-width: 100%; /* Make sure the image doesn't exceed its container */
-    height: 200px; /* Maintain aspect ratio */
-    border-radius: 8px; /* Rounded corners */
-    margin-right: 10px; /* Add space to the right of the image */
-}
-
-/* Style the book details container */
-.book-item .book-details {
-    display: flex; /* Use flexbox for layout */
-    flex-direction: column; /* Stack the title and author vertically */
-    flex-grow: 1; /* Allow the details container to grow to fill the available space */
-}
-
-.book-item .book-details p {
-    margin: 5px 0; /* Adjust the margin to your preference */
-}
-
-/* Style the book title */
-.book-item h2 {
-    margin: 0; /* Remove default margin */
-    color: #333; /* Set text color */
-}
-
-/* Style the author span */
-.book-item .author {
-    color: #777; /* Set a slightly muted color for the author */
-}
-
-/* Clear the float to prevent layout issues */
-.book-item:after {
-    content: "";
-    display: table;
-    clear: both;
-}
-
-.mainPage-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    display: flex;
+main { /* rem unit relative to font size: 16 px is the default */
+    /* margin-left: 4rem; /*leave space for the navbar */
+    /* padding: 1rem; */
+    /* padding-left: 4rem; */
+    /* background-image: url("../image/bookshelf2.png"); */
+    /* background-color: var(--bright-primary); */
+    /* border: 3px solid red; */
+    position: relative;
     height: 100vh;
+    width: 100vw;
+}
+main::before {  /* trick for adjusting the opacity */
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url("../image/bookshelf2.png");
+    opacity: 0.5; /* Adjust this value to change the opacity */
+    z-index: -1;
+}
+footer {
+    /* width: 100vw; */
+    height: min-content;
+    flex-shrink: 0;
+    background-color: var(--dark-primary);
+}
+
+/* buttons, inputs, options, etc */
+button, input, option, select {
+    /* appearance: none; Remove default appearance */
+    /* -webkit-appearance: none; Remove default appearance for Chrome and Safari */
+    /* -moz-appearance: none; Remove default appearance for Firefox */
+    border-style: outset;
+    border-width: 2px;
+    border-color: var(--bright-secondary);
+    border-radius: 20px;
+    background-color: rgba(255, 255, 255, 0.5);
+    color: rgba(0, 0, 0, 1);
+    outline: none;
+}
+input[type="radio"] + label:after + label:before {
+    /* content: ""; */
+    /* display: inline-block; */
+    width: 1rem;
+    height: 1rem;
+    size: 2rem;
+    margin: 0.2rem;
+    border-radius: 50%;
+    /* border: 2px solid var(--bright-secondary); */
+    background-color: rgba(255, 255, 255, 0.5);
+}
+button:hover, input:hover, option:hover, select:hover {
+    outline-style: solid;
+    outline-width: 1px;
+    outline-color: var(--bright-secondary);
+    background: rgba(255, 255, 255, 1);
+    /* transform: scale(1.05); */
+}
+
+input:focus {
+    background-color: rgba(255, 255, 255, 1);
+    outline-color: var(--accent-color1);
+}
+
+
+
+
+
+/* book stuff */
+.shelf {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min-content, 13rem));
+    grid-template-rows: repeat(auto-fit, minmax(min-content, 13rem));
+    /* minmax() prevents the grid from letting its book-items overflow */
+    grid-gap: 3rem 3rem;
+    padding: 1rem;
+    padding-left: 4rem;
     overflow: hidden;
-}
 
-.mainPage-container {
-    display: flex;
+    justify-content: center;
+    justify-items: start;
+    align-items: start;
+}
+.book-item {
     width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 2.5rem 10rem 2.5rem;
+    grid-template-rows: 1rem 2rem 11rem 2rem 1rem;
+
+    justify-content: center;
+    align-content: center;
+    justify-items: stretch;
+    align-items: stretch;
+
+    transition: transform 400ms ease;
 }
 
-.scrollable-content {
-    width: 60%;
-    background-color: #6b502d;
-    box-sizing: border-box;
-    overflow-y: auto;
+.shelfImage {
+    justify-self: center;
+    width: 250%;
+    height: 10rem;
+    /* object-fit: cover; */
+    /* border-radius: 4px; */
+    /* box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); */
+    grid-area: 4 / 1 / -1 / -1;
+    min-height: 10rem;
+    position: relative;
+    transform: translateY(-1rem);   /* bring shelves a little bit up for better 3d effect */
+    
+}
+.bookCover {
+    width: 10rem;
+    height: 15rem;
+    box-shadow: -5px -3px 0px rgba(0, 0, 0, 1);
+    border-radius: 4px;
+    grid-area: 2 / 2 / 5 / 3;
+    transition: transform 200ms ease;
+    z-index: 1;
+}
+/* Style the book details container */
+.book-details { 
+    grid-area: 3 / 1 / 4 / -1;
+    background-color: rgba(235, 233, 233, 0.8);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    border-radius: 10px; /* Rounded corners */
+    padding: 1px; /* Add some padding */
+    display: none; 
+    transition: transform 400ms ease;
+    z-index: 2;
+    line-height: 0.6rem;
 }
 
-.scrollable-content::-webkit-scrollbar {
-    display: none;
+.book-details-form { 
+    grid-area: 3 / 1 / 4 / -1;
+    background-color: rgba(235, 233, 233, 0.8);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    border-radius: 10px; /* Rounded corners */
+    padding: 1px; /* Add some padding */
+    transition: transform 400ms ease;
+    z-index: 2;
+    line-height: 0.6rem;
 }
 
-.scrollable-content .title-container {
-    height: 5vh;
+
+.book-item:hover .bookCover{
+    transform: scale(0.97);
+    opacity: 0.5;
+    animation-play-state: paused;
+}
+
+
+.book-item:hover .book-details {
+    transform: scale(1.02);
+    animation-play-state: paused;
+   
+    display: grid;
+    grid-template-rows: repeat(3, 1fr);
+    grid-template-columns: 1fr 1fr; 
+    justify-items: center;
+    align-items: center;
+}
+
+
+
+
+.book-details h3 {
+    color: #333;
+    margin: 0;
+    grid-area: span 1 / span 2;
+}
+.book-details .author {
+    color: #777;
+    margin: 0;
+}
+.miniForm {
+    margin: 0.5rem;
+    margin-top: 0;
+}
+.miniForm label {
+    font-size: 0.7rem;
+    font-weight: bold;
+    text-transform: uppercase;
     text-align: left;
 }
-.centered-content {
-    flex: 1;
-    max-width: 400px;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    margin: auto;
+/* target labels for each radio button */
+.miniForm label[for="excellent"],
+label[for="good"],
+label[for="worn"],
+label[for="hardcover"],
+label[for="softcover"],
+label[for="handbook"] { 
+    font-size: 0.4rem;
+    margin-right: 0; 
+    text-transform: uppercase;
 }
 
-#main-info {
-    height: 80vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-}
 
-#about-info{
-    height: 80vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-}
-
-#universities-info{
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-}
-
-.fixed-content {
-    flex: 1;
-    background-color: #c59c67; /* Set a background color for the fixed section */
-    padding: 20px;
-    box-sizing: border-box;
-    height: 100vh;
-}
 
 .login-form {
     height: 60vh;
@@ -209,118 +282,25 @@ main {
     padding: 1em;
   }
 
-
-.owned-books {
-    flex: 1;
-    display: flex;
-    flex-direction: column; /* Changed to column for books to appear below info */
-}
-
-.owned-books h2 {
-    font-size: 20px;
-    margin-bottom: 10px;
-}
-
-.owned-books ul {
-    list-style: none;
-    padding: 0;
-}
-
-.owned-books li {
-    margin-bottom: 20px;
-}
-
-.owned-books img {
-    max-width: 80px;
-    height: auto;
-    border-radius: 5px;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-}
-
-/* Add this CSS to your styles */
-
-.profile {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
-}
-
-.card {
-    border: none;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.sidebar {
-    background-color: #ffffff;
-}
-
-.content {
-    background-color: #ffffff;
-    margin-bottom: 20px;
-}
-
-.card-body {
-    padding: 20px;
-}
-
-.profile img {
-    border: 4px solid #ffffff;
-}
-
-h1, h3, h5 {
-    margin: 0;
-}
-
-.mt-1 {
-    margin-top: 10px;
-}
-
-.m-3 {
-    margin: 20px;
-}
-
-.pt-3 {
-    padding-top: 20px;
-}
-
-.badge-list {
-    list-style: none;
-    padding: 0;
-}
-
-#primary-badge {
-    background-color: #007bff;
-    color: #ffffff;
-}
-
-#secondary-badge {
-    background-color: #28a745;
-    color: #ffffff;
-}
-
-#ternary-badge {
-    background-color: #ffc107;
-    color: #ffffff;
-}
-
-.text-secondary {
-    color: #6c757d;
-}
-
-.row {
-    margin: 10px 0;
-}
-
-hr {
-    border: 0.5px solid #d1d1d1;
-}
-
-/* Media Query for responsiveness */
-@media (max-width: 767px) {
-    .col-md4,
-    .col-md-8 {
-        width: 100%;
+/* Responsivenes Layout part */
+/* small screens */
+@media (max-width: var(--min-width-size)) {
+    .userProfile-main {
+        /* grid-template-rows: repeat(4, 1fr); 4 rows w 1fr */
+        /* grid-template-columns: minmax(1fr, 25%); */
     }
 }
 
+/* big screens */
+@media (min-width: var(--min-width-size)) {
+    .userProfile-main {
+        /* grid-template-rows: 1fr 1fr 2fr; */
+        /* grid-template-columns: 1fr 1fr; */
+        /* grid-template-areas:
+            'profile-pic profile-name'
+            'profile-pic profile-info'
+            'ongoingBorrowings ownedBooks'; */
+        /*2 by 3 grid */
+    }
 
+}

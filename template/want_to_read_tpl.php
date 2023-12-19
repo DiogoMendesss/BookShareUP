@@ -1,11 +1,14 @@
-<main>
     <h1>Want To Read</h1>
+</header>
+<main>
+    
     <section class="shelf">
         <?php foreach ($wantToReadBooks as $row) { 
             
         ?>
             <article class="book-item">
-                <img src="image/bookcover/<?php echo $row['id'] ?>.jpg" alt="">
+                <img class="shelfImage" src="image/shelf2.png" alt="shelf-image">
+                <img class="bookCover" src="image/bookcover/<?php echo $row['id'] ?>.jpg" alt="">
 
                 <div class="book-details">
                     <h2><?php echo $row['name'] ?></h2>
@@ -20,6 +23,6 @@
                 </div>
             </article>
         <?php } ?>
-        <a href="book_explorer.php">Add Book</a>
+        <a href="book_explorer.php" class="floatingButton">Add Book</a>  
     </section>
 </main>
