@@ -12,13 +12,13 @@
                 <div class="book-details">
                     <h2><?php echo $currentlyReadingBook['bookName'] ?></h2>
                     <h3 class="author"><?php echo $currentlyReadingBook['bookAuthor'] ?></h3>
-                    <p class="condition"><?php echo "Condition: " . $currentlyReadingBook['bookCondition'] ?></p>
+                    <p class="condition"><?php echo "Condition: " . $currentlyReadingBook['bookCopyCondition'] ?></p>
                     <p class="copy_type"><?php echo "Type: " . $currentlyReadingBook['bookCopyType'] ?></p>
                     <p class="owner"><?php echo "Owner: " . $currentlyReadingBook['ownerName'] ?></p>
-                    <?php $ownerCampus = getUserCampus($currentlyReadingBook['ownerID']);
+                    <?php $ownerCampus = getUserFacultyCampus($currentlyReadingBook['ownerID']);
                         foreach ($ownerCampus as $campus) {     
                     ?>
-                    <p class="campus">Owner campus: <?php echo "" . $campus['ownerCampus'] ?></p>
+                    <p class="campus">Owner campus: <?php echo "" . $campus['campus'] ?></p>
                     <?php } ?>  
                 </div>
             </article>
@@ -30,16 +30,26 @@
             <p class="borrow-expiration-date">Expiration Date: <?php echo $currentlyReadingBook['borrowExpirationDate'] ?></p>
         </div>
         <?php
-        // Assuming $borrow is the array containing the borrow information
+        /* Assuming $borrow is the array containing the borrow information
         if ($currentlyReadingBook['borrowStatus'] === 'delivered' || $currentlyReadingBook['borrowStatus'] === 'picked-up' ) {
             ?>
             <form action="action_update_borrow_status.php" method="post">
-                <input type="hidden" name="bookID" value="<?php echo $currentlyReadingBook['bookID']; ?>">
+                <input type="hidden" name="bookID" value="<?php echo $currentlyReadingBook['copyID']; ?>">
                 <input type="hidden" name="borrowerID" value="<?php echo $currentlyReadingBook['borrowerID']; ?>">
                 <input type="hidden" name="borrowStatus" value="<?php echo getNextBorrowState($currentlyReadingBook['borrowStatus']); ?>">
                 <input type="submit" value="Update to <?php echo getNextBorrowState($currentlyReadingBook['borrowStatus']); ?>">
             </form>
             <?php
+        }
+        */
+        if ($currentlyReadingBook['borrowStatus']==='rejected'){ ?>
+            <p class = 'reject-notification'>Your request has been rejected.</p>
+            <form action = "action_delete_borrow.php" method = "post">
+                <input type = "hidden" name = "copyID" value = "<?php echo $currentlyReadingBook['copyID']; ?>">
+                <input type = "hidden" name = "borrowerID" value = "<?php echo $userID; ?>">
+                <input type = "submit" value = "Go Back to Feed">
+            </form>
+        <?php
         }
         ?>
     </section>

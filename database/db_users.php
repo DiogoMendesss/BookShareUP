@@ -7,11 +7,8 @@
     return $stmt->fetch();
   }
 
-  function mock_loginSuccess($up_number) {
-    global $dbh;
-    $stmt = $dbh->prepare('SELECT * FROM User WHERE up_number = ?');
-    $stmt->execute(array($up_number));
-    return $stmt->fetch();
+  function saveProfilePic($up_number) {
+    move_uploaded_file($_FILES['profile_pic']['tmp_name'], "image/users/$up_number.jpg");
   }
 
   function getUserFullName($up_number) {
@@ -25,7 +22,7 @@ function getUserFacultyCampus($up_number) {
   global $dbh;
   $stmt = $dbh->prepare('SELECT campus FROM UserCampus WHERE user = ?');
   $stmt->execute(array($up_number));
-  return $stmt->fetchColumn();
+  return $stmt->fetchAll();
 }
 
 
@@ -57,13 +54,13 @@ function getNumOwnedBooks($up_number) {
 
 function getOngoingUserBorrows($up_number) {
   global $dbh;
-  $stmt = $dbh->prepare('SELECT Borrowing.status, Borrowing.bookID, Borrowing.user AS borrower_up, Borrowing.expiration_date, User.name AS borrower_name
+  $stmt = $dbh->prepare('SELECT Borrowing.status, Borrowing.copyID AS copyID, Borrowing.user AS borrower_up, Borrowing.expiration_date, User.name AS borrower_name
                          FROM Borrowing
-                         JOIN BookCopy ON Borrowing.bookID = BookCopy.book
+                         JOIN BookCopy ON Borrowing.copyID = BookCopy.id
                          JOIN User ON Borrowing.user = User.up_number
                          WHERE BookCopy.owner = ? AND Borrowing.status IN ("pending", "accepted", "delivered", "picked-up", "returned")');
   $stmt->execute(array($up_number));
-  return $stmt->fetchAll();
+  return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
 
 function updateUserStatus($userID, $newStatus) {

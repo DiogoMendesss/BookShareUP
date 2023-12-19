@@ -71,14 +71,14 @@ CREATE TABLE InterestedIn (
 
 -- Borrowing table
 CREATE TABLE Borrowing (
-    status TEXT CHECK (status IN ('pending', 'accepted', 'delivered', 'picked-up', 'returned', 'archived', 'expired')),
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    status TEXT CHECK (status IN ('pending', 'accepted', 'delivered', 'picked-up', 'returned', 'archived', 'expired', 'rejected')),
     copyID INTEGER NOT NULL REFERENCES BookCopy ON DELETE CASCADE ON UPDATE CASCADE,
     user INTEGER NOT NULL REFERENCES User ON DELETE SET NULL ON UPDATE CASCADE,
     start_date TEXT NOT NULL,
     duration INTEGER NOT NULL,
     campus TEXT NOT NULL REFERENCES Campus ON DELETE SET NULL ON UPDATE CASCADE,
-    expiration_date TEXT CHECK (expiration_date = DATETIME(start_date, '+' || duration || ' day')),
-    PRIMARY KEY (user, copyID)
+    expiration_date TEXT CHECK (expiration_date = DATETIME(start_date, '+' || duration || ' day'))
 );
 
 -- Campus table
@@ -109,6 +109,8 @@ CREATE TABLE UserBadge (
     badge TEXT REFERENCES Badges(name) ON DELETE CASCADE ON UPDATE CASCADE,
     PRIMARY KEY (user, badge)
 );
+
+INSERT INTO User VALUES (1, 'adminpass', 'ADMIN', 'active');
 
 INSERT INTO Book(name, author) VALUES
     ('To Kill a Mockingbird', 'Harper Lee'),
@@ -169,30 +171,30 @@ INSERT INTO Book(name, author) VALUES
     ('Freakonomics', 'Steven D. Levitt and Stephen J. Dubner')
     ;
 
-    INSERT INTO Genre (genre)
+INSERT INTO Genre (genre)
 VALUES 
-    ('Fiction'), 
-    ('Non-fiction'), 
-    ('Thriller'), 
-    ('Science'), 
-    ('Fantasy'), 
-    ('Mystery'), 
-    ('Romance'), 
-    ('Historical Fiction'), 
-    ('Sci-Fi'), 
     ('Biography'), 
-    ('History'), 
-    ('Self-help'), 
     ('Business'), 
-    ('Poetry'), 
-    ('Tragedy'), 
+    ('Classic'), 
     ('Comedy'), 
+    ('Comics'), 
+    ('Dystopia'), 
+    ('Fantasy'), 
+    ('Fiction'), 
+    ('Historical Fiction'), 
+    ('History'), 
+    ('Horror'), 
     ('Manga'), 
-    ('Comics'),
-    ('Classic'),
-    ('Dystopia'),
-    ('Horror')
-    ;
+    ('Mystery'), 
+    ('Non-fiction'), 
+    ('Poetry'), 
+    ('Romance'), 
+    ('Sci-Fi'), 
+    ('Science'), 
+    ('Self-help'), 
+    ('Thriller'), 
+    ('Tragedy')
+;
 
     -- Insert statements for BookGenre relationships (adjusted)
 INSERT INTO BookGenre (book, genre) VALUES

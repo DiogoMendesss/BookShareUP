@@ -1,26 +1,21 @@
 <?php include_once('database/init.php'); ?>
-
-<form class="register-form" action="action_register.php" method="post">
-    <input type="text" name="up_number" id="up_number" placeholder="UP Number" required autofocus>
-    <input type="password" name="password" id="password" placeholder="Password">
+<form class="register-form" action="action_register.php" method="post" enctype="multipart/form-data">
     <input type="text" name="up_number" id="up_number" placeholder="UP Number" required autofocus> <!-- Change name and placeholder to 'up_number' -->
     <input type="password" name="password" id="password" placeholder="Password" required> <!-- Change name and placeholder to 'password' -->
     <input type="text" name="first_name" id="first_name" placeholder="First Name" required>
     <input type="text" name="last_name" id="last_name" placeholder="Last Name" required>
 
     <br>
-    
-    <select name="faculty_campus" id="faculty_campus" required>
-        <option value="SelectCampus" disabled selected>Select your campus</option>
-        <?php $campuses = getCampusesInfo();
+
+    <?php $campuses = getCampusesInfo();
         foreach ($campuses as $campus) { ?>
-        <option value="<?php echo $campus['name']; ?>"><?php echo $campus['name']; } ?></option>
-    </select>
+        <input type="radio" name="campus" value=<?php echo $campus['name']?> required><?php echo $campus['name']?>
+    <?php } ?>
 
     <br>
 
     <p>Upload your profile image:</p>
-    <input type="file" name="profile_picture" id="profile_pic" placeholder="Profile Picture">
+    <input type="file" name="profile_pic" id="profile_pic">
     <input type="submit" value = Register>
 </form>
 <p> Already have an account? </p>
