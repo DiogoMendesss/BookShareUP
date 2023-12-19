@@ -103,7 +103,7 @@
       function getCurrentlyReadingBook($readerID) {
         global $dbh; // Assuming $dbh is your SQLite database connection
     
-        $stmt = $dbh->prepare("SELECT Book.name AS bookName, Book.author AS bookAuthor, User.name AS ownerName, Book.id AS bookID, BookCopy.id AS bookCopyID, 
+        $stmt = $dbh->prepare("SELECT Book.name AS bookName, Book.author AS bookAuthor, User.name AS ownerName, Book.id AS bookID, BookCopy.id AS copyID, 
         BookCopy.condition AS bookCopyCondition, BookCopy.copy_type AS bookCopyType, BookCopy.owner AS ownerID, UserCampus.campus AS ownerCampus,
         Borrowing.status AS borrowStatus, Borrowing.start_date AS borrowStartDate, Borrowing.expiration_date AS borrowExpirationDate, Borrowing.user AS borrowerID
         FROM Borrowing
@@ -194,6 +194,7 @@
         $stmt->execute([$newAvailability, $bookCopyID]);
     }
 
+
     function getBorrowings() {
         global $dbh;
         $stmt = $dbh->prepare('SELECT * FROM Borrowing WHERE status != "pending" AND status != "rejected" ');
@@ -226,4 +227,11 @@
       $stmt->execute($params);
       return $stmt->fetchAll();
   }
+
+    function deleteBorrow($copyID, $borrowerID) {
+        global $dbh;
+        $stmt = $dbh->prepare('DELETE FROM Borrowing WHERE copyID = ? AND user = ?');
+        $stmt->execute([$copyID, $borrowerID]);
+    }
+
 ?>
