@@ -1,13 +1,3 @@
-<?php
-    require_once('database/init.php');
-    require_once('database/db_users.php');
-    require_once('database/db_campus.php');
-    require_once('next_borrow_state.php');
-
-    if (isset($_POST['ChangeProfilePic'])) {
-        $changePicRequest = $_POST['ChangeProfilePic'];
-    }
-?>
 
 <main class = "profile-main">
     <div class = "empty-space-image">
