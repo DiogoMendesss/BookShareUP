@@ -1,5 +1,5 @@
 /* general style */
-@import url('https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap'); 
 
 :root {
     font-size: 16px;
@@ -44,27 +44,23 @@ body::-webkit-scrollbar-thumb {
 main { /* rem unit relative to font size: 16 px is the default */
     /* margin-left: 4rem; /*leave space for the navbar */
     /* padding: 1rem; */
-    /* padding-left: 4rem; */
+    /* padding: 2rem */
     /* background-image: url("../image/bookshelf2.png"); */
     /* background-color: var(--bright-primary); */
     /* border: 3px solid red; */
-    position: relative;
-    height: 100vh;
-    width: 100vw;
+    /* position: relative; */
+    min-height: 100vh;
+    min-width: 100vw;
 }
 main::before {  /* trick for adjusting the opacity */
     content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    /* position: absolute; */
     background-image: url("../image/bookshelf2.png");
     opacity: 0.5; /* Adjust this value to change the opacity */
     z-index: -1;
 }
 footer {
-    /* width: 100vw; */
+    width: 100vw;
     height: min-content;
     flex-shrink: 0;
     background-color: var(--dark-primary);
@@ -119,7 +115,8 @@ input:focus {
     /* minmax() prevents the grid from letting its book-items overflow */
     grid-gap: 3rem 3rem;
     padding: 1rem;
-    padding-left: 4rem;
+    padding-left: 10vw;
+    padding-right: 10vw;
     overflow: hidden;
 
     justify-content: center;
