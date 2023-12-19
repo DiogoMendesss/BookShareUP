@@ -5,6 +5,7 @@
         
         $currentlyReadingBook = getCurrentlyReadingBook($userID);
         
+        
             
         ?>
             <article class="book-item">
@@ -16,7 +17,7 @@
                     <p class="condition"><?php echo "Condition: " . $currentlyReadingBook['condition'] ?></p>
                     <p class="copy_type"><?php echo "Type: " . $currentlyReadingBook['copy_type'] ?></p>
                     <p class="owner"><?php echo "Owner: " . $currentlyReadingBook['owner_name'] ?></p>
-                    <p class="campus">Campus: <?php echo "" . $$currentlyReadingBook['campus'] ?></p>
+                    <p class="campus"> <?php echo "Campus: " . $currentlyReadingBook['campus'] ?></p>
                    
                 </div>
             </article>
