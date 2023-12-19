@@ -1,8 +1,13 @@
 1 - Ordernar Genres inserts alfabeticamente  --------- DONE
-2 - Dar sort pelo interest_level e por ordem alfabética na Want To Read
-3 - Dar sort  por ordem alfabética no Explorer
-4 - Adicionar botoes add book/copy às want to read e my library (redirecionam para o explorer)
-5 - Automatizar update Availability na my library 
-6 - Terminar Feed dinâmico
-7 - Manipulação de datas
-8 - ADMIN
+2 - Dar sort pelo interest_level e por ordem alfabética na Want To Read --------- DONE
+3 - Dar sort  por ordem alfabética no Explorer --------- DONE
+4 - Adicionar botoes add book/copy às want to read e my library (redirecionam para o explorer) --------- DONE
+5 - Automatizar update Availability na my library  --------- DONE
+6 - Terminar Feed dinâmico --------- DONE
+7 - Manipulação de datas --------- DONE
+8 - ADMIN --------- DONE
+9 - sHOW/eDIT CAMPUS
+10 - view other user profile
+11 - organizar borrowing functions
+12 - dar sort feed e library
+13 - user pode alterar o seu estado

@@ -20,7 +20,11 @@
                         foreach ($ownerCampus as $campus) {     
                     ?>
                     <p class="campus"><?php echo "" . $campus['campus'] ?></p>
-                    <?php } ?>  
+                    <?php } ?>
+                    
+                    <form action="action_borrow.php" method="post">
+                        <button type="submit">Borrow</button>
+                    </form>
                     <form action="action_borrow.php" method="post">
                         <input type="hidden" name="action" value="ask_borrow">
                         <input type="hidden" name="bookCopyID" value="<?php echo $row['bookCopyID']; ?>">
@@ -36,7 +40,7 @@
                             foreach ($ownerCampus as $campus) { ?>
                             <input type="hidden" name="campus[]" value="<?php echo $campus['campus']; ?>">
                         <?php } ?>  
-                        <button type="submit">Borrow</button>
+                        <button type="submit">Confirm</button>
                     </form>
                     
 

@@ -25,7 +25,7 @@
             $isCopyAdded = isCopyAdded($userID, intval($row['id']));
             $copy_action = $isCopyAdded ? 'remove_from_mylibrary' : 'add_to_mylibrary';
             $bookGenres = getBookGenres($row['id']);
-            
+        
         ?>
         <article class="book-item">
             <img id="shelfImage" src="image/shelf2.png" alt="shelf-image">
@@ -98,7 +98,6 @@
                         </form>
                     <?php } ?>
 
-             
             </div>
         </article>
 

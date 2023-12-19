@@ -9,6 +9,7 @@
 
   function saveProfilePic($up_number) {
     move_uploaded_file($_FILES['profile_pic']['tmp_name'], "image/users/$up_number.jpg");
+    //var_dump($_FILES['profile_pic']['tmp_name']);
   }
 
   function getUserFullName($up_number) {
@@ -74,6 +75,15 @@ function getUserStatus($userID) {
   $stmt = $dbh->prepare('SELECT status FROM User WHERE up_number = ?');
   $stmt->execute([$userID]);
   return $stmt->fetchColumn();
+}
+
+function getOtherUserStatus($userID) {
+  $currentStatus = getUserStatus($userID);
+  if ($currentStatus === 'active') {
+    return 'inactive';
+  } else {
+    return 'active';
+  }
 }
 
 function addUserCampus($userID, $campus){

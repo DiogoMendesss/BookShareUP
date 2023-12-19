@@ -42,8 +42,6 @@
             */
             
             updateBorrowStatus($copyID, $borrowerID, $newStatus);
-
-                        
             if ($newStatus === 'returned') {
                 updateUserStatus($borrowerID, 'active');
             }
@@ -52,6 +50,9 @@
             }
             elseif ($newStatus === 'archived') {
                 updateBookCopyAvailability($copyID, 'available');
+            }
+            elseif($newStatus === 'delivered'){
+                initializeDates($copyID, $borrowerID);
             }
 
             header("Location: admin.php");

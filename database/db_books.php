@@ -11,7 +11,7 @@
 
     function getBooks () {
         global $dbh;
-        $stmt = $dbh->prepare("SELECT * FROM Book");
+        $stmt = $dbh->prepare("SELECT * FROM Book ORDER BY name;");
         $stmt->execute();
         return $stmt->fetchAll();
     }
@@ -35,7 +35,8 @@
         $stmt = $dbh->prepare("SELECT Book.id, Book.name, Book.author, InterestedIn.interest_level 
                                 FROM Book 
                                 JOIN InterestedIn ON Book.id = InterestedIn.book 
-                                WHERE InterestedIn.user = ?;");
+                                WHERE InterestedIn.user = ?
+                                ORDER BY interest_level DESC, name;");
         $stmt->execute(array($userID));
         return $stmt->fetchAll();
     }
@@ -65,8 +66,8 @@
 
     function getBooksByPage($page_num) {
         global $dbh;
-        $stmt = $dbh->prepare('SELECT * FROM Book LIMIT ? OFFSET ?');
-        $stmt->execute(array(6, ($page_num-1)*6));
+        $stmt = $dbh->prepare('SELECT * FROM Book ORDER BY name LIMIT ? OFFSET ?');
+        $stmt->execute(array(40, ($page_num-1)*40));
         return $stmt->fetchAll();
       }
     
@@ -81,7 +82,8 @@
         global $dbh;
         $stmt = $dbh->prepare("SELECT * FROM BookCopy 
                                 JOIN Book ON BookCopy.book = Book.id 
-                                WHERE owner = ?;");
+                                WHERE owner = ?
+                                ORDER BY Book.name;");
         $stmt->execute(array($userID));
         return $stmt->fetchAll();
       }
@@ -95,7 +97,9 @@
                                 JOIN User ON BookCopy.owner=User.up_number
                                 WHERE InterestedIn.user=?
                                 AND owner != ?
-                                AND availability = 'available';");
+                                AND User.status != 'inactive'
+                                AND availability = 'available'
+                                ORDER BY Book.name, InterestedIn.interest_level DESC;");
         $stmt->execute(array($userID, $userID));
         return $stmt->fetchAll();
       }
@@ -176,11 +180,20 @@
       }
     
 
-      function insertBorrowing($status, $bookCopyID ,$user, $startDate, $duration, $campus, $expirationDate) {
+      function insertBorrowing($status, $bookCopyID ,$user, $campus) {
         global $dbh;
-        $stmt = $dbh->prepare('INSERT INTO Borrowing (status, copyID ,user, start_date, duration, campus, expiration_date) VALUES (?, ?, ?, ?, ?, ?, ?)');
-        $stmt->execute([$status, $bookCopyID,$user, $startDate, $duration, $campus, $expirationDate]);
+        $stmt = $dbh->prepare('INSERT INTO Borrowing (status, copyID ,user, campus) VALUES (?, ?, ?, ?)');
+        $stmt->execute([$status, $bookCopyID,$user, $campus]);
     }    
+
+    function initializeDates($copyID, $borrowerID){
+      $startDate = date("Y-m-d");
+      $duration = 31;
+      $expirationDate = date("Y-m-d", strtotime($startDate . "+ $duration days"));
+      global $dbh;
+      $stmt = $dbh->prepare('UPDATE Borrowing SET start_date = ?, duration = 31, expiration_date = ? WHERE copyID = ? AND user = ?');
+      $stmt->execute([$startDate, $expirationDate, $copyID, $borrowerID]);
+  }
 
       function updateBorrowStatus($bookID, $borrowerID, $newStatus) {
         global $dbh;
@@ -201,6 +214,7 @@
         $stmt->execute();
         return $stmt->fetchAll();
     }
+    
 
     function getBorrowingsBySearch($ownerID, $borrowerID, $campus) {
       global $dbh;
