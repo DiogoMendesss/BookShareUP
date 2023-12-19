@@ -117,9 +117,6 @@ header h1 {
         width: 3rem;
         height: 100%;
     }
-    .navbar:hover {
-        /* width: 10rem; */
-    }
     .logo {
         margin-bottom: 6rem;
     }
