@@ -10,28 +10,32 @@
 ?>
 
 <main class = "profile-main">
-    <section class = "profile-pic">
-        <img src = "image/users/<?php echo $up_number ?>.jpg" alt = "Profile Picture">
+    <div class = "empty-space-image">
+        <section class = "profile-pic">
+            <img src = "image/users/<?php echo $up_number ?>.jpg" alt = "Profile Picture">
+        </section>
 
-        <!-- Change Profile Picture Form -->
-        <?php if ($changePicRequest==='Upload New Pic') {
-            unset($changePicRequest);
-            saveProfilePic($up_number); 
-        ?>
-        <?php }?>
-        <?php if (!isset($changePicRequest)) { ?>
-        <form action = "user_profile.php" method = "post">
-            <input type = "submit" name='ChangeProfilePic' value = "Change Profile Picture">
-        </form>
-        <?php } 
-        elseif ($changePicRequest==='Change Profile Picture') { ?>
-            <form action = "user_profile.php" method = "post" enctype="multipart/form-data">
-                <input type = "file" name = "profile_pic">
-                <input type = "submit" name='ChangeProfilePic' value = "Upload New Pic">
-            </form>
-        <?php } ?>
-        <!-- Change Profile Picture Form -->
-    </section>
+            <div class = "edit-profile-pic">
+                <!-- Change Profile Picture Form -->
+                <?php if ($changePicRequest==='Upload New Pic') {
+                    unset($changePicRequest);
+                    saveProfilePic($up_number); 
+                ?>
+                <?php }?>
+                <?php if (!isset($changePicRequest)) { ?>
+                <form action = "user_profile.php" method = "post">
+                    <input type = "submit" name='ChangeProfilePic' value = "Change Profile Picture">
+                </form>
+                <?php } 
+                elseif ($changePicRequest==='Change Profile Picture') { ?>
+                    <form action = "user_profile.php" method = "post" enctype="multipart/form-data">
+                        <input type = "file" name = "profile_pic">
+                        <input type = "submit" name='ChangeProfilePic' value = "Upload New Pic">
+                    </form>
+                <?php } ?>
+                <!-- Change Profile Picture Form -->
+            </div>
+    </div>
 
     <h1 id=profile_name> <?php echo getUserFullName($up_number) ?> </h1>
     <form action = 'action_change_user_status.php' method = 'post'>
