@@ -4,7 +4,7 @@
 :root {
     font-size: 16px;
     font-family: Roboto, sans-serif;
-    --dark-primary: #110808;
+    --dark-primary: #530000;
     --dark-secondary: #3e3736;
     --bright-primary: #686868;
     --bright-secondary: #ff8900;
@@ -19,13 +19,13 @@
 /* WARNING: no . before!!! warning */
 body { /* setting defaults */
     width: 100%;
-    margin: 0;
+    margin: 0 0 0 0;
     padding-left: 4rem;
     padding: 0;
     color: black;
-    background-color: white;
+    background-color: black;
 
-    border: 3px solid limegreen;
+    /* border: 3px solid limegreen; */
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -43,25 +43,38 @@ body::-webkit-scrollbar-thumb {
 }
 main { /* rem unit relative to font size: 16 px is the default */
     /* margin-left: 4rem; /*leave space for the navbar */
-    padding: 1rem;
-    padding-left: 4rem;
-    background-color: var(--bright-primary);
-    border: 3px solid red;
-    
+    /* padding: 1rem; */
+    /* padding-left: 4rem; */
+    /* background-image: url("../image/bookshelf2.png"); */
+    /* background-color: var(--bright-primary); */
+    /* border: 3px solid red; */
+    position: relative;
+    height: 100vh;
+    width: 100vw;
+}
+main::before {  /* trick for adjusting the opacity */
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url("../image/bookshelf2.png");
+    opacity: 0.5; /* Adjust this value to change the opacity */
+    z-index: -1;
 }
 footer {
     /* width: 100vw; */
     height: min-content;
-    align-self: center;
     flex-shrink: 0;
-    
+    background-color: var(--dark-primary);
 }
 
 /* buttons, inputs, options, etc */
 button, input, option, select {
-    appearance: none; /* Remove default appearance */
-    -webkit-appearance: none; /* Remove default appearance for Chrome and Safari */
-    -moz-appearance: none; /* Remove default appearance for Firefox */
+    /* appearance: none; Remove default appearance */
+    /* -webkit-appearance: none; Remove default appearance for Chrome and Safari */
+    /* -moz-appearance: none; Remove default appearance for Firefox */
     border-style: outset;
     border-width: 2px;
     border-color: var(--bright-secondary);
@@ -71,13 +84,14 @@ button, input, option, select {
     outline: none;
 }
 input[type="radio"] + label:after + label:before {
-    content: "";
-    display: inline-block;
-    width: 4px;
-    height: 4px;
-    margin: 0;
+    /* content: ""; */
+    /* display: inline-block; */
+    width: 1rem;
+    height: 1rem;
+    size: 2rem;
+    margin: 0.2rem;
     border-radius: 50%;
-    border: 2px solid var(--bright-secondary);
+    /* border: 2px solid var(--bright-secondary); */
     background-color: rgba(255, 255, 255, 0.5);
 }
 button:hover, input:hover, option:hover, select:hover {
@@ -100,10 +114,13 @@ input:focus {
 /* book stuff */
 .shelf {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(min-content, 14rem));
-    grid-template-rows: repeat(auto-fill, minmax(min-content, 14rem));
+    grid-template-columns: repeat(auto-fit, minmax(min-content, 13rem));
+    grid-template-rows: repeat(auto-fit, minmax(min-content, 13rem));
     /* minmax() prevents the grid from letting its book-items overflow */
-    grid-gap: 1%;
+    grid-gap: 3rem 3rem;
+    padding: 1rem;
+    padding-left: 4rem;
+    overflow: hidden;
 
     justify-content: center;
     justify-items: start;
@@ -114,7 +131,7 @@ input:focus {
     height: 100%;
     display: grid;
     grid-template-columns: 2.5rem 10rem 2.5rem;
-    grid-template-rows: 2.5rem 2.5rem 10rem 2.5rem 2.5rem;
+    grid-template-rows: 1rem 2rem 11rem 2rem 1rem;
 
     justify-content: center;
     align-content: center;
@@ -123,15 +140,19 @@ input:focus {
 
     transition: transform 400ms ease;
 }
-#shelfImage {
+
+.shelfImage {
     justify-self: center;
-    width: 180%;
+    width: 250%;
     height: 10rem;
     /* object-fit: cover; */
     /* border-radius: 4px; */
     /* box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); */
     grid-area: 4 / 1 / -1 / -1;
     min-height: 10rem;
+    position: relative;
+    transform: translateY(-1rem);   /* bring shelves a little bit up for better 3d effect */
+    
 }
 .bookCover {
     width: 10rem;
@@ -157,9 +178,12 @@ input:focus {
 .book-item:hover .bookCover{
     transform: scale(0.97);
     opacity: 0.5;
+    animation-play-state: paused;
 }
+
 .book-item:hover .book-details {
     transform: scale(1.02);
+    animation-play-state: paused;
    
     display: grid;
     grid-template-rows: repeat(3, 1fr);
