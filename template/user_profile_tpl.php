@@ -33,30 +33,30 @@
                 <br>Borrower: <?php echo $borrow['borrower_name']; ?>
                 <br>Expiration Date: <?php echo $borrow['expiration_date']; ?>
                 </li>
+                
+        
+            <?php if ($borrow['status'] === 'pending' ||  $borrow['status'] === 'returned') {?>
+                <form action="action_update_borrow_status.php" method="post">
+                    <input type="hidden" name="bookID" value="<?php echo $borrow['copyID']; ?>">
+                    <input type="hidden" name="borrowerID" value="<?php echo $borrow['borrower_up']; ?>">
+                    <input type="hidden" name="newStatus" value="<?php echo getNextBorrowState($borrow['status']); ?>">
+                    <input type="submit" value="Update to <?php echo getNextBorrowState($borrow['status']); ?>">
+                </form>
+            <?php
+            } if ($borrow['status'] === 'pending'){ ?>
+                <form action="action_update_borrow_status.php" method="post">
+                    <input type="hidden" name="bookID" value="<?php echo $borrow['copyID']; ?>">
+                    <input type="hidden" name="borrowerID" value="<?php echo $borrow['borrower_up']; ?>">
+                    <input type="hidden" name="newStatus" value="rejected">
+                    <input type="submit" value="Reject Request">
+                </form>
+                <? } ?>
             <?php } ?>
             </ul>
         <?php } else { ?>
             <p>No ongoing borrowed books.</p>
         <?php } ?>
-        <?php
-        // Assuming $borrow is the array containing the borrow information
-        if ($borrow['status'] === 'pending' || $borrow['status'] === 'accepted' || $borrow['status'] === 'returned') {
-            ?>
-            <form action="action_update_borrow_status.php" method="post">
-                <input type="hidden" name="bookID" value="<?php echo $borrow['copyID']; ?>">
-                <input type="hidden" name="borrowerID" value="<?php echo $borrow['borrower_up']; ?>">
-                <input type="hidden" name="borrowStatus" value="<?php echo getNextBorrowState($borrow['status']); ?>">
-                <input type="submit" value="Update to <?php echo getNextBorrowState($borrow['status']); ?>">
-            </form>
-            <?php
-        }
-        if ($borrow['status'] === 'pending'){ ?>
-            <form action="action_update_borrow_status.php" method="post">
-                <input type="hidden" name="bookID" value="<?php echo $borrow['copyID']; ?>">
-                <input type="hidden" name="borrowerID" value="<?php echo $borrow['borrower_up']; ?>">
-                <input type="hidden" name="borrowStatus" value="rejected">
-                <input type="submit" value="Reject Request">
-        <? } ?>
+ 
     </section>
 
 </main>

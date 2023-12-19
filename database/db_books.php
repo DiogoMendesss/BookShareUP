@@ -197,31 +197,41 @@
 
     function getBorrowings() {
         global $dbh;
-        $stmt = $dbh->prepare('SELECT * FROM Borrowing WHERE status != "pending" AND status != "rejected" ');
+        $stmt = $dbh->prepare('SELECT * FROM Borrowing JOIN BookCopy ON Borrowing.copyID = BookCopy.id WHERE status != "pending" AND status != "rejected" ');
         $stmt->execute();
         return $stmt->fetchAll();
     }
 
-    function getBorrowingsBySearch($userID, $campus) {
+    function getBorrowingsBySearch($ownerID, $borrowerID, $campus) {
       global $dbh;
 
       $params = array();
 
-      $query = 'SELECT * FROM Borrowing ';
+      $query = 'SELECT * FROM Borrowing JOIN BookCopy ON Borrowing.copyID = BookCopy.id ';
 
-      if ($userID != '') {
-        $query .= 'WHERE user = ?';
-        $params[] = $userID;
+      if ($ownerID != '') {
+        $query .= 'WHERE owner = ?';
+        $params[] = $ownerID;
       }
   
-      if ($campus != '') {
-          if ($userID != '') {
-              $query .= ' AND campus = ?';
+      if ($borrowerID != '') {
+          if ($ownerID != '') {
+              $query .= ' AND user = ?';
           } else {
-              $query .= ' WHERE campus = ?';
+              $query .= ' WHERE user = ?';
           }
-          $params[] = $campus;
+          $params[] = $borrowerID;
       }
+
+      if ($campus != '') {
+        if ($ownerID != '' || $borrowerID != '') {
+            $query .= ' AND campus = ?';
+            
+        } else {
+            $query .= ' WHERE campus = ?';
+        }
+        $params[] = $campus;
+    }
 
       $stmt = $dbh->prepare($query);
       $stmt->execute($params);

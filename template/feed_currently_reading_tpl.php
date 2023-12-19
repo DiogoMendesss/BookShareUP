@@ -30,7 +30,7 @@
             <p class="borrow-expiration-date">Expiration Date: <?php echo $currentlyReadingBook['borrowExpirationDate'] ?></p>
         </div>
         <?php
-        // Assuming $borrow is the array containing the borrow information
+        /* Assuming $borrow is the array containing the borrow information
         if ($currentlyReadingBook['borrowStatus'] === 'delivered' || $currentlyReadingBook['borrowStatus'] === 'picked-up' ) {
             ?>
             <form action="action_update_borrow_status.php" method="post">
@@ -41,6 +41,7 @@
             </form>
             <?php
         }
+        */
         if ($currentlyReadingBook['borrowStatus']==='rejected'){ ?>
             <p class = 'reject-notification'>Your request has been rejected.</p>
             <form action = "action_delete_borrow.php" method = "post">

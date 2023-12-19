@@ -9,17 +9,20 @@
     
     $userID = $_SESSION['up_number'];
 
+
     $campuses = getCampusesInfo();
 
-    $search_user = $_GET['search_user'];
+    $search_owner = $_GET['search_owner'];
+    $search_borrower = $_GET['search_borrower'];
     $search_campus = $_GET['search_campus'];
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $action = isset($_POST['action']) ? $_POST['action'] : '';
         $borrowingID = $_POST['borrowing_id'];
         //var_dump($page_num);
-        $search_user = $_POST['search_user'];
-        $search_campus = $_POST['search_campus'];
+        $search_owner = $_GET['search_owner'];
+        $search_borrower = $_GET['search_borrower'];
+        $search_campus = $_GET['search_campus'];
 
         
 
@@ -27,10 +30,29 @@
             header("Location: admin.php?bID=$borrowingID");
             exit();
         } elseif ($action === 'confirm_update_status') {
-            $status = $_POST['status'];
+            $newStatus = $_POST['status'];
             $copyID = $_POST['copy_id'];
-            $user = $_POST['user'];
-            updateBorrowStatus($copyID, $user, $status);
+            $ownerID = $_POST['ownerID'];
+            $borrowerID = $_POST['borrowerID'];
+            
+            /*
+            var_dump($copyID);
+            var_dump($ownerID);
+            var_dump($borrowerID);
+            */
+            
+            updateBorrowStatus($copyID, $borrowerID, $newStatus);
+
+                        
+            if ($newStatus === 'returned') {
+                updateUserStatus($borrowerID, 'active');
+            }
+            elseif ($newStatus === 'accepted') {
+                updateBookCopyAvailability($copyID, 'borrowed');
+            }
+            elseif ($newStatus === 'archived') {
+                updateBookCopyAvailability($copyID, 'available');
+            }
 
             header("Location: admin.php");
             exit();
@@ -41,8 +63,8 @@
 
    
     try {
-        if (isset($search_user) || isset($search_campus)) {
-            $borrowings = getBorrowingsBySearch($search_user, $search_campus);
+        if (isset($search_owner) || isset($search_borrower)|| isset($search_campus)) {
+            $borrowings = getBorrowingsBySearch($search_owner, $search_borrower, $search_campus);
         } else {
             $borrowings = getBorrowings();
         }

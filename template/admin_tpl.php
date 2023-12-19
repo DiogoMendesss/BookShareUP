@@ -10,7 +10,8 @@
     <hr>
     <h4>Search bar goes here</h4>
     <form id="search" action="admin.php">
-        <input type="text" name="search_user" placeholder="up_number" value="<?php echo $search_user ?>">
+        <input type="text" name="search_owner" placeholder="owner up_number" value="<?php echo $search_owner ?>">
+        <input type="text" name="search_borrower" placeholder="borrower up_number" value="<?php echo $search_borrower ?>">
         <select name="search_campus">
             <option value="" selected disabled>Select campus</option>
             <?php foreach ($campuses as $campus) { //var_dump($genre); ?> 
@@ -25,13 +26,15 @@
     <hr>
     <?php
     foreach ($borrowings as $borrowing) { ?>
+        <p>Owner: <?php echo $borrowing['owner'] ?></p>
         <p>Borrowing User: <?php echo $borrowing['user'] ?></p>
         <p>Status: <?php echo $borrowing['status'] ?></p>
         <?php if (isset($_GET['bID']) && $_GET['bID'] == $borrowing['id']) { ?>
             <form action="admin.php" method="post">
                 <input type="hidden" name="action" value="confirm_update_status">
                 <input type="hidden" name="copy_id" value="<?php echo $borrowing['copyID']; ?>">
-                <input type="hidden" name="user" value="<?php echo $borrowing['user'] ?>">
+                <input type="hidden" name="ownerID" value="<?php echo $borrowing['owner'] ?>">
+                <input type="hidden" name="borrowerID" value="<?php echo $borrowing['user'] ?>">
                 <label>Status:</label>
                 <input type="radio" name="status" value="pending">Pending
                 <input type="radio" name="status" value="accepted">Accepted

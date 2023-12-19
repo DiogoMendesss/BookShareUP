@@ -17,6 +17,7 @@
 
   try {
     if ($up_number == 1) {
+      $_SESSION['up_number'] = $up_number;
       header('Location: admin.php');
     } elseif (loginSuccess($up_number, $password)) {
       $_SESSION['up_number'] = $up_number;

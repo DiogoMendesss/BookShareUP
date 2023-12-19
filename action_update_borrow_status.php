@@ -6,7 +6,7 @@ require_once('database/db_users.php');
 
 
 $borrowerID = $_POST['borrowerID'];
-$newStatus = $_POST['borrowStatus'];
+$newStatus = $_POST['newStatus'];
 $copyID = $_POST['bookID'];
 
 // Update the status
@@ -23,6 +23,6 @@ elseif ($newStatus === 'archived') {
     updateBookCopyAvailability($copyID, 'available');
 }
 
-header('Location: feed.php');
+header('Location: user_profile.php');
 exit();
 ?>

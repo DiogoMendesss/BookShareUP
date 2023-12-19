@@ -6,13 +6,11 @@
     <input type="text" name="last_name" id="last_name" placeholder="Last Name" required>
 
     <br>
-    
-    <select name="faculty_campus" id="faculty_campus" required>
-        <option value="SelectCampus" disabled selected>Select your campus</option>
-        <?php $campuses = getCampusesInfo();
+
+    <?php $campuses = getCampusesInfo();
         foreach ($campuses as $campus) { ?>
-        <option value="<?php echo $campus['name']; ?>"><?php echo $campus['name']; } ?></option>
-    </select>
+        <input type="radio" name="campus" value=<?php echo $campus['name']?> required><?php echo $campus['name']?>
+    <?php } ?>
 
     <br>
 
