@@ -7,10 +7,15 @@
 
     <br>
 
-    <?php $campuses = getCampusesInfo();
-        foreach ($campuses as $campus) { ?>
-        <input type="radio" name="campus" value=<?php echo $campus['name']?> required><?php echo $campus['name']?>
-    <?php } ?>
+    <select name="campus" id="campus" required>
+        <option value="" disabled selected>Select your main campus</option>
+        <?php
+        $campuses = getCampusesInfo();
+        foreach ($campuses as $campus) {
+            echo '<option value="' . $campus['name'] . '">' . $campus['name'] . '</option>';
+        }
+        ?>
+    </select>
 
     <br>
 
