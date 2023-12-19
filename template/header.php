@@ -1,3 +1,10 @@
+<?php
+    session_start();
+
+    $up_number = $_SESSION['up_number'];
+
+?>
+
 <html lang="en" dir="ltr">
     <head>
         <meta charset="UTF-8">
@@ -41,7 +48,7 @@
                         </a>
                     </il>
                     <il class="nav-item">
-                        <a href="user_profile.php" class="nav-link">
+                        <a href="user_profile.php?user=<?php echo $up_number; ?>" class="nav-link">
                             <img src="image/avatar/hasbulla.jpg" alt="User Profile">
                             <span class="link-text">User Profile</span>
                         </a>

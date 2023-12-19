@@ -9,6 +9,7 @@
     $userID = $_SESSION['up_number'];
 
     $userProposals = getUserProposals($userID);
+    var_dump($userProposals);
 
 
     include_once('template/header.php');

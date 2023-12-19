@@ -5,6 +5,7 @@
     <section class="shelf">
         <?php foreach ($userProposals as $row) { 
             
+            
         ?>
             <article class="book-item">
                 <img src="image/bookcover/<?php echo $row['book'] ?>.jpg" alt="">
@@ -14,7 +15,7 @@
                     <h3 class="author"><?php echo $row['author'] ?></h3>
                     <p class="condition"><?php echo "Condition: " . $row['condition'] ?></p>
                     <p class="copy_type"><?php echo "Type: " . $row['copy_type'] ?></p>
-                    <h3 class="owner"><?php echo $row['owner_name'] ?></h3>
+                    <a class="owner" href="user_profile.php?user=<?php echo $row['owner']; ?>"><?php echo $row['owner_name'] ?></a>
 
                     
                     <?php if (isset($_GET['owner']) && $_GET['owner'] == $row['owner'] &&
