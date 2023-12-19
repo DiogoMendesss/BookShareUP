@@ -18,14 +18,18 @@
 
 /* WARNING: no . before!!! warning */
 body { /* setting defaults */
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
     margin: 0;
+    padding-left: 4rem;
     padding: 0;
     color: black;
     background-color: white;
 
     border: 3px solid limegreen;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    flex: 1 0 auto;
 }
 /* customize scrollbar using a pseudo class*/
 body::-webkit-scrollbar {
@@ -38,30 +42,47 @@ body::-webkit-scrollbar-thumb {
     background: var(--accent-color1);
 }
 main { /* rem unit relative to font size: 16 px is the default */
-    height: 100%;
-    margin-left: 4rem; /* leave space for the navbar */
+    /* margin-left: 4rem; /*leave space for the navbar */
     padding: 1rem;
+    padding-left: 4rem;
     background-color: var(--bright-primary);
     border: 3px solid red;
+    
 }
 footer {
-    width: 100vw;
-    height: 3%;
-    margin-top: auto;
+    /* width: 100vw; */
+    height: min-content;
+    align-self: center;
+    flex-shrink: 0;
+    
 }
 
 /* buttons, inputs, options, etc */
-button, input, option {
+button, input, option, select {
+    appearance: none; /* Remove default appearance */
+    -webkit-appearance: none; /* Remove default appearance for Chrome and Safari */
+    -moz-appearance: none; /* Remove default appearance for Firefox */
     border-style: outset;
     border-width: 2px;
     border-color: var(--bright-secondary);
     border-radius: 20px;
-    background-color: rgba(255, 255, 255, 0.7);
+    background-color: rgba(255, 255, 255, 0.5);
+    color: rgba(0, 0, 0, 1);
     outline: none;
 }
-button:hover, input:hover, option:hover {
+input[type="radio"] + label:after + label:before {
+    content: "";
+    display: inline-block;
+    width: 4px;
+    height: 4px;
+    margin: 0;
+    border-radius: 50%;
+    border: 2px solid var(--bright-secondary);
+    background-color: rgba(255, 255, 255, 0.5);
+}
+button:hover, input:hover, option:hover, select:hover {
     outline-style: solid;
-    outline-width: 3px;
+    outline-width: 1px;
     outline-color: var(--bright-secondary);
     background: rgba(255, 255, 255, 1);
     /* transform: scale(1.05); */
@@ -88,18 +109,6 @@ input:focus {
     justify-items: start;
     align-items: start;
 }
-.shelf > img {
-    /* width: 100%; */
-    /* height: 100%; */
-    /* object-fit: cover; */
-    /* border-radius: 4px; */
-    /* box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); */
-    grid-area: 1 / 1 / 2 / -1;
-    max-width: 100%;
-    min-height: 10rem;
-    max-height: 20%;
-    align-self: end;
-}
 .book-item {
     width: 100%;
     height: 100%;
@@ -114,13 +123,24 @@ input:focus {
 
     transition: transform 400ms ease;
 }
+#shelfImage {
+    justify-self: center;
+    width: 180%;
+    height: 10rem;
+    /* object-fit: cover; */
+    /* border-radius: 4px; */
+    /* box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); */
+    grid-area: 4 / 1 / -1 / -1;
+    min-height: 10rem;
+}
 .bookCover {
     width: 10rem;
     height: 15rem;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    box-shadow: -5px -3px 0px rgba(0, 0, 0, 1);
     border-radius: 4px;
     grid-area: 2 / 2 / 5 / 3;
     transition: transform 200ms ease;
+    z-index: 1;
 }
 /* Style the book details container */
 .book-details { 
@@ -131,7 +151,8 @@ input:focus {
     padding: 1px; /* Add some padding */
     display: none;
     transition: transform 400ms ease;
-
+    z-index: 2;
+    line-height: 0.6rem;
 }
 .book-item:hover .bookCover{
     transform: scale(0.97);
@@ -160,7 +181,10 @@ input:focus {
     margin-top: 0;
 }
 .miniForm label {
-    font-size: 12px;
+    font-size: 0.7rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: left;
 }
 /* target labels for each radio button */
 .miniForm label[for="excellent"],
@@ -169,8 +193,9 @@ label[for="worn"],
 label[for="hardcover"],
 label[for="softcover"],
 label[for="handbook"] { 
-    font-size: 10px;
+    font-size: 0.4rem;
     margin-right: 0; 
+    text-transform: uppercase;
 }
 
 

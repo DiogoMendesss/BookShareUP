@@ -26,6 +26,7 @@ header h1 {
     background-color: var(--dark-primary);
     transition: 200ms ease; /* smooth the width extension */
     z-index: 99;
+    margin: 0;
 }
 .navbar-nav { /* corresponds to the ul */
     list-style: none; /* remove default list style */

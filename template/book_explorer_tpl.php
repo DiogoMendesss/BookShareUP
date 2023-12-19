@@ -27,8 +27,8 @@
             $bookGenres = getBookGenres($row['id']);
             
         ?>
-        <img src="image/shelf1.png" alt="" class="shelf">
         <article class="book-item">
+            <img id="shelfImage" src="image/shelf2.png" alt="shelf-image">
             <img class="bookCover" src="image/bookcover/<?php echo $row['id'] ?>.jpg" alt="">
             <div class="book-details">
                 <h3><?php echo $row['name'] ?></h2>
