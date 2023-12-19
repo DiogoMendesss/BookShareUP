@@ -34,6 +34,9 @@
     </section>
 
     <h1 id=profile_name> <?php echo getUserFullName($up_number) ?> </h1>
+    <form action = 'action_change_user_status.php' method = 'post'>
+        <input type = 'submit' name = 'ChangeStatus' value = "Change Status to <?php echo getOtherUserStatus($up_number) ?> ">
+    </form>
     <section class = "profile-info">
         <h2 id=profile_upNumber> UP Number: <?php echo $up_number ?> </h2>
         <h2 id=profile_campus> Attending Campus: <?php $user_campuses = getUserFacultyCampus($up_number);

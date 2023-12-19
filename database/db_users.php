@@ -77,6 +77,15 @@ function getUserStatus($userID) {
   return $stmt->fetchColumn();
 }
 
+function getOtherUserStatus($userID) {
+  $currentStatus = getUserStatus($userID);
+  if ($currentStatus === 'active') {
+    return 'inactive';
+  } else {
+    return 'active';
+  }
+}
+
 function addUserCampus($userID, $campus){
   global $dbh;
   $stmt = $dbh->prepare('INSERT INTO UserCampus (user, campus) VALUES (?, ?)');
