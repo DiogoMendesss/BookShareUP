@@ -171,30 +171,30 @@ INSERT INTO Book(name, author) VALUES
     ('Freakonomics', 'Steven D. Levitt and Stephen J. Dubner')
     ;
 
-    INSERT INTO Genre (genre)
+INSERT INTO Genre (genre)
 VALUES 
-    ('Fiction'), 
-    ('Non-fiction'), 
-    ('Thriller'), 
-    ('Science'), 
-    ('Fantasy'), 
-    ('Mystery'), 
-    ('Romance'), 
-    ('Historical Fiction'), 
-    ('Sci-Fi'), 
     ('Biography'), 
-    ('History'), 
-    ('Self-help'), 
     ('Business'), 
-    ('Poetry'), 
-    ('Tragedy'), 
+    ('Classic'), 
     ('Comedy'), 
+    ('Comics'), 
+    ('Dystopia'), 
+    ('Fantasy'), 
+    ('Fiction'), 
+    ('Historical Fiction'), 
+    ('History'), 
+    ('Horror'), 
     ('Manga'), 
-    ('Comics'),
-    ('Classic'),
-    ('Dystopia'),
-    ('Horror')
-    ;
+    ('Mystery'), 
+    ('Non-fiction'), 
+    ('Poetry'), 
+    ('Romance'), 
+    ('Sci-Fi'), 
+    ('Science'), 
+    ('Self-help'), 
+    ('Thriller'), 
+    ('Tragedy')
+;
 
     -- Insert statements for BookGenre relationships (adjusted)
 INSERT INTO BookGenre (book, genre) VALUES
