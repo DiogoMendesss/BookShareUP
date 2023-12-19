@@ -8,19 +8,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['action']) && $_POST['a
     // Get the form data
     $bookCopyID = $_POST['bookCopyID'];
     $borrowerID = $_SESSION['up_number'];
-    $startDate = date("Y-m-d");
-    $duration = 30; // 30 days, adjust as needed
+    //$startDate = date("Y-m-d");
+    //$duration = 31; // 31 days, adjust as needed
     $ownerCampus = $_POST['campus'][0]; // Assuming there's only one campus, adjust accordingly
 
     // Calculate expiration date
-    $expirationDate = date("Y-m-d H:i:s", strtotime($startDate . "+ $duration days"));
+    //$expirationDate = date("Y-m-d", strtotime($startDate . "+ $duration days"));
 
     // Add the borrowing record to the database
     $status = 'pending'; // You can change this as needed
     $proposal = null; // You may need to set this based on your database structure
 
     try {
-        insertBorrowing($status, $bookCopyID, $borrowerID, $startDate, $duration, $ownerCampus, $expirationDate);
+        insertBorrowing($status, $bookCopyID, $borrowerID, $ownerCampus);
         // Redirect or do something after successful borrowing
         updateUserStatus($borrowerID, 'reading');
         header('Location: feed.php'); // Change to the appropriate page
