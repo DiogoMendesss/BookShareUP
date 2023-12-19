@@ -1,5 +1,6 @@
 header {
     background-color: var(--dark-primary);
+    width: 100vw;
 }
 header h1 {
     color: var(--accent-color1);
@@ -23,6 +24,7 @@ header h1 {
 
 .navbar {
     position: fixed;
+    /* background: linear-gradient(to right, black, transparent); */
     background-color: var(--dark-primary);
     transition: 200ms ease; /* smooth the width extension */
     z-index: 99;
@@ -41,6 +43,7 @@ header h1 {
 }
 .nav-item {
     width: 100%;
+    /* transition: 600ms ease; smooth the width extension */
 }
 .nav-item:last-child {
     margin-top: auto; /* adjust (make as big as possible) the Logout button to the bottom */
@@ -51,45 +54,55 @@ header h1 {
     width: 30px;
     height: 30px;
     min-width: 2rem;
-    margin: 0 1rem;
+    margin-left: 0.5rem;
+    border-radius: 50%;
     border: 2px double var(--dark-primary);
+    transition: transform 300ms ease;
 }
 .nav-link { /* icons and links*/
-    height: 4rem;   /* vertical spacing of the icons */
+
     display: flex;
     align-items: center;
     color: var(--accent-color1);
     text-decoration: none;  /* remove defaults like underline */
     filter: grayscale(100%); /* opacity(0.7);  /* hue-rotate(20); /* icon default: B&W */
-    transition: var(--transition-speed) /* ~600ms */
+    transition: var(--transition-speed) ease /* ~600ms */
 }
 .link-text {
-    display: none; /* hidden by default when not hovered on */
-    margin-left: 1rem;
+    display: inline; /* hidden by default when not hovered on */
+    margin-left: 0;
+    text-align: center;
+    background-color: var(--dark-primary);
+    padding: 0.7rem;
+    white-space: nowrap; /* prevent text from wrapping */
+    border-radius: 1.7rem 1.7rem 1.7rem 1.7rem;
+    opacity: 0;
+    transform: translateX(-2rem);
+    transition: opacity 300ms, transform 300ms ease;
 }
 
-.nav-link:hover {
-    filter: grayscale(0%); /* opacity(1); */
-    background: var(--dark-secondary);
+.nav-link:hover img {
+    transform: scale(1.15);
 }
+
+
 .logo {
     font-weight: bold;
     text-transform: uppercase;
-    margin-bottom: 1rem;
     text-align: center;
     color: var(--accent-color1);
-    background: var(--dark-primary);
+    /* background: var(--dark-primary); */
     font-size: 1.5rem;
     letter-spacing: 0.3ch;
     width: 100%;
 }
 .logo img {
-    width: 30px;
-    height: 45px;
+    width: 4rem;
+    height: 3rem;
     min-width: 2rem;
     margin: 0 1rem;
     transform: rotate(0deg);
-    transition: transform 800ms;
+    transition: transform 500ms ease;
 }
 .navbar:hover .logo img {
     transform: rotate(-180deg);
@@ -99,15 +112,24 @@ header h1 {
 @media only screen and (min-width: 600px) {
     .navbar {
         top: 0;
-        width: 4rem;
-        height: 100vh;
+        width: 3rem;
+        height: 100%;
     }
-    .navbar:hover {
-        width: 10rem;
+    .logo {
+        margin-bottom: 6rem;
     }
-    .navbar:hover .link-text {   /* show nav-item labels on hover */
-        display: inline;
-        transition: opacity var(--transition-speed);
+    .nav-link {
+        gap: 2rem;
+        height: 3rem;   /* vertical spacing of the icons */
+    }
+    .nav-item:hover .link-text {
+        opacity: 1;
+        transform: translateX(-1rem);   /* -1rem and not 0 to fix the spacing */
+    }
+    .nav-link:hover {
+        filter: grayscale(0%); /* opacity(1); */
+        background: var(--dark-secondary);
+        border-radius: 20%;
     }
 }
 
@@ -124,7 +146,9 @@ header h1 {
         flex-direction: row;
     }
     .nav-link {
-        justify-content: center; 
+        /* justify-content: center; */
+        gap: 2rem;
+        max-width: 2rem;   /* vertical spacing of the icons */
     }
     main {
         margin: 0;

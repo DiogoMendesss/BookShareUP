@@ -7,7 +7,7 @@
     align-items: center; /* Center items horizontally */
 }
 
-form{
+.profile-main form{
     display: flex;
     flex-direction: column;
     align-items: center;
