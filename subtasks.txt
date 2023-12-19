@@ -7,3 +7,6 @@
 7 - Manipulação de datas --------- DONE
 8 - ADMIN --------- DONE
 9 - sHOW/eDIT CAMPUS
+10 - view other user profile
+11 - organizar borrowing functions
+12 - dar sort feed e library
