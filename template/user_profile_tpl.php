@@ -50,7 +50,13 @@
             </form>
             <?php
         }
-        ?>
+        if ($borrow['status'] === 'pending'){ ?>
+            <form action="action_update_borrow_status.php" method="post">
+                <input type="hidden" name="bookID" value="<?php echo $borrow['copyID']; ?>">
+                <input type="hidden" name="borrowerID" value="<?php echo $borrow['borrower_up']; ?>">
+                <input type="hidden" name="borrowStatus" value="rejected">
+                <input type="submit" value="Reject Request">
+        <? } ?>
     </section>
 
 </main>

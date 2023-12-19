@@ -7,21 +7,22 @@ require_once('database/db_users.php');
 
 $borrowerID = $_POST['borrowerID'];
 $newStatus = $_POST['borrowStatus'];
-$bookID = $_POST['bookID'];
+$copyID = $_POST['bookID'];
 
 // Update the status
-updateBorrowStatus($bookID, $borrowerID, $newStatus);
+updateBorrowStatus($copyID, $borrowerID, $newStatus);
 
 // Redirect or do something after successful update
 if ($newStatus === 'returned') {
     updateUserStatus($borrowerID, 'active');
 }
 elseif ($newStatus === 'accepted') {
-    updateBookCopyAvailability($bookCopyID, 'borrowed');
+    updateBookCopyAvailability($copyID, 'borrowed');
 }
 elseif ($newStatus === 'archived') {
-    updateBookCopyAvailability($bookCopyID, 'available');
+    updateBookCopyAvailability($copyID, 'available');
 }
+
 header('Location: feed.php');
 exit();
 ?>

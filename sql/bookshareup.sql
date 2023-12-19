@@ -72,7 +72,7 @@ CREATE TABLE InterestedIn (
 -- Borrowing table
 CREATE TABLE Borrowing (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
-    status TEXT CHECK (status IN ('pending', 'accepted', 'delivered', 'picked-up', 'returned', 'archived', 'expired')),
+    status TEXT CHECK (status IN ('pending', 'accepted', 'delivered', 'picked-up', 'returned', 'archived', 'expired', 'rejected')),
     copyID INTEGER NOT NULL REFERENCES BookCopy ON DELETE CASCADE ON UPDATE CASCADE,
     user INTEGER NOT NULL REFERENCES User ON DELETE SET NULL ON UPDATE CASCADE,
     start_date TEXT NOT NULL,
