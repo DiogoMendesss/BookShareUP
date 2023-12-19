@@ -8,7 +8,6 @@ require_once('database/db_users.php');
 $borrowerID = $_POST['borrowerID'];
 $newStatus = $_POST['newStatus'];
 $copyID = $_POST['bookID'];
-
 // Update the status
 updateBorrowStatus($copyID, $borrowerID, $newStatus);
 
@@ -21,6 +20,9 @@ elseif ($newStatus === 'accepted') {
 }
 elseif ($newStatus === 'archived') {
     updateBookCopyAvailability($copyID, 'available');
+}
+elseif($newStatus === 'delivered'){
+    initializeDates($copyID, $borrowerID);
 }
 
 header('Location: user_profile.php');

@@ -176,11 +176,20 @@
       }
     
 
-      function insertBorrowing($status, $bookCopyID ,$user, $startDate, $duration, $campus, $expirationDate) {
+      function insertBorrowing($status, $bookCopyID ,$user, $campus) {
         global $dbh;
-        $stmt = $dbh->prepare('INSERT INTO Borrowing (status, copyID ,user, start_date, duration, campus, expiration_date) VALUES (?, ?, ?, ?, ?, ?, ?)');
-        $stmt->execute([$status, $bookCopyID,$user, $startDate, $duration, $campus, $expirationDate]);
+        $stmt = $dbh->prepare('INSERT INTO Borrowing (status, copyID ,user, campus) VALUES (?, ?, ?, ?)');
+        $stmt->execute([$status, $bookCopyID,$user, $campus]);
     }    
+
+    function initializeDates($copyID, $borrowerID){
+      $startDate = date("Y-m-d");
+      $duration = 31;
+      $expirationDate = date("Y-m-d", strtotime($startDate . "+ $duration days"));
+      global $dbh;
+      $stmt = $dbh->prepare('UPDATE Borrowing SET start_date = ?, duration = 31, expiration_date = ? WHERE copyID = ? AND user = ?');
+      $stmt->execute([$startDate, $expirationDate, $copyID, $borrowerID]);
+  }
 
       function updateBorrowStatus($bookID, $borrowerID, $newStatus) {
         global $dbh;
@@ -201,6 +210,7 @@
         $stmt->execute();
         return $stmt->fetchAll();
     }
+    
 
     function getBorrowingsBySearch($ownerID, $borrowerID, $campus) {
       global $dbh;
