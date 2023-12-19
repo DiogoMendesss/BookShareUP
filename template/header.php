@@ -24,7 +24,7 @@
                         </a>
                     </li>
                     <il class="nav-item">
-                        <a href="book_explorer.php" class="nav-link"> 
+                        <a href="book_explorer.php?page_num=1" class="nav-link"> 
                             <img src="image/avatar/avatar_1.jpg" alt="Explorer">
                             <span class="link-text">Explorer</span>
                         </a>

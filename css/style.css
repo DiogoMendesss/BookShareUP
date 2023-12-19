@@ -170,16 +170,30 @@ input:focus {
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
     border-radius: 10px; /* Rounded corners */
     padding: 1px; /* Add some padding */
-    display: none;
+    display: none; 
     transition: transform 400ms ease;
     z-index: 2;
     line-height: 0.6rem;
 }
+
+.book-details-form { 
+    grid-area: 3 / 1 / 4 / -1;
+    background-color: rgba(235, 233, 233, 0.8);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    border-radius: 10px; /* Rounded corners */
+    padding: 1px; /* Add some padding */
+    transition: transform 400ms ease;
+    z-index: 2;
+    line-height: 0.6rem;
+}
+
+
 .book-item:hover .bookCover{
     transform: scale(0.97);
     opacity: 0.5;
     animation-play-state: paused;
 }
+
 
 .book-item:hover .book-details {
     transform: scale(1.02);
@@ -191,6 +205,10 @@ input:focus {
     justify-items: center;
     align-items: center;
 }
+
+
+
+
 .book-details h3 {
     color: #333;
     margin: 0;
