@@ -14,6 +14,7 @@
 
     $n_books = getNumberOfBooks();
     $n_pages = ceil($n_books / 40);
+
   
     if (isset($_GET['page_num']) && $_GET['page_num'] > 0) {
         $page_num = $_GET['page_num'];
@@ -23,6 +24,7 @@
     } else {
         $page_num = 1;
     }
+
 
     try {
         if (isset($search_title) || isset($search_author) || isset($search_genre)) {

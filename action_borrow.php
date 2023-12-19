@@ -3,6 +3,7 @@ session_start();
 require_once('database/init.php');
 require_once('database/db_books.php'); 
 require_once('database/db_users.php'); 
+require_once('database/db_borrowings.php');
 
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['action'])) {
     // Get the form data

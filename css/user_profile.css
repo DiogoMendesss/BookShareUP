@@ -1,0 +1,137 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+.profile-main{ 
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center items horizontally */
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+/* Style for the file input button */
+input[type=file] {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Poppins', sans-serif;
+    gap: 1rem;
+    font-weight: 600;
+    transition: all 0.35s ease;
+    padding: 0.3rem 0.6rem;
+    border-radius: 2rem;
+    border-color: black;
+    max-width: 80%;
+    margin-bottom: 0.5rem; /* Add space between button and file indication */
+}
+
+/* Style for the file input button */
+input[type=file]::-webkit-file-upload-button {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    padding: 0.3rem 0.6rem;
+    border-radius: 2rem;
+    border: 2px solid black;
+    background-color: #ffffff; /* Specify background color */
+    cursor: pointer;
+    transition: background-color 0.35s ease; /* Add transition effect */
+}
+
+/* Change background color on hover */
+input[type=file]::-webkit-file-upload-button:hover {
+    cursor: pointer;
+    background-color: black;
+    color: white;
+}
+
+
+input[type=submit] {
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    font-weight: 600;
+    transition: all 0.35s ease;
+    padding: 0.3rem 0.6rem;
+    border-radius: 2rem;
+    border-color: black;
+}
+
+input[type=submit]:hover{
+    cursor: pointer;
+    background-color: black;
+    color: white;
+}
+
+.empty-space-image {
+    padding-bottom: 0.7rem;
+    position: relative;
+    width: 30%;
+}
+
+.profile-pic img {
+    width: 100%;
+    height: auto; /* Maintain aspect ratio */
+    display: block; /* Remove extra space below inline images */
+    border-radius: 50%;
+    box-sizing: border-box;
+}
+
+.edit-profile-pic {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0; /* Initially hidden */
+}
+
+/* Hover effect */
+.empty-space-image:hover .profile-pic img {
+    opacity: 0.5; /* Adjust the opacity as needed */
+    transition: 0.2s ease; /* Add transition effect for smooth visibility change */
+}
+
+.empty-space-image:hover .edit-profile-pic {
+    opacity: 1; /* Show the form on hover */
+}
+
+/* Style for the user information section */
+.profile-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 1rem;
+}
+
+/* Style for each user info field */
+.user-info-field {
+    display: flex; /* Add flex display to make the fields in line */
+    align-items: center; /* Align items vertically within each user-info-field */
+    margin-bottom: 0.3rem;
+    text-align: center;
+}
+
+/* Style for the user info labels (h3 elements) */
+.user-info-field h3 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    margin-right: 0.5rem; /* Add right margin between label and data */
+}
+
+/* Style for the user info data (span elements) */
+.user-info-field .user_info {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: 1rem;
+}

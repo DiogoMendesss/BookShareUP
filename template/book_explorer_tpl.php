@@ -1,5 +1,6 @@
     <h1>Explorer</h1>
 
+    <!-- SEARCH BAR -->
     <form id="search" action="book_explorer.php">
         <input type="text" name="search_title" placeholder="Book Title" value="<?php echo $search_title ?>">
         <input type="text" name="search_author" placeholder="Book Author" value="<?php echo $search_author ?>">
@@ -14,33 +15,42 @@
         <button>Search</button>
         <a class="floatingButton" href="book_explorer.php">Clear</a>
     </form>
+
 </header>
+
 <main>
-
+    <!-- BOOKS DISPLAY -->
     <section class="shelf">
-        <?php //var_dump($books); ?>
-        <?php foreach ($books as $row) {
-            $isBookAdded = isBookAdded($userID, intval($row['id']));
-            $book_action = $isBookAdded ? 'remove_from_wanttoread' : 'add_to_wanttoread';
-            $isCopyAdded = isCopyAdded($userID, intval($row['id']));
-            $copy_action = $isCopyAdded ? 'remove_from_mylibrary' : 'add_to_mylibrary';
-            $bookGenres = getBookGenres($row['id']);
-        
-        ?>
-        <article class="book-item">
-            <img class="shelfImage" src="image/shelf2.png" alt="shelf-image">
-            <img class="bookCover" src="image/bookcover/<?php echo $row['id'] ?>.jpg" alt="">
-            <div class="book-details">
-                <h3><?php echo $row['name'] ?></h2>
-                <h3 class="author"><?php echo $row['author'] ?></h3>
-                <?php foreach ($bookGenres as $genre) { ?>
-                    <!-- <p class="bookgenre"><?php echo $genre['genre'] ?></p> -->
-                <?php } ?>
 
-                    <?php if (isset($_GET['addBook']) && $_GET['addBook'] == $row['id']) { ?>
+        <?php foreach ($books as $book) {
+            $isBookAdded = isBookAdded($userID, $book['id']);
+            $book_action = $isBookAdded ? 'remove_from_wanttoread' : 'add_to_wanttoread';
+            $isCopyAdded = isCopyAdded($userID, $book['id']);
+            $copy_action = $isCopyAdded ? 'remove_from_mylibrary' : 'add_to_mylibrary';
+            $bookGenres = getBookGenres($book['id']);
+            ?>
+
+            <article class="book-item"> 
+        
+            <img class="shelfImage" src="image/shelf2.png" alt="shelf-image">
+            <img class="bookCover" src="image/bookcover/<?php echo $book['id'] ?>.jpg" alt="">
+                <?php if (isset($_GET['addBook']) && $_GET['addBook'] == $book['id']  || isset($_GET['addCopy']) && $_GET['addCopy'] == $book['id']) { ?>
+                <div class="book-details-form">
+                <?php } else { ?> 
+                <div class="book-details"> <?php } ?>
+
+                <h3><?php echo $book['name'] ?></h2>
+                <h3 class="author"><?php echo $book['author'] ?></h3>
+
+                <?php foreach ($bookGenres as $genre) { ?>
+                <?php } ?>
+                    <!-- ADD BOOK TO WANT TO READ FORMS: If the book is already added it is shown a button to remove
+                    otherwise it is shown a button to add the book. If the last is clicked the variable $_GET['addBook'] is set and 
+                    another form (the first in the code) to choose the interest level and confirm the add is shown-->
+                    <?php if (isset($_GET['addBook']) && $_GET['addBook'] == $book['id']) { ?>
                         <form class="miniForm" action="action_book_wanttoread.php" method="post">
                             <input type="hidden" name="action" value="confirm_add_book">
-                            <input type="hidden" name="book_id" value="<?php echo $row['id']; ?>">
+                            <input type="hidden" name="book_id" value="<?php echo $book['id']; ?>">
                             <input type="hidden" name="page_num" value="<?php echo $page_num ?>">
                             <label>Interest Level:</label>
                             <input type="radio" name="interest_level" value="1" required>1
@@ -51,7 +61,7 @@
                     <?php } else { ?>
                         <form class="miniForm" action="action_book_wanttoread.php" method="post">
                             <input type="hidden" name="action" value="<?php echo $book_action; ?>">
-                            <input type="hidden" name="book_id" value="<?php echo $row['id']; ?>">
+                            <input type="hidden" name="book_id" value="<?php echo $book['id']; ?>">
                             <input type="hidden" name="page_num" value="<?php echo $page_num ?>">
                             <input type="hidden" name="search_title" value="<?php echo $search_title ?>">
                             <input type="hidden" name="search_author" value="<?php echo $search_author ?>">
@@ -60,11 +70,14 @@
                         </form>
                     <?php } ?>
                        
-
-                    <?php if (isset($_GET['addCopy']) && $_GET['addCopy'] == $row['id']) { ?>
+                    <!-- ADD BOOK TO MY LIBRARY: If the user already has a copy of the book it is shown a button to remove
+                    otherwise it is shown a button to add a copy to My Library. If the last is clicked, the variable $_GET['addCopy'] is set and 
+                    another form (the first in the code) to fill the copy info and confirm the add is shown-->
+                    
+                    <?php if (isset($_GET['addCopy']) && $_GET['addCopy'] == $book['id']) { ?>
                         <form class="miniForm" action="action_copy.php" method="post">
                             <input type="hidden" name="action" value="confirm_add_copy">
-                            <input type="hidden" name="book_id" value="<?php echo $row['id']; ?>">
+                            <input type="hidden" name="book_id" value="<?php echo $book['id']; ?>">
                             <input type="hidden" name="page_num" value="<?php echo $page_num ?>">
 
                             <label>Condition: </label>
@@ -88,7 +101,7 @@
                     <?php } else { ?>
                         <form class="miniForm" action="action_copy.php" method="post">
                             <input type="hidden" name="action" value="<?php echo $copy_action; ?>">
-                            <input type="hidden" name="book_id" value="<?php echo $row['id']; ?>">
+                            <input type="hidden" name="book_id" value="<?php echo $book['id']; ?>">
                             <input type="hidden" name="page_num" value="<?php echo $page_num ?>">
                             <input type="hidden" name="search_title" value="<?php echo $search_title ?>">
                             <input type="hidden" name="search_author" value="<?php echo $search_author ?>">
