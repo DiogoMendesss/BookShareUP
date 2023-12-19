@@ -11,7 +11,7 @@
 
     function getBooks () {
         global $dbh;
-        $stmt = $dbh->prepare("SELECT * FROM Book");
+        $stmt = $dbh->prepare("SELECT * FROM Book ORDER BY name;");
         $stmt->execute();
         return $stmt->fetchAll();
     }
@@ -35,7 +35,8 @@
         $stmt = $dbh->prepare("SELECT Book.id, Book.name, Book.author, InterestedIn.interest_level 
                                 FROM Book 
                                 JOIN InterestedIn ON Book.id = InterestedIn.book 
-                                WHERE InterestedIn.user = ?;");
+                                WHERE InterestedIn.user = ?
+                                ORDER BY interest_level DESC, name;");
         $stmt->execute(array($userID));
         return $stmt->fetchAll();
     }
@@ -65,8 +66,8 @@
 
     function getBooksByPage($page_num) {
         global $dbh;
-        $stmt = $dbh->prepare('SELECT * FROM Book LIMIT ? OFFSET ?');
-        $stmt->execute(array(6, ($page_num-1)*6));
+        $stmt = $dbh->prepare('SELECT * FROM Book ORDER BY name LIMIT ? OFFSET ?');
+        $stmt->execute(array(40, ($page_num-1)*40));
         return $stmt->fetchAll();
       }
     
