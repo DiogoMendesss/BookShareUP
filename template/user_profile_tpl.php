@@ -7,7 +7,7 @@
 
 <main class = "profile-main">
     <section class = "profile-pic">
-        <img src = "image/avatar/hasbulla.jpg" alt = "Profile Picture">
+        <img src = "image/users/<?php echo $up_number ?>.jpg" alt = "Profile Picture">
     </section>
     <h1 id=profile_name> <?php echo getUserFullName($up_number) ?> </h1>
     <section class = "profile-info">

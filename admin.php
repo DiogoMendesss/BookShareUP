@@ -74,6 +74,7 @@
 
       if ($userID != 1) {
         echo 'You are not an admin!';
+        echo '<img src="image/clown.gif" alt="404" style="width:80wh;height:80vh;">';
       }else include_once('template/admin_tpl.php');
 
 ?>

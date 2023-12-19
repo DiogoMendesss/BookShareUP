@@ -7,11 +7,8 @@
     return $stmt->fetch();
   }
 
-  function mock_loginSuccess($up_number) {
-    global $dbh;
-    $stmt = $dbh->prepare('SELECT * FROM User WHERE up_number = ?');
-    $stmt->execute(array($up_number));
-    return $stmt->fetch();
+  function saveProfilePic($up_number) {
+    move_uploaded_file($_FILES['profile_pic']['tmp_name'], "image/users/$up_number.jpg");
   }
 
   function getUserFullName($up_number) {
