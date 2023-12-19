@@ -1,5 +1,7 @@
-<main>
     <h1>Feed</h1>
+</header>
+<main>
+    
     <section class="shelf">
         <?php foreach ($userProposals as $row) { 
             

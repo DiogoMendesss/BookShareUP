@@ -1,12 +1,14 @@
-
-<main>
     <h1>My Library</h1>
+</header>
+<main>
+   
     <section class="shelf">
         <?php foreach ($userCopies as $row) { 
             
         ?>
             <article class="book-item">
-                <img src="image/bookcover/<?php echo $row['book'] ?>.jpg" alt="">
+                <img class="shelfImage" src="image/shelf2.png" alt="shelf-image">
+                <img class="bookCover" src="image/bookcover/<?php echo $row['book'] ?>.jpg" alt="">
 
                 <div class="book-details">
                     <h2><?php echo $row['name'] ?></h2>
