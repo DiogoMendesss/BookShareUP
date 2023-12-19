@@ -56,7 +56,7 @@
                             <input type="hidden" name="search_author" value="<?php echo $search_author ?>">
                             <input type="hidden" name="search_genre" value="<?php echo $search_genre ?>">
                             <button type="submit"><?php echo ($isBookAdded ? 'Remove From Want To Read' : 'Want To Read'); ?></button>
-                            </form>
+                        </form>
                     <?php } ?>
                     
                

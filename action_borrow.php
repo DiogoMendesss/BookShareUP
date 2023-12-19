@@ -18,7 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['action']) && $_POST['a
     // Add the borrowing record to the database
     $status = 'pending'; // You can change this as needed
     $proposal = null; // You may need to set this based on your database structure
-
+    
     try {
         insertBorrowing($status, $bookCopyID, $borrowerID, $ownerCampus);
         // Redirect or do something after successful borrowing

@@ -82,7 +82,8 @@
         global $dbh;
         $stmt = $dbh->prepare("SELECT * FROM BookCopy 
                                 JOIN Book ON BookCopy.book = Book.id 
-                                WHERE owner = ?;");
+                                WHERE owner = ?
+                                ORDER BY Book.name;");
         $stmt->execute(array($userID));
         return $stmt->fetchAll();
       }
@@ -96,7 +97,9 @@
                                 JOIN User ON BookCopy.owner=User.up_number
                                 WHERE InterestedIn.user=?
                                 AND owner != ?
-                                AND availability = 'available';");
+                                AND User.status != 'inactive'
+                                AND availability = 'available'
+                                ORDER BY Book.name, InterestedIn.interest_level DESC;");
         $stmt->execute(array($userID, $userID));
         return $stmt->fetchAll();
       }
