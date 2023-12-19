@@ -107,14 +107,10 @@
       function getCurrentlyReadingBook($readerID) {
         global $dbh; // Assuming $dbh is your SQLite database connection
     
-        $stmt = $dbh->prepare("SELECT Book.name AS bookName, Book.author AS bookAuthor, User.name AS ownerName, Book.id AS bookID, BookCopy.id AS copyID, 
-        BookCopy.condition AS bookCopyCondition, BookCopy.copy_type AS bookCopyType, BookCopy.owner AS ownerID, UserCampus.campus AS ownerCampus,
-        Borrowing.status AS borrowStatus, Borrowing.start_date AS borrowStartDate, Borrowing.expiration_date AS borrowExpirationDate, Borrowing.user AS borrowerID
-        FROM Borrowing
+        $stmt = $dbh->prepare("SELECT Borrowing.*, BookCopy.*, Book.*, User.name AS owner_name  FROM Borrowing
         JOIN BookCopy ON Borrowing.copyID = BookCopy.id
         JOIN Book ON BookCopy.book = Book.id
         JOIN User ON BookCopy.owner = User.up_number
-        LEFT JOIN UserCampus ON BookCopy.owner = UserCampus.user
         WHERE Borrowing.user = ?");
     
         $stmt->execute(array($readerID));

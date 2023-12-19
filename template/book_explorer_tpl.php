@@ -43,7 +43,7 @@
                             <input type="hidden" name="book_id" value="<?php echo $row['id']; ?>">
                             <input type="hidden" name="page_num" value="<?php echo $page_num ?>">
                             <label>Interest Level:</label>
-                            <input type="radio" name="interest_level" value="1">1
+                            <input type="radio" name="interest_level" value="1" required>1
                             <input type="radio" name="interest_level" value="2">2
                             <input type="radio" name="interest_level" value="3">3
                             <button type="submit">Confirm</button>
@@ -85,7 +85,6 @@
     
                             <button type="submit">Confirm</button>
                         </form>
-
                     <?php } else { ?>
                         <form class="miniForm" action="action_copy.php" method="post">
                             <input type="hidden" name="action" value="<?php echo $copy_action; ?>">
