@@ -5,6 +5,7 @@
     require_once('database/db_books.php');
     require_once('database/db_users.php');
     require_once('next_borrow_state.php');
+    require_once('database/db_borrowings.php');
     
     $userID = $_SESSION['up_number'];
 
