@@ -2,13 +2,14 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap');
 
 :root {
-    font-size: 18px;
-    font-family: 'Roboto', sans-serif;
-    --dark-primary: #5c2821;
-    --dark-secondary: #461e18;
-    --bright-primary: #ffdda9;
-    --bright-secondary: #ffd29e;
+    font-size: 16px;
+    font-family: Roboto, sans-serif;
+    --dark-primary: #110808;
+    --dark-secondary: #3e3736;
+    --bright-primary: #686868;
+    --bright-secondary: #ff8900;
     --accent-color1: #f04b35;
+    --accent-color2: #f0a435;
     --min-width-size: 600px;
 }
 * {
@@ -23,8 +24,6 @@ body { /* setting defaults */
     padding: 0;
     color: black;
     background-color: white;
-    display: flex;
-    flex-direction: column;
 
     border: 3px solid limegreen;
 }
@@ -80,15 +79,26 @@ input:focus {
 /* book stuff */
 .shelf {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(min-content, 15rem));
-    grid-template-rows: repeat(auto-fill, minmax(min-content, 15rem));
+    grid-template-columns: repeat(auto-fill, minmax(min-content, 14rem));
+    grid-template-rows: repeat(auto-fill, minmax(min-content, 14rem));
     /* minmax() prevents the grid from letting its book-items overflow */
     grid-gap: 1%;
 
     justify-content: center;
-    align-content: center;
     justify-items: start;
     align-items: start;
+}
+.shelf > img {
+    /* width: 100%; */
+    /* height: 100%; */
+    /* object-fit: cover; */
+    /* border-radius: 4px; */
+    /* box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); */
+    grid-area: 1 / 1 / 2 / -1;
+    max-width: 100%;
+    min-height: 10rem;
+    max-height: 20%;
+    align-self: end;
 }
 .book-item {
     width: 100%;
@@ -102,14 +112,15 @@ input:focus {
     justify-items: stretch;
     align-items: stretch;
 
-    transition: transform 300ms ease;
+    transition: transform 400ms ease;
 }
 .bookCover {
     width: 10rem;
     height: 15rem;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
     border-radius: 4px;
-    grid-area: 2  / 2 / 5 / 3;
+    grid-area: 2 / 2 / 5 / 3;
+    transition: transform 200ms ease;
 }
 /* Style the book details container */
 .book-details { 
@@ -117,16 +128,17 @@ input:focus {
     background-color: rgba(235, 233, 233, 0.8);
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
     border-radius: 10px; /* Rounded corners */
-    padding: 0; /* Add some padding */
+    padding: 1px; /* Add some padding */
     display: none;
+    transition: transform 400ms ease;
 
 }
 .book-item:hover .bookCover{
-    transform: scale(0.95);
+    transform: scale(0.97);
     opacity: 0.5;
 }
 .book-item:hover .book-details {
-    transform: scale(1.05);
+    transform: scale(1.02);
    
     display: grid;
     grid-template-rows: repeat(3, 1fr);
@@ -143,8 +155,22 @@ input:focus {
     color: #777;
     margin: 0;
 }
-.book-details .miniForm {
+.miniForm {
     margin: 0.5rem;
+    margin-top: 0;
+}
+.miniForm label {
+    font-size: 12px;
+}
+/* target labels for each radio button */
+.miniForm label[for="excellent"],
+label[for="good"],
+label[for="worn"],
+label[for="hardcover"],
+label[for="softcover"],
+label[for="handbook"] { 
+    font-size: 10px;
+    margin-right: 0; 
 }
 
 

@@ -1,5 +1,7 @@
-<main>
     <h1>Currently Reading Book</h1>
+</header>
+<main>
+    
     <section class="shelf">
         <?php 
         

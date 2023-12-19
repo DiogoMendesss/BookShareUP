@@ -52,4 +52,4 @@
                         </form>
                     </il>
             </nav>
-        </header>
+<!-- header only closes in the templates to include the title and search bar in the header -->

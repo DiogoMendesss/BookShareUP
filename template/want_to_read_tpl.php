@@ -1,5 +1,7 @@
-<main>
     <h1>Want To Read</h1>
+</header>
+<main>
+    
     <section class="shelf">
         <?php foreach ($wantToReadBooks as $row) { 
             

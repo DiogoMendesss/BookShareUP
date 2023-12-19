@@ -1,6 +1,7 @@
-
-<main>
     <h1>My Library</h1>
+</header>
+<main>
+   
     <section class="shelf">
         <?php foreach ($userCopies as $row) { 
             
