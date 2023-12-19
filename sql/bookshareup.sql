@@ -110,6 +110,8 @@ CREATE TABLE UserBadge (
     PRIMARY KEY (user, badge)
 );
 
+INSERT INTO User VALUES (1, 'adminpass', 'ADMIN', 'active');
+
 INSERT INTO Book(name, author) VALUES
     ('To Kill a Mockingbird', 'Harper Lee'),
     ('1984', 'George Orwell'),

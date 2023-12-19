@@ -1,8 +1,8 @@
-1 - Ordernar Genres inserts alfabeticamente
+1 - Ordernar Genres inserts alfabeticamente  --------- DONE
 2 - Dar sort pelo interest_level e por ordem alfabética na Want To Read
 3 - Dar sort  por ordem alfabética no Explorer
 4 - Adicionar botoes add book/copy às want to read e my library (redirecionam para o explorer)
 5 - Automatizar update Availability na my library 
 6 - Terminar Feed dinâmico
 7 - Manipulação de datas
-8 - 
+8 - ADMIN
