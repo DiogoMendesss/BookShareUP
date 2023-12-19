@@ -28,16 +28,16 @@
         ?>
 
         <article class="book-item">
-            <img src="image/bookcover/<?php echo $row['id'] ?>.jpg" alt="">
+            <img class="bookCover" src="image/bookcover/<?php echo $row['id'] ?>.jpg" alt="">
             <div class="book-details">
-                <h2><?php echo $row['name'] ?></h2>
+                <h3><?php echo $row['name'] ?></h2>
                 <h3 class="author"><?php echo $row['author'] ?></h3>
                 <?php foreach ($bookGenres as $genre) { ?>
                     <!-- <p class="bookgenre"><?php echo $genre['genre'] ?></p> -->
                 <?php } ?>
 
                     <?php if (isset($_GET['addBook']) && $_GET['addBook'] == $row['id']) { ?>
-                        <form action="action_book_wanttoread.php" method="post">
+                        <form class="miniForm" action="action_book_wanttoread.php" method="post">
                         <input type="hidden" name="action" value="confirm_add_book">
                         <input type="hidden" name="book_id" value="<?php echo $row['id']; ?>">
                         <input type="hidden" name="page_num" value="<?php echo $page_num ?>">
@@ -48,7 +48,7 @@
                         <button type="submit">Confirm</button>
                         </form>
                     <?php } else { ?>
-                        <form action="action_book_wanttoread.php" method="post">
+                        <form class="miniForm" action="action_book_wanttoread.php" method="post">
                         <input type="hidden" name="action" value="<?php echo $book_action; ?>">
                         <input type="hidden" name="book_id" value="<?php echo $row['id']; ?>">
                         <input type="hidden" name="page_num" value="<?php echo $page_num ?>">
@@ -61,7 +61,7 @@
                 </form>
 
                     <?php if (isset($_GET['addCopy']) && $_GET['addCopy'] == $row['id']) { ?>
-                        <form action="action_copy.php" method="post">
+                        <form class="miniForm" action="action_copy.php" method="post">
                         <input type="hidden" name="action" value="confirm_add_copy">
                         <input type="hidden" name="book_id" value="<?php echo $row['id']; ?>">
                         <input type="hidden" name="page_num" value="<?php echo $page_num ?>">

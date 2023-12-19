@@ -7,7 +7,9 @@ main {
     align-items: center;
     /* font-family: "Roboto", sans-serif; */
     background: linear-gradient(90deg, var(--bright-primary) 50%, var(--dark-secondary) 50%);
+    /* background: url('/image/minecraft-wp.jpg'); */
 }
+    
 input[type="checkbox"] {
     display: none;
 }

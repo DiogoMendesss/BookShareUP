@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap');
 
 :root {
-    font-size: 16px;
+    font-size: 18px;
     font-family: 'Roboto', sans-serif;
     --dark-primary: #5c2821;
     --dark-secondary: #461e18;
@@ -10,6 +10,9 @@
     --bright-secondary: #ffd29e;
     --accent-color1: #f04b35;
     --min-width-size: 600px;
+}
+* {
+    box-sizing: border-box;
 }
 
 /* WARNING: no . before!!! warning */
@@ -36,7 +39,6 @@ body::-webkit-scrollbar-thumb {
     background: var(--accent-color1);
 }
 main { /* rem unit relative to font size: 16 px is the default */
-    width: auto;
     height: 100%;
     margin-left: 4rem; /* leave space for the navbar */
     padding: 1rem;
@@ -49,7 +51,6 @@ footer {
     margin-top: auto;
 }
 
-
 /* buttons, inputs, options, etc */
 button, input, option {
     border-style: outset;
@@ -57,22 +58,19 @@ button, input, option {
     border-color: var(--bright-secondary);
     border-radius: 20px;
     background-color: rgba(255, 255, 255, 0.7);
-    
+    outline: none;
 }
-button:hover {
-    border: 10px groove var(--bright-primary);
-    background-color: var(--dark-primary);
-    color: var(--bright-primary);
-}
-input:hover {
-    background-color: rgba(255, 255, 255, 0.3);
+button:hover, input:hover, option:hover {
     outline-style: solid;
-    outline-color: var(--bright-primary);
+    outline-width: 3px;
+    outline-color: var(--bright-secondary);
+    background: rgba(255, 255, 255, 1);
+    /* transform: scale(1.05); */
 }
+
 input:focus {
-    outline-style: groove;
-    outline-width: 2px;
-    outline-color: var(--dark-primary);
+    background-color: rgba(255, 255, 255, 1);
+    outline-color: var(--accent-color1);
 }
 
 
@@ -82,73 +80,73 @@ input:focus {
 /* book stuff */
 .shelf {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
-    grid-template-rows: repeat(auto-fill, minmax(15rem, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(min-content, 15rem));
+    grid-template-rows: repeat(auto-fill, minmax(min-content, 15rem));
+    /* minmax() prevents the grid from letting its book-items overflow */
     grid-gap: 1%;
 
     justify-content: center;
     align-content: center;
-    justify-items: center;
-    align-items: center;
-
+    justify-items: start;
+    align-items: start;
 }
-
 .book-item {
-    box-sizing: border-box; /* Include padding and border in the element's total width and height */
-    width: 20rem;
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 2.5rem 10rem 2.5rem;
+    grid-template-rows: 2.5rem 2.5rem 10rem 2.5rem 2.5rem;
+
+    justify-content: center;
+    align-content: center;
+    justify-items: stretch;
+    align-items: stretch;
+
+    transition: transform 300ms ease;
+}
+.bookCover {
+    width: 10rem;
     height: 15rem;
-    position: relative;
-    padding-bottom: 5%;
-
-    display: flex;
-}
-
-.book-item img {
-    justify-self: start;
-    align-self: end;
-    width: 8rem;
-    aspect-ratio: 3/4;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-
-    max-width: 100%; /* Make sure the image doesn't exceed its container */
-    height: 200px; /* Maintain aspect ratio */
-    border-radius: 4px; /* Rounded corners */
-    margin-right: 10px; /* Add space to the right of the image */
+    border-radius: 4px;
+    grid-area: 2  / 2 / 5 / 3;
 }
-
 /* Style the book details container */
-.book-item .book-details {
-    padding: 2%;
-    background-color: rgba(255, 255, 255, 0.3);
+.book-details { 
+    grid-area: 3 / 1 / 4 / -1;
+    background-color: rgba(235, 233, 233, 0.8);
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
     border-radius: 10px; /* Rounded corners */
+    padding: 0; /* Add some padding */
+    display: none;
 
-    display: flex; /* Use flexbox for layout */
-    flex-direction: column; /* Stack the title and author vertically */
-    flex-grow: 1; /* Allow the details container to grow to fill the available space */
+}
+.book-item:hover .bookCover{
+    transform: scale(0.95);
+    opacity: 0.5;
+}
+.book-item:hover .book-details {
+    transform: scale(1.05);
+   
+    display: grid;
+    grid-template-rows: repeat(3, 1fr);
+    grid-template-columns: 1fr 1fr; 
+    justify-items: center;
+    align-items: center;
+}
+.book-details h3 {
+    color: #333;
+    margin: 0;
+    grid-area: span 1 / span 2;
+}
+.book-details .author {
+    color: #777;
+    margin: 0;
+}
+.book-details .miniForm {
+    margin: 0.5rem;
 }
 
-.book-item .book-details p {
-    margin: 5px 0; /* Adjust the margin to your preference */
-}
-
-/* Style the book title */
-.book-item h2 {
-    margin: 0; /* Remove default margin */
-    color: #333; /* Set text color */
-}
-
-/* Style the author span */
-.book-item .author {
-    color: #777; /* Set a slightly muted color for the author */
-}
-
-/* Clear the float to prevent layout issues */
-.book-item:after {
-    content: "";
-    display: table;
-    clear: both;
-}
 
 
 .login-form {

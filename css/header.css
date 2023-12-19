@@ -27,6 +27,7 @@
     height: 30px;
     min-width: 2rem;
     margin: 0 1rem;
+    border: 2px double var(--dark-primary);
 }
 .nav-link { /* icons and links*/
     height: 4rem;   /* vertical spacing of the icons */
