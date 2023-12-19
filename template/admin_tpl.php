@@ -60,7 +60,9 @@
         <hr>
     <?php } ?>
     
-
+    <form id = "logout-form" action="action_logout.php">
+        <button>Logout</button>
+    </form>
     
 </body>
 </html>

@@ -3,11 +3,32 @@
     require_once('database/db_users.php');
     require_once('database/db_campus.php');
     require_once('next_borrow_state.php');
+
+    if (isset($_POST['ChangeProfilePic'])) {
+        $changePicRequest = $_POST['ChangeProfilePic'];
+    }
+    else unset($changePicRequest);
 ?>
 
 <main class = "profile-main">
     <section class = "profile-pic">
         <img src = "image/users/<?php echo $up_number ?>.jpg" alt = "Profile Picture">
+        <?php if ($changePicRequest==='Upload New Pic') {
+            unset($changePicRequest);
+            saveProfilePic($up_number); 
+        ?>
+        <?php }?>
+        <?php if (!isset($changePicRequest)) { ?>
+        <form action = "user_profile.php" method = "post">
+            <input type = "submit" name='ChangeProfilePic' value = "Change Profile Picture">
+        </form>
+        <?php } 
+        elseif ($changePicRequest==='Change Profile Picture') { ?>
+            <form action = "user_profile.php" method = "post" enctype="multipart/form-data">
+                <input type = "file" name = "profile_pic">
+                <input type = "submit" name='ChangeProfilePic' value = "Upload New Pic">
+            </form>
+        <?php } ?>
     </section>
     <h1 id=profile_name> <?php echo getUserFullName($up_number) ?> </h1>
     <section class = "profile-info">

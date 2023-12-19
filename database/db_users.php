@@ -9,6 +9,7 @@
 
   function saveProfilePic($up_number) {
     move_uploaded_file($_FILES['profile_pic']['tmp_name'], "image/users/$up_number.jpg");
+    //var_dump($_FILES['profile_pic']['tmp_name']);
   }
 
   function getUserFullName($up_number) {
