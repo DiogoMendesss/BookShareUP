@@ -4,30 +4,28 @@
         <?php 
         
         $currentlyReadingBook = getCurrentlyReadingBook($userID);
+        
             
         ?>
             <article class="book-item">
-                <img src="image/bookcover/<?php echo $currentlyReadingBook['bookID'] ?>.jpg" alt="">
+                <img src="image/bookcover/<?php echo $currentlyReadingBook['book'] ?>.jpg" alt="">
 
                 <div class="book-details">
-                    <h2><?php echo $currentlyReadingBook['bookName'] ?></h2>
-                    <h3 class="author"><?php echo $currentlyReadingBook['bookAuthor'] ?></h3>
-                    <p class="condition"><?php echo "Condition: " . $currentlyReadingBook['bookCopyCondition'] ?></p>
-                    <p class="copy_type"><?php echo "Type: " . $currentlyReadingBook['bookCopyType'] ?></p>
-                    <p class="owner"><?php echo "Owner: " . $currentlyReadingBook['ownerName'] ?></p>
-                    <?php $ownerCampus = getUserFacultyCampus($currentlyReadingBook['ownerID']);
-                        foreach ($ownerCampus as $campus) {     
-                    ?>
-                    <p class="campus">Owner campus: <?php echo "" . $campus['campus'] ?></p>
-                    <?php } ?>  
+                    <h2><?php echo $currentlyReadingBook['name'] ?></h2>
+                    <h3 class="author"><?php echo $currentlyReadingBook['author'] ?></h3>
+                    <p class="condition"><?php echo "Condition: " . $currentlyReadingBook['condition'] ?></p>
+                    <p class="copy_type"><?php echo "Type: " . $currentlyReadingBook['copy_type'] ?></p>
+                    <p class="owner"><?php echo "Owner: " . $currentlyReadingBook['owner_name'] ?></p>
+                    <p class="campus">Campus: <?php echo "" . $$currentlyReadingBook['campus'] ?></p>
+                   
                 </div>
             </article>
     </section>
     <section class="borrow-info">
         <div class="borrow-details">
-            <p class="borrow-status">Borrow Status: <?php echo $currentlyReadingBook['borrowStatus'] ?></p>
-            <p class="borrow-start-date">Start Date: <?php echo $currentlyReadingBook['borrowStartDate'] ?></p>
-            <p class="borrow-expiration-date">Expiration Date: <?php echo $currentlyReadingBook['borrowExpirationDate'] ?></p>
+            <p class="borrow-status">Borrow Status: <?php echo $currentlyReadingBook['status'] ?></p>
+            <p class="borrow-start-date">Start Date: <?php echo $currentlyReadingBook['start_date'] ?></p>
+            <p class="borrow-expiration-date">Expiration Date: <?php echo $currentlyReadingBook['expiration_date'] ?></p>
         </div>
         <?php
         /* Assuming $borrow is the array containing the borrow information

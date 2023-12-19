@@ -42,7 +42,7 @@
                             <input type="hidden" name="book_id" value="<?php echo $row['id']; ?>">
                             <input type="hidden" name="page_num" value="<?php echo $page_num ?>">
                             <label>Interest Level:</label>
-                            <input type="radio" name="interest_level" value="1">1
+                            <input type="radio" name="interest_level" value="1" required>1
                             <input type="radio" name="interest_level" value="2">2
                             <input type="radio" name="interest_level" value="3">3
                             <button type="submit">Confirm</button>
@@ -67,9 +67,8 @@
                             <input type="hidden" name="book_id" value="<?php echo $row['id']; ?>">
                             <input type="hidden" name="page_num" value="<?php echo $page_num ?>">
 
-
                             <label>Condition: </label>
-                            <select name="condition">
+                            <select name="condition" required>
                                 <option value="" selected disabled></option>
                                 <option value="excellent">Excellent</option>
                                 <option value="good">Good</option>
@@ -77,7 +76,7 @@
                             </select> <br>
 
                             <label>Type: </label>
-                            <select name="copy_type">
+                            <select name="copy_type" required>
                                 <option value="" selected disabled></option>
                                 <option value="hardcover">Hardcover</option>
                                 <option value="softcover">Softcover</option>
@@ -86,7 +85,6 @@
 
                             <button type="submit">Confirm</button>
                         </form>
-
                     <?php } else { ?>
                         <form action="action_copy.php" method="post">
                             <input type="hidden" name="action" value="<?php echo $copy_action; ?>">
