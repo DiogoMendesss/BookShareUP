@@ -278,26 +278,3 @@ label[for="handbook"] {
     border-bottom: 2px solid #C62828;
     padding: 1em;
   }
-
-/* Responsivenes Layout part */
-/* small screens */
-@media (max-width: var(--min-width-size)) {
-    .userProfile-main {
-        /* grid-template-rows: repeat(4, 1fr); 4 rows w 1fr */
-        /* grid-template-columns: minmax(1fr, 25%); */
-    }
-}
-
-/* big screens */
-@media (min-width: var(--min-width-size)) {
-    .userProfile-main {
-        /* grid-template-rows: 1fr 1fr 2fr; */
-        /* grid-template-columns: 1fr 1fr; */
-        /* grid-template-areas:
-            'profile-pic profile-name'
-            'profile-pic profile-info'
-            'ongoingBorrowings ownedBooks'; */
-        /*2 by 3 grid */
-    }
-
-}
