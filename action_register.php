@@ -8,30 +8,13 @@ $up_number = $_POST['up_number'];
 $password = $_POST['password'];
 $full_name = $_POST['first_name'] . " " . $_POST['last_name'];
 $faculty_campus = $_POST['campus'];
-$profile_pic = $_FILES['profile_picture']; // Use $_FILES to get the file information
+$profile_pic = $_FILES['profile_pic']; // Use $_FILES to get the file information
 
 try {
     $_SESSION['up_number'] = $up_number;
 
-    if (isset($profile_pic) && $profile_pic['error'] === UPLOAD_ERR_OK) {
-        // Specify the directory where you want to save the uploaded profile pictures
-        $uploadDir = 'image/avatar/';
-
-        // Generate the filename based on the username and file extension
-        $uploadFile = $up_number . '.jpg'; // Use $up_number instead of $username
-
-        // Move the uploaded file to the specified directory
-        if (move_uploaded_file($profile_pic['tmp_name'], $uploadDir . $uploadFile)) {
-            $_SESSION['msg'] = 'nice';
-            // File upload successful
-        } else {
-            // No file uploaded or an error occurred
-            $_SESSION['msg'] = 'Error uploading profile picture';
-            header('Location: home_page.php?action=register');
-        }
-    }
-
     insertUser($up_number, $password, $full_name, $faculty_campus);
+    saveProfilePic($up_number);
     header('Location: user_profile.php');
 }
 catch (PDOException $e) {
