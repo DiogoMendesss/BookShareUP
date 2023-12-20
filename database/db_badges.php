@@ -3,15 +3,15 @@
 
     function getCategories(){
         global $dbh;
-        $stmt = $dbh->prepare('SELECT DISTINCT category FROM Badges');
+        $stmt = $dbh->prepare('SELECT DISTINCT category FROM Badge');
         $stmt->execute();
         return $stmt->fetchAll();
     }
     function checkUserBadgeCategory($up_number, $category){
         global $dbh;
         $stmt = $dbh->prepare('SELECT COUNT(*) FROM UserBadge 
-                                JOIN Badges ON UserBadge.badge = Badges.name 
-                                WHERE Badges.category = ? 
+                                JOIN Badge ON UserBadge.badge = Badge.name 
+                                WHERE Badge.category = ? 
                                 AND UserBadge.user = ?');
         $stmt->execute(array($category, $up_number));
         $count = $stmt->fetchColumn();
