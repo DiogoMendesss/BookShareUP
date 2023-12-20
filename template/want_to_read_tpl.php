@@ -6,12 +6,12 @@
             
         ?>
             <article class="book-item">
-                <img class="shelfImage" src="image/shelf2.png" alt="shelf-image">
-                <img class="bookCover" src="image/bookcover/<?php echo $row['id'] ?>.jpg" alt="">
+                <img class="shelf-image" src="image/shelf2.png" alt="shelf-image">
+                <img class="book-cover" src="image/bookcover/<?php echo $row['id'] ?>.jpg" alt="">
 
                 <div class="book-details">
-                    <h2><?php echo $row['title'] ?></h2>
-                    <h3 class="author"><?php echo $row['author'] ?></h3>
+                    <h2 class="book-title"><?php echo $row['title'] ?></h2>
+                    <h3 class="book-author"><?php echo $row['author'] ?></h3>
                     <p class="interest_level"><?php echo "Interest level: " . $row['interest_level'] ?></p>
                     <form action="want_to_read.php" method="post">
                         <input type="hidden" name="action" value="remove_book">
@@ -23,5 +23,5 @@
             </article>
         <?php } ?>
     </section>
-    <a href="book_explorer.php" class="floatingButton">Add Book</a>
+    <a href="book_explorer.php" class="floating-button">Add Book</a>
 </main>
