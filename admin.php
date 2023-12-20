@@ -19,7 +19,7 @@
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $action = isset($_POST['action']) ? $_POST['action'] : '';
-        $borrowingID = $_POST['borrowing_id'];
+        $borrowID = $_POST['borrow_id'];
         //var_dump($page_num);
         $search_owner = $_GET['search_owner'];
         $search_borrower = $_GET['search_borrower'];
@@ -28,13 +28,14 @@
         
 
         if ($action === 'update_status') {
-            header("Location: admin.php?bID=$borrowingID");
+            header("Location: admin.php?bID=$borrowID");
             exit();
         } elseif ($action === 'confirm_update_status') {
             $newStatus = $_POST['status'];
             $copyID = $_POST['copy_id'];
             $ownerID = $_POST['ownerID'];
             $borrowerID = $_POST['borrowerID'];
+            $borrowID = $_POST['borrow_id'];
             
             /*
             var_dump($copyID);
@@ -42,7 +43,7 @@
             var_dump($borrowerID);
             */
             
-            updateBorrowStatus($copyID, $borrowerID, $newStatus);
+            updateBorrowStatus($borrowID, $newStatus);
             if ($newStatus === 'returned') {
                 updateUserStatus($borrowerID, 'active');
             }

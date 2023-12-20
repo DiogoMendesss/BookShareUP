@@ -7,6 +7,7 @@
     require_once('next_borrow_state.php');
     require_once('database/db_books.php');
     require_once('database/db_borrowings.php');
+    require_once('database/db_badges.php');
 
     $up_number = $_SESSION['up_number'];
     $msg = $_SESSION['msg'];  
@@ -19,6 +20,11 @@
 
 
     $borrowedBooks = getOngoingUserBorrows($up_number);
+    $borrowedBooksNumber = countOwnerBorrowings($up_number);
+    $readBooksNumber = countBorrowerBorrowings($up_number);
+
+    updateUserBadges($up_number, $borrowedBooksNumber, $readBooksNumber);
+    $badges = getUserBadges($up_number);
     
     include_once('template/header.php');
     include_once('template/my_profile_tpl.php');

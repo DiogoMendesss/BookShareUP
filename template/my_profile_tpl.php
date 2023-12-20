@@ -45,6 +45,11 @@
                         <div class="user-info-label"> Associated Campus: </div> <div class='user-info'> <?php $user_campuses = getUserFacultyCampus($up_number);
                         foreach ($user_campuses as $campus) echo $campus['campus'] . '  ';?> </div>
                     </div>
+                    <h1 class=profile_name> Books Read:<?php echo $readBooksNumber ?> </h1>
+                    <h1 class=profile_name> Books Borrowed: <?php echo $borrowedBooksNumber ?> </h1>
+                    <?php foreach ($badges as $badge){ ?>
+                        <p><?php echo $badge['badge'] ?></p>
+                    <?php } ?>
                 </section>
 
                 <div class = "edit-campus-form">
@@ -83,6 +88,7 @@
                     <?php foreach ($borrowedBooks as $borrow) { ?>
                         <div class="borrowed-book-container">
                             <li>
+                            Book: <? echo $borrow['title']; ?> <br>
                             Status: <? echo $borrow['status']; ?> <br>
                             Borrower: <a class="link-to-profile" href="user_profile.php?user=<?php echo $borrow['borrower']; ?>">
                             <?php echo $borrow['borrower_name'] ?></a> <br>
@@ -96,6 +102,7 @@
                                 <input type="hidden" name="bookID" value="<?php echo $borrow['copy']; ?>">
                                 <input type="hidden" name="borrowerID" value="<?php echo $borrow['borrower']; ?>">
                                 <input type="hidden" name="newStatus" value="<?php echo getNextBorrowState($borrow['status']); ?>">
+                                <input type="hidden" name="borrowID" value="<?php echo $borrow['id']; ?>">
                                 <input type="submit" value="Update to <?php echo getNextBorrowState($borrow['status']); ?>">
                             </form>
                         <?php
@@ -103,6 +110,7 @@
                             <form action="action_update_borrow_status.php" method="post">
                                 <input type="hidden" name="bookID" value="<?php echo $borrow['copy']; ?>">
                                 <input type="hidden" name="borrowerID" value="<?php echo $borrow['borrower']; ?>">
+                                <input type="hidden" name="borrowID" value="<?php echo $borrow['id']; ?>">
                                 <input type="hidden" name="newStatus" value="rejected">
                                 <input type="submit" value="Reject Request">
                             </form>

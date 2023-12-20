@@ -11,8 +11,9 @@ $userID = $_SESSION['up_number'];
 $borrowerID = $_POST['borrowerID'];
 $newStatus = $_POST['newStatus'];
 $copyID = $_POST['bookID'];
+$borrowID = $_POST['borrowID'];
 // Update the status
-updateBorrowStatus($copyID, $borrowerID, $newStatus);
+updateBorrowStatus($borrowID, $newStatus);
 
 // Redirect or do something after successful update
 if ($newStatus === 'returned') {
