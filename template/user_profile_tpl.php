@@ -1,5 +1,8 @@
-
+</header>
 <main class = "profile-main">
+
+<section class = "profile-pic-and-name">
+
     <div class = "empty-space-image">
         <section class = "profile-pic">
             <img src = "image/users/<?php echo $up_number ?>.jpg" alt = "Profile Picture">
@@ -18,7 +21,7 @@
                 </form>
                 <?php } 
                 elseif ($changePicRequest==='Change Profile Picture') { ?>
-                    <form action = "user_profile.php" method = "post" enctype="multipart/form-data">
+                    <form class="upload-pic-form" action = "user_profile.php" method = "post" enctype="multipart/form-data">
                         <input type = "file" name = "profile_pic">
                         <input type = "submit" name='ChangeProfilePic' value = "Upload New Pic">
                     </form>
@@ -32,40 +35,51 @@
         <input type = 'submit' name = 'ChangeStatus' value = "Change Status to <?php echo getOtherUserStatus($up_number) ?> ">
     </form>
 
-    <section class = "profile-info">
-        <div class = "user-info-field">
-            <h3 id=profile_upNumber> UP Number: </h3> <div class='user_info'> <?php echo $up_number ?> </div>
-        </div>
-        <div class = "user-info-field">
-            <h3 id=profile_numOwnedBooks> Number of Owned Books: </h3> <div class='user_info'> <?php echo getNumOwnedBooks($up_number) ?> </div>
-        </div>
-        <div class = "user-info-field">
-            <h3 id=profile_campus> Attending Campus: </h3> <div class='user-info'> <?php $user_campuses = getUserFacultyCampus($up_number);
-            foreach ($user_campuses as $campus) echo $campus['campus'] . '  ';?> </div>
-        </div>
-    </section>
-    <div class = "edit_campus_form">
+</section>
 
-    <!-- Edit Campus Form -->
-        <?php if (!isset($_GET['EditCampus'])) { ?>
-        <form action="user_profile.php" method="get">
-            <input type='submit' name = 'EditCampus' value='Edit Campus'>
-        </form>
-        <?php } elseif ($_GET['EditCampus'] === 'Edit Campus') { ?>
-            
-        <form class="edit-campus-form" action="action_edit_campus.php" method="post">
-        <?php
-        $allCampuses = getCampusesInfo();
-        foreach ($allCampuses as $campus) {
-            $campusName = $campus['name']; ?>
-            <input type="checkbox" name="selectedCampuses[]" value="<?php echo $campusName; ?>" <?php /* Add logic here to check if the campus is selected */ ?>>
-            <?php echo $campusName; ?> |
-        <?php } ?>
-        <input type="submit" value="Update Campuses">
-         </form>
-        <?php } ?>
+<section class = "additional-info">
+
+        <section class = "profile-info">
+            <div class = "user-info-field">
+                <div class="user-info-label"> UP Number: </div> <div class='user-info'> <?php echo $up_number ?> </div>
+            </div>
+            <div class = "user-info-field">
+                <div class="user-info-label"> Number of Owned Books: </div> <div class='user-info'> <?php echo getNumOwnedBooks($up_number) ?> </div>
+            </div>
+            <div class = "user-info-field">
+                <div class="user-info-label"> Attending Campus: </div> <div class='user-info'> <?php $user_campuses = getUserFacultyCampus($up_number);
+                foreach ($user_campuses as $campus) echo $campus['campus'] . '  ';?> </div>
+            </div>
+        </section>
+
+        <div class = "edit-campus-form">
         <!-- Edit Campus Form -->
-    </div>
+            <?php if (!isset($_GET['EditCampus'])) { ?>
+            <form class = edit-campus-btn action="user_profile.php" method="get">
+                <input type='submit' name = 'EditCampus' value='Edit Campus'>
+            </form>
+            <?php } elseif ($_GET['EditCampus'] === 'Edit Campus') { ?>
+                
+            <form class="select-campus-form" action="action_edit_campus.php" method="post">
+            <div class="edit-campus-list">
+                <?php
+                $allCampuses = getCampusesInfo();
+                foreach ($allCampuses as $campus) {
+                    $campusName = $campus['name']; ?>
+                    <input type="checkbox" name="selectedCampuses[]" value="<?php echo $campusName; ?>" <?php /* Add logic here to check if the campus is selected */ ?>>
+                    <?php echo $campusName; ?> 
+                <?php } ?>
+            </div>
+            <div class="edit-campus-butn">
+                <input type="submit" value="Update Campuses">
+            </div>
+            </form>
+            <?php } ?>
+            <!-- Edit Campus Form -->
+        </div>
+
+    </section>
+
     <section class="ongoing-userBorrows">
         <h2>Borrowed Books</h2>
         <?php
