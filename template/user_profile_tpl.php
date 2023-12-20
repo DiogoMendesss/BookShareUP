@@ -1,3 +1,4 @@
+    <h1>User Profile</h1>
     </header>
         <main>
         <section class = "profile-main" id='visiting_profile'>
@@ -17,7 +18,7 @@
                         <div class="user-info-label"> Number of Owned Books: </div> <div class='user-info'> <?php echo getNumOwnedBooks($user) ?> </div>
                     </div>
                     <div class = "user-info-field">
-                        <div class="user-info-label"> Attending Campus: </div> <div class='user-info'> <?php $user_campuses = getUserFacultyCampus($user);
+                        <div class="user-info-label"> Associated Campus: </div> <div class='user-info'> <?php $user_campuses = getUserFacultyCampus($user);
                         foreach ($user_campuses as $campus) echo $campus['campus'] . '  ';?> </div>
                     </div>
                 </section>

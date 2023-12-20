@@ -21,8 +21,6 @@
         <header class="header">
             <nav class="navbar">
                 <ul class="navbar-nav">
-                    <li class = 'empty-space'>
-                    </li>
                     <il class="nav-item">
                         <a href="book_explorer.php?page_num=1" class="nav-link"> 
                             <img src="image/avatar/avatar_1.jpg" alt="Explorer">
@@ -37,7 +35,7 @@
                     </il>
                     <il class="nav-item">
                         <a href="feed.php" class="nav-link">
-                            <img src="image/avatar/avatar_3.jpg" alt="Feed">
+                            <img src="image/navbar_icons/feed_icon.png" alt="Feed">
                             <span class="link-text">Feed</span>
                         </a>
                     </il>
@@ -49,14 +47,13 @@
                     </il>
                     <il class="nav-item">
                         <a href="my_profile.php" class="nav-link">
-                            <img src="image/avatar/hasbulla.jpg" alt="User Profile">
+                            <img src="image/users/<?php echo $up_number ?>.jpg" alt="User Profile">
                             <span class="link-text">My Profile</span>
                         </a>
                     </il>
-                    <il class="nav-item">
-                        <form id = "logout-form" action="action_logout.php">
-                            <button>Logout</button>
-                        </form>
-                    </il>
+                </ul>
+                <form id = "navbar-logout" action="action_logout.php">
+                    <button>Logout</button>
+                </form>
             </nav>
 <!-- header only closes in the templates to include the title and search bar in the header -->
