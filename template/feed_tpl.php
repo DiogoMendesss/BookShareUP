@@ -15,12 +15,6 @@
                 <div class="book-details-form">
                 <?php //} else { ?> 
                 <!-- <div class="book-details"> --> <?php //} ?>
-                    <h2><?php echo $row['title'] ?></h2>
-                    <h3 class="author"><?php echo $row['author'] ?></h3>
-                    <p class="condition"><?php echo "Condition: " . $row['condition'] ?></p>
-                    <p class="copy_type"><?php echo "Type: " . $row['copy_type'] ?></p>
-                    <a class="link-to-profile" href="user_profile.php?user=<?php echo $row['owner']; ?>"><?php echo $row['owner_name'] ?></a>
-
                     
                     <?php if (isset($_GET['owner']) && $_GET['owner'] == $row['owner'] &&
                     isset($_GET['copy']) && $_GET['copy'] == $row['copy_id']) { ?>
@@ -44,6 +38,11 @@
                         <button type="submit">Confirm</button>
                     </form>
                     <?php } else { ?>
+                    <h2><?php echo $row['title'] ?></h2>
+                    <h3 class="author"><?php echo $row['author'] ?></h3>
+                    <p class="condition"><?php echo "Condition: " . $row['condition'] ?></p>
+                    <p class="copy_type"><?php echo "Type: " . $row['copy_type'] ?></p>
+                    <a class="link-to-profile" href="user_profile.php?user=<?php echo $row['owner']; ?>"><?php echo $row['owner_name'] ?></a>
                     <form action="action_borrow.php" method="post">
                         <input type="hidden" name="action" value="borrow">
                         <input type="hidden" name="bookCopyID" value="<?php echo $row['copy_id']; ?>">
