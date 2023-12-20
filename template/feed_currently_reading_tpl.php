@@ -11,12 +11,12 @@
             
         ?>
             <article class="book-item">
-                <img class="shelfImage" src="image/shelf2.png" alt="shelf-image">
-                <img class="bookCover" src="image/bookcover/<?php echo $currentlyReadingBook['book'] ?>.jpg" alt="">
+                <img class="shelf-image" src="image/shelf2.png" alt="shelf-image">
+                <img class="book-cover" src="image/bookcover/<?php echo $currentlyReadingBook['book'] ?>.jpg" alt="">
 
                 <div class="book-details-form">
-                    <h2><?php echo $currentlyReadingBook['title'] ?></h2>
-                    <h3 class="author"><?php echo $currentlyReadingBook['author'] ?></h3>
+                    <h2 class="book-title"><?php echo $currentlyReadingBook['title'] ?></h2>
+                    <h3 class="book-author"><?php echo $currentlyReadingBook['author'] ?></h3>
                     <p class="condition"><?php echo "Condition: " . $currentlyReadingBook['condition'] ?></p>
                     <p class="copy_type"><?php echo "Type: " . $currentlyReadingBook['copy_type'] ?></p>
                     <p class="owner"><?php echo "Owner: "?><a class=link-to-profile href="user_profile.php?user=<?php echo $currentlyReadingBook['owner']; ?>"> 

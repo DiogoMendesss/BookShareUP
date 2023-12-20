@@ -17,7 +17,7 @@
 
         </select>
         <button>Search</button>
-        <a class="floatingButton" href="book_explorer.php">Clear</a>
+        <a class="floating-button" href="book_explorer.php">Clear</a>
     </form>
 
 </header>
@@ -36,15 +36,15 @@
 
             <article class="book-item"> 
         
-                <img class="shelfImage" src="image/shelf2.png" alt="shelf-image">
-                <img class="bookCover" src="image/bookcover/<?php echo $book['id'] ?>.jpg" alt="">
+                <img class="shelf-image" src="image/shelf2.png" alt="shelf-image">
+                <img class="book-cover" src="image/bookcover/<?php echo $book['id'] ?>.jpg" alt="">
                 <?php if (isset($_GET['addBook']) && $_GET['addBook'] == $book['id']  || isset($_GET['addCopy']) && $_GET['addCopy'] == $book['id']) { ?>
                     <div class="book-details-form">
                     <?php } else { ?> 
                     <div class="book-details"> <?php } ?>
 
-                <h2><?php echo $book['title'] ?></h2>
-                <h3 class="author"><?php echo $book['author'] ?></h3>
+                <h2 class="book-title"><?php echo $book['title'] ?></h2>
+                <h3 class="book-author"><?php echo $book['author'] ?></h3>
 
                 <?php foreach ($bookGenres as $genre) { ?>
                 <?php } ?>
@@ -52,20 +52,20 @@
                     otherwise it is shown a button to add the book. If the last is clicked the variable $_GET['addBook'] is set and 
                     another form (the first in the code) to choose the interest level and confirm the add is shown-->
                     <?php if (isset($_GET['addBook']) && $_GET['addBook'] == $book['id']) { ?>
-                        <form class="miniForm" action="action_book_wanttoread.php" method="post">
+                        <form class="mini-form" action="action_book_wanttoread.php" method="post">
                             <input type="hidden" name="action" value="confirm_add_book">
                             <input type="hidden" name="book_id" value="<?php echo $book['id']; ?>">
                             <input type="hidden" name="page_num" value="<?php echo $page_num ?>">
                             <label>Interest Level:</label>
-                            <select name="interest_level" required>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                            </select>
+                            <div id="radio-button-select">
+                                <input type="radio" name="interest_level" value="1" required> 1
+                                <input type="radio" name="interest_level" value="2"> 2
+                                <input type="radio" name="interest_level" value="3"> 3
+                            </div>
                             <button type="submit">Confirm</button>
                         </form>
                     <?php } else { ?>
-                        <form class="miniForm" action="action_book_wanttoread.php" method="post">
+                        <form class="mini-form" action="action_book_wanttoread.php" method="post">
                             <input type="hidden" name="action" value="<?php echo $book_action; ?>">
                             <input type="hidden" name="book_id" value="<?php echo $book['id']; ?>">
                             <input type="hidden" name="page_num" value="<?php echo $page_num ?>">
@@ -81,22 +81,22 @@
                     another form (the first in the code) to fill the copy info and confirm the add is shown-->
                     
                     <?php if (isset($_GET['addCopy']) && $_GET['addCopy'] == $book['id']) { ?>
-                        <form class="miniForm" action="action_copy.php" method="post">
+                        <form class="mini-form" action="action_copy.php" method="post">
                             <input type="hidden" name="action" value="confirm_add_copy">
                             <input type="hidden" name="book_id" value="<?php echo $book['id']; ?>">
                             <input type="hidden" name="page_num" value="<?php echo $page_num ?>">
 
-                            <label>Condition: </label>
+                            <!-- <label>Condition: </label> -->
                             <select name="condition" required>
-                                <option value="" selected disabled></option>
+                                <option value="" selected disabled>Condition</option>
                                 <option value="excellent">Excellent</option>
                                 <option value="good">Good</option>
                                 <option value="worn">Worn</option>
                             </select>
 
-                            <label>Type: </label>
+                            <!-- <label>Type: </label> -->
                             <select name="copy_type" required>
-                                <option value="" selected disabled></option>
+                                <option value="" selected disabled>Type</option>
                                 <option value="hardcover">Hardcover</option>
                                 <option value="softcover">Softcover</option>
                                 <option value="handbook">Handbook</option>
@@ -105,7 +105,7 @@
                             <button type="submit">Confirm</button>
                         </form>
                     <?php } else { ?>
-                        <form class="miniForm" action="action_copy.php" method="post">
+                        <form class="mini-form" action="action_copy.php" method="post">
                             <input type="hidden" name="action" value="<?php echo $copy_action; ?>">
                             <input type="hidden" name="book_id" value="<?php echo $book['id']; ?>">
                             <input type="hidden" name="page_num" value="<?php echo $page_num ?>">

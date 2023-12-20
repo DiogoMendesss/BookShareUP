@@ -1,24 +1,26 @@
 /* 
-    G E N E R A L   S T Y L E S
+    G E N E R A L   S T Y L E   S H E E T
 */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap'); 
-
+/*
+    V A R I A B L E S  A N D  D E F A U L T S
+*/
 :root {
     font-size: 16px;
     font-family: "Poppins", sans-serif;
+    --blackish: #161616;
     --dark-primary: #530000;
     --dark-secondary: #3e3736;
     --bright-primary: #686868;
     --bright-secondary: #ff8900;
-    --accent-color1: #f04b35;
+    --accent-color1: #e43018;
     --accent-color2: #f0a435;
     --min-width-size: 600px;
 }
-* {
+* { /* force including padding and border in size */
     box-sizing: border-box;
 }
-
-/* WARNING: no . before!!! warning */
+/* REMINDER: no . before!!! warning */
 body { /* setting defaults */
     width: 100%;
     margin: 0;
@@ -47,9 +49,7 @@ body::-webkit-scrollbar-thumb {
 }
 
 main { /* rem unit relative to font size: 16 px is the default */
-    /* margin-left: 3rem; leave space for the navbar */
     width: 100vw;
-    /* padding-left: 3rem; */
     /* background-image: url("../image/bookshelf2.png"); */
     /* background-color: var(--bright-primary); */
     /* border: 3px solid red; */
@@ -62,7 +62,9 @@ main { /* rem unit relative to font size: 16 px is the default */
     background: url("../image/backgrounds/chamber.jpg") no-repeat center center fixed;
     background-size: cover;
 }
-
+/*
+    F O O T E R  A N D  P A G I N A T I O N
+*/
 footer {
     width: 100vw;
     height: min-content;
@@ -80,7 +82,7 @@ footer > a {
 /*
     B U T T O N S , I N P U T S , E T C
 */
-main > .floatingButton {
+main > .floating-button {
     position: fixed;
     bottom: 3rem;
     right: 3rem;
@@ -88,76 +90,18 @@ main > .floatingButton {
     z-index: 99;
 
 }
-.floatingButton {
+.floating-button {
     text-decoration: none;
     color: var(--accent-color1);
     border: 2px groove var(--accent-color1);
     border-radius: 30%;
     padding: 0.1rem;
 }
-.floatingButton:hover {
+.floating-button:hover {
     color: var(--accent-color2);
     border: 2px groove var(--accent-color2);
 }
 
-button, input, option {
-    /* appearance: none; Remove default appearance */
-    /* -webkit-appearance: none; Remove default appearance for Chrome and Safari */
-    /* -moz-appearance: none; Remove default appearance for Firefox */
-    /* border-style: outset;
-    border-width: 2px;
-    border-color: var(--bright-secondary);
-    border-radius: 20px;
-    background-color: rgba(255, 255, 255, 0.5);
-    color: rgba(0, 0, 0, 1);
-    outline: none; */
-    /* font-family: 'Poppins', sans-serif; */
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-    font-weight: 600;
-    transition: all 0.35s ease;
-    padding: 0.3rem 0.6rem;
-    border-radius: 2rem;
-    border-color: black;
-}
-
-input[type="radio"] + label:after + label:before {
-    /* content: ""; */
-    /* display: inline-block; */
-    width: 1rem;
-    height: 1rem;
-    size: 2rem;
-    margin: 0.2rem;
-    border-radius: 50%;
-    /* border: 2px solid var(--bright-secondary); */
-    background-color: rgba(255, 255, 255, 0.5);
-}
-button:hover, option:hover{
-    /* outline-style: solid;
-    outline-width: 1px;
-    outline-color: var(--bright-secondary);
-    background: rgba(255, 255, 255, 1); */
-    transform: scale(1.05);
-    cursor: pointer;
-    background-color: black;
-    color: white;
-}
-input:hover, select:hover {
-    /* outline-style: solid;
-    outline-width: 1px;
-    outline-color: var(--bright-secondary);
-    background: rgba(255, 255, 255, 1); */
-    transform: scale(1.05);
-    cursor: pointer;
-    /* background-color: black;
-    color: white; */
-}
-
-input:focus {
-    background-color: rgba(255, 255, 255, 1);
-    outline-color: var(--accent-color2);
-}
 
 #pagination {
     clear: both; /* Add this to clear the float */
@@ -166,7 +110,7 @@ input:focus {
     column-gap: 1rem;
     font-size: 1.2rem;
     border-bottom: 3px groove var(--accent-color1);
-    padding: 1em;
+    padding: 1rem;
     margin-left: 3rem;
     /* gap: 1rem; */
     font-weight: 600;
@@ -182,7 +126,37 @@ input:focus {
     cursor: pointer;
 }
 /*
-    B O O k  S T U F F
+    B U T T O N S , I N P U T S , E T C
+*/
+button, input, option, select,
+input[type="file"]::-webkit-file-upload-button {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    transition: all 0.35s ease;
+    padding: 0.15rem 0.4rem;
+    max-height: fit-content;
+    border-radius: 2rem;
+    border-color: black;
+}
+/* hover changes colors */
+button:hover, option:hover {
+    transform: scale(1.03);
+    cursor: pointer;
+    background-color: black;
+    color: white;
+}
+/* hover does not change colors */
+input:hover, select:hover,
+input[type="file"]::-webkit-file-upload-button {
+    transform: scale(1.03);
+    cursor: pointer;
+}
+input:focus {
+    background-color: rgba(255, 255, 255, 1);
+    outline-color: var(--accent-color2);
+}
+/*
+    B O O k   R E L A T E D
 */
 .shelf {
     display: grid;
@@ -199,7 +173,7 @@ input:focus {
     justify-items: start;
     align-items: start;
 }
-.book-item {
+.book-item { /* book cover, details and its shelf */
     width: 100%;
     height: 100%;
     display: grid;
@@ -213,18 +187,16 @@ input:focus {
 
     transition: transform 400ms ease;
 }
-.book-item h2 {
-    color: #333;
-    margin: 0;
-    line-height: 1.6rem;
-    font-size: 1.3rem;
+.book-cover { /* its cover */
+    width: 10rem;
+    height: 15rem;
+    box-shadow: -5px -3px 0px rgba(0, 0, 0, 1);
+    border-radius: 4px;
+    grid-area: 2 / 2 / 5 / 3;
+    transition: transform 200ms ease;
+    z-index: 1;
 }
-.book-item .author {
-    color: #777;
-    font-size: 1rem;
-}
-
-.shelfImage {
+.shelf-image { /* its shelf */
     justify-self: center;
     width: 260%;
     height: 10rem;
@@ -235,74 +207,96 @@ input:focus {
     min-height: 10rem;
     position: relative;
     transform: translateY(-1rem);   /* bring shelves a little bit up for better 3d effect */
-    
 }
-.bookCover {
-    width: 10rem;
-    height: 15rem;
-    box-shadow: -5px -3px 0px rgba(0, 0, 0, 1);
-    border-radius: 4px;
-    grid-area: 2 / 2 / 5 / 3;
-    transition: transform 200ms ease;
-    z-index: 1;
-}
-.book-details {
+.book-details { /* details */
     display: none;
 }
 /* the form is a non hoverable/fixed version of book-details when a form is clicked */
 .book-details-form { 
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 2fr;
+
+    align-items: center;
+    justify-items: space-evenly;
+    padding: 0.8rem;
+
+    border: 10px double var(--accent-color1);
+    
 }
-.book-details, .book-details-form { 
+.book-details, .book-details-form { /* shared properties */
     grid-area: 3 / 1 / 4 / -1;
 
-    background-color: rgba(206, 205, 205, 0.8);
+    background: radial-gradient(ellipse at center, rgba(248, 223, 223, 0.932) 0%,rgba(240, 197, 184, 0.877) 100%);
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-    border-radius: 10px; /* Rounded corners */
+    border-radius: 27%; /* Rounded corners */
     transition: transform 400ms ease;
     z-index: 2;
-    padding: 0.4rem;
+    
     text-align: center;
-
-    justify-content: space-evenly;
+    justify-content: center;
     justify-items: center;
     align-items: center;
-    gap: 0rem;
+    gap: 0.3rem;
 }
-.book-details *, .book-details-form * {
+.book-item * {  /* force smaller font for fitting purposes */
+    font-size: 12px;
+    line-height: 12px;
     margin: 0;
-    max-width: 100%;
+    /* max-width: 100%; */
 }
-.book-item:hover .bookCover {
+.book-title {
+    color: var(--blackish);
+    margin: 0;
+    line-height: 1.6rem;
+    font-size: 1.3rem;
+    text-shadow: 0.2px 0.4px 2px rgb(0, 0, 0, 0.5);
+}
+.book-author {
+    color: var(--accent-color1);
+    font-size: 1.1rem;
+    padding-bottom: 0.1rem;
+    font-weight: bolder;
+    text-shadow: -0.3px 0 2px rgb(0, 0, 0, 0.5);
+}
+.book-details-form > .book-title,
+.book-details-form > .book-author { /* only grid layout for the fixed form */
+    grid-column: span 2;
+}
+.book-details-form > select {
+    padding-top: 0;
+}
+/* hovers */
+.book-item:hover .book-cover {
     transform: scale(0.97);
     opacity: 0.5;
-    animation-play-state: paused;
+    
 }
 .book-item:hover .book-details {
     transform: scale(1.02);
     display: flex;
-    flex-direction: column;   
+    flex-direction: column;
+    padding: 0.2rem;
+    gap: 0.5rem;
+
+    border: 10px double var(--blackish);
 }
-.miniForm {
+.mini-form {
     text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 0;
+    justify-content: center;
+    gap: 0.3rem;
 }
-.miniForm label {
-    font-size: 0.8rem;
-    line-height: 1rem;
-}
-.miniFormLine {
+#radio-button-select {
     display: flex;
     align-items: center;
     justify-items: center;
     column-gap: 0.5rem;
 }
-.miniFormLine label {
-    font-size: 0.6rem;
+.mini-form label {
+    font-size: 0.9rem;
 }
 
 .link-to-profile {
@@ -314,72 +308,60 @@ input:focus {
     color: var(--dark-secondary);
     transition: all 0.35s ease;
 }
-
-/* Style for the borrow-info section */
+/*
+    B O R R O W   R E L A T E D
+*/
 .borrow-info {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 20px; /* Adjust as needed for spacing from the previous section */
+    margin-top: 20px;
 }
-
-/* Style for the borrow-details div within borrow-info */
 .borrow-details {
     text-align: center;
-    border: 2px solid black; /* Border styling, adjust color as needed */
-    border-radius: 10px; /* Adjust border radius as needed */
+    border: 2px solid black;
+    border-radius: 10px;
     background-color: #fff;
-    padding: 15px; /* Adjust padding as needed */
-    margin: 10px 0; /* Adjust margin as needed */
+    padding: 15px;
+    margin: 10px 0;
 }
-
-/* Style for individual borrow details */
 .borrow-details p {
-    margin: 5px 0; /* Adjust as needed for spacing between each detail */
-    font-size: 1.2rem; /* Adjust as needed for the font size */
+    margin: 5px 0;
+    font-size: 1.2rem;
 }
-
-/* Style for the reject-notification section */
 .reject-notification {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin-top: 20px; /* Adjust as needed for spacing from the previous section */
+    margin-top: 20px;
 }
-
 .reject-notification-message {
-    font-size: 1.2rem; /* Adjust as needed for the message font size */
-    margin-bottom: 15px; /* Adjust as needed for spacing between the message and the form */
+    font-size: 1.2rem;
+    margin-bottom: 15px;
 }
-
 .form-delete-borrow {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
-
 .form-delete-borrow input[type="submit"] {
-    margin-top: 10px; /* Adjust as needed for spacing between the form and the submit button */
-    padding: 10px; /* Adjust as needed for the button padding */
+    margin-top: 10px;
+    padding: 10px;
     cursor: pointer;
-    background-color: #007BFF; /* Adjust as needed for the button background color */
-    color: #fff; /* Adjust as needed for the button text color */
+    background-color: #007BFF;
+    color: #fff;
     border: none;
     border-radius: 5px;
-    font-size: 1rem; /* Adjust as needed for the button font size */
+    font-size: 1rem;
 }
-
 .form-delete-borrow input[type="submit"]:hover {
-    background-color: #0056b3; /* Adjust as needed for the button hover background color */
+    background-color: #0056b3;
 }
-
 #currently_reading_shelf{
     padding-left: 0;
     padding-right: 0;
 }
-
-/* Style for each user info field */
 .info-row {
     display: flex;
     align-items: center;
@@ -387,16 +369,12 @@ input:focus {
     margin-top: 0.5rem;
     text-align: center;
 }
-
-/* Style for the user info labels */
 .info-row .info-label {
     font-family: 'Poppins', sans-serif;
     font-weight: 600;
     font-size: 1.2rem;
-    margin-right: 0.5rem; /* Add spacing between label and data */
+    margin-right: 0.5rem;
 }
-
-/* Style for the user info data */
 .info-row .info-field {
     font-family: 'Poppins', sans-serif;
     font-weight: 400;
