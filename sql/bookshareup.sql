@@ -90,23 +90,23 @@ CREATE TABLE Campus (
 
 -- UserCampus table
 CREATE TABLE UserCampus (
-    user INTEGER REFERENCES User(up_number) ON DELETE CASCADE ON UPDATE CASCADE,
-    campus TEXT REFERENCES Campus(name) ON DELETE CASCADE ON UPDATE CASCADE,
+    user INTEGER REFERENCES User ON DELETE CASCADE ON UPDATE CASCADE,
+    campus TEXT REFERENCES Campus ON DELETE CASCADE ON UPDATE CASCADE,
     PRIMARY KEY (user, campus)
 );
 
 -- Badges table
-CREATE TABLE Badges (
+CREATE TABLE Badge (
     name TEXT PRIMARY KEY CHECK (name IN ('Good Reader', 'Awesome Reader', 'Legendary Reader', 'Good Borrower', 'Awesome Borrower', 'Legendary Borrower')),
     category TEXT CHECK (category IN ('Reader', 'Borrower')),
-    rank TEXT CHECK (rank IN ('Bronze', 'Silver', 'Gold', 'Platinum'))
+    rank TEXT CHECK (rank IN ('Bronze', 'Silver', 'Gold'))
 );
 
 
 -- UserBadge table
 CREATE TABLE UserBadge (
-    user INTEGER REFERENCES User(up_number) ON DELETE CASCADE ON UPDATE CASCADE,
-    badge TEXT REFERENCES Badges(name) ON DELETE CASCADE ON UPDATE CASCADE,
+    user INTEGER REFERENCES User ON DELETE CASCADE ON UPDATE CASCADE,
+    badge TEXT REFERENCES Badges ON DELETE CASCADE ON UPDATE CASCADE,
     PRIMARY KEY (user, badge)
 );
 
@@ -345,17 +345,31 @@ INSERT INTO BookGenre (book, genre) VALUES
     (56, 'Non-fiction'),
     (56, 'Business');
 
-    INSERT INTO Campus VALUES
-    ('FEUP', 'AEFEUP', 'Paranhos'),
-    ('FEP', 'AEFEP', 'Ao lado da FEUP'),
-    ('FMUP', 'CIM', 'Do outro lado do S. João') 
-    ;
+INSERT INTO Campus VALUES
+    ('AEFADEUP', 'FADEUP', 'Rua Dr. Plácido da Costa'),
+    ('AEFAUP', 'FAUP', 'Rua do Campo Alegre'),
+    ('AEFCUP', 'FCUP', 'Rua do Campo Alegre'),
+    ('AEFEUP', 'FEUP', 'Rua Dr. Roberto Frias'),
+    ('AEFFUP', 'FFUP', 'Rua de Jorge Viterbo Ferreira'),
+    ('AEFMDUP', 'FMDUP', 'Rua Dr. Plácido da Costa'),
+    ('AEFPCEUP', 'FPCEUP', 'R. Alfredo Allen'),
+    ('AEICBAS', 'ICBAS', 'Rua de Jorge Viterbo Ferreira'),
+    ('AEFDUP', 'FDUP', 'Rua dos Bragas'),
+    ('FCNAUP', 'FCNAUP', 'Rua do Campo Alegre'),
+    ('FBAUP', 'FBAUP', 'Rua de Serralves'),
+    ('FEP', 'FEP', 'Rua Dr. Roberto Frias'),
+    ('FFUP', 'AEFFUP', 'Rua de Jorge Viterbo Ferreira'),
+    ('FLUP', 'FLUP', 'Rua do Campo Alegre'),
+    ('FMUP', 'FMUP', 'Rua Dr. Plácido da Costa'),
+    ('FMUP', 'FMUP', 'Rua Dr. Plácido da Costa'),
+    ('ICBAS', 'AEICBAS', 'Rua de Jorge Viterbo Ferreira')
+;
 
-    INSERT INTO Badges VALUES
-    ('Good Reader','Reader','Bronze'),
-    ('Awesome Reader','Reader','Silver'),
-    ('Legendary Reader','Reader','Gold'),
-    ('Good Borrower','Borrower','Bronze'),
-    ('Awesome Borrower','Borrower','Silver'),
-    ('Legendary Borrower','Borrower','Gold')
-    ;
+INSERT INTO Badges VALUES
+('Good Reader','Reader','Bronze'),
+('Awesome Reader','Reader','Silver'),
+('Legendary Reader','Reader','Gold'),
+('Good Borrower','Borrower','Bronze'),
+('Awesome Borrower','Borrower','Silver'),
+('Legendary Borrower','Borrower','Gold')
+;

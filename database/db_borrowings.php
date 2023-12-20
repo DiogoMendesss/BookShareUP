@@ -28,15 +28,18 @@
         $stmt->execute([$startDate, $expirationDate, $copyID, $borrowerID]);
     }
   
-        function updateBorrowStatus($bookID, $borrowerID, $newStatus) {
+    function updateBorrowStatus($borrowID, $newStatus) {
           global $dbh;
-          $stmt = $dbh->prepare('UPDATE Borrowing SET status = ? WHERE copy = ? AND borrower = ?');
-          $stmt->execute([$newStatus, $bookID, $borrowerID]);
+          $stmt = $dbh->prepare('UPDATE Borrowing SET status = ? WHERE id = ?');
+          $stmt->execute([$newStatus, $borrowID]);
       }  
 
       function getBorrowings() {
         global $dbh;
-        $stmt = $dbh->prepare('SELECT * FROM Borrowing JOIN BookCopy ON Borrowing.copy = BookCopy.id WHERE status != "pending" AND status != "rejected" ');
+        $stmt = $dbh->prepare('SELECT Borrowing.*, BookCopy.owner, Book.title, Book.author FROM Borrowing 
+                                    JOIN BookCopy ON Borrowing.copy = BookCopy.id 
+                                    JOIN Book ON BookCopy.book = Book.id 
+                                    WHERE status != "pending" AND status != "rejected" AND status != "archived"');  
         $stmt->execute();
         return $stmt->fetchAll();
     }
@@ -47,7 +50,9 @@
 
       $params = array();
 
-      $query = 'SELECT * FROM Borrowing JOIN BookCopy ON Borrowing.copy = BookCopy.id ';
+      $query = 'SELECT Borrowing.*, BookCopy.owner, Book.title, Book.author FROM Borrowing 
+                    JOIN BookCopy ON Borrowing.copy = BookCopy.id 
+                    JOIN Book ON BookCopy.book = Book.id ';
 
       if ($ownerID != '') {
         $query .= 'WHERE owner = ?';
@@ -86,12 +91,35 @@
 
     function getOngoingUserBorrows($up_number) {
         global $dbh;
-        $stmt = $dbh->prepare('SELECT Borrowing.*, BookCopy.*, User.name AS borrower_name FROM Borrowing
+        $stmt = $dbh->prepare('SELECT Borrowing.*, Book.title, User.name AS borrower_name FROM Borrowing
                                JOIN BookCopy ON Borrowing.copy = BookCopy.id
+                               JOIN Book ON BookCopy.book = Book.id
                                JOIN User ON Borrowing.borrower = User.up_number
                                WHERE BookCopy.owner = ? AND Borrowing.status IN ("pending", "accepted", "delivered", "picked-up", "returned")');
         $stmt->execute(array($up_number));
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
+      }
+
+      function countOwnerBorrowings($up_number) {
+        global $dbh;
+        $stmt = $dbh->prepare('SELECT COUNT(*) FROM Borrowing
+                               JOIN BookCopy ON Borrowing.copy = BookCopy.id
+                               JOIN Book ON BookCopy.book = Book.id
+                               JOIN User ON Borrowing.borrower = User.up_number
+                               WHERE BookCopy.owner = ? AND Borrowing.status = "archived" ');
+        $stmt->execute(array($up_number));
+        return $stmt->fetchColumn();
+      }
+
+      function countBorrowerBorrowings($up_number) {
+        global $dbh;
+        $stmt = $dbh->prepare('SELECT COUNT(*) FROM Borrowing
+                     JOIN BookCopy ON Borrowing.copy = BookCopy.id
+                     JOIN Book ON BookCopy.book = Book.id
+                     JOIN User ON Borrowing.borrower = User.up_number
+                     WHERE Borrowing.borrower = ? AND Borrowing.status = "archived" ');
+        $stmt->execute(array($up_number));
+        return $stmt->fetchColumn();
       }
 
 ?>
