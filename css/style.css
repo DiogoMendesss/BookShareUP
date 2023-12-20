@@ -58,6 +58,11 @@ main { /* rem unit relative to font size: 16 px is the default */
     min-height: 83.5vh;
 }
 
+#main-feed{
+    background: url("../image/backgrounds/chamber.jpg") no-repeat center center fixed;
+    background-size: cover;
+}
+
 footer {
     width: 100vw;
     height: min-content;

@@ -1,6 +1,6 @@
     <h1>Currently Reading Book</h1>
 </header>
-<main>
+<main id="main-feed">
     
     <section class="shelf" id = "currently_reading_shelf">
         <?php 

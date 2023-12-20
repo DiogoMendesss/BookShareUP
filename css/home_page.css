@@ -7,7 +7,7 @@
     align-items: center;
     /* font-family: "Roboto", sans-serif; */
     background: black;
-    background: url('../image/homepage_background.jpg') center/cover no-repeat; 
+    background: url('../image/backgrounds/homepage_background.jpg') center/cover no-repeat; 
     overflow: hidden;
 }
     
@@ -31,8 +31,9 @@ img {
     align-content: center;
     
     box-sizing: border-box;
-    border: 10px double var(--dark-primary);
-    background-color: #ffd29e;
+    border: 5px ridge var(--dark-primary);
+    /* background-color: #ffd29e; */
+    background: url('../image/backgrounds/flip_book_background.jpg') center/cover no-repeat;
 }
 #home-cover > form {
     display: flex;
@@ -69,6 +70,7 @@ img {
     position: relative; /*placed relative to normal position (others don't adjust to fill the gap)*/
     perspective: 1500px;
 }
+
 .home-flip {
     width: 100%;
     height: 100%;
@@ -80,7 +82,13 @@ img {
     transform: rotateY(0deg); /* rotation along y axis*/
     transition: .5s;
     color: #000000;
+    border: 5px ridge var(--dark-primary);
 }
+
+#home-sheet3{
+    border:none;
+}
+
 p {
     font-size: 14px;
     line-height:24px;
@@ -96,6 +104,7 @@ p {
     padding: 0 13px;
     box-shadow: inset 20px 0 50px rgba(0,0,0,0.5) 0 2px 5px rgba(0,0,0,0.5);
     /* inner/outer shadow effect (horizontal, vertical, blur radius, color) */
+    background: url('../image/backgrounds/flip_book_background.jpg') center/cover no-repeat;
 }
 .home-back {
     width: 100%;

@@ -21,7 +21,7 @@
             <!-- 2nd/1st pages -->
             <div class="home-flip" id="home-sheet1">
                 <div class="home-back">
-                    <img src="image/bookcover/2.jpg">
+                    <img src="image/backgrounds/page_with_logo.png">
                     <label class="home-back-btn" for="home-checkbox1">Back</label>
                 </div>
                 <div class="home-front">
@@ -33,7 +33,7 @@
             <!-- 4th/3th pages  -->
             <div class="home-flip" id="home-sheet2">
                 <div class="home-back">
-                    <img src="image/bookcover/3.jpg">
+                    <img src="image/backgrounds/page_with_logo.png">
                     <label class="home-back-btn" for="home-checkbox2">Back</label>
                 </div>
                 <div class="home-front">
@@ -46,7 +46,7 @@
             <!-- 6th/5th pages -->
             <div class="home-flip" id="home-sheet3">
                 <div class="home-back">
-                    <img src="image/bookcover/4.jpg">
+                    <img src="image/backgrounds/back_cover.png">
                     <label class="home-back-btn" for="home-checkbox3">Back</label>
                 </div>
                 <div class="home-front">

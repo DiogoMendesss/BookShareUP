@@ -1,6 +1,6 @@
     <h1>Feed</h1>
 </header>
-<main>
+<main id='main-feed'>
     
     <section class="shelf">
         <?php foreach ($userProposals as $row) { 
