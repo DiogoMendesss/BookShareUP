@@ -67,7 +67,7 @@ footer {
 }
 
 /* buttons, inputs, options, etc */
-button, input, option, select {
+button, input, option{
     /* appearance: none; Remove default appearance */
     /* -webkit-appearance: none; Remove default appearance for Chrome and Safari */
     /* -moz-appearance: none; Remove default appearance for Firefox */
@@ -89,6 +89,10 @@ button, input, option, select {
     border-color: black;
 }
 
+select{
+    
+}
+
 input[type="radio"] + label:after + label:before {
     /* content: ""; */
     /* display: inline-block; */
@@ -100,7 +104,7 @@ input[type="radio"] + label:after + label:before {
     /* border: 2px solid var(--bright-secondary); */
     background-color: rgba(255, 255, 255, 0.5);
 }
-button:hover, input:hover, option:hover, select:hover {
+button:hover, option:hover{
     /* outline-style: solid;
     outline-width: 1px;
     outline-color: var(--bright-secondary);

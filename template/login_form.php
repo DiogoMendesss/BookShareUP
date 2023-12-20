@@ -8,7 +8,7 @@
         echo "Invalid credentials! Please try again.";
         $_SESSION['msg']=null;}?>
 </p>
-<div id=register_request>
+<div class='change-register-page'>
     <p>Don't have an account yet?</p>
     <form class="register-request" action="home_page.php" method="get">
         <input type="hidden" name="action" value="register">

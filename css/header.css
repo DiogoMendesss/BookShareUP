@@ -29,7 +29,7 @@ header h1 {
     /* background: linear-gradient(to right, black, transparent); */
     background-color: var(--dark-primary);
     transition: 200ms ease; /* smooth the width extension */
-    z-index: 99;
+    z-index: 98;
     margin: 0;
     max-height: 100%;
 }
@@ -87,27 +87,25 @@ header h1 {
     transform: scale(1.15);
 }
 
-
-.logo {
-    font-weight: bold;
-    text-transform: uppercase;
-    text-align: center;
-    color: var(--accent-color1);
-    /* background: var(--dark-primary); */
-    font-size: 1.5rem;
-    letter-spacing: 0.3ch;
-    width: 100%;
-}
-.logo img {
-    width: 4rem;
-    height: 3rem;
-    min-width: 2rem;
-    margin: 0 1rem;
-    transform: rotate(0deg);
+.logo{
+    width: fit-content;
+    position: absolute;
+    z-index: 99;
+    margin-top: 1rem;
+    margin-left: 1rem;
     transition: transform 500ms ease;
 }
-.navbar:hover .logo img {
-    transform: rotate(-180deg);
+
+.logo img {
+    width: 7rem;
+    height: auto;
+    min-width: 2rem;
+    margin: 0 1rem;
+    transition: transform 500ms ease;
+}
+
+.logo:hover img{
+    transform: scaleX(-1) scale(1.2);
 }
 
 
@@ -119,6 +117,9 @@ header h1 {
     }
     .logo {
         margin-bottom: 6rem;
+    }
+    .empty-space {
+        height: 10rem;
     }
     .nav-link {
         gap: 2rem;
