@@ -8,7 +8,7 @@
         ?>
             <article class="book-item">
                 <img class="shelf-image" src="image/shelf2.png" alt="shelf-image">
-                <img class="bookCover" src="image/bookcover/<?php echo $row['book'] ?>.jpg" alt="">
+                <img class="book-cover" src="image/bookcover/<?php echo $row['book'] ?>.jpg" alt="">
 
                 <div class="book-details">
                     <h2 class="book-title"><?php echo $row['title'] ?></h2>

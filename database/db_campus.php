@@ -6,12 +6,10 @@ function getCampusesInfo() {
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
 
-function insertUserCampuses($up_number, $selectedCampuses) {
+function insertUserCampuses($up_number, $selectedCampus) {
     global $dbh;
-    foreach ($selectedCampuses as $campus) {
-        $stmt = $dbh->prepare('INSERT INTO UserCampus VALUES (?, ?)');
-        $stmt->execute(array($up_number, $campus));
-    }
+    $stmt = $dbh->prepare('INSERT INTO UserCampus VALUES (?, ?)');
+    $stmt->execute(array($up_number, $campus));
 }
 
 function updateCampusesInfo($up_number, $selectedCampuses) {

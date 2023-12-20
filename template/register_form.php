@@ -8,9 +8,10 @@
 
     <label> Select your main campus: </label>
     <?php
-    $campuses = getCampusesInfo();
+    //$campuses = getCampusesInfo();
     ?>
-    <select class="selection-dropdown" name="selectedCampuses[]" >
+    <select class="selection-dropdown" name="selectedCampus">
+        <option disabled selected>Select campus</option>
         <?php foreach ($campuses as $campus) { ?>
             <option value="<?php echo $campus['name']; ?>"><?php echo $campus['name']; ?></option>
         <?php } ?>

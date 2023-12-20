@@ -8,8 +8,7 @@ require_once('database/db_campus.php');
 $up_number = $_POST['up_number'];
 $password = $_POST['password'];
 $full_name = $_POST['first_name'] . " " . $_POST['last_name'];
-$selected_campuses = $_POST['selectedCampuses'];
-//var_dump($selected_campuses);
+$selected_campus = $_POST['selectedCampus'];
 
 if (strlen($up_number) != 9) {
     $_SESSION['msg'] = 'Invalid up number!';
@@ -27,7 +26,7 @@ try {
     $_SESSION['up_number'] = $up_number;
 
     insertUser($up_number, $password, $full_name);
-    insertUserCampuses($up_number, $selected_campuses);
+    insertUserCampuses($up_number, $selected_campus);
     saveProfilePic($up_number);
     header('Location: my_profile.php');
 }
