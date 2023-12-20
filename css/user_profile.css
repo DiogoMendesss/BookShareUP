@@ -20,60 +20,6 @@
     padding-bottom: 1rem;
 }
 
-
-/* Style for the file input button */
-input[type=file] {
-    display:flex;
-    flex-direction: column;
-    align-items: center;
-    font-family: 'Poppins', sans-serif;
-    font-weight: 600;
-    transition: all 0.35s ease;
-    padding: 0.3rem 0.3rem;
-    border-radius: 2rem;
-    border-color: black;
-    max-width: 75%;
-    margin-bottom: 0.5rem; /* Add space between button and file indication */
-}
-
-/* Style for the file input button */
-input[type=file]::-webkit-file-upload-button {
-    font-family: 'Poppins', sans-serif;
-    font-weight: 600;
-    padding: 0.3rem 0.6rem;
-    border-radius: 2rem;
-    border: 2px solid black;
-    background-color: #ffffff; /* Specify background color */
-    cursor: pointer;
-    transition: background-color 0.35s ease; /* Add transition effect */
-}
-
-/* Change background color on hover */
-input[type=file]::-webkit-file-upload-button:hover {
-    cursor: pointer;
-    background-color: black;
-    color: white;
-}
-
-
-input[type=submit] {
-    font-family: 'Poppins', sans-serif;
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-    font-weight: 600;
-    transition: all 0.35s ease;
-    padding: 0.3rem 0.6rem;
-    border-radius: 2rem;
-    border-color: black;
-}
-
-input[type=submit]:hover{
-    cursor: pointer;
-    background-color: black;
-    color: white;
-}
-
 .empty-space-image {
     padding-top: 2rem;
     padding-bottom: 0.5rem;

@@ -1,8 +1,10 @@
 /* 
-    G E N E R A L   S T Y L E S
+    G E N E R A L   S T Y L E   S H E E T
 */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap'); 
-
+/*
+    V A R I A B L E S  A N D  D E F A U L T S
+*/
 :root {
     font-size: 16px;
     font-family: "Poppins", sans-serif;
@@ -14,11 +16,10 @@
     --accent-color2: #f0a435;
     --min-width-size: 600px;
 }
-* {
+* { /* force including padding and border in size */
     box-sizing: border-box;
 }
-
-/* WARNING: no . before!!! warning */
+/* REMINDER: no . before!!! warning */
 body { /* setting defaults */
     width: 100%;
     margin: 0;
@@ -46,12 +47,8 @@ body::-webkit-scrollbar-thumb {
     background: var(--accent-color1);
 }
 main { /* rem unit relative to font size: 16 px is the default */
-    /* margin-left: 3rem; leave space for the navbar */
     width: 100vw;
-    /* padding-left: 3rem; */
     /* background-image: url("../image/bookshelf2.png"); */
-    /* background-color: var(--bright-primary); */
-    /* border: 3px solid red; */
     background-color: transparent;
     position: relative;
 }
@@ -62,6 +59,9 @@ main::before {  /* trick for adjusting the opacity */
     opacity: 0.5; /* Adjust this value to change the opacity */
     z-index: -1;
 }
+/*
+    F O O T E R  A N D  P A G I N A T I O N
+*/
 footer {
     width: 100vw;
     height: min-content;
@@ -76,68 +76,6 @@ footer > a {
     transition: all 0.35s ease;
     margin-left: 3rem;
 }
-/*
-    B U T T O N S , I N P U T S , E T C
-*/
-button, input, option {
-    /* appearance: none; Remove default appearance */
-    /* -webkit-appearance: none; Remove default appearance for Chrome and Safari */
-    /* -moz-appearance: none; Remove default appearance for Firefox */
-    /* border-style: outset;
-    border-width: 2px;
-    border-color: var(--bright-secondary);
-    border-radius: 20px;
-    background-color: rgba(255, 255, 255, 0.5);
-    color: rgba(0, 0, 0, 1);
-    outline: none; */
-    /* font-family: 'Poppins', sans-serif; */
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-    font-weight: 600;
-    transition: all 0.35s ease;
-    padding: 0.3rem 0.6rem;
-    border-radius: 2rem;
-    border-color: black;
-}
-
-input[type="radio"] + label:after + label:before {
-    /* content: ""; */
-    /* display: inline-block; */
-    width: 1rem;
-    height: 1rem;
-    size: 2rem;
-    margin: 0.2rem;
-    border-radius: 50%;
-    /* border: 2px solid var(--bright-secondary); */
-    background-color: rgba(255, 255, 255, 0.5);
-}
-button:hover, option:hover{
-    /* outline-style: solid;
-    outline-width: 1px;
-    outline-color: var(--bright-secondary);
-    background: rgba(255, 255, 255, 1); */
-    transform: scale(1.05);
-    cursor: pointer;
-    background-color: black;
-    color: white;
-}
-input:hover, select:hover {
-    /* outline-style: solid;
-    outline-width: 1px;
-    outline-color: var(--bright-secondary);
-    background: rgba(255, 255, 255, 1); */
-    transform: scale(1.05);
-    cursor: pointer;
-    /* background-color: black;
-    color: white; */
-}
-
-input:focus {
-    background-color: rgba(255, 255, 255, 1);
-    outline-color: var(--accent-color2);
-}
-
 #pagination {
     clear: both; /* Add this to clear the float */
     display: flex;
@@ -159,6 +97,35 @@ input:focus {
 #pagination > a:hover {
     transform: scale(1.05);
     cursor: pointer;
+}
+/*
+    B U T T O N S , I N P U T S , E T C
+*/
+button, input, option, select,
+input[type="file"]::-webkit-file-upload-button {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    transition: all 0.35s ease;
+    padding: 0.15rem 0.4rem;
+    border-radius: 2rem;
+    border-color: black;
+}
+/* hover changes colors */
+button:hover, option:hover {
+    transform: scale(1.03);
+    cursor: pointer;
+    background-color: black;
+    color: white;
+}
+/* hover does not change colors */
+input:hover, select:hover,
+input[type="file"]::-webkit-file-upload-button {
+    transform: scale(1.03);
+    cursor: pointer;
+}
+input:focus {
+    background-color: rgba(255, 255, 255, 1);
+    outline-color: var(--accent-color2);
 }
 /*
     B O O k  S T U F F

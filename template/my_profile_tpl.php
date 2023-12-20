@@ -15,14 +15,14 @@
                         ?>
                         <?php }?>
                         <?php if (!isset($changePicRequest)) { ?>
-                        <form action = "my_profile.php" method = "post">
-                            <input type = "submit" name='ChangeProfilePic' value = "Change Profile Picture">
+                        <form action="my_profile.php" method = "post">
+                            <input type="submit" name='ChangeProfilePic' value="Change Profile Picture">
                         </form>
                         <?php } 
                         elseif ($changePicRequest==='Change Profile Picture') { ?>
-                            <form class="upload-pic-form" action = "my_profile.php" method = "post" enctype="multipart/form-data">
-                                <input type = "file" name = "profile_pic">
-                                <input type = "submit" name='ChangeProfilePic' value = "Upload New Pic">
+                            <form class="upload-pic-form" action="my_profile.php" method="post" enctype="multipart/form-data">
+                                <input type="file" name="profile_pic">
+                                <input type="submit" name='ChangeProfilePic' value="Upload New Pic">
                             </form>
                         <?php } ?>
                         <!-- Change Profile Picture Form -->

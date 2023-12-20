@@ -1,13 +1,12 @@
 <?php include_once('database/init.php'); ?>
-<section class="register-book-page">
 <form class="register-form" action="action_register.php" method="post" enctype="multipart/form-data">
-    <input type="text" name="up_number" id="up_number" placeholder="UP Number" required autofocus> <!-- Change name and placeholder to 'up_number' -->
-    <input type="password" name="password" id="password" placeholder="Password" required> <!-- Change name and placeholder to 'password' -->
+    <input type="text" name="up_number" id="up_number" placeholder="UP Number" required autofocus>
+    <input type="password" name="password" id="password" placeholder="Password" required>
     <input type="text" name="first_name" id="first_name" placeholder="First Name" required>
     <input type="text" name="last_name" id="last_name" placeholder="Last Name" required>
 
 
-    <p> Select your main campus: </p>
+    <label> Select your main campus: </label>
     <?php
     $campuses = getCampusesInfo();
     ?>
@@ -17,17 +16,17 @@
         <?php } ?>
     </select>
 
-    <p>Upload your profile image:</p>
-    <input type="file" name="profile_pic" id="input-profile_pic">
+    <label>Upload your profile image:</label>
+    <input type="file" name="profile_pic">
     <input type="submit" value = Register>
 </form>
-<div class="change-register-page">
-    <p class="centered-paragraph"> Already have an account? </p>
-    <form id="login-request" action="home_page.php" method="get">
+<div id="change-register-to-login">
+    <label> Already have an account? </label>
+    <form action="home_page.php" method="get">
             <input type="hidden" name="action" value="login">
             <input type="submit" value="Login">
     </form>
-    <p id=register_error class="centered paragraph"> 
+    <p class=user-input-error> 
         <?php if (isset($_SESSION['msg'])){
             echo ($_SESSION['msg']);
             //echo ("That user already exists. Try again.");
@@ -35,5 +34,4 @@
         ?>
     </p>
 </div>
-</section>
 

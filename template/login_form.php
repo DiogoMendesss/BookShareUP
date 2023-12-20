@@ -3,14 +3,14 @@
     <input type="password" name="password" id="password" placeholder="Password">
     <input type="submit" value=Login accesskey="enter" >
 </form>
-<p id=login_error>
+<p class=user-input-error>
     <?php if ($_SESSION['msg'] === 'Invalid up_number or password!'){
         echo "Invalid credentials! Please try again.";
         $_SESSION['msg']=null;}?>
 </p>
-<div class='change-register-page'>
+<div id='change-register-to-login'>
     <p>Don't have an account yet?</p>
-    <form class="register-request" action="home_page.php" method="get">
+    <form action="home_page.php" method="get">
         <input type="hidden" name="action" value="register">
         <input type="submit" value="Register">
     </form>
