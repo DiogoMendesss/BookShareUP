@@ -60,7 +60,7 @@
                             $allCampuses = getCampusesInfo();
                             foreach ($allCampuses as $campus) {
                                 $campusName = $campus['name']; ?>
-                                <input type="checkbox" name="selectedCampuses[]" value="<?php echo $campusName; ?>" <?php /* Add logic here to check if the campus is selected */ ?>>
+                                <input type="checkbox" name="selectedCampuses[]" value="<?php echo $campusName; ?>" <?php if (isSelected($campusName, $user_campuses)) echo "checked"; ?>>
                                 <?php echo $campusName; ?> 
                             <?php } ?>
                         </div>
