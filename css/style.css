@@ -45,6 +45,7 @@ body::-webkit-scrollbar-track {
 body::-webkit-scrollbar-thumb {
     background: var(--accent-color1);
 }
+
 main { /* rem unit relative to font size: 16 px is the default */
     /* margin-left: 3rem; leave space for the navbar */
     width: 100vw;
@@ -52,21 +53,16 @@ main { /* rem unit relative to font size: 16 px is the default */
     /* background-image: url("../image/bookshelf2.png"); */
     /* background-color: var(--bright-primary); */
     /* border: 3px solid red; */
-    background-color: transparent;
-    position: relative;
+    background: url("../image/backgrounds/library_minecraft.png") no-repeat center center fixed;
+    background-size: cover;
+    min-height: 82vh;
 }
-main::before {  /* trick for adjusting the opacity */
-    content: "";
-    position: absolute;
-    background-image: url("../image/bookshelf2.png");
-    opacity: 0.5; /* Adjust this value to change the opacity */
-    z-index: -1;
-}
+
 footer {
     width: 100vw;
     height: min-content;
     flex-shrink: 0;
-    background-color: transparent;
+    background-color: black;
     margin-top: auto;
     text-align: center;
 }
@@ -79,6 +75,26 @@ footer > a {
 /*
     B U T T O N S , I N P U T S , E T C
 */
+main > .floatingButton {
+    position: fixed;
+    bottom: 3rem;
+    right: 3rem;
+    right: 1rem;
+    z-index: 99;
+
+}
+.floatingButton {
+    text-decoration: none;
+    color: var(--accent-color1);
+    border: 2px groove var(--accent-color1);
+    border-radius: 30%;
+    padding: 0.1rem;
+}
+.floatingButton:hover {
+    color: var(--accent-color2);
+    border: 2px groove var(--accent-color2);
+}
+
 button, input, option {
     /* appearance: none; Remove default appearance */
     /* -webkit-appearance: none; Remove default appearance for Chrome and Safari */

@@ -25,24 +25,6 @@ header h1 {
     margin-bottom: auto;
     border-bottom: 3px groove var(--accent-color1);
 }
-main > .floatingButton {
-    position: fixed;
-    bottom: 1rem;
-    right: 1rem;
-    z-index: 99;
-
-}
-.floatingButton {
-    text-decoration: none;
-    color: var(--accent-color1);
-    border: 2px groove var(--accent-color1);
-    border-radius: 30%;
-    padding: 0.1rem;
-}
-.floatingButton:hover {
-    color: var(--accent-color2);
-    border: 2px groove var(--accent-color2);
-}
 
 .navbar {
     position: fixed;

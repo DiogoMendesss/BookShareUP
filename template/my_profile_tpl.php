@@ -1,6 +1,6 @@
 <h1>My Profile</h1>
 </header>
-        <main>
+        <main id='main_profile'>
             <section class = "profile-main">
                 <div class = "empty-space-image">
                     <section class = "profile-pic">

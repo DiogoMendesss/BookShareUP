@@ -1,11 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
 
+
+#main_profile{
+    background-image: url("../image/backgrounds/profile_background.jpg");
+}
+
 .profile-main{ 
     font-family: 'Poppins', sans-serif;
     display: flex;
     flex-direction: column;
     align-items: center; /* Center items horizontally */
-    background-color: white;
     padding-left: 48px;
     padding-bottom: 1rem;
 }
@@ -182,7 +186,6 @@ input[type=submit]:hover{
     font-family: 'Poppins', sans-serif;
     text-align: center;
     padding-left: 48px;
-    background-color: white;
     padding-bottom: 1rem;
     border-top: dashed 0.15rem black;
 }
