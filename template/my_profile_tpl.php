@@ -1,3 +1,4 @@
+<h1>My Profile</h1>
 </header>
         <main>
             <section class = "profile-main">

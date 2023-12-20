@@ -1,4 +1,6 @@
-/* general style */
+/* 
+    G E N E R A L   S T Y L E S
+*/
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap'); 
 
 :root {
@@ -50,24 +52,34 @@ main { /* rem unit relative to font size: 16 px is the default */
     /* background-image: url("../image/bookshelf2.png"); */
     /* background-color: var(--bright-primary); */
     /* border: 3px solid red; */
-    /* position: relative; */
+    background-color: transparent;
+    position: relative;
 }
 main::before {  /* trick for adjusting the opacity */
     content: "";
     position: absolute;
     background-image: url("../image/bookshelf2.png");
     opacity: 0.5; /* Adjust this value to change the opacity */
-    /* z-index: -1; */
+    z-index: -1;
 }
 footer {
     width: 100vw;
     height: min-content;
     flex-shrink: 0;
-    background-color: var(--dark-primary);
+    background-color: transparent;
+    margin-top: auto;
+    text-align: center;
 }
-
-/* buttons, inputs, options, etc */
-button, input, option{
+footer > a {
+    color: var(--accent-color1);
+    text-decoration: none;
+    transition: all 0.35s ease;
+    margin-left: 3rem;
+}
+/*
+    B U T T O N S , I N P U T S , E T C
+*/
+button, input, option, select {
     /* appearance: none; Remove default appearance */
     /* -webkit-appearance: none; Remove default appearance for Chrome and Safari */
     /* -moz-appearance: none; Remove default appearance for Firefox */
@@ -89,10 +101,6 @@ button, input, option{
     border-color: black;
 }
 
-select{
-
-}
-
 input[type="radio"] + label:after + label:before {
     /* content: ""; */
     /* display: inline-block; */
@@ -104,7 +112,7 @@ input[type="radio"] + label:after + label:before {
     /* border: 2px solid var(--bright-secondary); */
     background-color: rgba(255, 255, 255, 0.5);
 }
-button:hover, option:hover{
+button:hover, input:hover[type="submit"] {
     /* outline-style: solid;
     outline-width: 1px;
     outline-color: var(--bright-secondary);
@@ -114,17 +122,45 @@ button:hover, option:hover{
     background-color: black;
     color: white;
 }
-
+button:hover, input:hover, option:hover, select:hover {
+    /* outline-style: solid;
+    outline-width: 1px;
+    outline-color: var(--bright-secondary);
+    background: rgba(255, 255, 255, 1); */
+    transform: scale(1.05);
+    cursor: pointer;
+    /* background-color: black;
+    color: white; */
+}
 input:focus {
     background-color: rgba(255, 255, 255, 1);
-    outline-color: var(--accent-color1);
+    outline-color: var(--accent-color2);
 }
-
-
-
-
-
-/* book stuff */
+#pagination {
+    clear: both; /* Add this to clear the float */
+    display: flex;
+    justify-content: center;
+    column-gap: 1rem;
+    font-size: 1.2rem;
+    border-bottom: 3px groove var(--accent-color1);
+    padding: 1em;
+    margin-left: 3rem;
+    /* gap: 1rem; */
+    font-weight: 600;
+    color: white;
+    /* padding: 0.3rem 0.6rem; */
+}
+#pagination > a {
+    color: var(--accent-color1);
+    transition: all 0.35s ease;
+}
+#pagination > a:hover {
+    transform: scale(1.05);
+    cursor: pointer;
+}
+/*
+    B O O k  S T U F F
+*/
 .shelf {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(min-content, 13rem));
@@ -132,7 +168,7 @@ input:focus {
     /* minmax() prevents the grid from letting its book-items overflow */
     grid-gap: 3rem 3rem;
     padding: 1rem;
-    padding-left: 10vw;
+    padding-left: 14vw;
     padding-right: 10vw;
     overflow: hidden;
 
@@ -153,6 +189,16 @@ input:focus {
     align-items: stretch;
 
     transition: transform 400ms ease;
+}
+.book-item h2 {
+    color: #333;
+    margin: 0;
+    line-height: 1.6rem;
+    font-size: 1.3rem;
+}
+.book-item .author {
+    color: #777;
+    font-size: 1rem;
 }
 
 .shelfImage {
@@ -177,135 +223,75 @@ input:focus {
     transition: transform 200ms ease;
     z-index: 1;
 }
-/* Style the book details container */
-.book-details { 
-    grid-area: 3 / 1 / 4 / -1;
-    background-color: rgba(235, 233, 233, 0.8);
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-    border-radius: 10px; /* Rounded corners */
-    padding: 1px; /* Add some padding */
-    display: none; 
-    transition: transform 400ms ease;
-    z-index: 2;
-    line-height: 0.6rem;
-    white-space: nowrap;
+.book-details {
+    display: none;
 }
-
+/* the form is a non hoverable/fixed version of book-details when a form is clicked */
 .book-details-form { 
+    display: flex;
+    flex-direction: column;
+}
+.book-details, .book-details-form { 
     grid-area: 3 / 1 / 4 / -1;
-    background-color: rgba(235, 233, 233, 0.8);
+
+    background-color: rgba(206, 205, 205, 0.8);
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
     border-radius: 10px; /* Rounded corners */
-    padding: 1px; /* Add some padding */
     transition: transform 400ms ease;
     z-index: 2;
-    line-height: 0.6rem;
-    white-space: nowrap;
+    padding: 0.4rem;
+    text-align: center;
+
+    justify-content: space-evenly;
+    justify-items: center;
+    align-items: center;
+    gap: 0rem;
 }
-
-
-.book-item:hover .bookCover{
+.book-details *, .book-details-form * {
+    margin: 0;
+    max-width: 100%;
+}
+.book-item:hover .bookCover {
     transform: scale(0.97);
     opacity: 0.5;
     animation-play-state: paused;
 }
-
-
 .book-item:hover .book-details {
     transform: scale(1.02);
-    animation-play-state: paused;
-   
-    display: grid;
-    grid-template-rows: repeat(3, 1fr);
-    grid-template-columns: 1fr 1fr; 
-    justify-items: center;
-    align-items: center;
-}
-
-.book-details h3 {
-    color: #333;
-    margin: 0;
-    grid-area: span 1 / span 2;
-}
-.book-details .author {
-    color: #777;
-    margin: 0;
+    display: flex;
+    flex-direction: column;   
 }
 .miniForm {
-    display: inline-block;
-    margin: 0.5rem;
-    margin-top: 0;
-}
-.miniForm label {
-    font-size: 0.7rem;
-    font-weight: bold;
-    text-transform: uppercase;
-    text-align: left;
-}
-/* target labels for each radio button */
-.miniForm label[for="excellent"],
-label[for="good"],
-label[for="worn"],
-label[for="hardcover"],
-label[for="softcover"],
-label[for="handbook"] { 
-    font-size: 0.4rem;
-    margin-right: 0; 
-    text-transform: uppercase;
-}
-
-
-
-.login-form {
-    height: 60vh;
-    max-width: 300px;
-    margin: 0 auto;
+    text-align: center;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    text-align: center;
+    gap: 0;
 }
-
-#login_error {
-    color: red;
-    text-align: center;
+.miniForm label {
+    font-size: 0.8rem;
+    line-height: 1rem;
 }
-
-#register_request {
-    text-align: center;
-    margin-top: 20px;
-}
-
-
-#pagination {
-    clear: both; /* Add this to clear the float */
+.miniFormLine {
     display: flex;
-    justify-content: center;
-    column-gap: 1em;
-    font-size: 1.2em;
-    border-top: 2px solid #C62828;
-    padding: 1em;
+    align-items: center;
+    justify-items: center;
+    column-gap: 0.5rem;
+}
+.miniFormLine label {
+    font-size: 0.6rem;
 }
 
-#search {
-    display: flex;
-    justify-content: center;
-    column-gap: 1em;
-    border-bottom: 2px #C62828;
-    padding-top: 0.5rem;
-    padding-bottom: 0.5rem;
-    margin-bottom: 0;
-    border-top: dashed 2px #C62828;
-  }
-
-  .link-to-profile {
+.link-to-profile {
     color: black;
     font-weight: bold;
     text-decoration: none;
-  }
-
-  .link-to-profile:hover {
+}
+.link-to-profile:hover {
     color: var(--dark-secondary);
     transition: all 0.35s ease;
-  }
+}
+
+
+
+

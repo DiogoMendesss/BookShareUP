@@ -1,4 +1,4 @@
-<main id=homePage-main>
+<main id="homePage-main">
     <div class="home-book"> <!-- flex container  -->
         <!-- the 3 hidden, for conditional next/back button action-->
         <input type="checkbox" id="home-checkbox1"> 

@@ -1,3 +1,4 @@
+<h1>User Profile</h1>
     </header>
         <main>
         <section class = "profile-main" id='visiting_profile'>

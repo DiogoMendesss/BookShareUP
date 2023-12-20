@@ -1,4 +1,4 @@
-main {
+#homePage-main {
     margin: 0;
     padding: 0;
     height: 100vh;
@@ -8,6 +8,7 @@ main {
     /* font-family: "Roboto", sans-serif; */
     background: linear-gradient(90deg, var(--bright-primary) 50%, var(--dark-secondary) 50%);
     /* background: url('/image/minecraft-wp.jpg'); */
+    overflow: hidden;
 }
     
 .home-book > input[type="checkbox"] {

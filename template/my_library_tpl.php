@@ -26,8 +26,7 @@
             </article>
 
         <?php } ?>
-
-        <a href="book_explorer.php">Add copy</a>
     </section>
+<a href="book_explorer.php" class="floatingButton">Add copy</a>
 </main>
 
