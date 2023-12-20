@@ -2,7 +2,7 @@
 </header>
 <main>
     
-    <section class="shelf">
+    <section class="shelf" id = "currently_reading_shelf">
         <?php 
         
         $currentlyReadingBook = getCurrentlyReadingBook($userID);
@@ -11,24 +11,41 @@
             
         ?>
             <article class="book-item">
-                <img src="image/bookcover/<?php echo $currentlyReadingBook['book'] ?>.jpg" alt="">
+                <img class="shelfImage" src="image/shelf2.png" alt="shelf-image">
+                <img class="bookCover" src="image/bookcover/<?php echo $currentlyReadingBook['book'] ?>.jpg" alt="">
 
                 <div class="book-details-form">
                     <h2><?php echo $currentlyReadingBook['title'] ?></h2>
                     <h3 class="author"><?php echo $currentlyReadingBook['author'] ?></h3>
                     <p class="condition"><?php echo "Condition: " . $currentlyReadingBook['condition'] ?></p>
                     <p class="copy_type"><?php echo "Type: " . $currentlyReadingBook['copy_type'] ?></p>
-                    <p class="owner"><?php echo "Owner: " . $currentlyReadingBook['owner_name'] ?></p>
+                    <p class="owner"><?php echo "Owner: "?><a class=link-to-profile href="user_profile.php?user=<?php echo $currentlyReadingBook['owner']; ?>"> 
+                    <?php echo $currentlyReadingBook['owner_name'] ?></a> </p>
                     <p class="campus"> <?php echo "Campus: " . $currentlyReadingBook['campus'] ?></p>
                    
                 </div>
             </article>
     </section>
     <section class="borrow-info">
-        <div class="borrow-details">
-            <p class="borrow-status">Borrow Status: <?php echo $currentlyReadingBook['status'] ?></p>
-            <p class="borrow-start-date">Start Date: <?php echo $currentlyReadingBook['start_date'] ?></p>
-            <p class="borrow-expiration-date">Expiration Date: <?php echo $currentlyReadingBook['expiration_date'] ?></p>
+        <div class="info-section" id="currently_reading_section">
+            <div class="info-row">
+                <div class="info-label">Borrow Status: </div>
+                <div class="info-field"> <?php echo $currentlyReadingBook['status'] ?></div>
+            </div>
+            <div class="info-row">
+                <div class="info-label">Borrow Status: </div>
+                <div class="info-field"> <?php 
+                if ($currentlyReadingBook['start_date']!='')
+                    echo $currentlyReadingBook['start_date'];
+                else echo "Reading period hasn't started..." ?></div>
+            </div>
+            <div class="info-row">
+                <div class="info-label">Borrow Status: </div>
+                <div class="info-field"> <?php 
+                if ($currentlyReadingBook['start_date']!='')
+                    echo $currentlyReadingBook['start_date'];
+                else echo "Reading period hasn't started..." ?></div>
+            </div>
         </div>
     </section>
 
