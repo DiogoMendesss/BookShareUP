@@ -25,25 +25,19 @@
 
     function updateUserBadges($up_number, $borrowedBooksNumber, $readBooksNumber){
         global $dbh;
-        var_dump($borrowedBooksNumber);
-        var_dump($readBooksNumber);
-        var_dump(checkUserBadgeCategory($up_number, "Reader"));
-        var_dump(checkUserBadgeCategory($up_number, "Borrower"));
+
         if($readBooksNumber>=1 && !checkUserBadgeCategory($up_number, "Reader")){
-            echo "entrou if 1";
             $stmt = $dbh->prepare("INSERT INTO UserBadge VALUES (?, 'Good Reader')");
             $stmt->execute(array($up_number));
         }
         
         if ($readBooksNumber>=2){
-            echo "entrou if 2";
             $stmt = $dbh->prepare("UPDATE UserBadge SET badge = 'Awesome Reader' 
                                     WHERE user = ?
                                     AND badge = 'Good Reader' ");
             $stmt->execute(array($up_number));
         } 
         if ($readBooksNumber>=3){
-            echo "entrou if 3\n";
             $stmt = $dbh->prepare("UPDATE UserBadge SET badge = 'Legendary Reader' 
                                     WHERE user = ?
                                     AND badge = 'Awesome Reader'");
@@ -53,20 +47,17 @@
 
 
         if($borrowedBooksNumber>=1 && !checkUserBadgeCategory($up_number, "Borrower")){
-            echo "entrou if 4";
             $stmt = $dbh->prepare("INSERT INTO UserBadge VALUES (?, 'Good Borrower')");
             $stmt->execute(array($up_number));
         }  
         
         if ($borrowedBooksNumber>=2){
-            echo "entrou if 5";
             $stmt = $dbh->prepare("UPDATE UserBadge SET badge = 'Awesome Borrower' 
                                     WHERE user = ?
                                     AND badge = 'Good Borrower'");
             $stmt->execute(array($up_number));
         }
         if ($borrowedBooksNumber>=3){
-            echo "entrou if 6";
             $stmt = $dbh->prepare("UPDATE UserBadge SET badge = 'Legendary Borrower' 
                                     WHERE user = ?
                                     AND badge = 'Awesome Borrower'");
