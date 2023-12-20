@@ -19,7 +19,7 @@
     <br>
 
     <p>Upload your profile image:</p>
-    <input type="file" name="profile_pic" id="profile_pic">
+    <input type="file" name="profile_pic" id="profile-pic">
     <input type="submit" value = Register>
 </form>
 <p> Already have an account? </p>

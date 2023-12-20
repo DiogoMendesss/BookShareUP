@@ -57,9 +57,11 @@
                             <input type="hidden" name="book_id" value="<?php echo $book['id']; ?>">
                             <input type="hidden" name="page_num" value="<?php echo $page_num ?>">
                             <label>Interest Level:</label>
-                            <input type="radio" name="interest_level" value="1" required>1
-                            <input type="radio" name="interest_level" value="2">2
-                            <input type="radio" name="interest_level" value="3">3
+                            <div class="miniFormLine">
+                                <input type="radio" name="interest_level" value="1" required>1
+                                <input type="radio" name="interest_level" value="2">2
+                                <input type="radio" name="interest_level" value="3">3
+                            </div>
                             <button type="submit">Confirm</button>
                         </form>
                     <?php } else { ?>
@@ -85,21 +87,23 @@
                             <input type="hidden" name="page_num" value="<?php echo $page_num ?>">
 
                             <label>Condition: </label>
-                            <input type="radio" name="condition" value="excellent">
-                            <label for="excellent">Excellent</label>
-                            <input type="radio" name="condition" value="good">
-                            <label for="excellent">Good</label>
-                            <input type="radio" name="condition" value="worn">
-                            <label for="excellent">Worn</label>
-                            
+                            <div class="miniFormLine">
+                                <input type="radio" name="condition" value="excellent">
+                                <label for="excellent">Excellent</label>
+                                <input type="radio" name="condition" value="good">
+                                <label for="excellent">Good</label>
+                                <input type="radio" name="condition" value="worn">
+                                <label for="excellent">Worn</label>
+                            </div>
                             <label>Type: </label>
-                            <input type="radio" name="copy_type" value="hardcover">
-                            <label for="hardcover">Hardcover</label>
-                            <input type="radio" name="copy_type" value="softcover">
-                            <label for="softcover">Softcover</label>
-                            <input type="radio" name="copy_type" value="handbook">
-                            <label for="handbook">Handbook</label>
-    
+                            <div class="miniFormLine">
+                                <input type="radio" name="copy_type" value="hardcover">
+                                <label for="hardcover">Hardcover</label>
+                                <input type="radio" name="copy_type" value="softcover">
+                                <label for="softcover">Softcover</label>
+                                <input type="radio" name="copy_type" value="handbook">
+                                <label for="handbook">Handbook</label>
+                            </div>
                             <button type="submit">Confirm</button>
                         </form>
                     <?php } else { ?>
