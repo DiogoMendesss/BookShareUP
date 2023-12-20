@@ -22,7 +22,7 @@
     } elseif (loginSuccess($up_number, $password)) {
       $_SESSION['up_number'] = $up_number;
       $_SESSION['full_name'] = getUserFullName($up_number);
-      header('Location: user_profile.php');
+      header('Location: my_profile.php');
     } else {
         $_SESSION['up_number'] = null;
         $_SESSION['full_name'] = null;

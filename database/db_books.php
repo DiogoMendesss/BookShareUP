@@ -66,7 +66,7 @@
   function getBooksByPage($page_num) {
       global $dbh;
       $stmt = $dbh->prepare('SELECT * FROM Book ORDER BY title LIMIT ? OFFSET ?');
-      $stmt->execute(array(40, ($page_num-1)*40));
+      $stmt->execute(array(18, ($page_num-1)*18));
       return $stmt->fetchAll();
     }
   
@@ -92,15 +92,15 @@
     function getCurrentlyReadingBook($readerID) {
       global $dbh; // Assuming $dbh is your SQLite database connection
   
-      $stmt = $dbh->prepare("SELECT Borrowing.*, BookCopy.*, Book.*, User.title AS owner_title  FROM Borrowing
-      JOIN BookCopy ON Borrowing.copyID = BookCopy.id
+      $stmt = $dbh->prepare("SELECT Borrowing.*, BookCopy.*, Book.*, User.name AS owner_name  FROM Borrowing
+      JOIN BookCopy ON Borrowing.copy = BookCopy.id
       JOIN Book ON BookCopy.book = Book.id
       JOIN User ON BookCopy.owner = User.up_number
-      WHERE Borrowing.user = ?");
+      WHERE Borrowing.borrower = ?");
   
       $stmt->execute(array($readerID));
   
-      return $stmt->fetch(PDO::FETCH_ASSOC);;
+      return $stmt->fetch(PDO::FETCH_ASSOC);
   }
 
   function getBooksBySearch($search_title, $search_author, $search_genre) {
