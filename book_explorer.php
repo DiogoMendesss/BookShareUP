@@ -13,7 +13,7 @@
     
 
     $n_books = getNumberOfBooks();
-    $n_pages = ceil($n_books / 40);
+    $n_pages = ceil($n_books / 18);
 
   
     if (isset($_GET['page_num']) && $_GET['page_num'] > 0) {

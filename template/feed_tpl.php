@@ -8,7 +8,8 @@
             
         ?>
             <article class="book-item">
-                <img src="image/bookcover/<?php echo $row['book'] ?>.jpg" alt="">
+                <img class="shelfImage" src="image/shelf2.png" alt="shelf-image">
+                <img class="bookCover" src="image/bookcover/<?php echo $row['book'] ?>.jpg" alt="">
 
                 <?php // if (isset($_GET['owner']) && $_GET['owner'] == $row['owner']  || isset($_GET['copy']) && $_GET['copy'] == $row['id']) { ?>
                 <div class="book-details-form">
@@ -18,7 +19,7 @@
                     <h3 class="author"><?php echo $row['author'] ?></h3>
                     <p class="condition"><?php echo "Condition: " . $row['condition'] ?></p>
                     <p class="copy_type"><?php echo "Type: " . $row['copy_type'] ?></p>
-                    <a class="owner" href="user_profile.php?user=<?php echo $row['owner']; ?>"><?php echo $row['owner_name'] ?></a>
+                    <a class="link-to-profile" href="user_profile.php?user=<?php echo $row['owner']; ?>"><?php echo $row['owner_name'] ?></a>
 
                     
                     <?php if (isset($_GET['owner']) && $_GET['owner'] == $row['owner'] &&

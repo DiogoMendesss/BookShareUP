@@ -4,23 +4,17 @@
     <input type="password" name="password" id="password" placeholder="Password" required> <!-- Change name and placeholder to 'password' -->
     <input type="text" name="first_name" id="first_name" placeholder="First Name" required>
     <input type="text" name="last_name" id="last_name" placeholder="Last Name" required>
-
-    <br>
-
-    <select name="campus" id="campus" required>
-        <option value="" disabled selected>Select your main campus</option>
-        <?php
-        $campuses = getCampusesInfo();
-        foreach ($campuses as $campus) {
-            echo '<option value="' . $campus['name'] . '">' . $campus['name'] . '</option>';
-        }
-        ?>
-    </select>
-
-    <br>
-
+    <p> Select the campus: </p>
+        <div class="miniFormLine"> 
+            <?php
+            $campuses = getCampusesInfo();
+            foreach ($campuses as $campus) {?>
+                <?php // var_dump($campus); ?>
+                <input type="checkbox" name="selectedCampuses[]" value="<?php echo $campus['name']; ?>" ><?php echo $campus['name']; ?>
+            <?php } ?>
+        </div>
     <p>Upload your profile image:</p>
-    <input type="file" name="profile_pic" id="profile_pic">
+    <input type="file" name="profile_pic" id="profile-pic">
     <input type="submit" value = Register>
 </form>
 <p> Already have an account? </p>

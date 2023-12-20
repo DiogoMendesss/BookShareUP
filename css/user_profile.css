@@ -1,32 +1,40 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
 
+main{
+    flex: 1;
+    background-color: white;
+}
+
 .profile-main{ 
     font-family: 'Poppins', sans-serif;
     display: flex;
     flex-direction: column;
     align-items: center; /* Center items horizontally */
+    background-color: white;
+    padding-left: 48px;
+    padding-bottom: 1rem;
 }
 
-.profile-main form{
+.visiting_profile {
+    font-family: 'Poppins', sans-serif;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: 1rem;
+    align-items: center; /* Center items horizontally */
+    background-color: white;
+    padding-left: 48px;
+    padding-bottom: 1rem;
 }
+
 
 /* Style for the file input button */
 input[type=file] {
     display:flex;
     flex-direction: column;
     align-items: center;
-    font-family: 'Poppins', sans-serif;
-    gap: 1rem;
-    font-weight: 600;
     transition: all 0.35s ease;
-    padding: 0.3rem 0.6rem;
     border-radius: 2rem;
     border-color: black;
-    max-width: 80%;
+    max-width: 75%;
     margin-bottom: 0.5rem; /* Add space between button and file indication */
 }
 
@@ -69,20 +77,22 @@ input[type=submit]:hover{
 }
 
 .empty-space-image {
-    padding-bottom: 0.7rem;
+    padding-top: 2rem;
+    padding-bottom: 0.5rem;
     position: relative;
-    width: 30%;
+    width: 25%;
 }
 
 .profile-pic img {
     width: 100%;
-    height: auto; /* Maintain aspect ratio */
+    aspect-ratio: 1/1;
     display: block; /* Remove extra space below inline images */
     border-radius: 50%;
     box-sizing: border-box;
 }
 
 .edit-profile-pic {
+    padding-top: 28px;
     position: absolute;
     top: 0;
     left: 0;
@@ -94,9 +104,17 @@ input[type=submit]:hover{
     opacity: 0; /* Initially hidden */
 }
 
+.upload-pic-form{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 /* Hover effect */
 .empty-space-image:hover .profile-pic img {
     opacity: 0.5; /* Adjust the opacity as needed */
+    border: 0.2rem solid black;
     transition: 0.2s ease; /* Add transition effect for smooth visibility change */
 }
 
@@ -109,29 +127,120 @@ input[type=submit]:hover{
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: 1rem;
+    margin-top: 0.2rem;
+    margin-bottom: 1rem;
 }
 
 /* Style for each user info field */
 .user-info-field {
-    display: flex; /* Add flex display to make the fields in line */
-    align-items: center; /* Align items vertically within each user-info-field */
-    margin-bottom: 0.3rem;
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5rem;
+    margin-top: 0.5rem;
     text-align: center;
 }
 
-/* Style for the user info labels (h3 elements) */
-.user-info-field h3 {
+/* Style for the user info labels */
+.user-info-field .user-info-label {
     font-family: 'Poppins', sans-serif;
     font-weight: 600;
     font-size: 1.2rem;
-    margin-bottom: 0.5rem;
-    margin-right: 0.5rem; /* Add right margin between label and data */
+    margin-right: 0.5rem; /* Add spacing between label and data */
 }
 
-/* Style for the user info data (span elements) */
-.user-info-field .user_info {
+/* Style for the user info data */
+.user-info-field .user-info {
     font-family: 'Poppins', sans-serif;
     font-weight: 400;
-    font-size: 1rem;
+    font-size: 1.1rem;
+}
+
+.profile-main h1 {
+    margin-bottom: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+/* Style for the edit-campus-form container */
+.edit-campus-form {
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+}
+
+/* Style for the form when not in edit mode */
+.edit-campus-btn form {
+    display: inline-block;
+    margin-bottom: 1rem; /* Add spacing between forms */
+}
+
+/* Style for the form in edit mode */
+.select-campus-form {
+    display: flex;
+    flex-direction: column; /* Stack items vertically in a column */
+    align-items: center;
+}
+
+/* Style for the container within edit-campus-list */
+.edit-campus-list {
+    display: flex;
+    flex-wrap: wrap; /* Allow items to wrap to the next line if there's overflow */
+    justify-content: center;
+    align-items: center;
+}
+
+/* Style for each checkbox and label within edit-campus-list */
+.edit-campus-list input[type="checkbox"] {
+    display: inline-block; /* Display checkboxes in line */
+    margin: 0 0.2rem; /* Add spacing between checkboxes */
+}
+
+.edit-campus-list label {
+    font-weight: 600;
+    margin-right: 1rem; /* Add spacing between labels */
+}
+
+/* Style for the submit button within edit-campus-list */
+.edit-campus-butn input[type="submit"] {
+    margin-top: 1rem; /* Add spacing above the submit button */
+}
+
+/* Style for the ongoing-userBorrows section */
+.ongoing-userBorrows {
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    padding-left: 48px;
+    background-color: white;
+    padding-bottom: 1rem;
+    border-top: dashed 0.15rem black;
+}
+
+#borrowed-books {
+    list-style: none; /* Remove default list styling */
+    padding: 0; /* Remove default padding */
+    display: flex; /* Display list items in a row */
+    flex-wrap: wrap; /* Allow items to wrap to the next line if there's overflow */
+    justify-content: space-evenly; /* Adjust as needed for spacing */
+}
+
+.borrowed-book-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 0.2rem solid black; /* Add border around each book */
+    border-radius: 1rem;
+    padding: 0.8rem 0.8rem;
+    background-color: antiquewhite;
+}
+
+.borrowed-book-container li {
+    text-align: center; /* Center the text within each li */
+}
+
+/* Style for the forms within borrowed-book-container */
+.borrowed-book-container form {
+    margin-top: 0.5rem;
+}
+
+.ongoing-userBorrows h2 {
+    margin-bottom: 2rem;
+    margin-top: 2rem;
 }
