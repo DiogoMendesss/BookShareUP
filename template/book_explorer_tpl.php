@@ -57,9 +57,11 @@
                             <input type="hidden" name="book_id" value="<?php echo $book['id']; ?>">
                             <input type="hidden" name="page_num" value="<?php echo $page_num ?>">
                             <label>Interest Level:</label>
-                            <input type="radio" name="interest_level" value="1" required>1
-                            <input type="radio" name="interest_level" value="2">2
-                            <input type="radio" name="interest_level" value="3">3
+                            <select name="interest_level" required>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                            </select>
                             <button type="submit">Confirm</button>
                         </form>
                     <?php } else { ?>
@@ -85,20 +87,20 @@
                             <input type="hidden" name="page_num" value="<?php echo $page_num ?>">
 
                             <label>Condition: </label>
-                            <input type="radio" name="condition" value="excellent">
-                            <label for="excellent">Excellent</label>
-                            <input type="radio" name="condition" value="good">
-                            <label for="excellent">Good</label>
-                            <input type="radio" name="condition" value="worn">
-                            <label for="excellent">Worn</label>
-                            
+                            <select name="condition" required>
+                                <option value="" selected disabled></option>
+                                <option value="excellent">Excellent</option>
+                                <option value="good">Good</option>
+                                <option value="worn">Worn</option>
+                            </select>
+
                             <label>Type: </label>
-                            <input type="radio" name="copy_type" value="hardcover">
-                            <label for="hardcover">Hardcover</label>
-                            <input type="radio" name="copy_type" value="softcover">
-                            <label for="softcover">Softcover</label>
-                            <input type="radio" name="copy_type" value="handbook">
-                            <label for="handbook">Handbook</label>
+                            <select name="copy_type" required>
+                                <option value="" selected disabled></option>
+                                <option value="hardcover">Hardcover</option>
+                                <option value="softcover">Softcover</option>
+                                <option value="handbook">Handbook</option>
+                            </select>
     
                             <button type="submit">Confirm</button>
                         </form>
