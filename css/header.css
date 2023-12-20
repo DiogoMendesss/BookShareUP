@@ -2,7 +2,7 @@ header {
     background-color: var(--dark-primary);
     width: 100%;
     /* height: min-content; */
-    z-index: 1;
+    /* z-index: 1; */
 }
 header h1 {
     color: var(--accent-color1);
@@ -50,7 +50,7 @@ main > .floating-button {
     /* background: linear-gradient(to right, black, transparent); */
     background-color: var(--dark-primary);
     transition: 200ms ease; /* smooth the width extension */
-    z-index: -1;
+    z-index: 1;
     margin: 0;
     max-height: 100%;
 }
