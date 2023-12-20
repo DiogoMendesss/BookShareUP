@@ -3,11 +3,13 @@ session_start();
 
 require_once('database/init.php');
 require_once('database/db_users.php');
+require_once('database/db_campus.php');
 
 $up_number = $_POST['up_number'];
 $password = $_POST['password'];
 $full_name = $_POST['first_name'] . " " . $_POST['last_name'];
-$faculty_campus = $_POST['campus'];
+$selected_campuses = $_POST['selectedCampuses'];
+//var_dump($selected_campuses);
 
 if (strlen($up_number) != 9) {
     $_SESSION['msg'] = 'Invalid up number!';
@@ -24,9 +26,10 @@ if (strlen($up_number) != 9) {
 try {
     $_SESSION['up_number'] = $up_number;
 
-    insertUser($up_number, $password, $full_name, $faculty_campus);
+    insertUser($up_number, $password, $full_name);
+    insertUserCampuses($up_number, $selected_campuses);
     saveProfilePic($up_number);
-    header('Location: user_profile.php');
+    header('Location: my_profile.php');
 }
 catch (PDOException $e) {
     $error_msg = $e->getMessage();

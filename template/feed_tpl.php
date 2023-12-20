@@ -19,7 +19,7 @@
                     <h3 class="author"><?php echo $row['author'] ?></h3>
                     <p class="condition"><?php echo "Condition: " . $row['condition'] ?></p>
                     <p class="copy_type"><?php echo "Type: " . $row['copy_type'] ?></p>
-                    <a class="owner" href="user_profile.php?user=<?php echo $row['owner']; ?>"><?php echo $row['owner_name'] ?></a>
+                    <a class="link-to-profile" href="user_profile.php?user=<?php echo $row['owner']; ?>"><?php echo $row['owner_name'] ?></a>
 
                     
                     <?php if (isset($_GET['owner']) && $_GET['owner'] == $row['owner'] &&

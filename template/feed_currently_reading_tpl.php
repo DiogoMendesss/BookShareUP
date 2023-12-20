@@ -30,28 +30,19 @@
             <p class="borrow-start-date">Start Date: <?php echo $currentlyReadingBook['start_date'] ?></p>
             <p class="borrow-expiration-date">Expiration Date: <?php echo $currentlyReadingBook['expiration_date'] ?></p>
         </div>
+    </section>
+
         <?php
-        /* Assuming $borrow is the array containing the borrow information
-        if ($currentlyReadingBook['borrowStatus'] === 'delivered' || $currentlyReadingBook['borrowStatus'] === 'picked-up' ) {
-            ?>
-            <form action="action_update_borrow_status.php" method="post">
-                <input type="hidden" name="bookID" value="<?php echo $currentlyReadingBook['copyID']; ?>">
-                <input type="hidden" name="borrowerID" value="<?php echo $currentlyReadingBook['borrowerID']; ?>">
-                <input type="hidden" name="borrowStatus" value="<?php echo getNextBorrowState($currentlyReadingBook['borrowStatus']); ?>">
-                <input type="submit" value="Update to <?php echo getNextBorrowState($currentlyReadingBook['borrowStatus']); ?>">
-            </form>
-            <?php
-        }
-        */
-        if ($currentlyReadingBook['borrowStatus']==='rejected'){ ?>
-            <p class = 'reject-notification'>Your request has been rejected.</p>
-            <form action = "action_delete_borrow.php" method = "post">
-                <input type = "hidden" name = "copyID" value = "<?php echo $currentlyReadingBook['copy']; ?>">
-                <input type = "hidden" name = "borrowerID" value = "<?php echo $userID; ?>">
-                <input type = "submit" value = "Go Back to Feed">
-            </form>
+        if ($currentlyReadingBook['status']==='rejected'){ ?>
+            <div class="reject-notification">
+                <p class = 'reject-notification-message'>Your request has been rejected.</p>
+                <form class = "form-delete-borrow" action = "action_delete_borrow.php" method = "post">
+                    <input type = "hidden" name = "copyID" value = "<?php echo $currentlyReadingBook['copy']; ?>">
+                    <input type = "hidden" name = "borrowerID" value = "<?php echo $userID; ?>">
+                    <input type = "submit" value = "Go Back to Feed">
+                </form>
+            </div>
         <?php
         }
         ?>
-    </section>
 </main>

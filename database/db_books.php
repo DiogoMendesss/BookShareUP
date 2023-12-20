@@ -66,7 +66,7 @@
   function getBooksByPage($page_num) {
       global $dbh;
       $stmt = $dbh->prepare('SELECT * FROM Book ORDER BY title LIMIT ? OFFSET ?');
-      $stmt->execute(array(40, ($page_num-1)*40));
+      $stmt->execute(array(18, ($page_num-1)*18));
       return $stmt->fetchAll();
     }
   

@@ -7,7 +7,7 @@ $up_number = $_SESSION['up_number'];
 $newStatus = getOtherUserStatus($up_number);
 
 updateUserStatus($up_number, $newStatus);
-header('Location: user_profile.php');
+header('Location: my_profile.php');
 exit();
 
 ?>

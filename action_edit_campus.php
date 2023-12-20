@@ -9,6 +9,6 @@
 
     updateCampusesInfo($up_number, $selectedCampuses); }
 
-    header('Location: user_profile.php');
+    header('Location: my_profile.php');
     exit();
 ?>

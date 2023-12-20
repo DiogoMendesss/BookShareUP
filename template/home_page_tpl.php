@@ -53,7 +53,7 @@
                     <label class="home-back-btn" for="home-checkbox3">Back</label>
                 </div>
                 <div class="home-front">
-                    <h2>Universities in the Program</h2>
+                    <h2>Faculties in the Program</h2>
                     <ul>
                         <li>Feup</li>
                         <li>Fmup</li>

@@ -12,14 +12,14 @@
         <link rel="stylesheet" href="css/header.css">
         <link rel="stylesheet" href="css/user_profile.css">
          <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
-        <title>B S U P</title>
+        <title>Book Sharing UP</title>
     </head>
     <body>
         <header class="header">
             <nav class="navbar">
                 <ul class="navbar-nav">
                     <li class="logo">
-                        <a href="#" class="nav-link"> 
+                        <a href="book_explorer.php?page_num=1" class="nav-link"> 
                             <img src="image/logo.png" alt="Logo">
                             <span class="link-text">BSUP</span>
                         </a>
@@ -49,9 +49,9 @@
                         </a>
                     </il>
                     <il class="nav-item">
-                        <a href="user_profile.php?user=<?php echo $up_number; ?>" class="nav-link">
+                        <a href="my_profile.php" class="nav-link">
                             <img src="image/avatar/hasbulla.jpg" alt="User Profile">
-                            <span class="link-text">User Profile</span>
+                            <span class="link-text">My Profile</span>
                         </a>
                     </il>
                     <il class="nav-item">

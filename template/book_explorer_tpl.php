@@ -5,7 +5,11 @@
         <input type="text" name="search_title" placeholder="Book Title" value="<?php echo $search_title ?>">
         <input type="text" name="search_author" placeholder="Book Author" value="<?php echo $search_author ?>">
         <select name="search_genre">
-            <option value="" selected disabled>Genre</option>
+            <?php if (isset($search_genre)) { ?>
+                <option value="<?php echo $search_genre ?>" selected><?php echo $search_genre ?></option>
+            <?php } else { ?>
+                <option value="" selected disabled>Genre</option>
+            <?php } ?>
             <?php foreach ($genres as $genre) { //var_dump($genre); ?> 
                       
                 <option value="<?php echo $genre['genre'] ?>"><?php echo $genre['genre'] ?></option>
