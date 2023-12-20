@@ -1,0 +1,41 @@
+BOOK SHARING UP WEBSITE
+
+AUTHORS:
+Diogo Cerveira
+Diogo Mendes
+Francisco Neves
+
+RUN THE WEBSITE IN DOCKER CONTAINER:
+1. Insert the BookShareUP folder in the folder your Docker container is running 
+2. Open your favorite browser and type http://localhost:8080/BookShareUP/home_page.php 
+3. Enjoy all the functionalities of the site
+
+
+
+
+-----------------
+
+ALTERAÇÕES NO MODELO RELACIONAL (em comparação com a first delivery):
+
+ - User: adição do atributo password e adição do estado 'reading' (quando o utilizador aceita uma proposal)
+
+ - Book: atributo 'name' renomeado para 'title'
+
+ - Genre: adicionados mais géneros
+
+ - Proposal: esta classe não foi implementada no SQL pois não é necessária. 
+ O feed de um utilizador é gerado diretamente através das BookCopy cujos Book estejam na WantToRead do user.
+
+ - Borrowing: adição do estado 'accepted' que é ativado quando o dono do livro aceita a requisição e do estado'rejected' quando o mesmo rejeita a requisição;
+adição do estado 'archived' que é definido quando o dono do livro recolhe o livro após a troca.
+
+ - Badges: foram adicionadas badges de duas categorias: 'Reader' e 'Borrower'. Para cada categoria há uma badge para cada rank 
+(ex: Good Reader - Bronze, Awesome Reader - Silver, Legendary Reader - Gold)
+Tendo em conta o número de livros emprestados (categoria Borrower) ou livros lidos (categoria Reader) o rank da badge é atualizado.
+
+OUTRAS NOTAS:
+ 
+ - A base de dados é prepopulada com alguns livros, géneros, os géneros de cada livro e as várias faculdades da UP.
+ - É também populada com uma conta admin ( username: 1, password: adminpass ) que, ao fazer o login com esta conta, o site é redirecionado para uma página admin
+que tem as permissões para alterar o estado para 'delivered', 'picked-up', 'returned' das on-going borrows e serve como confirmação de que o utilizador entregou/levantou o livro
+ - A funcionalidade do status 'expired'  das Borrowings não foi implementada (ainda).
