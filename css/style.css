@@ -294,6 +294,97 @@ input:focus {
     transition: all 0.35s ease;
 }
 
+/* Style for the borrow-info section */
+.borrow-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px; /* Adjust as needed for spacing from the previous section */
+}
 
+/* Style for the borrow-details div within borrow-info */
+.borrow-details {
+    text-align: center;
+    border: 2px solid black; /* Border styling, adjust color as needed */
+    border-radius: 10px; /* Adjust border radius as needed */
+    background-color: #fff;
+    padding: 15px; /* Adjust padding as needed */
+    margin: 10px 0; /* Adjust margin as needed */
+}
 
+/* Style for individual borrow details */
+.borrow-details p {
+    margin: 5px 0; /* Adjust as needed for spacing between each detail */
+    font-size: 1.2rem; /* Adjust as needed for the font size */
+}
 
+/* Style for the reject-notification section */
+.reject-notification {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px; /* Adjust as needed for spacing from the previous section */
+}
+
+.reject-notification-message {
+    font-size: 1.2rem; /* Adjust as needed for the message font size */
+    margin-bottom: 15px; /* Adjust as needed for spacing between the message and the form */
+}
+
+.form-delete-borrow {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form-delete-borrow input[type="submit"] {
+    margin-top: 10px; /* Adjust as needed for spacing between the form and the submit button */
+    padding: 10px; /* Adjust as needed for the button padding */
+    cursor: pointer;
+    background-color: #007BFF; /* Adjust as needed for the button background color */
+    color: #fff; /* Adjust as needed for the button text color */
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem; /* Adjust as needed for the button font size */
+}
+
+.form-delete-borrow input[type="submit"]:hover {
+    background-color: #0056b3; /* Adjust as needed for the button hover background color */
+}
+
+#currently_reading_shelf{
+    padding-left: 0;
+    padding-right: 0;
+}
+
+/* Style for each user info field */
+.info-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5rem;
+    margin-top: 0.5rem;
+    text-align: center;
+}
+
+/* Style for the user info labels */
+.info-row .info-label {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 1.2rem;
+    margin-right: 0.5rem; /* Add spacing between label and data */
+}
+
+/* Style for the user info data */
+.info-row .info-field {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: 1.1rem;
+}
+
+#currently_reading_section{
+    border: 2px solid black; /* Border styling, adjust color as needed */
+    border-radius: 2rem;
+    padding: 1rem;
+    background-color: #fff;
+}

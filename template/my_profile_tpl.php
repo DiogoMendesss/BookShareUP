@@ -34,15 +34,15 @@
                     <input type = 'submit' name = 'ChangeStatus' value = "Change Status to <?php echo getOtherUserStatus($up_number) ?> ">
                 </form>
 
-                <section class = "profile-info">
-                    <div class = "user-info-field">
-                        <div class="user-info-label"> UP Number: </div> <div class='user-info'> <?php echo $up_number ?> </div>
+                <section class = "info-section">
+                    <div class = "info-row">
+                        <div class="info-label"> UP Number: </div> <div class='info-field'> <?php echo $up_number ?> </div>
                     </div>
-                    <div class = "user-info-field">
-                        <div class="user-info-label"> Number of Owned Books: </div> <div class='user-info'> <?php echo getNumOwnedBooks($up_number) ?> </div>
+                    <div class = "info-row">
+                        <div class="info-label"> Number of Owned Books: </div> <div class='info-field'> <?php echo getNumOwnedBooks($up_number) ?> </div>
                     </div>
-                    <div class = "user-info-field">
-                        <div class="user-info-label"> Associated Campus: </div> <div class='user-info'> <?php $user_campuses = getUserFacultyCampus($up_number);
+                    <div class = "info-row">
+                        <div class="info-label"> Associated Campus: </div> <div class='info-field'> <?php $user_campuses = getUserFacultyCampus($up_number);
                         foreach ($user_campuses as $campus) echo $campus['campus'] . '  ';?> </div>
                     </div>
                     <h1 class=profile_name> Books Read:<?php echo $readBooksNumber ?> </h1>

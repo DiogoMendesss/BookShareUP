@@ -6,8 +6,8 @@
     justify-content: center;
     align-items: center;
     /* font-family: "Roboto", sans-serif; */
-    background: linear-gradient(90deg, var(--bright-primary) 50%, var(--dark-secondary) 50%);
-    /* background: url('/image/minecraft-wp.jpg'); */
+    background: black;
+    background: url('../image/homepage_background.jpg') center/cover no-repeat; 
     overflow: hidden;
 }
     
