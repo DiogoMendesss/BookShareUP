@@ -81,7 +81,8 @@
             <?php foreach ($borrowedBooks as $borrow) { ?>
                 <li>
                 Status: <? echo $borrow['status']; ?>
-                <br>Borrower: <?php echo $borrow['borrower_name']; ?>
+                <br>Borrower: <a class="owner" href="user_profile.php?user=<?php echo $borrow['borrower']; ?>"><?php echo $borrow['borrower_name'] ?></a>
+                <br>Campus: <?php echo $borrow['campus']; ?>
                 <br>Expiration Date: <?php echo $borrow['expiration_date']; ?>
                 </li>
                 

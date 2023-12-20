@@ -7,16 +7,15 @@
 
     <br>
 
-    <select name="campus" id="campus" required>
-        <option value="" disabled selected>Select your main campus</option>
+    <p> Select the campus: </p>
         <?php
         $campuses = getCampusesInfo();
-        foreach ($campuses as $campus) {
-            echo '<option value="' . $campus['name'] . '">' . $campus['name'] . '</option>';
-        }
-        ?>
-    </select>
 
+        foreach ($campuses as $campus) {?>
+            <?php // var_dump($campus); ?>
+            <input type="checkbox" name="selectedCampuses[]" value="<?php echo $campus['name']; ?>" ><?php echo $campus['name']; ?>
+        <?php } ?>
+        
     <br>
 
     <p>Upload your profile image:</p>

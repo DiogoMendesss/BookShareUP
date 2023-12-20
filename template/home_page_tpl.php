@@ -1,4 +1,4 @@
-<main>
+<main id=homePage-main>
     <div class="home-book"> <!-- flex container  -->
         <!-- the 3 hidden, for conditional next/back button action-->
         <input type="checkbox" id="home-checkbox1"> 
@@ -50,12 +50,11 @@
                     <label class="home-back-btn" for="home-checkbox3">Back</label>
                 </div>
                 <div class="home-front">
-                    <h2>Universities in the Program</h2>
+                    <h2>Faculties in the Program</h2>
                     <ul>
-                        <li>University 1</li>
-                        <li>University 2</li>
-                        <li>University 3</li>
-                        <!-- Add more universities as needed -->
+                        <?php foreach($campuses as $campus) { ?>
+                            <li><?php echo $campus['name'] ?></li>
+                        <?php } ?>
                     </ul>
                     <label class="home-next-btn" for="home-checkbox3">Next</label>
                 </div>

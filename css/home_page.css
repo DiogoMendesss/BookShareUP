@@ -10,7 +10,7 @@ main {
     /* background: url('/image/minecraft-wp.jpg'); */
 }
     
-input[type="checkbox"] {
+.home-book > input[type="checkbox"] {
     display: none;
 }
 img {
