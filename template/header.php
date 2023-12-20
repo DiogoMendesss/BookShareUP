@@ -23,25 +23,25 @@
                 <ul class="navbar-nav">
                     <il class="nav-item">
                         <a href="book_explorer.php?page_num=1" class="nav-link"> 
-                            <img src="image/avatar/avatar_1.jpg" alt="Explorer">
+                            <img src="image/navbar_icons/icon_explorer.png" alt="Explorer">
                             <span class="link-text">Explorer</span>
                         </a>
                     </il>
                     <il class="nav-item">
                         <a href="want_to_read.php" class="nav-link">
-                            <img src="image/avatar/avatar_2.jpg" alt="Want To Read">
+                            <img src="image/navbar_icons/icon_want_to_read.png" alt="Want To Read">
                             <span class="link-text">Want To Read</span>
                         </a>
                     </il>
                     <il class="nav-item">
                         <a href="feed.php" class="nav-link">
-                            <img src="image/navbar_icons/feed_icon.png" alt="Feed">
+                            <img src="image/navbar_icons/icon_feed.png" alt="Feed">
                             <span class="link-text">Feed</span>
                         </a>
                     </il>
                     <il class="nav-item">
                         <a href="my_library.php" class="nav-link">
-                            <img src="image/avatar/avatar_4.jpg" alt="My Library">
+                            <img src="image/navbar_icons/icon_my_library.png" alt="My Library">
                             <span class="link-text">My Library</span>
                         </a>
                     </il>
