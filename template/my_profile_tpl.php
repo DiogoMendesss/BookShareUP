@@ -51,21 +51,23 @@
         <form class = edit-campus-btn action="my_profile.php" method="get">
             <input type='submit' name = 'EditCampus' value='Edit Campus'>
         </form>
+
         <?php } elseif ($_GET['EditCampus'] === 'Edit Campus') { ?>
             
         <form class="select-campus-form" action="action_edit_campus.php" method="post">
-        <div class="edit-campus-list">
-            <?php
-            $allCampuses = getCampusesInfo();
-            foreach ($allCampuses as $campus) {
-                $campusName = $campus['name']; ?>
-                <input type="checkbox" name="selectedCampuses[]" value="<?php echo $campusName; ?>" <?php /* Add logic here to check if the campus is selected */ ?>>
-                <?php echo $campusName; ?> 
-            <?php } ?>
-        </div>
-        <div class="edit-campus-butn">
-            <input type="submit" value="Update Campuses">
-        </div>
+            <div class="edit-campus-list">
+                <?php
+                $allCampuses = getCampusesInfo();
+                foreach ($allCampuses as $campus) {
+                    $campusName = $campus['name'];
+                    ?>
+                    <input type="checkbox" name="selectedCampuses[]" value="<?php echo $campusName; ?>" <?php if (isSelected($campusName, $user_campuses)) echo "checked"; ?>>
+                    <?php echo $campusName; ?>
+                <?php } ?>
+            </div>
+            <div class="edit-campus-butn">
+                <input type="submit" value="Update Campuses">
+            </div>
          </form>
         <?php } ?>
         <!-- Edit Campus Form -->
