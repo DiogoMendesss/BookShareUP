@@ -27,6 +27,6 @@
 
         <?php } ?>
     </section>
-    <a href="book_explorer.php" class="floatingButton">Add copy</a>
+<a href="book_explorer.php" class="floatingButton">Add copy</a>
 </main>
 

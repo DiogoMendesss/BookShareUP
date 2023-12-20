@@ -12,7 +12,7 @@
                 <div class="book-details">
                     <h2><?php echo $row['title'] ?></h2>
                     <h3 class="author"><?php echo $row['author'] ?></h3>
-                    <p class="interest ´_level"><?php echo "Interest level: " . $row['interest_level'] ?></p>
+                    <p class="interest_level"><?php echo "Interest level: " . $row['interest_level'] ?></p>
                     <form action="want_to_read.php" method="post">
                         <input type="hidden" name="action" value="remove_book">
                         <input type="hidden" name="book_id" value="<?php echo $row['id']; ?>">
@@ -21,7 +21,7 @@
                     </form>
                 </div>
             </article>
-        <?php } ?>  
+        <?php } ?>
     </section>
     <a href="book_explorer.php" class="floatingButton">Add Book</a>
 </main>

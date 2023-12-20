@@ -15,14 +15,13 @@
         <title>Book Sharing UP</title>
     </head>
     <body>
+        <span class="logo">
+            <img src="image/logo.png" alt="Logo">
+        </span>
         <header class="header">
             <nav class="navbar">
                 <ul class="navbar-nav">
-                    <li class="logo">
-                        <a href="book_explorer.php?page_num=1" class="nav-link"> 
-                            <img src="image/logo.png" alt="Logo">
-                            <span class="link-text">BSUP</span>
-                        </a>
+                    <li class = 'empty-space'>
                     </li>
                     <il class="nav-item">
                         <a href="book_explorer.php?page_num=1" class="nav-link"> 

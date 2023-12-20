@@ -1,5 +1,4 @@
 #homePage-main {
-#homePage-main {
     margin: 0;
     padding: 0;
     height: 100vh;
@@ -9,113 +8,66 @@
     /* font-family: "Roboto", sans-serif; */
     background: linear-gradient(90deg, var(--bright-primary) 50%, var(--dark-secondary) 50%);
     /* background: url('/image/minecraft-wp.jpg'); */
+    overflow: hidden;
 }
-.home-book {
-    display: flex;
-    max-width: 80%;
-    width: 100%;
-    justify-content: center;
-    align-items: center;
-}
+    
 .home-book > input[type="checkbox"] {
     display: none;
 }
-.home-book form {
-    display: flex;
-    flex-direction: column;
-
-    justify-items: space-evenly;
-    align-items: space-around;  
-    flex-direction: column;
-
-    justify-items: space-evenly;
-    align-items: space-around;  
+img {
+    width: 100%;    /*fully fit the book page*/
+    height: 100%;
 }
-
-
+.home-book {
+    display: flex;
+}
 #home-cover {
-    width: 250px;
-    height: 400px;
-    padding: 2%;
+    width: 300px;
+    height: 500px;
+    position: relative;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    
+    box-sizing: border-box;
     border: 10px double var(--dark-primary);
     background-color: #ffd29e;
-
-    align-items: center;
-    justify-content: center;
 }
-#home-cover * {
-    width: 90%;
-}
-#campus {
-    width: 100%;
-    font-size: 0.7rem;
-
-    align-items: center;
-    justify-content: center;
-}
-#home-cover * {
-    width: 90%;
-}
-#campus {
-    width: 100%;
-    font-size: 0.7rem;
-}
-#home-cover p {
-    text-align: center;
-    margin: 0;
-    white-space: unwrap;
-    font-size: 0.7rem;
-}
-#home-cover input {
-    width: 100%;
-    text-align: center;
-}
-.login-form{
+#home-cover > form {
     display: flex;
     flex-direction: column;
-    gap: auto;
+
+    justify-items: center;
+    align-items: center;  
 }
-.register-form{
-    display: flex;
-    flex-direction: column;
-    gap: 0.2rem;
+#home-cover > form > * {
+    width: 80%;
 }
 
-.register-form p {
-    text-align: center;
-    margin: 0;
-    margin-top: 0.5rem;
-}
-.register-form #profile-pic {
-    padding-left: 0.2rem;
-    padding-right: 0.2rem;
-    width: 100%;
-}
-.register-request {
-    align-items: center;
-}
 #login_error {
-    color: var(--accent-color1);
-    text-align: center;
-    color: var(--accent-color1);
-    text-align: center;
+    color: red;
+}
+
+.change-register-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 40%; /* Optional: Set the container to 100% of the viewport height */
+}
+
+.register-request {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .home-flip-book {
-    width: 250px;
-    height: 400px;
+    width: 300px;
+    height: 500px;
     position: relative; /*placed relative to normal position (others don't adjust to fill the gap)*/
     perspective: 1500px;
-}
-.home-flip-book img {
-    width: 100%;    /*fully fit the book page*/
-    height: 100%;
-}
-.home-flip-book img {
-    width: 100%;    /*fully fit the book page*/
-    height: 100%;
 }
 .home-flip {
     width: 100%;
@@ -200,4 +152,64 @@ p {
 #home-checkbox3:checked ~ .home-flip-book #home-sheet3 {
     transform: rotateY(-180deg);
     z-index: 3;
+}
+
+.register-book-page {
+    max-width: 100%;
+    max-height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    overflow-y: hidden;
+    padding:8%;
+}
+
+.register-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    max-width: 100%;
+    max-height: 100%;
+    padding-top: 2rem;
+}
+
+.change-register.page{
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;  
+}
+
+#login-request {
+    display: flex;
+    justify-content: center;
+}
+
+
+.centered-paragraph{
+    text-align: center;
+}
+
+input #input-profile-pic {
+    align-items: center;
+    justify-content: center;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.login-form input {
+    margin-bottom: 10px; /* Adjust the margin as needed */
+}
+
+input[type="submit"]:hover{
+    transform: scale(1.05);
+    cursor: pointer;
+    background-color: black;
+    color: white;
 }
