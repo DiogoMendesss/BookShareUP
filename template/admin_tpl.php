@@ -25,7 +25,6 @@
     </form>
     <hr>
     <?php
-    var_dump($borrowings);
     foreach ($borrowings as $borrowing) { ?>
         <p>Owner: <?php echo $borrowing['owner'] ?></p>
         <p>Borrowing User: <?php echo $borrowing['user'] ?></p>

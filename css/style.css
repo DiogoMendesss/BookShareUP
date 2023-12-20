@@ -291,3 +291,14 @@ label[for="handbook"] {
     border-bottom: 2px solid #C62828;
     padding: 1em;
   }
+
+  .link-to-profile {
+    color: black;
+    font-weight: bold;
+    text-decoration: none;
+  }
+
+  .link-to-profile:hover {
+    color: var(--dark-secondary);
+    transition: all 0.35s ease;
+  }
