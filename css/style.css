@@ -1,6 +1,9 @@
 /* 
     G E N E R A L   S T Y L E S
 */
+/* 
+    G E N E R A L   S T Y L E S
+*/
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap'); 
 
 :root {
@@ -48,25 +51,45 @@ body::-webkit-scrollbar-thumb {
 main { /* rem unit relative to font size: 16 px is the default */
     /* margin-left: 3rem; leave space for the navbar */
     /* width: 100vw; */
+    /* width: 100vw; */
     /* background-image: url("../image/bookshelf2.png"); */
     /* background-color: var(--bright-primary); */
     /* border: 3px solid red; */
     background-color: transparent;
     position: relative;
+    background-color: transparent;
+    position: relative;
 }
+main::after {  /* trick for adjusting the opacity */
 main::after {  /* trick for adjusting the opacity */
     content: "";
     position: absolute;
     background-image: url("../image/bookshelf2.png");
     opacity: 0.5; /* Adjust this value to change the opacity */
     z-index: -1;
+    z-index: -1;
 }
+
+
 
 
 footer {
     width: 100vw;
     height: min-content;
     flex-shrink: 0;
+    background-color: transparent;
+    margin-top: auto;
+    text-align: center;
+}
+footer > a {
+    color: var(--accent-color1);
+    text-decoration: none;
+    transition: all 0.35s ease;
+    margin-left: 3rem;
+}
+/*
+    B U T T O N S , I N P U T S , E T C
+*/
     background-color: transparent;
     margin-top: auto;
     text-align: center;
@@ -113,6 +136,7 @@ input[type="radio"] + label:after + label:before {
     background-color: rgba(255, 255, 255, 0.5);
 }
 button:hover, input:hover[type="submit"] {
+button:hover, input:hover[type="submit"] {
     /* outline-style: solid;
     outline-width: 1px;
     outline-color: var(--bright-secondary);
@@ -132,10 +156,46 @@ button:hover, input:hover, option:hover, select:hover {
     /* background-color: black;
     color: white; */
 }
+button:hover, input:hover, option:hover, select:hover {
+    /* outline-style: solid;
+    outline-width: 1px;
+    outline-color: var(--bright-secondary);
+    background: rgba(255, 255, 255, 1); */
+    transform: scale(1.05);
+    cursor: pointer;
+    /* background-color: black;
+    color: white; */
+}
 input:focus {
     background-color: rgba(255, 255, 255, 1);
     outline-color: var(--accent-color2);
+    outline-color: var(--accent-color2);
 }
+#pagination {
+    clear: both; /* Add this to clear the float */
+    display: flex;
+    justify-content: center;
+    column-gap: 1rem;
+    font-size: 1.2rem;
+    border-bottom: 3px groove var(--accent-color1);
+    padding: 1em;
+    margin-left: 3rem;
+    /* gap: 1rem; */
+    font-weight: 600;
+    color: white;
+    /* padding: 0.3rem 0.6rem; */
+}
+#pagination > a {
+    color: var(--accent-color1);
+    transition: all 0.35s ease;
+}
+#pagination > a:hover {
+    transform: scale(1.05);
+    cursor: pointer;
+}
+/*
+    B O O k  S T U F F
+*/
 #pagination {
     clear: both; /* Add this to clear the float */
     display: flex;
@@ -168,6 +228,7 @@ input:focus {
     /* minmax() prevents the grid from letting its book-items overflow */
     grid-gap: 3rem 3rem;
     padding: 1rem;
+    padding-left: 14vw;
     padding-left: 14vw;
     padding-right: 10vw;
     overflow: hidden;
@@ -216,6 +277,7 @@ input:focus {
 .book-details { 
     grid-area: 3 / 1 / 4 / -1;
     background-color: rgba(206, 205, 205, 0.8);
+    background-color: rgba(206, 205, 205, 0.8);
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
     border-radius: 10px; /* Rounded corners */
     padding: 1px; /* Add some padding */
@@ -228,6 +290,7 @@ input:focus {
 .book-details-form { 
     grid-area: 3 / 1 / 4 / -1;
     background-color: rgba(216, 205, 205, 0.8);
+    background-color: rgba(216, 205, 205, 0.8);
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
     border-radius: 10px; /* Rounded corners */
     padding: 1px; /* Add some padding */
@@ -235,6 +298,40 @@ input:focus {
     z-index: 2;
     line-height: 0.6rem;
     white-space: nowrap;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    justify-items: center;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.miniForm {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    gap: 0.2rem;
+}
+.miniFormLine {
+    display: flex;
+    align-items: center;
+    justify-items: center;
+}
+.miniFormLine label {
+    font-size: 0.6rem;
+}
+.book-details-form h3 {
+    color: #333;
+    margin: 0;
+}
+.book-details-form .author {
+    color: #777;
+}
 
     display: flex;
     flex-direction: column;
@@ -281,7 +378,12 @@ input:focus {
    
     display: flex;
     flex-direction: column;
+    display: flex;
+    flex-direction: column;
     grid-template-rows: repeat(3, 1fr);
+    grid-template-columns: 1fr 1fr;
+    align-content: space-evenly;
+    justify-content: space-evenly;
     grid-template-columns: 1fr 1fr;
     align-content: space-evenly;
     justify-content: space-evenly;

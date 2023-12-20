@@ -4,6 +4,7 @@
     <input type="password" name="password" id="password" placeholder="Password" required> <!-- Change name and placeholder to 'password' -->
     <input type="text" name="first_name" id="first_name" placeholder="First Name" required>
     <input type="text" name="last_name" id="last_name" placeholder="Last Name" required>
+<<<<<<< HEAD
     <p> Select the campus: </p>
         <div class="miniFormLine"> 
             <?php
@@ -13,6 +14,22 @@
                 <input type="checkbox" name="selectedCampuses[]" value="<?php echo $campus['name']; ?>" ><?php echo $campus['name']; ?>
             <?php } ?>
         </div>
+=======
+
+    <br>
+
+    <p> Select the campus: </p>
+        <?php
+        $campuses = getCampusesInfo();
+
+        foreach ($campuses as $campus) {?>
+            <?php // var_dump($campus); ?>
+            <input type="checkbox" name="selectedCampuses[]" value="<?php echo $campus['name']; ?>" ><?php echo $campus['name']; ?>
+        <?php } ?>
+        
+    <br>
+
+>>>>>>> 353e585dd18db92c9f76650d4b91cc908dba3bc0
     <p>Upload your profile image:</p>
     <input type="file" name="profile_pic" id="profile-pic">
     <input type="submit" value = Register>

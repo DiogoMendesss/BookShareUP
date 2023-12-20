@@ -15,8 +15,7 @@ main{
     padding-bottom: 1rem;
 }
 
-.visiting_profile {
-    font-family: 'Poppins', sans-serif;
+.profile-main form{
     display: flex;
     flex-direction: column;
     align-items: center; /* Center items horizontally */
@@ -31,7 +30,11 @@ input[type=file] {
     display:flex;
     flex-direction: column;
     align-items: center;
+    font-family: 'Poppins', sans-serif;
+    gap: 1rem;
+    font-weight: 600;
     transition: all 0.35s ease;
+    padding: 0.3rem 0.6rem;
     border-radius: 2rem;
     border-color: black;
     max-width: 75%;

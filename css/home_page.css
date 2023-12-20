@@ -1,4 +1,5 @@
 #homePage-main {
+#homePage-main {
     margin: 0;
     padding: 0;
     height: 100vh;
@@ -25,7 +26,12 @@
 
     justify-items: space-evenly;
     align-items: space-around;  
+    flex-direction: column;
+
+    justify-items: space-evenly;
+    align-items: space-around;  
 }
+
 
 #home-cover {
     width: 250px;
@@ -35,6 +41,16 @@
     flex-direction: column;
     border: 10px double var(--dark-primary);
     background-color: #ffd29e;
+
+    align-items: center;
+    justify-content: center;
+}
+#home-cover * {
+    width: 90%;
+}
+#campus {
+    width: 100%;
+    font-size: 0.7rem;
 
     align-items: center;
     justify-content: center;
@@ -83,6 +99,8 @@
 #login_error {
     color: var(--accent-color1);
     text-align: center;
+    color: var(--accent-color1);
+    text-align: center;
 }
 
 .home-flip-book {
@@ -90,6 +108,10 @@
     height: 400px;
     position: relative; /*placed relative to normal position (others don't adjust to fill the gap)*/
     perspective: 1500px;
+}
+.home-flip-book img {
+    width: 100%;    /*fully fit the book page*/
+    height: 100%;
 }
 .home-flip-book img {
     width: 100%;    /*fully fit the book page*/
