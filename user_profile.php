@@ -16,6 +16,9 @@
     $up_number = $_SESSION['up_number'];
     $msg = $_SESSION['msg'];  
     $user_profile = $_GET['user']; 
+
+    $borrowedBooks = getOngoingUserBorrows($user_profile);
+    var_dump($borrowedBooks);
     
     include_once('template/header.php');
     include_once('template/user_profile_tpl.php');

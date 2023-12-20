@@ -13,7 +13,7 @@
             <article class="book-item">
                 <img src="image/bookcover/<?php echo $currentlyReadingBook['book'] ?>.jpg" alt="">
 
-                <div class="book-details">
+                <div class="book-details-form">
                     <h2><?php echo $currentlyReadingBook['title'] ?></h2>
                     <h3 class="author"><?php echo $currentlyReadingBook['author'] ?></h3>
                     <p class="condition"><?php echo "Condition: " . $currentlyReadingBook['condition'] ?></p>
