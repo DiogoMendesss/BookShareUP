@@ -1,7 +1,6 @@
     <h1>Want To Read</h1>
 </header>
 <main>
-    
     <section class="shelf">
         <?php foreach ($wantToReadBooks as $row) { 
             
@@ -22,7 +21,7 @@
                     </form>
                 </div>
             </article>
-        <?php } ?>
-        <a href="book_explorer.php" class="floatingButton">Add Book</a>  
+        <?php } ?>  
     </section>
+    <a href="book_explorer.php" class="floatingButton">Add Book</a>
 </main>

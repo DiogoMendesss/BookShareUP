@@ -1,5 +1,5 @@
         <footer>
-            <a href="home_page.php">Book Sharing UP (ou só BSUUUUP)</a>
+            <a href="home_page.php">BookSharing UP ©</a>
         </footer>
     </body>
 </html>

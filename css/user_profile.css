@@ -1,13 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
 
-.profile-main{ 
+#profile-main{ 
     font-family: 'Poppins', sans-serif;
     display: flex;
     flex-direction: column;
     align-items: center; /* Center items horizontally */
 }
 
-.profile-main form{
+#profile-main form{
     display: flex;
     flex-direction: column;
     align-items: center;

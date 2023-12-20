@@ -1,5 +1,5 @@
 
-<main class = "profile-main">
+<main id="profile-main">
     <div class = "empty-space-image">
         <section class = "profile-pic">
             <img src = "image/users/<?php echo $up_number ?>.jpg" alt = "Profile Picture">
