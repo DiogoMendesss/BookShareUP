@@ -1,4 +1,4 @@
-#homePage-main {
+main {
     margin: 0;
     padding: 0;
     height: 100vh;
@@ -9,90 +9,53 @@
     background: linear-gradient(90deg, var(--bright-primary) 50%, var(--dark-secondary) 50%);
     /* background: url('/image/minecraft-wp.jpg'); */
 }
-.home-book {
-    display: flex;
-    max-width: 80%;
-    width: 100%;
-    justify-content: center;
-    align-items: center;
-}
-.home-book input[type="checkbox"] {
+    
+.home-book > input[type="checkbox"] {
     display: none;
 }
-#home-book form {
-    display: flex;
-    flex-direction: column;
-
-    justify-items: space-evenly;
-    align-items: space-around;  
+img {
+    width: 100%;    /*fully fit the book page*/
+    height: 100%;
 }
-
+.home-book {
+    display: flex;
+}
 #home-cover {
     width: 250px;
     height: 400px;
+    position: relative;
     padding: 2%;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    
+    box-sizing: border-box;
     border: 10px double var(--dark-primary);
     background-color: #ffd29e;
+}
+#home-cover > form {
+    display: flex;
+    flex-direction: column;
 
-    align-items: center;
-    justify-content: center;
+    justify-items: center;
+    align-items: center;  
 }
-#home-cover * {
-    width: 90%;
+#home-cover > form > * {
+    width: 80%;
 }
-#campus {
-    width: 100%;
-    font-size: 0.7rem;
-}
-#home-cover p {
-    text-align: center;
-    margin: 0;
-    white-space: unwrap;
-    font-size: 0.7rem;
-}
-#home-cover input {
-    width: 100%;
-    text-align: center;
-}
-.login-form{
-    display: flex;
-    flex-direction: column;
-    gap: auto;
-}
-.register-form{
-    display: flex;
-    flex-direction: column;
-    gap: 0.2rem;
-}
-.register-form p {
-    text-align: center;
-    margin: 0;
-    margin-top: 0.5rem;
-}
-.register-form #profile-pic {
-    padding-left: 0.2rem;
-    padding-right: 0.2rem;
-    width: 100%;
-}
-.register-request {
-    align-items: center;
-}
+
 #login_error {
-    color: var(--accent-color1);
-    text-align: center;
+    color: red;
 }
+/* #register_request {
+} */
 
 .home-flip-book {
     width: 250px;
     height: 400px;
     position: relative; /*placed relative to normal position (others don't adjust to fill the gap)*/
     perspective: 1500px;
-}
-.home-flip-book img {
-    width: 100%;    /*fully fit the book page*/
-    height: 100%;
 }
 .home-flip {
     width: 100%;
