@@ -121,36 +121,12 @@ input[type=submit]:hover{
 }
 
 /* Style for the user information section */
-.profile-info {
+.info-section {
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-top: 0.2rem;
     margin-bottom: 1rem;
-}
-
-/* Style for each user info field */
-.user-info-field {
-    display: flex;
-    align-items: center;
-    margin-bottom: 0.5rem;
-    margin-top: 0.5rem;
-    text-align: center;
-}
-
-/* Style for the user info labels */
-.user-info-field .user-info-label {
-    font-family: 'Poppins', sans-serif;
-    font-weight: 600;
-    font-size: 1.2rem;
-    margin-right: 0.5rem; /* Add spacing between label and data */
-}
-
-/* Style for the user info data */
-.user-info-field .user-info {
-    font-family: 'Poppins', sans-serif;
-    font-weight: 400;
-    font-size: 1.1rem;
 }
 
 .profile-main h1 {

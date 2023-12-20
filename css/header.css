@@ -12,7 +12,9 @@ header h1 {
     text-shadow: 2px 2px 2px black;
     border-bottom: 3px groove var(--accent-color1);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    padding-bottom: 1.5rem;
 }
+
 /* search bar */
 #search {
     display: flex;
@@ -113,6 +115,8 @@ height: 4rem;
     margin-top: 1rem;
     margin-left: 1rem;
     transition: transform 500ms ease;
+    /* border-radius: 50%;
+    background-color: aliceblue; */
 }
 
 .logo img {
