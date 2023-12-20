@@ -1,6 +1,6 @@
 <h1>My Profile</h1>
 </header>
-        <main id='main_profile'>
+        <main id='main-my-profile'>
             <section class = "profile-main">
                 <div class = "empty-space-image">
                     <section class = "profile-pic">
@@ -45,11 +45,6 @@
                         <div class="info-label"> Associated Campus: </div> <div class='info-field'> <?php $user_campuses = getUserFacultyCampus($up_number);
                         foreach ($user_campuses as $campus) echo $campus['campus'] . '  ';?> </div>
                     </div>
-                    <h1 class=profile_name> Books Read:<?php echo $readBooksNumber ?> </h1>
-                    <h1 class=profile_name> Books Borrowed: <?php echo $borrowedBooksNumber ?> </h1>
-                    <?php foreach ($badges as $badge){ ?>
-                        <p><?php echo $badge['badge'] ?></p>
-                    <?php } ?>
                 </section>
 
                 <div class = "edit-campus-form">
@@ -79,8 +74,21 @@
                 </div>
             </section>
 
+            <section class="display-badges">
+                <h2>BADGES</h2>
+                <div class="badges-container">
+                    <?php
+                    foreach ($badges as $badge) { ?>
+                        <div class="badge-item">
+                            <img src="image/badges/<?php echo $badge['badge']; ?>.png" alt="<?php echo $badge['badge']; ?>">
+                            <h3 id="badge-label"> <?php echo $badge['badge']; ?> </h3>
+                        </div>
+                    <?php } ?>
+                </div>
+            </section>
+
             <section class="ongoing-userBorrows">
-                <h2>Borrowed Books</h2>
+                <h2>BORROWED BOOKS</h2>
                 <?php
                 $borrowedBooks = getOngoingUserBorrows($up_number);
                 if (!empty($borrowedBooks)) { ?>

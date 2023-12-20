@@ -399,8 +399,10 @@ input:focus {
 }
 
 #currently_reading_section{
-    border: 2px solid black; /* Border styling, adjust color as needed */
-    border-radius: 2rem;
-    padding: 1rem;
-    background-color: #fff;
+    background-color: rgba(206, 205, 205, 0.8);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    border-radius: 10px; /* Rounded corners */
+    padding: 0.4rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
 }

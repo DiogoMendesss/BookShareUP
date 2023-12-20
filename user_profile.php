@@ -12,6 +12,11 @@
     $user = $_GET['user'];
     $msg = $_SESSION['msg'];  
 
+    $borrowedBooksNumber = countOwnerBorrowings($user);
+    $readBooksNumber = countBorrowerBorrowings($user);
+    updateUserBadges($user, $borrowedBooksNumber, $readBooksNumber);
+    $badges = getUserBadges($user);
+
     
     include_once('template/header.php');
     include_once('template/user_profile_tpl.php');
