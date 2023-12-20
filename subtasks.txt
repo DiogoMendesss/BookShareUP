@@ -12,4 +12,4 @@
 12 - dar sort feed e library --------- DONE
 13 - user pode alterar o seu estado --------- DONE
 14 - manter o genre na search bar
-15 - visualizar outros perfis
+15 - visualizar outros perfis --------- DONE
