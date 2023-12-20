@@ -21,7 +21,7 @@
 <main>
     <!-- BOOKS DISPLAY -->
     <section class="shelf">
-
+        
         <?php foreach ($books as $book) {
             $isBookAdded = isBookAdded($userID, $book['id']);
             $book_action = $isBookAdded ? 'remove_from_wanttoread' : 'add_to_wanttoread';
@@ -39,7 +39,7 @@
                 <?php } else { ?> 
                 <div class="book-details"> <?php } ?>
 
-                <h3><?php echo $book['name'] ?></h2>
+                <h3><?php echo $book['title'] ?></h2>
                 <h3 class="author"><?php echo $book['author'] ?></h3>
 
                 <?php foreach ($bookGenres as $genre) { ?>

@@ -32,6 +32,7 @@
         } else {
             $books = getBooksByPage($page_num);
         }
+
       } catch (PDOException $e) {
         $error_msg = $e->getMessage();
       }

@@ -1,9 +1,11 @@
 <?php
+    session_start();
+
     require_once('database/init.php');
     require_once('database/db_books.php');
     require_once('database/db_borrowings.php');
     
-    session_start();
+    
     $userID = $_SESSION['up_number'];
     $msg = $_SESSION['msg'];
 

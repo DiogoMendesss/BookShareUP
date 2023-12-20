@@ -11,7 +11,7 @@
 
   function getBooks () {
       global $dbh;
-      $stmt = $dbh->prepare("SELECT * FROM Book ORDER BY name;");
+      $stmt = $dbh->prepare("SELECT * FROM Book ORDER BY title;");
       $stmt->execute();
       return $stmt->fetchAll();
   }
@@ -31,11 +31,11 @@
 
   function getWantToReadBooks($userID){
       global $dbh;
-      $stmt = $dbh->prepare("SELECT Book.id, Book.name, Book.author, InterestedIn.interest_level 
+      $stmt = $dbh->prepare("SELECT Book.id, Book.title, Book.author, InterestedIn.interest_level 
                               FROM Book 
                               JOIN InterestedIn ON Book.id = InterestedIn.book 
                               WHERE InterestedIn.user = ?
-                              ORDER BY interest_level DESC, name;");
+                              ORDER BY interest_level DESC, title;");
       $stmt->execute(array($userID));
       return $stmt->fetchAll();
   }
@@ -65,7 +65,7 @@
 
   function getBooksByPage($page_num) {
       global $dbh;
-      $stmt = $dbh->prepare('SELECT * FROM Book ORDER BY name LIMIT ? OFFSET ?');
+      $stmt = $dbh->prepare('SELECT * FROM Book ORDER BY title LIMIT ? OFFSET ?');
       $stmt->execute(array(40, ($page_num-1)*40));
       return $stmt->fetchAll();
     }
@@ -82,7 +82,7 @@
       $stmt = $dbh->prepare("SELECT * FROM BookCopy 
                               JOIN Book ON BookCopy.book = Book.id 
                               WHERE owner = ?
-                              ORDER BY Book.name;");
+                              ORDER BY Book.title;");
       $stmt->execute(array($userID));
       return $stmt->fetchAll();
     }
@@ -93,14 +93,14 @@
       global $dbh; // Assuming $dbh is your SQLite database connection
   
       $stmt = $dbh->prepare("SELECT Borrowing.*, BookCopy.*, Book.*, User.name AS owner_name  FROM Borrowing
-      JOIN BookCopy ON Borrowing.copyID = BookCopy.id
+      JOIN BookCopy ON Borrowing.copy = BookCopy.id
       JOIN Book ON BookCopy.book = Book.id
       JOIN User ON BookCopy.owner = User.up_number
-      WHERE Borrowing.user = ?");
+      WHERE Borrowing.borrower = ?");
   
       $stmt->execute(array($readerID));
   
-      return $stmt->fetch(PDO::FETCH_ASSOC);;
+      return $stmt->fetch(PDO::FETCH_ASSOC);
   }
 
   function getBooksBySearch($search_title, $search_author, $search_genre) {
@@ -120,9 +120,9 @@
 
     if ($search_title != '') {
         if ($search_genre != '') {
-            $query .= ' AND name LIKE ?';
+            $query .= ' AND title LIKE ?';
         } else {
-            $query .= ' WHERE name LIKE ?';
+            $query .= ' WHERE title LIKE ?';
         }
         $params[] = "%$search_title%";
     }

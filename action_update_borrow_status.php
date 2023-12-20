@@ -5,6 +5,8 @@ require_once('database/db_books.php');
 require_once('database/db_users.php');
 require_once('database/db_borrowings.php');
 
+$userID = $_SESSION['up_number'];
+
 
 $borrowerID = $_POST['borrowerID'];
 $newStatus = $_POST['newStatus'];
@@ -26,6 +28,6 @@ elseif($newStatus === 'delivered'){
     initializeDates($copyID, $borrowerID);
 }
 
-header('Location: user_profile.php');
+header('Location: user_profile.php?user='.$userID);
 exit();
 ?>

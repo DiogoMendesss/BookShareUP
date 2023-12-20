@@ -25,6 +25,7 @@
     </form>
     <hr>
     <?php
+    var_dump($borrowings);
     foreach ($borrowings as $borrowing) { ?>
         <p>Owner: <?php echo $borrowing['owner'] ?></p>
         <p>Borrowing User: <?php echo $borrowing['user'] ?></p>
@@ -32,9 +33,9 @@
         <?php if (isset($_GET['bID']) && $_GET['bID'] == $borrowing['id']) { ?>
             <form action="admin.php" method="post">
                 <input type="hidden" name="action" value="confirm_update_status">
-                <input type="hidden" name="copy_id" value="<?php echo $borrowing['copyID']; ?>">
+                <input type="hidden" name="copy_id" value="<?php echo $borrowing['copy']; ?>">
                 <input type="hidden" name="ownerID" value="<?php echo $borrowing['owner'] ?>">
-                <input type="hidden" name="borrowerID" value="<?php echo $borrowing['user'] ?>">
+                <input type="hidden" name="borrowerID" value="<?php echo $borrowing['borrower'] ?>">
                 <label>Status:</label>
                 <input type="radio" name="status" value="pending">Pending
                 <input type="radio" name="status" value="accepted">Accepted
