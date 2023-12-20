@@ -94,7 +94,7 @@ height: 4rem;
     width: fit-content;
     position: absolute;
     z-index: 99;
-    margin-top: 1rem;
+    margin-top: 0.6rem;
     margin-left: 1rem;
     transition: transform 500ms ease;
     /* border-radius: 50%;
@@ -102,7 +102,7 @@ height: 4rem;
 }
 
 .logo img {
-    width: 7rem;
+    width: 8rem;
     height: auto;
     min-width: 2rem;
     margin: 0 1rem;
