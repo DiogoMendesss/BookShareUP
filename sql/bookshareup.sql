@@ -9,7 +9,7 @@ PRAGMA foreign_keys=ON;
 
 -- Order matters to avoid foreign key constraints
 DROP TABLE IF EXISTS UserBadge;
-DROP TABLE IF EXISTS Badges;
+DROP TABLE IF EXISTS Badge;
 DROP TABLE IF EXISTS UserCampus;
 DROP TABLE IF EXISTS Borrowing;
 DROP TABLE IF EXISTS InterestedIn;
@@ -106,7 +106,7 @@ CREATE TABLE Badge (
 -- UserBadge table
 CREATE TABLE UserBadge (
     user INTEGER REFERENCES User ON DELETE CASCADE ON UPDATE CASCADE,
-    badge TEXT REFERENCES Badges ON DELETE CASCADE ON UPDATE CASCADE,
+    badge TEXT REFERENCES Badge ON DELETE CASCADE ON UPDATE CASCADE,
     PRIMARY KEY (user, badge)
 );
 
@@ -346,26 +346,24 @@ INSERT INTO BookGenre (book, genre) VALUES
     (56, 'Business');
 
 INSERT INTO Campus VALUES
-    ('AEFADEUP', 'FADEUP', 'Rua Dr. Plácido da Costa'),
-    ('AEFAUP', 'FAUP', 'Rua do Campo Alegre'),
-    ('AEFCUP', 'FCUP', 'Rua do Campo Alegre'),
-    ('AEFEUP', 'FEUP', 'Rua Dr. Roberto Frias'),
-    ('AEFFUP', 'FFUP', 'Rua de Jorge Viterbo Ferreira'),
-    ('AEFMDUP', 'FMDUP', 'Rua Dr. Plácido da Costa'),
-    ('AEFPCEUP', 'FPCEUP', 'R. Alfredo Allen'),
-    ('AEICBAS', 'ICBAS', 'Rua de Jorge Viterbo Ferreira'),
-    ('AEFDUP', 'FDUP', 'Rua dos Bragas'),
-    ('FCNAUP', 'FCNAUP', 'Rua do Campo Alegre'),
-    ('FBAUP', 'FBAUP', 'Rua de Serralves'),
-    ('FEP', 'FEP', 'Rua Dr. Roberto Frias'),
+    ('FADEUP', 'AEFADEUP', 'Rua Dr. Plácido da Costa'),
+    ('FAUP', 'AEFAUP', 'Rua do Campo Alegre'),
+    ('FCUP', 'AEFCUP', 'Rua do Campo Alegre'),
+    ('FEUP', 'AEFEUP', 'Rua Dr. Roberto Frias'),
     ('FFUP', 'AEFFUP', 'Rua de Jorge Viterbo Ferreira'),
-    ('FLUP', 'FLUP', 'Rua do Campo Alegre'),
-    ('FMUP', 'FMUP', 'Rua Dr. Plácido da Costa'),
-    ('FMUP', 'FMUP', 'Rua Dr. Plácido da Costa'),
-    ('ICBAS', 'AEICBAS', 'Rua de Jorge Viterbo Ferreira')
+    ('FMDUP', 'AEFMDUP', 'Rua Dr. Plácido da Costa'),
+    ('FPCEUP', 'AEFPCEUP', 'R. Alfredo Allen'),
+    ('ICBAS', 'AEICBAS', 'Rua de Jorge Viterbo Ferreira'),
+    ('FDUP', 'AEFDUP', 'Rua dos Bragas'),
+    ('FCNAUP', 'AEFCNAUP', 'Rua do Campo Alegre'),
+    ('FBAUP', 'AEFBAUP', 'Rua de Serralves'),
+    ('FEP', 'AEFEP', 'Rua Dr. Roberto Frias'),
+    ('FLUP', 'AEFLUP', 'Rua do Campo Alegre'),
+    ('FMUP', 'AEFMUP', 'Rua Dr. Plácido da Costa')
 ;
 
-INSERT INTO Badges VALUES
+
+INSERT INTO Badge VALUES
 ('Good Reader','Reader','Bronze'),
 ('Awesome Reader','Reader','Silver'),
 ('Legendary Reader','Reader','Gold'),

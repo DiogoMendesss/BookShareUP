@@ -55,7 +55,7 @@ main { /* rem unit relative to font size: 16 px is the default */
     /* border: 3px solid red; */
     background: url("../image/backgrounds/library_minecraft.png") no-repeat center center fixed;
     background-size: cover;
-    min-height: 82vh;
+    min-height: 83.5vh;
 }
 
 footer {
