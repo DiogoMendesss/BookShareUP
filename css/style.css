@@ -47,18 +47,20 @@ body::-webkit-scrollbar-track {
 body::-webkit-scrollbar-thumb {
     background: var(--accent-color1);
 }
+
 main { /* rem unit relative to font size: 16 px is the default */
     width: 100vw;
     /* background-image: url("../image/bookshelf2.png"); */
-    background-color: transparent;
-    position: relative;
+    /* background-color: var(--bright-primary); */
+    /* border: 3px solid red; */
+    background: url("../image/backgrounds/library_minecraft.png") no-repeat center center fixed;
+    background-size: cover;
+    min-height: 83.5vh;
 }
-main::before {  /* trick for adjusting the opacity */
-    content: "";
-    position: absolute;
-    background-image: url("../image/bookshelf2.png");
-    opacity: 0.5; /* Adjust this value to change the opacity */
-    z-index: -1;
+
+#main-feed{
+    background: url("../image/backgrounds/chamber.jpg") no-repeat center center fixed;
+    background-size: cover;
 }
 /*
     F O O T E R  A N D  P A G I N A T I O N
@@ -67,7 +69,7 @@ footer {
     width: 100vw;
     height: min-content;
     flex-shrink: 0;
-    background-color: transparent;
+    background-color: black;
     margin-top: auto;
     text-align: center;
 }
@@ -77,6 +79,30 @@ footer > a {
     transition: all 0.35s ease;
     margin-left: 3rem;
 }
+/*
+    B U T T O N S , I N P U T S , E T C
+*/
+main > .floatingButton {
+    position: fixed;
+    bottom: 3rem;
+    right: 3rem;
+    right: 1rem;
+    z-index: 99;
+
+}
+.floatingButton {
+    text-decoration: none;
+    color: var(--accent-color1);
+    border: 2px groove var(--accent-color1);
+    border-radius: 30%;
+    padding: 0.1rem;
+}
+.floatingButton:hover {
+    color: var(--accent-color2);
+    border: 2px groove var(--accent-color2);
+}
+
+
 #pagination {
     clear: both; /* Add this to clear the float */
     display: flex;
@@ -354,9 +380,12 @@ input:focus {
     font-weight: 400;
     font-size: 1.1rem;
 }
-#currently_reading_section {
-    border: 2px solid black;
-    border-radius: 2rem;
-    padding: 1rem;
-    background-color: #fff;
+
+#currently_reading_section{
+    background-color: rgba(206, 205, 205, 0.8);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    border-radius: 10px; /* Rounded corners */
+    padding: 0.4rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
 }

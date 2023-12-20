@@ -1,6 +1,6 @@
     <h1>Feed</h1>
 </header>
-<main>
+<main id='main-feed'>
     
     <section class="shelf">
         <?php foreach ($userProposals as $row) { 
@@ -30,11 +30,12 @@
                         <input type="hidden" name="copy_type" value="<?php echo $row['copy_type']; ?>">
                         <!-- Add other necessary fields -->
                         Select the campus to pick-up the book:
-                        <?php $ownerCampus = getUserFacultyCampus($row['owner']);
-                            foreach ($ownerCampus as $campus) { ?>
-                            
-                            <input type="radio" name="campus" value="<?php echo $campus['campus']; ?>" required><?php echo $campus['campus']; ?>
-                        <?php } ?>  
+                        <select name="campus" required>
+                            <?php $ownerCampus = getUserFacultyCampus($row['owner']);
+                                foreach ($ownerCampus as $campus) { ?>
+                                <option value="<?php echo $campus['campus']; ?>"><?php echo $campus['campus']; ?></option>
+                            <?php } ?>
+                        </select>
                         <button type="submit">Confirm</button>
                     </form>
                     <?php } else { ?>

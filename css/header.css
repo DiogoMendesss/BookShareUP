@@ -26,24 +26,6 @@ header h1 {
     margin-bottom: auto;
     border-bottom: 3px groove var(--accent-color1);
 }
-main > .floating-button {
-    position: fixed;
-    bottom: 1rem;
-    right: 1rem;
-    z-index: 2;
-
-}
-.floating-button {
-    text-decoration: none;
-    color: var(--accent-color1);
-    border: 2px groove var(--accent-color1);
-    border-radius: 30%;
-    padding: 0.1rem;
-}
-.floating-button:hover {
-    color: var(--accent-color2);
-    border: 2px groove var(--accent-color2);
-}
 
 .navbar {
     position: fixed;
@@ -113,7 +95,7 @@ height: 4rem;
     width: fit-content;
     position: absolute;
     z-index: 99;
-    margin-top: 1rem;
+    margin-top: 0.6rem;
     margin-left: 1rem;
     transition: transform 500ms ease;
     /* border-radius: 50%;
@@ -121,7 +103,7 @@ height: 4rem;
 }
 
 .logo img {
-    width: 7rem;
+    width: 8rem;
     height: auto;
     min-width: 2rem;
     margin: 0 1rem;

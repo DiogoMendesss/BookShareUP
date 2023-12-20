@@ -1,6 +1,6 @@
 <h1>My Profile</h1>
 </header>
-        <main>
+        <main id='main-my-profile'>
             <section class = "profile-main">
                 <div class = "empty-space-image">
                     <section class = "profile-pic">
@@ -74,8 +74,21 @@
                 </div>
             </section>
 
+            <section class="display-badges">
+                <h2>BADGES</h2>
+                <div class="badges-container">
+                    <?php
+                    foreach ($badges as $badge) { ?>
+                        <div class="badge-item">
+                            <img src="image/badges/<?php echo $badge['badge']; ?>.png" alt="<?php echo $badge['badge']; ?>">
+                            <h3 id="badge-label"> <?php echo $badge['badge']; ?> </h3>
+                        </div>
+                    <?php } ?>
+                </div>
+            </section>
+
             <section class="ongoing-userBorrows">
-                <h2>Borrowed Books</h2>
+                <h2>BORROWED BOOKS</h2>
                 <?php
                 $borrowedBooks = getOngoingUserBorrows($up_number);
                 if (!empty($borrowedBooks)) { ?>
@@ -83,6 +96,7 @@
                     <?php foreach ($borrowedBooks as $borrow) { ?>
                         <div class="borrowed-book-container">
                             <li>
+                            Book: <? echo $borrow['title']; ?> <br>
                             Status: <? echo $borrow['status']; ?> <br>
                             Borrower: <a class="link-to-profile" href="user_profile.php?user=<?php echo $borrow['borrower']; ?>">
                             <?php echo $borrow['borrower_name'] ?></a> <br>
@@ -96,6 +110,7 @@
                                 <input type="hidden" name="bookID" value="<?php echo $borrow['copy']; ?>">
                                 <input type="hidden" name="borrowerID" value="<?php echo $borrow['borrower']; ?>">
                                 <input type="hidden" name="newStatus" value="<?php echo getNextBorrowState($borrow['status']); ?>">
+                                <input type="hidden" name="borrowID" value="<?php echo $borrow['id']; ?>">
                                 <input type="submit" value="Update to <?php echo getNextBorrowState($borrow['status']); ?>">
                             </form>
                         <?php
@@ -103,6 +118,7 @@
                             <form action="action_update_borrow_status.php" method="post">
                                 <input type="hidden" name="bookID" value="<?php echo $borrow['copy']; ?>">
                                 <input type="hidden" name="borrowerID" value="<?php echo $borrow['borrower']; ?>">
+                                <input type="hidden" name="borrowID" value="<?php echo $borrow['id']; ?>">
                                 <input type="hidden" name="newStatus" value="rejected">
                                 <input type="submit" value="Reject Request">
                             </form>

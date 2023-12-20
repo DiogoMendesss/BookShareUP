@@ -9,7 +9,7 @@ PRAGMA foreign_keys=ON;
 
 -- Order matters to avoid foreign key constraints
 DROP TABLE IF EXISTS UserBadge;
-DROP TABLE IF EXISTS Badges;
+DROP TABLE IF EXISTS Badge;
 DROP TABLE IF EXISTS UserCampus;
 DROP TABLE IF EXISTS Borrowing;
 DROP TABLE IF EXISTS InterestedIn;
@@ -90,23 +90,23 @@ CREATE TABLE Campus (
 
 -- UserCampus table
 CREATE TABLE UserCampus (
-    user INTEGER REFERENCES User(up_number) ON DELETE CASCADE ON UPDATE CASCADE,
-    campus TEXT REFERENCES Campus(name) ON DELETE CASCADE ON UPDATE CASCADE,
+    user INTEGER REFERENCES User ON DELETE CASCADE ON UPDATE CASCADE,
+    campus TEXT REFERENCES Campus ON DELETE CASCADE ON UPDATE CASCADE,
     PRIMARY KEY (user, campus)
 );
 
 -- Badges table
-CREATE TABLE Badges (
+CREATE TABLE Badge (
     name TEXT PRIMARY KEY CHECK (name IN ('Good Reader', 'Awesome Reader', 'Legendary Reader', 'Good Borrower', 'Awesome Borrower', 'Legendary Borrower')),
     category TEXT CHECK (category IN ('Reader', 'Borrower')),
-    rank TEXT CHECK (rank IN ('Bronze', 'Silver', 'Gold', 'Platinum'))
+    rank TEXT CHECK (rank IN ('Bronze', 'Silver', 'Gold'))
 );
 
 
 -- UserBadge table
 CREATE TABLE UserBadge (
-    user INTEGER REFERENCES User(up_number) ON DELETE CASCADE ON UPDATE CASCADE,
-    badge TEXT REFERENCES Badges(name) ON DELETE CASCADE ON UPDATE CASCADE,
+    user INTEGER REFERENCES User ON DELETE CASCADE ON UPDATE CASCADE,
+    badge TEXT REFERENCES Badge ON DELETE CASCADE ON UPDATE CASCADE,
     PRIMARY KEY (user, badge)
 );
 
@@ -345,17 +345,29 @@ INSERT INTO BookGenre (book, genre) VALUES
     (56, 'Non-fiction'),
     (56, 'Business');
 
-    INSERT INTO Campus VALUES
-    ('FEUP', 'AEFEUP', 'Paranhos'),
-    ('FEP', 'AEFEP', 'Ao lado da FEUP'),
-    ('FMUP', 'CIM', 'Do outro lado do S. João') 
-    ;
+INSERT INTO Campus VALUES
+    ('FADEUP', 'AEFADEUP', 'Rua Dr. Plácido da Costa'),
+    ('FAUP', 'AEFAUP', 'Rua do Campo Alegre'),
+    ('FCUP', 'AEFCUP', 'Rua do Campo Alegre'),
+    ('FEUP', 'AEFEUP', 'Rua Dr. Roberto Frias'),
+    ('FFUP', 'AEFFUP', 'Rua de Jorge Viterbo Ferreira'),
+    ('FMDUP', 'AEFMDUP', 'Rua Dr. Plácido da Costa'),
+    ('FPCEUP', 'AEFPCEUP', 'R. Alfredo Allen'),
+    ('ICBAS', 'AEICBAS', 'Rua de Jorge Viterbo Ferreira'),
+    ('FDUP', 'AEFDUP', 'Rua dos Bragas'),
+    ('FCNAUP', 'AEFCNAUP', 'Rua do Campo Alegre'),
+    ('FBAUP', 'AEFBAUP', 'Rua de Serralves'),
+    ('FEP', 'AEFEP', 'Rua Dr. Roberto Frias'),
+    ('FLUP', 'AEFLUP', 'Rua do Campo Alegre'),
+    ('FMUP', 'AEFMUP', 'Rua Dr. Plácido da Costa')
+;
 
-    INSERT INTO Badges VALUES
-    ('Good Reader','Reader','Bronze'),
-    ('Awesome Reader','Reader','Silver'),
-    ('Legendary Reader','Reader','Gold'),
-    ('Good Borrower','Borrower','Bronze'),
-    ('Awesome Borrower','Borrower','Silver'),
-    ('Legendary Borrower','Borrower','Gold')
-    ;
+
+INSERT INTO Badge VALUES
+('Good Reader','Reader','Bronze'),
+('Awesome Reader','Reader','Silver'),
+('Legendary Reader','Reader','Gold'),
+('Good Borrower','Borrower','Bronze'),
+('Awesome Borrower','Borrower','Silver'),
+('Legendary Borrower','Borrower','Gold')
+;

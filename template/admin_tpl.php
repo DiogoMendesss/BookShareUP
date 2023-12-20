@@ -41,8 +41,9 @@
     <?php
     foreach ($borrowings as $borrowing) { ?>
     <article class="borrowing-details">
+        <p>Book: <?php echo $borrowing['title'] ?></p>
         <p>Owner: <?php echo $borrowing['owner'] ?></p>
-        <p>Borrowing User: <?php echo $borrowing['borrower'] ?></p>
+        <p>Borrower: <?php echo $borrowing['borrower'] ?></p>
         <p>Status: <?php echo $borrowing['status'] ?></p>
         <?php if (isset($_GET['bID']) && $_GET['bID'] == $borrowing['id']) { ?>
             <form action="admin.php" method="post">
@@ -50,19 +51,17 @@
                 <input type="hidden" name="copy_id" value="<?php echo $borrowing['copy']; ?>">
                 <input type="hidden" name="ownerID" value="<?php echo $borrowing['owner'] ?>">
                 <input type="hidden" name="borrowerID" value="<?php echo $borrowing['borrower'] ?>">
+                <input type="hidden" name="borrow_id" value="<?php echo $borrowing['id']; ?>">
                 <label>Status:</label>
-                <input type="radio" name="status" value="pending">Pending
-                <input type="radio" name="status" value="accepted">Accepted
                 <input type="radio" name="status" value="delivered">Delivered
                 <input type="radio" name="status" value="picked-up">Picked-up
                 <input type="radio" name="status" value="returned">Returned
-                <input type="radio" name="status" value="archived">Archived
                 <button type="submit">Confirm</button>
             </form>
         <?php } else { ?>
             <form action = "admin.php" method="post">
                 <input type="hidden" name="action" value="update_status">
-                <input type="hidden" name="borrowing_id" value="<?php echo $borrowing['id'] ?>">
+                <input type="hidden" name="borrow_id" value="<?php echo $borrowing['id'] ?>">
                 <input type="hidden" name="search_user" value="<?php echo $search_user ?>">
                 <input type="hidden" name="search_campus" value="<?php echo $search_campus ?>">
                 <button type="submit">Update Status</button>

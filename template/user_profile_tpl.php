@@ -1,7 +1,7 @@
-    <h1>User Profile</h1>
-    </header>
-        <main>
-        <section class = "profile-main" id='visiting_profile'>
+<h1>My Profile</h1>
+</header>
+        <main id='main-my-profile'>
+            <section class = "profile-main">
                 <div class = "empty-space-image">
                     <section class = "profile-pic">
                         <img src = "image/users/<?php echo $user ?>.jpg" alt = "Profile Picture">
@@ -22,6 +22,19 @@
                         foreach ($user_campuses as $campus) echo $campus['campus'] . '  ';?> </div>
                     </div>
                 </section>
+            </section>
+
+            <section class="display-badges">
+                <h2>BADGES</h2>
+                <div class="badges-container">
+                    <?php
+                    foreach ($badges as $badge) { ?>
+                        <div class="badge-item">
+                            <img src="image/badges/<?php echo $badge['badge']; ?>.png" alt="<?php echo $badge['badge']; ?>">
+                            <h3 id="badge-label"> <?php echo $badge['badge']; ?> </h3>
+                        </div>
+                    <?php } ?>
+                </div>
             </section>
         </main>
     </body>
