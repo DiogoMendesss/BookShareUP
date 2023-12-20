@@ -8,8 +8,7 @@
             
         ?>
             <article class="book-item">
-                <img class="shelfImage" src="image/shelf2.png" alt="shelf-image">
-                <img class="bookCover" src="image/bookcover/<?php echo $row['book'] ?>.jpg" alt="">
+                <img src="image/bookcover/<?php echo $row['book'] ?>.jpg" alt="">
 
                 <?php // if (isset($_GET['owner']) && $_GET['owner'] == $row['owner']  || isset($_GET['copy']) && $_GET['copy'] == $row['id']) { ?>
                 <div class="book-details-form">
