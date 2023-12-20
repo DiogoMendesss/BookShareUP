@@ -6,7 +6,6 @@
     <input type="text" name="first_name" id="first_name" placeholder="First Name" required>
     <input type="text" name="last_name" id="last_name" placeholder="Last Name" required>
 
-    <br>
 
     <p> Select your main campus: </p>
     <?php
@@ -17,7 +16,6 @@
             <option value="<?php echo $campus['name']; ?>"><?php echo $campus['name']; ?></option>
         <?php } ?>
     </select>
-    <br>
 
     <p>Upload your profile image:</p>
     <input type="file" name="profile_pic" id="input-profile_pic">

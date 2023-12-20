@@ -36,14 +36,14 @@
 
             <article class="book-item"> 
         
-            <img class="shelfImage" src="image/shelf2.png" alt="shelf-image">
-            <img class="bookCover" src="image/bookcover/<?php echo $book['id'] ?>.jpg" alt="">
+                <img class="shelfImage" src="image/shelf2.png" alt="shelf-image">
+                <img class="bookCover" src="image/bookcover/<?php echo $book['id'] ?>.jpg" alt="">
                 <?php if (isset($_GET['addBook']) && $_GET['addBook'] == $book['id']  || isset($_GET['addCopy']) && $_GET['addCopy'] == $book['id']) { ?>
-                <div class="book-details-form">
-                <?php } else { ?> 
-                <div class="book-details"> <?php } ?>
+                    <div class="book-details-form">
+                    <?php } else { ?> 
+                    <div class="book-details"> <?php } ?>
 
-                <h3><?php echo $book['title'] ?></h2>
+                <h2><?php echo $book['title'] ?></h2>
                 <h3 class="author"><?php echo $book['author'] ?></h3>
 
                 <?php foreach ($bookGenres as $genre) { ?>
@@ -75,7 +75,7 @@
                             <button type="submit"><?php echo ($isBookAdded ? 'Remove From Want To Read' : 'Want To Read'); ?></button>
                         </form>
                     <?php } ?>
-                       
+                        
                     <!-- ADD BOOK TO MY LIBRARY: If the user already has a copy of the book it is shown a button to remove
                     otherwise it is shown a button to add a copy to My Library. If the last is clicked, the variable $_GET['addCopy'] is set and 
                     another form (the first in the code) to fill the copy info and confirm the add is shown-->
@@ -116,8 +116,8 @@
                         </form>
                     <?php } ?>
 
-            </div>
-        </article>
+                </div>
+            </article>
 
         <?php } ?>
     </section>
