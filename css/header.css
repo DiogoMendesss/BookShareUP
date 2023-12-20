@@ -9,7 +9,8 @@ header h1 {
     font-size: 2rem;
     margin: 0;
     padding: 0.5rem;
-    border-bottom: 2px solid var(--accent-color1);
+    padding-top:1rem;
+    padding-bottom: 1.2rem;
 }
 
 .floatingButton {
