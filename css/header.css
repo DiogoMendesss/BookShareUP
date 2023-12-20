@@ -1,7 +1,7 @@
 header {
     background-color: var(--dark-primary);
-    width: 100vw;
-    height: min-content;
+    width: 100%;
+    /* height: min-content; */
 }
 header h1 {
     color: var(--accent-color1);
