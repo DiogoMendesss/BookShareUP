@@ -61,7 +61,6 @@ main { /* rem unit relative to font size: 16 px is the default */
     position: relative;
 }
 main::after {  /* trick for adjusting the opacity */
-main::after {  /* trick for adjusting the opacity */
     content: "";
     position: absolute;
     background-image: url("../image/bookshelf2.png");
@@ -69,27 +68,10 @@ main::after {  /* trick for adjusting the opacity */
     z-index: -1;
     z-index: -1;
 }
-
-
-
-
 footer {
     width: 100vw;
     height: min-content;
     flex-shrink: 0;
-    background-color: transparent;
-    margin-top: auto;
-    text-align: center;
-}
-footer > a {
-    color: var(--accent-color1);
-    text-decoration: none;
-    transition: all 0.35s ease;
-    margin-left: 3rem;
-}
-/*
-    B U T T O N S , I N P U T S , E T C
-*/
     background-color: transparent;
     margin-top: auto;
     text-align: center;
@@ -136,7 +118,6 @@ input[type="radio"] + label:after + label:before {
     background-color: rgba(255, 255, 255, 0.5);
 }
 button:hover, input:hover[type="submit"] {
-button:hover, input:hover[type="submit"] {
     /* outline-style: solid;
     outline-width: 1px;
     outline-color: var(--bright-secondary);
@@ -178,7 +159,7 @@ input:focus {
     column-gap: 1rem;
     font-size: 1.2rem;
     border-bottom: 3px groove var(--accent-color1);
-    padding: 1em;
+    padding: 1rem;
     margin-left: 3rem;
     /* gap: 1rem; */
     font-weight: 600;
@@ -251,6 +232,16 @@ input:focus {
 
     transition: transform 400ms ease;
 }
+.book-item h2 {
+    color: #333;
+    margin: 0;
+    line-height: 1.6rem;
+    font-size: 1.3rem;
+}
+.book-item .author {
+    color: #777;
+    font-size: 1rem;
+}
 
 .shelfImage {
     justify-self: center;
@@ -274,132 +265,71 @@ input:focus {
     transition: transform 200ms ease;
     z-index: 1;
 }
-.book-details { 
-    grid-area: 3 / 1 / 4 / -1;
-    background-color: rgba(206, 205, 205, 0.8);
-    background-color: rgba(206, 205, 205, 0.8);
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-    border-radius: 10px; /* Rounded corners */
-    padding: 1px; /* Add some padding */
-    display: none; 
-    transition: transform 400ms ease;
-    z-index: 2;
-    line-height: 0.6rem;
-    white-space: nowrap;
-}
+/* the form is a non hoverable/fixed version of book-details when a form is clicked */
 .book-details-form { 
+    display: flex;
+    flex-direction: column;
+}
+.book-details, .book-details-form { 
     grid-area: 3 / 1 / 4 / -1;
-    background-color: rgba(216, 205, 205, 0.8);
-    background-color: rgba(216, 205, 205, 0.8);
+
+    background-color: rgba(206, 205, 205, 0.8);
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
     border-radius: 10px; /* Rounded corners */
-    padding: 1px; /* Add some padding */
     transition: transform 400ms ease;
     z-index: 2;
-    line-height: 0.6rem;
-    white-space: nowrap;
+    padding: 0.4rem;
+    text-align: center;
 
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
     justify-items: center;
     align-items: center;
-    gap: 0.5rem;
+    gap: 0rem;
 }
-
-.miniForm {
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    align-items: center;
-    justify-content: center;
+.book-details *, .book-details-form * {
     margin: 0;
-    gap: 0.2rem;
+    max-width: 100%;
 }
-.miniFormLine {
-    display: flex;
-    align-items: center;
-    justify-items: center;
-}
-.miniFormLine label {
-    font-size: 0.6rem;
-}
-.book-details-form h3 {
-    color: #333;
-    margin: 0;
-}
-.book-details-form .author {
-    color: #777;
-}
-
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    justify-items: center;
-    align-items: center;
-    gap: 0.5rem;
-}
-
-.miniForm {
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    align-items: center;
-    justify-content: center;
-    margin: 0;
-    gap: 0.2rem;
-}
-.miniFormLine {
-    display: flex;
-    align-items: center;
-    justify-items: center;
-}
-.miniFormLine label {
-    font-size: 0.6rem;
-}
-.book-details-form h3 {
-    color: #333;
-    margin: 0;
-}
-.book-details-form .author {
-    color: #777;
-}
-
-.book-item:hover .bookCover{
+.book-details
+.book-item:hover .bookCover {
     transform: scale(0.97);
     opacity: 0.5;
     animation-play-state: paused;
 }
 .book-item:hover .book-details {
     transform: scale(1.02);
-    animation-play-state: paused;
-   
     display: flex;
-    flex-direction: column;
-    display: flex;
-    flex-direction: column;
-    grid-template-rows: repeat(3, 1fr);
-    grid-template-columns: 1fr 1fr;
-    align-content: space-evenly;
-    justify-content: space-evenly;
-    grid-template-columns: 1fr 1fr;
-    align-content: space-evenly;
-    justify-content: space-evenly;
-    justify-items: center;
-    align-items: center;
+    flex-direction: column;   
 }
+.miniForm {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+}
+.miniForm label {
+    font-size: 0.8rem;
+    line-height: 1rem;
+}
+.miniFormLine {
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    column-gap: 0.5rem;
+}
+.miniFormLine label {
+    font-size: 0.6rem;
+}
+
 .link-to-profile {
     color: black;
     font-weight: bold;
     text-decoration: none;
-  }
-
-  .link-to-profile:hover {
+}
+.link-to-profile:hover {
     color: var(--dark-secondary);
-    transition: all 0.35s ease;
-  }
-
-
-
+    transition: all 0.35s ease;
+}
