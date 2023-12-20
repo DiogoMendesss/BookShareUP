@@ -14,12 +14,12 @@
                         ?>
                         <?php }?>
                         <?php if (!isset($changePicRequest)) { ?>
-                        <form action = "user_profile.php" method = "post">
+                        <form action = "my_profile.php" method = "post">
                             <input type = "submit" name='ChangeProfilePic' value = "Change Profile Picture">
                         </form>
                         <?php } 
                         elseif ($changePicRequest==='Change Profile Picture') { ?>
-                            <form class="upload-pic-form" action = "user_profile.php" method = "post" enctype="multipart/form-data">
+                            <form class="upload-pic-form" action = "my_profile.php" method = "post" enctype="multipart/form-data">
                                 <input type = "file" name = "profile_pic">
                                 <input type = "submit" name='ChangeProfilePic' value = "Upload New Pic">
                             </form>
@@ -49,7 +49,7 @@
                 <div class = "edit-campus-form">
                 <!-- Edit Campus Form -->
                     <?php if (!isset($_GET['EditCampus'])) { ?>
-                    <form class = edit-campus-btn action="user_profile.php" method="get">
+                    <form class = edit-campus-btn action="my_profile.php" method="get">
                         <input type='submit' name = 'EditCampus' value='Edit Campus'>
                     </form>
                     <?php } elseif ($_GET['EditCampus'] === 'Edit Campus') { ?>
