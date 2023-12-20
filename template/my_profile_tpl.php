@@ -60,7 +60,7 @@
                             $allCampuses = getCampusesInfo();
                             foreach ($allCampuses as $campus) {
                                 $campusName = $campus['name']; ?>
-                                <input type="checkbox" name="selectedCampuses[]" value="<?php echo $campusName; ?>" <?php echo isSelected($selectedCampuses, $campusName) ? 'checked' : ''; ?>>
+                                <input type="checkbox" name="selectedCampuses[]" value="<?php echo $campusName; ?>" <?php /* Add logic here to check if the campus is selected */ ?>>
                                 <?php echo $campusName; ?> 
                             <?php } ?>
                         </div>
@@ -73,42 +73,47 @@
                 </div>
             </section>
 
-    <section class="ongoing-userBorrows">
-        <h2>Borrowed Books</h2>
-        <?php
-        if (!empty($borrowedBooks)) { ?>
-            <ul id="borrowed-books">
-            <?php foreach ($borrowedBooks as $borrow) { ?>
-                <li>
-                Status: <? echo $borrow['status']; ?>
-                <br>Borrower: <?php echo $borrow['borrower_name']; ?>
-                <br>Expiration Date: <?php echo $borrow['expiration_date']; ?>
-                </li>
-                
+            <section class="ongoing-userBorrows">
+                <h2>Borrowed Books</h2>
+                <?php
+                $borrowedBooks = getOngoingUserBorrows($up_number);
+                if (!empty($borrowedBooks)) { ?>
+                    <ul id="borrowed-books">
+                    <?php foreach ($borrowedBooks as $borrow) { ?>
+                        <div class="borrowed-book-container">
+                            <li>
+                            Status: <? echo $borrow['status']; ?> <br>
+                            Borrower: <a class="link-to-profile" href="user_profile.php?user=<?php echo $borrow['borrower']; ?>">
+                            <?php echo $borrow['borrower_name'] ?></a> <br>
+                            Campus: <?php echo $borrow['campus']; ?> <br>
+                            Expiration Date: <?php echo $borrow['expiration_date']; ?>
+                            </li>
+                            
+                    
+                        <?php if ($borrow['status'] === 'pending' ||  $borrow['status'] === 'returned') {?>
+                            <form action="action_update_borrow_status.php" method="post">
+                                <input type="hidden" name="bookID" value="<?php echo $borrow['copy']; ?>">
+                                <input type="hidden" name="borrowerID" value="<?php echo $borrow['borrower']; ?>">
+                                <input type="hidden" name="newStatus" value="<?php echo getNextBorrowState($borrow['status']); ?>">
+                                <input type="submit" value="Update to <?php echo getNextBorrowState($borrow['status']); ?>">
+                            </form>
+                        <?php
+                        } if ($borrow['status'] === 'pending'){ ?>
+                            <form action="action_update_borrow_status.php" method="post">
+                                <input type="hidden" name="bookID" value="<?php echo $borrow['copy']; ?>">
+                                <input type="hidden" name="borrowerID" value="<?php echo $borrow['borrower']; ?>">
+                                <input type="hidden" name="newStatus" value="rejected">
+                                <input type="submit" value="Reject Request">
+                            </form>
+                            <? } ?>
+                        </div>
+                    <?php } ?>
+                    </ul>
+                <?php } else { ?>
+                    <p>No ongoing borrowed books.</p>
+                <?php } ?>
         
-            <?php if ($borrow['status'] === 'pending' ||  $borrow['status'] === 'returned') {?>
-                <form action="action_update_borrow_status.php" method="post">
-                    <input type="hidden" name="bookID" value="<?php echo $borrow['copy']; ?>">
-                    <input type="hidden" name="borrowerID" value="<?php echo $borrow['borrower_up']; ?>">
-                    <input type="hidden" name="newStatus" value="<?php echo getNextBorrowState($borrow['status']); ?>">
-                    <input type="submit" value="Update to <?php echo getNextBorrowState($borrow['status']); ?>">
-                </form>
-            <?php
-            } if ($borrow['status'] === 'pending'){ ?>
-                <form action="action_update_borrow_status.php" method="post">
-                    <input type="hidden" name="bookID" value="<?php echo $borrow['copy']; ?>">
-                    <input type="hidden" name="borrowerID" value="<?php echo $borrow['borrower_up']; ?>">
-                    <input type="hidden" name="newStatus" value="rejected">
-                    <input type="submit" value="Reject Request">
-                </form>
-                <? } ?>
-            <?php } ?>
-            </ul>
-        <?php } else { ?>
-            <p>No ongoing borrowed books.</p>
-        <?php } ?>
- 
-    </section>
-
-</main>
-
+            </section>
+        </main>
+    </body>
+</html>
