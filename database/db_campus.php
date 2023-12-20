@@ -6,6 +6,14 @@ function getCampusesInfo() {
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
 
+function insertUserCampuses($up_number, $selectedCampuses) {
+    global $dbh;
+    foreach ($selectedCampuses as $campus) {
+        $stmt = $dbh->prepare('INSERT INTO UserCampus VALUES (?, ?)');
+        $stmt->execute(array($up_number, $campus));
+    }
+}
+
 function updateCampusesInfo($up_number, $selectedCampuses) {
     global $dbh;
     $stmt = $dbh->prepare('DELETE FROM UserCampus WHERE user = ?');
