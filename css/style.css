@@ -90,7 +90,7 @@ button, input, option{
 }
 
 select{
-    
+
 }
 
 input[type="radio"] + label:after + label:before {
@@ -294,6 +294,8 @@ label[for="handbook"] {
     column-gap: 1em;
     border-bottom: 2px solid #C62828;
     padding: 1em;
+    padding-top: 0;
+    margin-bottom: 0;
   }
 
   .link-to-profile {
