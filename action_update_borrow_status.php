@@ -28,6 +28,6 @@ elseif($newStatus === 'delivered'){
     initializeDates($copyID, $borrowerID);
 }
 
-header('Location: user_profile.php?user='.$userID);
+header('Location: my_profile.php');
 exit();
 ?>

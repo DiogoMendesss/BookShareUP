@@ -6,8 +6,10 @@
 6 - Terminar Feed dinâmico --------- DONE
 7 - Manipulação de datas --------- DONE
 8 - ADMIN --------- DONE
-9 - sHOW/eDIT CAMPUS
-10 - view other user profile
-11 - organizar borrowing functions
-12 - dar sort feed e library
-13 - user pode alterar o seu estado
+9 - sHOW/eDIT CAMPUS --------- DONE
+10 - view other user profile --------- DONE
+11 - organizar borrowing functions --------- DONE
+12 - dar sort feed e library --------- DONE
+13 - user pode alterar o seu estado --------- DONE
+14 - manter o genre na search bar
+15 - visualizar outros perfis
